@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap');
+
+
+.news_slide {
+  position: relative;
+  /* Ensure the child elements stay within this container */
+  overflow: hidden;
+  padding: 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.image_container_list_view {
+  overflow: hidden;
+  max-height: 220px;
+  height: 100%;
+  width: 320px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+
+.image_container_grid_view {
+  overflow: hidden;
+  /* height: 190px; */
+  width: 190px;
+  /* Set width equal to height to make it a perfect circle */
+  object-fit: cover;
+  /* border-radius: 50%; */
+  /* Make it a circle */
+}
+
+.zoom_image {
+  transition: transform 0.3s ease-in-out;
+  overflow: hidden;
+  height: 200px;
+  /* max-width: 230px; */
+  width: 100%;
+  /* border-radius: 50%; */
+  /* Smooth transition */
+
+}
+
+
+.news_slide:hover .zoom_image {
+  transform: scale(1.05);
+  /* Scale to create the zoom effect */
+}
+
+
+/* .tag {
+  color: black;
+  border: 1px solid;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  overflow: hidden;
+} */
+
+
+.card {
+  border: none;
+  padding: 20px 0;
+  max-width: 19rem;
+  width: 100%;
+  /* border-radius: 8px;
+  height: 245px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out; */
+}
+
+/* .card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+} */
+
+.card_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100% !important;
+  padding: 0 5px;
+}
+
+.card_body h5{
+  font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 25px;
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 18px !important;
+}
+
+.card_body p{
+  /* font-family: "Sofia Sans Extra Condensed", sans-serif; */
+  /* font-family: "Sofia Sans Condensed", sans-serif; */
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 18px;
+  color: #545454;
+  text-align: center;
+  margin-bottom: 24px !important;
+  /* color: var(--primary); */
+}
+
+.card_content a{
+  color: var(--primary) !important;
+  width: 100% !important;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* container level css */
+.about_details_wrapper {
+  margin-top: 81px;
+  }
+
+
+  @media(max-width:600px){
+    .about_details_wrapper {
+      padding: 0 0 60px;
+      }
+      .overviewContainer{
+        padding: 20px 16px 120px !important;
+        margin-top: -20px;
+      }
+  }
+.about_section_wrapper {
+position: relative;
+}
+
+.about_section_wrapper figure {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  margin: 0;
+}
+
+.about_section_wrapper figure::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.about_section_wrapper img {
+  height: 100%;
+  width: 100%;
+}
+
+.about_section_wrapper 
+
+/* About Sal Wrapper */
+.about_wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  text-align: center;
+}
+
+/* .content {
+  margin-top: 50px;
+} */
+
+/* Latest report wrapper */
+.image_wrapper {
+    width: 100%;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+.cover_image {
+  text-align: center;
+}
+
+.cover_image img {
+    width: 100%;
+}
+
+
+/* Over View css start */
+.overview_banner_image_container {
+    margin-top: 84px;
+}
+
+.overview_banner_img {
+    /* height: 600px; */
+    width: 100%;
+}
+
+.content_wrapper {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    height: 100%;
+}
+.content_wrapper p {
+    color: #54595F;
+}
+
+
+
+/* History css */
+.card_hover {
+    width: 22rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1) !important;    ;
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+/* .card_hover:hover {
+    transform: scale(1.05);
+} */

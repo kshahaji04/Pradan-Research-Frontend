@@ -1,0 +1,106 @@
+.video-wrapper {
+  position: relative;
+  max-width: 1300px;
+  width: 100%;
+}
+
+.video {
+  position: absolute;
+  width: 100%;
+  /* padding-top: 45px; */
+  background-color: #000;
+  top: 5%;
+  width: 93%;
+  left: 3.5%;
+  height: 65%;
+}
+
+.video-wrapper.banner-wrapper {
+  max-width: 100%;
+}
+
+.bgImageWrapper.banner-image-wrapper figure img {
+  max-height: 700px;
+}
+
+.video-wrapper.banner-wrapper .image img {
+  max-height: 550px;
+  z-index: 1;
+}
+
+.video.bannerVideo {
+  top: 0;
+  width: 100%;
+  left: 0;
+  overflow: hidden;
+  height: 100%;
+  background-color: transparent;
+}
+
+.video.bannerVideo video {
+  height: auto;
+}
+
+/* .video.bannerVideo.slide {
+  width: 93.6%;
+  left: 3.2%;
+} */
+
+.video.bannerVideo.carousel-inner{
+  width: 100% !important;
+  left: 0 !important;
+}
+
+.video > div {
+  height: 100%;
+}
+
+.video iframe {
+  height: 100%;
+  width: 100%;
+  /* height: 433px; */
+}
+
+.image img {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 600px;
+}
+
+/* .iframe_video_wrapper {
+} */
+
+.iframe_video_wrapper iframe {
+  width: 100%;
+  height: 600px !important;
+}
+
+/* Video Banner Carousel Starts */
+
+.carousel-indicators {
+  bottom: 0px !important;
+  top: auto !important;
+  z-index: 22222 !important;
+  height: 100%;
+  align-items: flex-end;
+  justify-content: center;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.carousel-control-prev {
+  justify-content: flex-start !important;
+  margin-left: 5% !important;
+}
+
+.carousel-control-next {
+  justify-content: flex-end !important;
+}
+
+.carousel-control-next > .carousel-control-next-icon{
+  margin-right: 5% !important;
+}
+
+/* Video Banner Carousel Ends */

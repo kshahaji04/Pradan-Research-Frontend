@@ -1,0 +1,31 @@
+.nav-tabs{
+    border-bottom-color: var(--primary);
+}
+
+.nav-tabs .nav-item .nav-link{
+    color: var(--primary);
+    width: 180px;
+    margin: 0 10px;
+}
+
+.nav-tabs .nav-item .nav-link:hover{
+    border-color: var(--primary);
+    border-bottom: 1px solid transparent;
+}
+
+.nav-tabs .nav-item .nav-link.active{
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.nav-tabs .nav-item .nav-link.active:hover{
+    border-color: var(--primary);
+}
+
+@media(max-width:600px){
+    .nav-tabs .nav-item .nav-link{
+        width: 90%;
+        margin: 0 10px;
+    }
+}

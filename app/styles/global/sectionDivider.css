@@ -1,0 +1,14 @@
+/* Section Didivder css */
+.section_divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 0;
+}
+
+.section_divider span {
+  display: block;
+  width: 50px;
+  border-bottom: 3px solid grey;
+  border-radius: 15px;
+}

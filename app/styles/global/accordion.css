@@ -1,0 +1,28 @@
+/* css to remove focus from accordian */
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: rgba(0, 0, 0, 0.125);
+}
+
+.accordion-button:not(.collapsed) {
+  box-shadow: none;
+  color: black;
+  background: none;
+}
+
+/* Remove border from accordion items */
+.accordion-item {
+  border: none;
+}
+
+/* Style the accordion buttons */
+.accordion-button {
+  background-color: #f8f9fa;
+  color: #212529;
+  border: none;
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-image: var(--bs-accordion-btn-icon);
+  transform: var(--bs-accordion-btn-icon-transform);
+}
