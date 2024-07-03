@@ -19,7 +19,7 @@ function ResearchLayout({ navItems }: any) {
                         {navItems.map((item: any, index: any) => {
                             return <li key={index} className={`nav-item ${styles.navItem} ${handleActiveLink(item.href)}`} >
                                 {
-                                    <Link className={`nav-link ${styles.navLink}`} href={item.href}>{item.label}</Link>
+                                    <Link className={`nav-link ${styles.navLink}`} style={{whiteSpace:'nowrap'}} href={item.href}>{item.label}</Link>
                                 }
                             </li>
                         })
