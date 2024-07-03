@@ -1,10 +1,12 @@
 'use client'
 import Image from 'next/image'
 import React from 'react'
-import Slider from 'react-slick'
 import { featuredData } from '@/app/utils/data';
+import Slider from 'react-slick'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-const Featured = () => {
+const Featured = ({title}:any) => {
     const settings = {
         dots: false,
         infinite: true,
@@ -63,14 +65,14 @@ const Featured = () => {
     return (
         <div className="container">
             <div className="d-flex align-items-center justify-content-center w-100">
-                <h2 style={{ color: 'var(--primary)' }}>Featured Publications</h2>
+                <h2 style={{ color: 'var(--primary)' }}>{title}</h2>
             </div>
             <div className="row w-full my-5">
                 <div className="col-md-6 mb-4">
                     <ImageOverlay icon={<featuredData.latest.icon />} text={featuredData.latest.text}
                         src={featuredData.latest.src} isText={true} />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-6" style={{overflow:'hidden'}}>
                     <Slider {...settings}>{featuredData?.data && featuredData?.data?.length > 0 &&
                         featuredData.data.map((info: any, index: number) => (
                             <div className="details" key={index}>

@@ -1,0 +1,77 @@
+
+
+.accordion .item .itemName {
+  font-size: 17.5px;
+  padding: 5px 10px;
+  background: #fff;
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid #f1f1f1;
+  display: block;
+}
+.topContainer {
+  background-color: #dadada;
+  display: flex;
+  justify-content: center;
+}
+
+.img {
+  overflow: visible;
+
+  margin-top: -15%;
+  margin-bottom: 15%;
+  width: 60%;
+  height: 100%;
+}
+.cardText {
+  font-size: 14px;
+  margin: 2rem 0rem;
+  font-weight: 500;
+  line-height: 1;
+  height: 100% !important;
+}
+
+.cardTitle {
+  font-size: 1rem;
+}
+
+.card1 {
+  line-height: 1;
+  font-size: 1.5rem;
+}
+
+.car {
+  width: 95% !important;
+  height: 425.5px;
+}
+
+@media (max-width: 480px) {
+  .car {
+    height: 450px;
+  }
+}
+
+.accordion .item .desc {
+  margin: 0px;
+  opacity: 0;
+  max-height: 0px;
+  padding: 5px 10px;
+  font-size: 15px;
+  border-bottom: 1px solid #e6e6e6;
+  transition: all 0.5s ease-in-out 0s;
+}
+
+.accordion .item .itemName:hover ~ .desc,
+.accordion .item .desc:hover {
+  opacity: 1;
+  max-height: 500px;
+  transition: all 1s ease-in-out 0s;
+}
+.accordion .item:hover > .itemName {
+  border-bottom: transparent;
+}
+.accordion .item:last-child > .itemName,
+.accordion .item:last-child > .desc {
+  border-bottom: transparent;
+}

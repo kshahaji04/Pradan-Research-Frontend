@@ -78,6 +78,14 @@ a {
   outline: none !important;
 }
 
+/* Main Header */
+
+.mainHeader {
+  color: var(--primary);
+  font-size: 2rem;
+  line-height: 2;
+}
+
 /* Social Media */
 
 .imageOverlay {
