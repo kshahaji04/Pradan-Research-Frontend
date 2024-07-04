@@ -1,0 +1,11 @@
+/* css to remove focus from search box */
+
+.form-select:focus {
+  box-shadow: none;
+  border-color: rgba(0, 0, 0, 0.125);
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: rgba(0, 0, 0, 0.125);
+}

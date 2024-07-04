@@ -1,0 +1,30 @@
+/* css for map */
+
+.leaflet-container,
+.map_map_download_container__HD_fi,
+.map_map_filter_container__mez57 {
+  background-color: transparent !important;
+  /* border: 0 !important; */
+}
+
+.leaflet-popup-content-wrapper {
+  width: 250px;
+  border: 2px solid gray;
+  max-height: 300px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+}
+
+.leaflet-popup-close-button {
+  display: none;
+}
+
+.report_modal .modal-dialog {
+  max-width: 350px !important;
+}
+
+/* css for map end */
