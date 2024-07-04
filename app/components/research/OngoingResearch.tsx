@@ -70,7 +70,7 @@ function OngoingResearch() {
             <div className='col-12'>
                 <div className='row'>
                     {arr.map((item: any, index: number) => (
-                        <ResearchCards link={`/research/ongoing-research/about-the-research`} item={item} index={index} />
+                        <ResearchCards link={`/research/ongoing-research/about-the-research`} item={item} index={index} key={index} />
                     ))}
                 </div>
                 <div className="my-5">

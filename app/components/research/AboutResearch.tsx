@@ -79,7 +79,7 @@ function AboutResearch({title}:any) {
                             <h3 style={{ color: 'var(--primary)', marginBottom: '20px' }}>{title}</h3>
                             <p style={{ width: '95%' }}>
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s,
                                 when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                             </p>
                             <p>

@@ -84,7 +84,7 @@ function Partners() {
                     <div className={`container teams pb-5`}>
                         <div className="h-100">
                             <Slider {...settings}>{arr.map((item, index) => (
-                                <PartnerCards item={item} index={index} />
+                                <PartnerCards item={item} index={index} key={index} />
                             ))}</Slider>
                         </div>
                     </div>

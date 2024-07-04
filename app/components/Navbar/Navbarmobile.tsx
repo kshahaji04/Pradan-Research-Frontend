@@ -84,9 +84,9 @@ function NavbarMobile() {
                         </div>
                     </div>
                     <div className={`col-3 ${styles.bar_icon}`}>
-                        <div className='h-100 d-flex align-items-center justify-content-center'>
-                            <i className="fa fa-bars" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" aria-hidden="true"></i>
-                        </div>
+                        <a className='h-100 d-flex align-items-center justify-content-center' data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" aria-hidden="true">
+                            <i className="fa fa-bars"></i>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -54,7 +54,7 @@ function Footer() {
           <div className={`col-md-5 ${styles.quick_link_container}`}>
             <h2 className={`${styles.footer_heading}`}>Quick Links</h2>
             <ul className={`${styles.quick_link}`}>
-              {quickLinks && quickLinks.map(({ link }) => <li className={`${styles.footer_text} ${styles.footer_link_list}`}>
+              {quickLinks && quickLinks.map(({ link }, index) => <li className={`${styles.footer_text} ${styles.footer_link_list}`} key={index}>
                 <Link href="#" className={`${styles.quick_link_list}`}>{link}</Link>
               </li>)}
             </ul>

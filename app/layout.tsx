@@ -4,6 +4,7 @@ import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import Error from "./error";
 import Link from "next/link";
 import ClientLayout from "./ClientLayout";
+import 'regenerator-runtime/runtime';
 // import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 
 export const metadata: Metadata = {
@@ -30,7 +31,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet"></link>
         <link
           rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
           crossOrigin="anonymous"
         />
       </head>
@@ -45,3 +46,30 @@ export default function RootLayout({
     </html>
   );
 }
+
+
+// webpack(config, { buildId, dev, isServer, defaultLoaders, webpack }) {
+//   if (!dev) {
+//     config.module.rules.push({
+//       test: /\.(ts|tsx)$/,
+//       exclude: /node_modules/,
+//       use: {
+//         loader: "babel-loader",
+//         options: {
+//           presets: ["@babel/preset-env", "@babel/preset-typescript"],
+//         },
+//       },
+//     });
+//   } else {
+//     const polyfillPath = path.resolve("./polyfills.js");
+
+//     if (
+//       config.entry["main.app"] &&
+//       !config.entry["main.app"].includes(polyfillPath)
+//     ) {
+//       config.entry["main.app"].unshift(polyfillPath);
+//     }
+//   }
+
+//   return config;
+// },
