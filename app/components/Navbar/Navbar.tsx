@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import WebNavbar from './WebNavbar';
 import NavbarMobile from './Navbarmobile';
-// import WebNavbarSkeleton from '@/skeletons/Navbar/WebNavbarSkeleton';
-// import NavbarmobileSkeleton from '@/skeletons/Navbar/NavbarmobileSkeleton';
+import WebNavbarSkeleton from '@/app/skeletons/Navbar/WebNavbarSkeleton';
+import NavbarmobileSkeleton from '@/app/skeletons/Navbar/NavbarmobileSkeleton';
 
 function Navbar() {
     const [isMobile, setIsMobile] = useState(false);
