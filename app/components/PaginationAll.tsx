@@ -7,7 +7,7 @@ interface PaginationProps {
   onPageChange: (selectedPage: number) => void;
 }
 
-const PaginationAll: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageChange }) => {
+function PaginationAll({ currentPage, totalPages, onPageChange }:PaginationProps) {
   const handlePageClick = (data: { selected: number }) => {
     onPageChange(data?.selected + 1);
   };

@@ -12,7 +12,7 @@ interface team {
     index: any
 }
 
-const PartnerCards: React.FC<team> = ({ item, index }) => {
+function PartnerCards({ item, index }:team) {
     return (
         <div className={`card col-sm-6 ${styles.car}`} key={index}>
             <div className={styles.topContainer}>

@@ -3,7 +3,7 @@ import styles from '@/app/styles/Home/about.module.css'
 import SalImg from '@/public/assets/images/SAL.png'
 import Image from 'next/image'
 import Link from 'next/link'
-const About = () => {
+function About() {
   return (
     <div className={`${styles.about_section_wrapper} py-5`}>
       {/* <SectionDivider /> */}
@@ -18,7 +18,7 @@ const About = () => {
                   </div>
                 </div> */}
                 <div className="col-11">
-                  <div className={`${styles.content}`}>
+                  <div className={`${styles.content} mb-3`}>
                     <h3 style={{ color: 'var(--primary)' }}>Welcome To Pradan Research</h3>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                       Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,

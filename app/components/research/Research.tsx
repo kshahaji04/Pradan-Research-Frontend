@@ -4,7 +4,7 @@ import OngoingResearch from './OngoingResearch';
 import ConcludedResearch from './ConcludedResearch';
 import styles from "@/app/styles/research/researchCard.module.css"
 
-const Research = () => {
+function Research() {
   const [tab, setTab] = useState('ongoing');
   return (
     <div className="container mb-4">

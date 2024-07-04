@@ -5,7 +5,7 @@ import PartnerCards from '@/app/cards/research/PartnerCards'
 import Slider from 'react-slick'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-const Partners = () => {
+function Partners() {
     const arr = [
         {
             img: 'https://archive.cdn-thecorrespondent.com/image/KYLF_5N3RYgrBKQQ2wbRJJTWixM=/380x440/0495c5cb7d0a420a88dd1871292f1afb.png',

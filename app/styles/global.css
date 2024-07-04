@@ -76,6 +76,8 @@ a {
 
 a {
   outline: none !important;
+  text-decoration: none !important;
+  color: inherit !important;
 }
 
 /* Main Header */

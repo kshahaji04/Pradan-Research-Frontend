@@ -5,7 +5,7 @@ import Image from 'next/image';
 import styles from "@/app/styles/research/researchCard.module.css"
 import ResearchCards from '@/app/cards/research/ResearchCards';
 
-const OngoingResearch = () => {
+function OngoingResearch() {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const totalPages = Math.ceil(4);
     const handlePageChange = (pageNumber: number) => {

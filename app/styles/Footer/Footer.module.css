@@ -1,0 +1,86 @@
+.footer_wrapper {
+  border-top: 1px solid lightgrey;
+  padding: 75px 0px 42px;
+}
+
+.footer_heading {
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  color: #000000;
+  transition: color .2s ease-in-out;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+
+.footer_text {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  color: #5b5b5b;
+}
+
+.quick_link {
+  list-style-type: none !important;
+  padding: 0;
+}
+
+.quick_link_list:hover {
+  color: #0E590A
+}
+
+.footer_input {
+  border-radius: 0px;
+}
+
+.footer_btn {
+  border-radius: 20px !important;
+  font-family: Montserrat, sans-serif !important;
+  background-color: #0E590A !important;
+  color: #ffffff !important;
+  padding: 5px 20px !important;
+  font-size: 14px !important;
+}
+
+.footer_btn:hover {
+  border: 1px solid #0E590A !important;
+}
+
+.quick_link_container {
+  padding-left: 10rem;
+  padding-right: 10rem;
+
+}
+
+.footer_link_list {
+  line-height: 1.5rem;
+}
+
+.tweeter_icon:hover {
+  color: #000000;
+}
+
+.whats_app_icon:hover {
+  color: #0E590A;
+}
+
+.insta_icon:hover {
+  color: #E1306C;
+}
+
+.footer_line {
+  width: 70vw;
+  margin-left: 12%;
+  margin-right: 2.5%;
+}
+
+@media (max-width: 767px) {
+  .quick_link_container {
+    padding-left: 12px;
+    padding-right: 0;
+  }
+}
