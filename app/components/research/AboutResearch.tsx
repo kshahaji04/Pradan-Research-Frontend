@@ -11,33 +11,33 @@ function AboutResearch({title}:any) {
     const arr = [
         {
             src: 'https://archive.cdn-thecorrespondent.com/image/KYLF_5N3RYgrBKQQ2wbRJJTWixM=/380x440/0495c5cb7d0a420a88dd1871292f1afb.png',
-            name: 'Rohit',
-            position: 'React Developer'
+            name: 'Omkar',
+            position: 'Managing Director'
         },
         {
             src: 'https://images.unsplash.com/photo-1488229297570-58520851e868?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            name: 'Amir',
-            position: 'React Developer'
+            name: 'Aniket',
+            position: 'Marketing Manager'
         },
         {
             src: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            name: 'Shadab',
-            position: 'React Developer'
+            name: 'Kunal',
+            position: 'Chief Of Supply'
         },
         {
             src: "https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            name: 'Karan',
-            position: 'React Developer'
+            name: 'Akash',
+            position: 'Chief Executive Officer'
         },
         {
             src: "https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            name: 'Dhaval',
-            position: 'React Developer'
+            name: 'Shivam',
+            position: 'Creative Director'
         },
         {
             src: "https://images.unsplash.com/photo-1581090700227-1e37b190418e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            name: 'Ritik',
-            position: 'React Developer'
+            name: 'Shavay',
+            position: 'Auto-Mobile Engineer'
         },
     ]
 

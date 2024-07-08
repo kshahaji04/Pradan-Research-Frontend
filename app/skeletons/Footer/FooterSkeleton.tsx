@@ -42,10 +42,10 @@ const FooterSkeleton = () => {
               <strong><Skeleton width={'70%'} /></strong>
             </div>
           </div>
-          <div className={`col-md-5 ${styles.quick_link_container}`}>
+          <div className={`col-md-5 ps-4 ${styles.quick_link_container}`}>
             <h2 className={`${styles.footer_heading}`}><Skeleton width={'40%'} /></h2>
-            <ul className={`${styles.quick_link}`}>
-              {quickLinks && quickLinks.map(({ link }) => <li className={`${styles.footer_text} ${styles.footer_link_list}`}>
+            <ul className={`${styles.quick_link} ps-0`}>
+              {quickLinks && quickLinks.map(({ link }, index) => <li key={index} style={{listStyle:'none'}} className={`${styles.footer_text} ${styles.footer_link_list}`}>
                 <div className={`${styles.quick_link_list}`}><Skeleton width={'50%'} /></div>
               </li>)}
             </ul>
@@ -78,7 +78,7 @@ const FooterSkeleton = () => {
 
       <hr className={`${styles.footer_line}`} />
 
-      <div className='container'>
+      <div className='container pb-3'>
         <div className='row'>
           <div className='col'>
             <Skeleton width={'70%'} />

@@ -12,7 +12,7 @@ function layout({ children }: any) {
   return (
     <>
       <ResearchLayout navItems={navItems} />
-      {children}
+      <div style={{paddingTop:'52px'}}>{children}</div>
     </>
   )
 }
