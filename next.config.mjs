@@ -14,6 +14,21 @@ const nextConfig = {
           },
         },
       });
+      const originalEntry = config.entry;
+      config.entry = async () => {
+        const entries = await originalEntry();
+
+        // Adjust the path to polyfills.js based on your project structure
+        const polyfillPath = path.resolve("./polyfills.js");
+
+        if (
+          entries["main-app"] &&
+          !entries["main-app"].includes(polyfillPath)
+        ) {
+          entries["main-app"].unshift(polyfillPath);
+        }
+        return entries;
+      };
     } else {
       const originalEntry = config.entry;
       config.entry = async () => {

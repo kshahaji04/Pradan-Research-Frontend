@@ -1,12 +1,11 @@
 'use client'
-
-import Image from 'next/image'
 import React from 'react'
 import Slider from 'react-slick'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Skeleton from "react-loading-skeleton"
 
-function AboutResearch({title}:any) {
+function AboutResearchSkeleton({title}:any) {
 
     const arr = [
         {
@@ -57,55 +56,41 @@ function AboutResearch({title}:any) {
         return (
             <div className="d-flex align-items-center mt-4 pb-4">
                 <div>
-                    <Image width={100} height={100}
-                        src={data.src}
-                        alt='about-img'
-                        style={{ borderRadius: '150px' }} />
+                <Skeleton width={100} height={100} circle />
                 </div>
                 <div className="ms-4">
-                    <h5 style={{ color: 'var(--primary)' }}>{data.name}</h5>
-                    <p style={{ color: 'var(--primary)', margin: '0' }}>{data.position}</p>
+                    <h5 style={{ color: 'var(--primary)' }}><Skeleton width={'60%'} /></h5>
+                    <p style={{ color: 'var(--primary)', margin: '0' }}><Skeleton width={'80%'} /></p>
                 </div>
             </div>
         )
     }
 
     return (
-        <div className='row'>
+        <div className='row pb-5'>
             <div className="col-lg-8">
                 <div className="container py-5 px-5">
                     <div className="row align-items-center">
                         <div className="col-md-7">
-                            <h3 style={{ color: 'var(--primary)', marginBottom: '20px' }}>{title}</h3>
-                            <p style={{ width: '95%' }}>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s,
-                                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                            </p>
-                            <p>
-                                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                                It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                                and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </p>
-                            <p>
-                                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                                It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                                and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </p>
+                            <h3 style={{ color: 'var(--primary)', marginBottom: '20px' }}><Skeleton width={280} /></h3>
+                            <p style={{ width: '95%' }}><Skeleton count={4} /> <Skeleton width={'60%'} /></p>
+                            <p style={{ width: '95%' }}><Skeleton count={4} /> <Skeleton width={'60%'} /></p>
+                            <p style={{ width: '95%' }}><Skeleton count={4} /> <Skeleton width={'60%'} /></p>
                         </div>
                         <div className="col-md-5 pt-4">
-                            <Image width={550} height={350}
+                        <Skeleton width={'100%'} height={350} />
+                            {/* <Image width={550} height={350}
                                 src='https://images.unsplash.com/photo-1488229297570-58520851e868?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
                                 alt='about-img'
                                 style={{ width: '100%', borderRadius: '5px' }}
-                            />
+                            /> */}
                         </div>
                     </div>
                 </div>
             </div>
             <div className="col-lg-4" style={{ background: '#e3e4e6' }}>
                 <div className="container pt-2 pb-5 ps-5">
-                    <h3 className='pb-2' style={{ color: 'var(--primary)' }}>Our Team</h3>
+                    <h3 className='pb-2' style={{ color: 'var(--primary)' }}><Skeleton width={180} /></h3>
                     {/* <h4 className='pb-2'>Research</h4> */}
                     <Slider {...settings}>{arr.map((data: any, index: any) => <Card data={data} key={index} />)}</Slider>
                 </div>
@@ -114,4 +99,4 @@ function AboutResearch({title}:any) {
     )
 }
 
-export default AboutResearch
+export default AboutResearchSkeleton
