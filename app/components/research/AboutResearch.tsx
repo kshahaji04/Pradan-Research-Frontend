@@ -71,7 +71,7 @@ function AboutResearch({title}:any) {
     }
 
     return (
-        <div className='row pb-5'>
+        <div className='row'>
             <div className="col-lg-8">
                 <div className="container py-5 px-5">
                     <div className="row align-items-center">

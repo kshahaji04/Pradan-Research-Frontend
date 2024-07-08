@@ -90,7 +90,7 @@ function Partners() {
                 {arr.map((item, index) => (
                   <div className={`card col-sm-6 ${styles.car}`} key={index}>
                     <div className={styles.topContainer}>
-                      <Skeleton width={170} height={190} />
+                      <Skeleton width={'100%'} height={200} />
                     </div>
                     <div className="card-body">
                       <div className={`card-title ${styles.card1}`}>
@@ -100,7 +100,7 @@ function Partners() {
                         <Skeleton />
                         <Skeleton width={180} />
                       </div>
-                      <p className={`card-text ${styles.cardText}`}>
+                      <p className={`card-text ${styles.cardText}`} style={{lineHeight:'1.2'}}>
                         <Skeleton count={5} />
                         <Skeleton width={"60%"} />
                       </p>
