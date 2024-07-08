@@ -48,7 +48,7 @@ function PublicationsGallerySkeleton() {
     <div className="container">
       <div className="row">
         <div className="col-12">
-          <h2 className="mb-2 text-center ms-0"><Skeleton width={200}></h2>
+          <h2 className="mb-2 text-center ms-0"><Skeleton width={200}/></h2>
         </div>
       </div>
       <div className="row my-5">
