@@ -29,7 +29,9 @@ function Navbar() {
 
   return (
     <>
-      {loadingLogo || loadingNavbar ? <>{isMobile ? <NavbarmobileSkeleton /> : <WebNavbarSkeleton />}</> : <>{isMobile ? <NavbarMobile navbarData={navbarData} logoData={logoData} /> : <WebNavbar navbarData={navbarData} logoData={logoData} />}</>}
+      {loadingLogo && logoData?.length > 0 || loadingNavbar && navbarData?.length > 0 ? 
+      <>{isMobile ? <NavbarmobileSkeleton /> : <WebNavbarSkeleton />}</> : 
+      <>{isMobile ? <NavbarMobile navbarData={navbarData} logoData={logoData} /> : <WebNavbar navbarData={navbarData} logoData={logoData} />}</>}
       {/* {isMobile ? <NavbarmobileSkeleton /> : <WebNavbarSkeleton />} */}
     </>
   );

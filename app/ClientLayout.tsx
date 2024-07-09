@@ -18,7 +18,7 @@ function ClientLayout({ children }: any) {
                 <PersistGate loading={null} persistor={persistor}>
                     <Navbar />
                     <div style={{ marginTop: '76px' }}>{children}</div>
-                    {loadingFooter ? <FooterSkeleton /> : <Footer footerData={footerData} />}
+                    {loadingFooter && footerData ? <FooterSkeleton /> : <Footer footerData={footerData} />}
                     <ToastContainer />
                 </PersistGate>
             </Provider>

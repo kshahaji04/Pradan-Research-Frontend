@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./styles/global.css";
 import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import Error from "./error";
-import Link from "next/link";
+// import Link from "next/link";
 import ClientLayout from "./ClientLayout";
 import 'regenerator-runtime/runtime';
 // import { ErrorBoundary } from "next/dist/client/components/error-boundary";

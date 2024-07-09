@@ -127,13 +127,6 @@ function Footer({ footerData }: any) {
             </form>
 
             {/* social links */}
-            {/* <ul className='list-inline my-4'>
-            <li className='list-inline-item'><Link href='#'><FacebookIcon /></Link></li>
-            <li className='list-inline-item'><Link href='#' className={`${styles.insta_icon}`}><InstagramIcon /></Link></li>
-            <li className='list-inline-item'><Link href='#' className={`${styles.whats_app_icon}`}><WhatsAppIcon /></Link></li>
-            <li className='list-inline-item'><Link href='#'><LinkedInIcon /></Link></li>
-            <li className='list-inline-item'><Link href='#' className={`${styles.tweeter_icon}`}><XIcon /></Link></li>
-          </ul> */}
             <ul className='list-inline my-4'>
               <li className='list-inline-item'><Link href={pradan_contact_us?.social_links?.facebook_url ?? '/'}><FacebookIcon /></Link></li>
               <li className='list-inline-item'><Link href={pradan_contact_us?.social_links?.instagram_url ?? '/'} className={`${styles.insta_icon}`}><InstagramIcon /></Link></li>
