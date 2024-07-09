@@ -31,7 +31,7 @@ function FeaturedSkeleton({ title }: any) {
     return (
         <div className="container">
             <div className="d-flex align-items-center justify-content-center w-100">
-                <h2 style={{ color: 'var(--primary)' }}>{title}</h2>
+                <h2 style={{ color: 'var(--primary)', width:'240px' }}><Skeleton width={240} /></h2>
             </div>
             <div className="row w-full my-5">
                 <div className="col-md-6 mb-4">

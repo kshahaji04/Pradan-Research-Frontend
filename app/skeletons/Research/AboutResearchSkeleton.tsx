@@ -58,7 +58,7 @@ function AboutResearchSkeleton({title}:any) {
                 <div>
                 <Skeleton width={100} height={100} circle />
                 </div>
-                <div className="ms-4">
+                <div className="ms-4" style={{width:'100%'}}>
                     <h5 style={{ color: 'var(--primary)' }}><Skeleton width={'60%'} /></h5>
                     <p style={{ color: 'var(--primary)', margin: '0' }}><Skeleton width={'80%'} /></p>
                 </div>
@@ -67,7 +67,7 @@ function AboutResearchSkeleton({title}:any) {
     }
 
     return (
-        <div className='row pb-5'>
+        <div className='row'>
             <div className="col-lg-8">
                 <div className="container py-5 px-5">
                     <div className="row align-items-center">
