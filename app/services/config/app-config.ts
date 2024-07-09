@@ -5,6 +5,7 @@ export const CONSTANTS = {
     VERSION: "v1",
     DOMAIN_NAME: "",
     // PROJECT_NAME:"NRLM Site",
-    PROJECT_NAME:"Pradan Research Site",
+    // PROJECT_NAME:"Pradan Research Site",
+    PROJECT_NAME:"SAL Report Site",
   };
   

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import styles from '@/app/styles/Footer/Footer.module.css';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -6,6 +6,12 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import XIcon from '@mui/icons-material/X';
+import useFooter from '@/app/hooks/home_page_hooks/footer_hooks';
+import { CONSTANTS } from '@/app/services/config/app-config';
+import axios from 'axios';
+import { API_CONFIG } from '@/app/services/config/api-config';
+import { showToast } from '../ToastNotification';
+import FooterSkeleton from '@/app/skeletons/Footer/FooterSkeleton';
 // import AOS from "aos";
 // import "aos/dist/aos.css";
 const quickLinks = [
@@ -35,51 +41,105 @@ const quickLinks = [
   }
 ]
 
-function Footer() {
-//   useEffect(() => {
-//     AOS.init();
-//     AOS.refresh();
-// }, []);
+function Footer({ footerData }: any) {
+  const [email, setEmail] = useState('');
+
+
+  //   useEffect(() => {
+  //     AOS.init();
+  //     AOS.refresh();
+  // }, []);
+
+  // const { footerData, loadingFooter } = useFooter();
+  // console.log('footer ', footerData, loadingFooter);
+
+  const handleSubmit = async (event: any) => {
+    event.preventDefault();
+
+    try {
+      const response = await axios.post(`${CONSTANTS.API_BASE_URL}/api/method/pradan.pradan.doctype.subscriber.api.create_subscriber.create_subscriber`, {
+        email: email
+      }, {
+        ...API_CONFIG,
+        timeout: 5000,
+      });
+      if (response.data?.message?.status === 'success') {
+        showToast(response.data?.message?.data?.message || 'Subscription successful!!', 'success')
+        setEmail('');
+      } else if (response.data?.message?.status === 'error') {
+        showToast(response.data?.message?.data?.error || 'User is already subscribed', 'error')
+        setEmail('');
+      } else {
+        showToast('User is already subscribed', 'warning')
+      }
+    } catch (error) {
+      showToast('Error in subscribing', 'error')
+      console.error('Error in subscribing:', error);
+    }
+  };
+
+  const general_info = footerData?.general_info ?? {};
+  const quick_links = footerData?.quick_links ?? {};
+  const subscription_text = footerData?.subscription_text ?? {};
+  const pradan_contact_us = footerData?.pradan_contact_us ?? {};
+
   return (
     <div className={`${styles.footer_wrapper}`}>
       <div className='container'>
         <div className='row'>
           <div className='col-md-4'>
-            <h2 className={`${styles.footer_heading}`}>SEVEN GRAMS CAFFÉ | INDEPENDENT. ROASTERS. BAKERS.</h2>
+            <h2 className={`${styles.footer_heading}`}>{general_info?.heading}</h2>
 
             <div>
-              <p className={`${styles.footer_text}`}>We roast great coffee, we bake sensational cookies (and cakes, and brownies, but, come on – the cookies), and&nbsp;we take immense pride in being a small, independent business. No investors, no suits, no big corporates. Just a dream, hard work, and a deep passion for what we do.</p><p className={`${styles.footer_text}`}>Contact Us: <br /><strong>info@pradan.com</strong></p>
+              <p className={`${styles.footer_text}`}>{general_info?.description}</p>
+              <p className={`${styles.footer_text}`}>Contact Us: <br /><strong>{general_info?.contact_us_email}</strong></p>
             </div>
           </div>
           <div className={`col-md-5 ${styles.quick_link_container}`}>
             <h2 className={`${styles.footer_heading}`}>Quick Links</h2>
             <ul className={`${styles.quick_link}`}>
-              {quickLinks && quickLinks.map(({ link }, index) => <li className={`${styles.footer_text} ${styles.footer_link_list}`} key={index}>
-                <Link href="#" className={`${styles.quick_link_list}`}>{link}</Link>
-              </li>)}
+              {Array.isArray(quick_links?.data) && quick_links?.data.length > 0 && quick_links?.data?.map(({ url, seq, name }: any) => (
+                <li key={seq} className={`${styles.footer_text} ${styles.footer_link_list}`}>
+                  <Link href={url ?? '#'} className={styles.quick_link_list}>
+                    {name}
+                  </Link>
+                </li>
+              ))}
+              {/* {quickLinks && quickLinks.map(({ link }, index) => <li className={`${styles.footer_text} ${styles.footer_link_list}`} key={index}>
+              <Link href="#" className={`${styles.quick_link_list}`}>{link}</Link>
+            </li>)} */}
             </ul>
           </div>
           <div className='col-md-3'>
             <h2 className={`${styles.footer_heading}`}>Stay in touch</h2>
             <div className="Footer__Content Rte">
-              <p className={`${styles.footer_text}`}>Subscribe to receive updates, access to exclusive deals, and more.</p>
+              <p className={`${styles.footer_text}`}>{subscription_text?.short_description}</p>
             </div>
 
             {/* form */}
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="mb-3">
-                <input type="email" className={`form-control ${styles.footer_input}`} id="exampleInputEmail1" aria-describedby="emailHelp" placeholder='Enter Your Email Address' />
+                <input type="email" className={`form-control ${styles.footer_input}`} id="exampleInputEmail1" aria-describedby="emailHelp" placeholder='Enter Your Email Address'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)} />
               </div>
-              <button type="submit" className={`btn text-uppercase py-2 px-5 ${styles.footer_btn}`}>Subscribe</button>
+              <button type="submit" className={`btn  text-uppercase py-2 px-5 ${styles.footer_btn}`}>Subscribe</button>
             </form>
 
             {/* social links */}
+            {/* <ul className='list-inline my-4'>
+            <li className='list-inline-item'><Link href='#'><FacebookIcon /></Link></li>
+            <li className='list-inline-item'><Link href='#' className={`${styles.insta_icon}`}><InstagramIcon /></Link></li>
+            <li className='list-inline-item'><Link href='#' className={`${styles.whats_app_icon}`}><WhatsAppIcon /></Link></li>
+            <li className='list-inline-item'><Link href='#'><LinkedInIcon /></Link></li>
+            <li className='list-inline-item'><Link href='#' className={`${styles.tweeter_icon}`}><XIcon /></Link></li>
+          </ul> */}
             <ul className='list-inline my-4'>
-              <li className='list-inline-item'><Link href='#'><FacebookIcon /></Link></li>
-              <li className='list-inline-item'><Link href='#' className={`${styles.insta_icon}`}><InstagramIcon /></Link></li>
-              <li className='list-inline-item'><Link href='#' className={`${styles.whats_app_icon}`}><WhatsAppIcon /></Link></li>
-              <li className='list-inline-item'><Link href='#'><LinkedInIcon /></Link></li>
-              <li className='list-inline-item'><Link href='#' className={`${styles.tweeter_icon}`}><XIcon /></Link></li>
+              <li className='list-inline-item'><Link href={pradan_contact_us?.social_links?.facebook_url ?? '/'}><FacebookIcon /></Link></li>
+              <li className='list-inline-item'><Link href={pradan_contact_us?.social_links?.instagram_url ?? '/'} className={`${styles.insta_icon}`}><InstagramIcon /></Link></li>
+              <li className='list-inline-item'><Link href={pradan_contact_us?.social_links?.whatsapp_url ?? '/'} className={`${styles.whats_app_icon}`}><WhatsAppIcon /></Link></li>
+              <li className='list-inline-item'><Link href={pradan_contact_us?.social_links?.linked_in_url ?? '#'}><LinkedInIcon /></Link></li>
+              <li className='list-inline-item'><Link href={pradan_contact_us?.social_links?.x_url ?? '/'} className={`${styles.tweeter_icon}`}><XIcon /></Link></li>
             </ul>
           </div>
         </div>
@@ -90,7 +150,7 @@ function Footer() {
       <div className='container'>
         <div className='row'>
           <div className='col'>
-            <Link href="/" className={`${styles.footer_heading}`}>2024 © Pradan. All Rights Reserved</Link>
+            <Link href="/" className={`${styles.footer_heading}`}>{general_info?.copy_right_text}</Link>
           </div>
         </div>
       </div>

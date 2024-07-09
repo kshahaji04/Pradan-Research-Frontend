@@ -11,7 +11,7 @@ function ResearchLayoutSkeleton({ navItems }: any) {
                         {navItems.map((item: any, index: any) => {
                             return <li key={index} className={`nav-item ${styles.navItem}`} >
                                 {
-                                    <div className={`nav-link ${styles.navLink}`} style={{ whiteSpace: 'nowrap' }}><Skeleton width={180} /></div>
+                                    <div className={`nav-link`} style={{ whiteSpace: 'nowrap' }}><Skeleton width={180} height={25} /></div>
                                 }
                             </li>
                         })
