@@ -1,0 +1,135 @@
+.register_btn{
+    color:var(--primary) !important
+}
+.auth_common_wrapper {
+    margin: 50px auto;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.formik {
+    /* width: 60% */
+}
+
+.error_msg {
+    color: red
+}
+
+.signup_wrapper {
+    width: 100%;
+    /* padding: 40px 40px; */
+    /* padding: 40px 50px 30px 50px; */
+    /* border: 1px solid #0E590A; */
+    border-radius: 5px;
+    /* height: 573px; */
+    /* margin: auto; */
+    /* margin-top: 110px !important; */
+}
+
+.signup_header {
+    /* border: 2px solid red; */
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 24px;
+    /* margin-top: 55px; */
+}
+
+.forget_password {
+    color: #0E590A;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #fff;
+}
+
+.btn_sign_up {
+    background-color: #0E590A !important;
+    width: 40% !important;
+    border-radius: 100px !important;
+    padding: 12 20px !important;
+    color: white !important;
+}
+
+.btn_sign_up:hover {
+    border: 1px solid #0E590A !important;
+    width: 40% !important;
+    border-radius: 100px !important;
+    padding: 12 20px !important;
+    color: #000000;
+}
+
+.password_wrapper {
+    margin: 120px auto;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.log_content {
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    /* padding-left: 10px; */
+}
+
+.main_container {
+    /* padding-left: 217px; */
+    display: flex;
+    justify-content: center;
+}
+
+.password_heading {
+    font-size: 20px;
+    font-size: 400;
+    line-height: 24px;
+}
+
+[dir="rtl"] .logo_wrapper_rtl {
+    margin-left: 30px;
+}
+
+@media (max-width: 1280px) {
+    [dir="rtl"] .logo_wrapper_rtl {
+        margin-left: 0px;
+    }
+}
+
+/* media */
+@media (max-width: 900px) {
+    .img_main_wrapper {
+        display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .auth_common_wrapper {
+        margin: 50px auto;
+    }
+
+    .signup_wrapper {
+        margin-top: 120px;
+    }
+
+    .custom_btn {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .custom_btn .common_btn {
+        margin: 20px 0 !important;
+    }
+
+    .img_main_wrapper {
+        display: none !important;
+    }
+
+    .signup_wrapper {
+        margin-top: 10px !important;
+    }
+
+    .password_wrapper {
+        padding: 0px;
+    }
+}

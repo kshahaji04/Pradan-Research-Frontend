@@ -174,3 +174,18 @@ a {
 .btn-outline-danger:hover {
   color: white !important;
 }
+
+/* css for registration form */
+
+@media (max-width: 700px) {
+  .signup_modal_wrapper .modal-dialog {
+    max-width: 90vw !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.signup_modal_wrapper .modal-dialog {
+  max-width: 650px !important;
+  width: 100% !important;
+}
