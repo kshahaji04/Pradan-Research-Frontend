@@ -76,7 +76,7 @@ function ReportsSkeleton() {
                             <div className="col-md-6 col-lg-4 g-4 p-4" key={index}>
                             <div style={{ textDecoration: "none" }}>
                               <div className={`card  ${styles.car}`}>
-                                <div>
+                                <div style={{marginTop:'-7px'}}>
                                   <Skeleton
                                     width={"100%"}
                                     height={300}
@@ -87,13 +87,13 @@ function ReportsSkeleton() {
                                 <div className="p-4">
                                   <div>
                                     <p>
-                                      <Skeleton width={"50%"} height={50} />
+                                      <Skeleton width={"50%"} />
                                       {/* {item.text1} */}
                                     </p>
                                   </div>
                                   <div>
                                     <h4>
-                                      <Skeleton width={"100%"} height={50} />
+                                      <Skeleton width={"100%"} />
                                       {/* {item.title2} */}
                                     </h4>
                                   </div>

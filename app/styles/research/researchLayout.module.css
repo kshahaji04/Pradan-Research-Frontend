@@ -20,6 +20,15 @@
   left: 0;
 }
 
+.skeletonMaster {
+  z-index: 999;
+  width: 100%;
+  background-color: var(--secondary);
+  position: fixed;
+  top: 76px;
+  left: 0;
+}
+
 @media (max-width: 768px) {
   .master {
     overflow: auto;

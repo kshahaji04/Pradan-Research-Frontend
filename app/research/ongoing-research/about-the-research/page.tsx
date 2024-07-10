@@ -4,8 +4,10 @@ import React from 'react'
 
 function page() {
   return (
-    <><AboutResearch title={"About Ongoing Research"} />
-      {/* <AboutResearchSkeleton /> */}</>
+    <>
+    <AboutResearch title={"About Ongoing Research"} />
+      {/* <AboutResearchSkeleton /> */}
+      </>
   )
 }
 

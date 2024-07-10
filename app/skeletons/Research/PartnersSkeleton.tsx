@@ -82,7 +82,7 @@ function Partners() {
           <div
             className={`row align-items-center justify-content-center mainHeader`}
           >
-            <Skeleton width={180} />
+            <div style={{width:'180px'}}><Skeleton width={180} /></div>
           </div>
           <div className={`container teams pb-5`}>
             <div className="h-100">

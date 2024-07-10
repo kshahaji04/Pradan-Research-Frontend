@@ -96,10 +96,10 @@ function Media() {
                     {items?.slice(0, 5).map((item, index) => (
                         <div className='d-flex align-items-center justify-content-center h-100' key={index}>
                             <div className={`card h-100 rounded-0`} style={{ width: "90%", maxWidth: "380px", border:0 }}>
-                                <Link href={'/media'} className="w-full d-flex align-items-center justify-content-center position-relative">
+                                <Link href={'#'} className="w-full d-flex align-items-center justify-content-center position-relative">
                                     <Image src={item.src} className="rounded-circle" height={150} width={150} alt={'media'} />
                                 </Link>
-                                <Link href={'/media'} className="card-body position-relative text-decoration-none text-start py-4">
+                                <Link href={'#'} className="card-body position-relative text-decoration-none text-start py-4">
                                     <p className={`card-title m-0`}>
                                         {item.para?.length > 140 ? `${item.para.slice(0, 140)}...` : item.para}
                                     </p>
