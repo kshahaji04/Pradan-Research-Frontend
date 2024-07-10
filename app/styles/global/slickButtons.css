@@ -1,0 +1,35 @@
+.teamSlider .customArrowNext {
+    position: absolute !important;
+    top: 50% !important;
+    right: -3% !important;
+    transform: translateY(-50%) !important;
+    z-index: 1 !important
+}
+
+
+.teamSlider .customArrowPrev {
+    position: absolute !important;
+    top: 50% !important;
+    left: -3% !important;
+    transform: translateY(-50%) !important;
+    z-index: 1 !important
+}
+
+@media(max-width:1024px) {
+    .teamSlider .customArrowNext {
+        right: -5% !important;
+    }
+
+    .teamSlider .customArrowPrev {
+        left: -5% !important;
+    }
+}
+
+@media(max-width:426px){
+    .teamSlider .customArrowNext {
+        right: -15px !important;
+    }
+    .teamSlider .customArrowPrev {
+        left: -15px !important;
+    }
+}

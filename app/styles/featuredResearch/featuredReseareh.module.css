@@ -1,0 +1,120 @@
+.card1Title {
+    font-size: 22px;
+    color: var(--primary) !important;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.card1Title:hover,
+.card2text:hover {
+    border-bottom: 2px solid var(--primary);
+}
+
+.head {
+    color: var(--primary) !important;
+}
+
+.card2text {
+    font-size: 1rem;
+}
+
+.author p {
+    font-weight: 700;
+}
+
+.cardMain {
+    border: none !important;
+    border-radius: 0 !important;
+    background-color: transparent !important;
+}
+
+.featuredImage {
+    width: 100% !important;
+}
+
+.roundedMain {
+    display: flex;
+    flex-direction: row;
+}
+
+.rounded {
+    margin: 5px;
+    border-radius: 100%;
+    width: 15px;
+    height: 15px;
+}
+
+.one {
+    background-color: rgb(242, 98, 36);
+}
+
+.two {
+    background-color: rgb(135, 189, 64);
+}
+
+.three {
+    background-color: rgb(11, 158, 217);
+}
+
+.role{
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.cardMain2 {
+    background-color: rgb(245, 238, 235) !important;
+    height: 92% !important;
+}
+
+.mainRow {
+    display: flex !important;
+    flex-direction: row !important;
+    background-color: rgb(222, 222, 222)
+}
+
+@media(max-width:1025px){
+    .cardSection{
+        height: 500px !important;
+    }
+}
+
+@media(max-width:769px) {
+    .cardSection {
+        padding: 0 !important;
+    }
+
+    .cardMain2 {
+        height: 350px !important;
+    }
+}
+
+@media(max-width:426px) {
+    .cardSection{
+        width: 92% !important;
+        margin: 0 auto !important;
+    }
+    .mainRow {
+        width: 92% !important;
+        margin: 0 auto !important;
+    }
+
+    .imgContainer {
+        width: 100% !important;
+        margin: 0 auto;
+    }
+
+    .featuredImage {
+        width: 100% !important;
+        height: 250px !important;
+    }
+
+    .card1Title {
+        font-size: 16px;
+    }
+
+    .describtion,
+    .roundedMain,
+    .author {
+        display: none;
+    }
+}
