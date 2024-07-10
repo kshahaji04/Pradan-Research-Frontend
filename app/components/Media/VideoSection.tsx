@@ -16,7 +16,7 @@ const VideoSection = ({ title }: any) => {
     const settings = {
         dots: false,
         infinite: true,
-        slidesToShow: 4,
+        slidesToShow: 3,
         slidesToScroll: 1,
         pauseOnHover: true,
         autoplay: true,
@@ -50,7 +50,7 @@ const VideoSection = ({ title }: any) => {
 
     return (
         <>
-            <div className={`container ${title?.toLowerCase() === 'video' ? 'pt-5' : ""}`} style={{ overflow: 'hidden' }}>
+            <div className={`container pt-3`} style={{ overflow: 'hidden' }}>
                 <div className="row">
                     <div className="col-12 mb-5">
                         <div className="row">
@@ -59,7 +59,7 @@ const VideoSection = ({ title }: any) => {
                             </div>
                         </div>
                     </div>
-                        <Slider {...settings}>{data?.slice(0, 5).map((doc) => (<VideoSectionsCards data={doc} id={doc.id} key={doc.id} />))}</Slider> 
+                    <Slider {...settings}>{data?.slice(0, 5).map((doc) => (<VideoSectionsCards data={doc} id={doc.id} key={doc.id} />))}</Slider>
                 </div>
             </div>
         </>

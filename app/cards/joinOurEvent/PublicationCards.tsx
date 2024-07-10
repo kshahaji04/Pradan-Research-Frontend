@@ -3,9 +3,8 @@ import Link from 'next/link'
 import React from 'react'
 import styles from '@/app/styles/joinOurEvent/join_our_event.module.css'
 import moment from 'moment'
-import RegistrationModal from '@/app/components/JoinOurEvent/components/RegistrationModal'
 
-const JoinOurEventCards = ({ data }: any) => {
+const PublicationCards = ({ data }: any) => {
 
     return (
         <div key={data.id} >
@@ -35,7 +34,7 @@ const JoinOurEventCards = ({ data }: any) => {
                                 <p className={`card-text text-secondary mb-0`}>{data?.location}</p>
 
                             </div>
-                            <RegistrationModal />
+
                             {/* </div> */}
                         </div>
                     </div>
@@ -45,4 +44,4 @@ const JoinOurEventCards = ({ data }: any) => {
     )
 }
 
-export default JoinOurEventCards
+export default PublicationCards

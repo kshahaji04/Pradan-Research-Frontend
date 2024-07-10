@@ -6,11 +6,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-function PublicationsGallery({title}:any) {
+function PublicationsGallery({ title }: any) {
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     pauseOnHover: true,
     autoplay: true,
@@ -80,7 +80,7 @@ function PublicationsGallery({title}:any) {
       <div className="row my-5">
         <div className="col-12">
           <div className="text-end me-3">
-            <h5><Link href='/'>See More <ChevronRightIcon/></Link> </h5>
+            <h5><Link href='/'>See More <ChevronRightIcon /></Link> </h5>
           </div>
         </div>
         <Slider {...settings}>

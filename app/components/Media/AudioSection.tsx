@@ -15,7 +15,7 @@ const AudioSection = ({ title }: any) => {
     const settings = {
         dots: false,
         infinite: true,
-        slidesToShow: 4,
+        slidesToShow: 3,
         slidesToScroll: 1,
         pauseOnHover: true,
         autoplay: true,
@@ -58,7 +58,7 @@ const AudioSection = ({ title }: any) => {
                             </div>
                         </div>
                     </div>
-                    <Slider {...settings}>{data?.map((doc) => (<AudioSectionsCards data={doc} id={doc.id} key={doc.id} />))}</Slider> 
+                    <Slider {...settings}>{data?.map((doc) => (<AudioSectionsCards data={doc} id={doc.id} key={doc.id} />))}</Slider>
                 </div>
             </div>
         </>

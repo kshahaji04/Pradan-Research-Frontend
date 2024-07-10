@@ -95,7 +95,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100% !important;
-  padding:0 15px !important;
+  padding: 0 15px !important;
 }
 
 
@@ -206,7 +206,7 @@
   font-optical-sizing: auto;
   font-style: normal;
   color: #545454;
-  
+
   /* color: var(--primary); */
 }
 
@@ -217,6 +217,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.vertical_bar {
+  position: relative;
+
+}
+
+.vertical_bar::after {
+  content: '';
+  position: absolute;
+  right: -10px;
+  top: 0px;
+  height: 20px;
+  width: 1px;
+  background-color: #DDDDDD;
 }
 
 /* css for upcoming events end */

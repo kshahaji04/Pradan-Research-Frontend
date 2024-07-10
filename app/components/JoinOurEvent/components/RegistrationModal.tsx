@@ -75,16 +75,16 @@ const RegistrationModal = () => {
 
     return (
         <>
-            <button type="button" className={`btn ps-0 ${styles.register_btn}`}  onClick={toggleModal}>Register</button>
+            <button type="button" className={`ps-0 text-start ${styles.register_btn}`} onClick={toggleModal}>Register</button>
 
-            <Modal show={isModalOpen} onHide={toggleModal} centered>
+            <Modal show={isModalOpen} onHide={toggleModal} centered className='registration_modal_wrapper'>
 
                 <Modal.Header closeButton>
                 </Modal.Header>
                 <Modal.Body>
-                  
+
                     <div className="container">
-                    {/* <p className={styles.register_btn}>subscribe</p> */}
+                        {/* <p className={styles.register_btn}>subscribe</p> */}
                         <div className="row m-0">
                             <div className={` col-lg-12 ${styles.main_container}`}>
                                 <Formik
@@ -110,7 +110,7 @@ const RegistrationModal = () => {
                                                         <p className={styles.signup_header}>
                                                             Registration Form
                                                         </p>
-                                                      
+
                                                     </div>
                                                     <div className="col-lg-12 p-0">
 

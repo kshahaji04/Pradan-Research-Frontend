@@ -1,6 +1,9 @@
-.register_btn{
-    color:var(--primary) !important
+.register_btn {
+    color: var(--primary) !important;
+    border: none;
+    background-color: transparent;
 }
+
 .auth_common_wrapper {
     margin: 50px auto;
     max-width: 800px;

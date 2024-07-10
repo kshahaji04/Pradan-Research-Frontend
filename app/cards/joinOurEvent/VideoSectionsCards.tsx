@@ -10,26 +10,26 @@ const VideoSectionsCards = ({ data }: any) => {
     return (
         <div className='d-flex align-items-center justify-content-center h-100'>
             <div className={`card h-100 rounded-0 ${styles.videoCard}`} style={{ width: "90%", maxWidth: "380px" }}>
-                <Link href={'/media'} className="card-img-top position-relative">
+                <Link href={'/join-our-event'} className="card-img-top position-relative">
                     <Image src={data.src} className="card-img-top rounded-0" height={200} width={100} alt={data.text} />
                     <div className={styles.videoPlayBtn}>
                         <PlayCircleOutlineOutlinedIcon />
                     </div>
                 </Link>
-                {/* <Link href={'/media'} className="card-body pt-2 ps-0 mt-2 position-relative">
-                    <p className={`card-text m-0 mb-2 ${styles.videoText}`}>
-                        {data.author[0]}
-                    </p>
-                    <p className={`card-title m-0 ${styles.videoTitle}`}>
-                        {data.text?.length > 40 ? `${data.text.slice(0, 40)}...` : data.text}
-                    </p>
-                </Link> */}
-                <div className={`card-footer p-0 ${styles.videoFooter}`}>
-                    <div className="d-flex align-items-end justify-content-between">
-                        <div className="col-12 pb-3">
-                            <div>
-                                <p>{moment(data.date).format('MMM.YYYY')}</p>
-                            </div>
+                <div className="card-body px-0 pb-0">
+                    <div className={`pb-3 ${styles.card_content}`}>
+                        <div className={`${styles.card_body}`}>
+                            <p className="card-title text-secondary">{data?.title}</p>
+                            <p>{data?.text?.length > 60 ? `${data.text.slice(0, 60)}...` : data?.text}</p>
+                        </div>
+                        <div className="d-flex align-items-start gap-3 pb-2 pe-0" style={{ marginTop: '-10px', fontSize: '14px' }}>
+
+                            <p className={`card-text text-secondary mb-0 ${styles.vertical_bar}`}>{moment(data?.date, "DD.MM.YY").format('D MMMM YYYY')}</p>
+                            {/* <Link href={`/media/publication/${data?.slug}`} className="text-primary align-items-start justify-content-start">
+                                        Subscribe
+                                    </Link> */}
+                            <p className={`card-text text-secondary mb-0`}>{data?.location}</p>
+
                         </div>
                     </div>
                 </div>

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import styles from '@/app/styles/joinOurEvent/audio.module.css'
 import PlayCircleFilledWhiteRoundedIcon from '@mui/icons-material/PlayCircleFilledWhiteRounded';
+import moment from 'moment';
 
 const AudioSectionsCards = ({ data }: any) => {
     return (
@@ -14,27 +15,21 @@ const AudioSectionsCards = ({ data }: any) => {
                         <PlayCircleFilledWhiteRoundedIcon />
                     </div>
                 </div>
-                <div className="card-body pt-4 mt-2 position-relative">
-                    <p className={`card-title m-0 ${styles.gridViewTitle}`}>
-                        {data.text?.length > 50 ? `${data.text.slice(0, 50)}...` : data.text}
-                    </p>
-                </div>
-                <div className={`card-footer pb-0 pe-0 pt-0 ${styles.gridViewFooter}`}>
-                    <div className="d-flex align-items-end justify-content-between">
-                        <div className="col-6 pb-3">
-                            <div>
-                                <p>{data.author?.length > 0 && data.author[0]}</p>
-                                {/* {data.author?.map((info: any, i: number) => <p key={i}>{info}</p>)} */}
-                            </div>
-                            <Link href={'/media/audio/eric'} className="d-flex align-items-center g-2 pt-2">
-                                <p>{'View More'}</p>
-                            </Link>
+                <div className="card-body px-0 pb-0">
+                    <div className={`pb-3 ${styles.card_content}`}>
+                        <div className={`${styles.card_body}`}>
+                            <p className="card-title text-secondary">{data?.title}</p>
+                            <p>{data?.text?.length > 60 ? `${data.text.slice(0, 60)}...` : data?.text}</p>
                         </div>
-                        {/* <div className="col-6">
-                            <div className="d-flex align-items-center justify-content-end g-2">
-                                {data.avatars?.length > 0 && data.avatars?.map((info: any, i: number) => <Image key={i} width={60} height={60} src={info} alt='avatars' className='w-25' />)}
-                            </div>
-                        </div> */}
+                        <div className="d-flex align-items-start gap-3 pb-2 pe-0" style={{ marginTop: '-10px', fontSize: '14px' }}>
+
+                            <p className={`card-text text-secondary mb-0 ${styles.vertical_bar}`}>{moment(data?.date, "DD.MM.YY").format('D MMMM YYYY')}</p>
+                            {/* <Link href={`/media/publication/${data?.slug}`} className="text-primary align-items-start justify-content-start">
+                                        Subscribe
+                                    </Link> */}
+                            <p className={`card-text text-secondary mb-0`}>{data?.location}</p>
+
+                        </div>
                     </div>
                 </div>
             </div>
