@@ -8,7 +8,7 @@ import { NextArrow, PrevArrow } from '@/app/cards/SlickButtons/SlickButtons'
 import FeaturedResearchSkeleton from '@/app/skeletons/featuredReaserch/FeaturedResearchSkeleton'
 
 const FeturedResearch = () => {
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
     const settings = {
         dots: false,
         infinite: true,
