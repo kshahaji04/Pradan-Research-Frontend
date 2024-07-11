@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Link from 'next/link';
 import Skeleton from 'react-loading-skeleton';
+import FeaturedResearchSkeleton from '../featuredReaserch/FeaturedResearchSkeleton';
 
 function FeaturedSkeleton({ title }: any) {
     const settings = {
@@ -31,7 +32,7 @@ function FeaturedSkeleton({ title }: any) {
     return (
         <div className="container">
             <div className="d-flex align-items-center justify-content-center w-100">
-                <h2 style={{ color: 'var(--primary)' }}>{title}</h2>
+                <h2 style={{ color: 'var(--primary)', width:'240px' }}><Skeleton width={240} /></h2>
             </div>
             <div className="row w-full my-5">
                 <div className="col-md-6 mb-4">
@@ -53,6 +54,9 @@ function FeaturedSkeleton({ title }: any) {
                             </div>
                         ))}
                 </div>
+            </div>
+            <div className="row teamSlider" style={{marginBottom:'100px'}}>
+                <FeaturedResearchSkeleton/>
             </div>
         </div>
     )

@@ -4,7 +4,7 @@
 }
 
 .footer_heading {
-  font-family: Montserrat, sans-serif;
+  /* font-family: Montserrat, sans-serif; */
   font-size: 13px;
   font-style: normal;
   color: #000000;
@@ -17,7 +17,7 @@
 
 
 .footer_text {
-  font-family: "Nunito Sans", sans-serif;
+  /* font-family: "Nunito Sans", sans-serif; */
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -39,7 +39,7 @@
 
 .footer_btn {
   border-radius: 20px !important;
-  font-family: Montserrat, sans-serif !important;
+  /* font-family: Montserrat, sans-serif !important; */
   background-color: #0E590A !important;
   color: #ffffff !important;
   padding: 5px 20px !important;

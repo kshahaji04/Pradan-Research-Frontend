@@ -1,4 +1,5 @@
 import ResearchLayout from '@/app/components/research/ResearchLayout'
+import ResearchLayoutSkeleton from '@/app/skeletons/Research/ResearchLayoutSkeleton';
 import React from 'react'
 
 function layout({ children }: any) {
@@ -11,7 +12,8 @@ function layout({ children }: any) {
 
   return (
     <>
-      <ResearchLayout navItems={navItems} />
+      {/* <ResearchLayoutSkeleton navItems={navItems} /> */}
+      {/* <ResearchLayout navItems={navItems} /> */}
       <div style={{paddingTop:'52px'}}>{children}</div>
     </>
   )

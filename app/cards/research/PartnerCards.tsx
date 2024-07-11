@@ -14,24 +14,14 @@ interface team {
 
 function PartnerCards({ item, index }:team) {
     return (
-        <div className={`card col-sm-6 ${styles.car}`} key={index}>
-            <div className={styles.topContainer}>
+        <div key={index} className='d-flex justify-content-center'> 
                 <Image
-                    className={`card-img-top ${styles.img}`}
-                    width={120}
-                    height={200}
+                    // className={`card-img-top`}
+                    width={100}
+                    height={50}
                     src={item.img}
                     alt="Partner Image"
-                />
-            </div>
-            <div className="card-body">
-                <div className={`card-title ${styles.card1}`}>{item.title1 && item.title1.length > 15 ? `${item.title1.slice(0, 15)}...` : item.title1}</div>
-                <div className={`card-title ${styles.cardTitle}`}>{item.title2 && item.title2.length > 30 ? `${item.title2.slice(0, 30)}...` : item.title2}</div>
-                <p className={`card-text ${styles.cardText}`}>
-                    {
-                        item.text.length > 200 ? `${item.text.slice(0, 200)}...` : item.text
-                    }</p>
-            </div>
+                />     
         </div>
     )
 }

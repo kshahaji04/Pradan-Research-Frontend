@@ -19,7 +19,7 @@ const nextConfig = {
         const entries = await originalEntry();
 
         // Adjust the path to polyfills.js based on your project structure
-        const polyfillPath = path.resolve("./polyfills.js");
+        const polyfillPath = path.resolve("./polyfills.ts");
 
         if (
           entries["main-app"] &&
@@ -35,7 +35,7 @@ const nextConfig = {
         const entries = await originalEntry();
 
         // Adjust the path to polyfills.js based on your project structure
-        const polyfillPath = path.resolve("./polyfills.js");
+        const polyfillPath = path.resolve("./polyfills.ts");
 
         if (
           entries["main-app"] &&
@@ -53,6 +53,11 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "archive.cdn-thecorrespondent.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "www.pradan.net",
         pathname: "**",
       },
       {
@@ -79,12 +84,11 @@ const nextConfig = {
         protocol: "https",
         hostname: "www.atree.org",
         pathname: "**",
-      },
-      {
+      },{
         protocol: "https",
         hostname: "www.ceew.in",
         pathname: "**",
-      },
+      }
     ],
   },
 };

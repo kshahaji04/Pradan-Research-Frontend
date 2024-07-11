@@ -42,22 +42,50 @@ function PublicationsGallerySkeleton() {
     ],
   };
 
-  const data:any = [];
+  const data: any = [
+    {
+      id: 3,
+      src: "https://images.unsplash.com/photo-1488229297570-58520851e868?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      id: 1,
+      src: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      id: 2,
+      src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    ,
+    {
+      id: 3,
+      src: "https://images.unsplash.com/photo-1488229297570-58520851e868?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      id: 1,
+      src: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      id: 2,
+      src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+  ];
 
   return (
     <div className="container">
       <div className="row">
         <div className="col-12">
-          <h2 className="mb-2 text-center ms-0"><Skeleton width={200}/></h2>
+          <h2 className="mb-2 text-center ms-0">
+            <Skeleton width={200} />
+          </h2>
         </div>
       </div>
       <div className="row my-5">
         <Slider {...settings}>
           {data &&
             data.length > 0 &&
-            data.map((info:any, index:number) => (
-              <div key={index} style={{ width: "95%", height:'100%', maxHeight:'300px' }} className={`mx-auto my-0`}>
-                <Skeleton width={'100%'} height={300} />
+            data.map((info: any, index: number) => (
+              <div key={index} style={{ width: "95%", height: '100%', maxHeight: '300px' }} className={`mx-auto my-0`}>
+                <Skeleton width={'92%'} height={300} />
               </div>
             ))}
         </Slider>

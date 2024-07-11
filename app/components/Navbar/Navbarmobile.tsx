@@ -13,7 +13,7 @@ const navMenu = [
     { id: 4, menu_title: 'Meet Our Team', link: '/' },
 ];
 
-function NavbarMobile() {
+function NavbarMobile({navbarData, logoData}:any) {
     const [inputValue, setInputValue] = useState("");
     // const [voiceInput, setVoiceInput] = useState("");
     const [isRecording, setIsRecording] = useState(false);
