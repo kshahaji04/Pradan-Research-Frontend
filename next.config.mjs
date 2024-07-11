@@ -85,6 +85,11 @@ const nextConfig = {
         hostname: "www.atree.org",
         pathname: "**",
       },
+      {
+        protocol:'https',
+        hostname: 'www.ceew.in',
+        pathname: '**',
+      }
     ],
   },
 };

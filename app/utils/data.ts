@@ -60,3 +60,25 @@ export const featuredData = {
         },
     ]
 }
+
+export const researchData ={
+    authorDetails: {
+        name: 'Priyanka Singh',
+        role: 'Programme Lead',
+        links: 'Read Latest'
+    },
+    data:[
+    {
+        img: 'https://www.ceew.in/sites/default/files/SB-gst-featured-research.jpg',
+        title: 'Operationalising the Loss and Damage Fund to Address Climate Impacts',
+        author: 'Heamnt Mallay',
+        desc: 'International trade has been a key determinant of global economicgrowth and development. To accrue maximum benefits, international trade must be kept free from tradeprotectionism, which can take the form of tariff and non-tariff measures (NTMs). This paper establishes thescope of the NTM problem, and flags some of the major sustainability-driven European Union regulations, and theassociated risks to the Indian industry, and finally attempts to trigger policy thinking to respond and adapt tothese measures.',
+    },
+    {
+        img: 'https://www.ceew.in/sites/default/files/SB-non-tariff-featured-research.jpg',
+        title: 'Operationalising the Loss and Damage Fund to Address Climate Impacts',
+        author: 'Heamnt Mallay',
+        desc: 'International trade has been a key determinant of global economicgrowth and development. To accrue maximum benefits, international trade must be kept free from tradeprotectionism, which can take the form of tariff and non-tariff measures (NTMs). This paper establishes thescope of the NTM problem, and flags some of the major sustainability-driven European Union regulations, and theassociated risks to the Indian industry, and finally attempts to trigger policy thinking to respond and adapt tothese measures.',
+      
+    }]
+}
