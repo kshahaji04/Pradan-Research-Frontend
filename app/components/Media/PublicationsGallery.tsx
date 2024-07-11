@@ -5,8 +5,8 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-function PublicationsGallery() {
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+function PublicationsGallery({ title }: any) {
   const settings = {
     dots: false,
     infinite: true,
@@ -71,13 +71,18 @@ function PublicationsGallery() {
   ];
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="row">
         <div className="col-12">
-          <h2 className="mb-2 text-center ms-0">Gallery</h2>
+          <h2 className="text-center ms-0">{title}</h2>
         </div>
       </div>
       <div className="row my-5">
+        <div className="col-12">
+          <div className="text-end me-3">
+            <h5><Link href='/'>See More <ChevronRightIcon /></Link> </h5>
+          </div>
+        </div>
         <Slider {...settings}>
           {data &&
             data.length > 0 &&

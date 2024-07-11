@@ -22,39 +22,39 @@ function Reports() {
         {
             id: 1,
             image: 'https://images.unsplash.com/photo-1488229297570-58520851e868?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            text1: 'Executive Summary',
+            text1: 'Chapter 1',
             title2: 'Executive Summary'
         },
         {
             id: 2,
             image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            text1: 'Introduction',
+            text1: 'Chapter 2',
             title2: 'Introduction'
         },
         {
             id: 3,
             image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            text1: 'Chapter 1',
+            text1: 'Chapter 3',
             title2: 'Global economic inequality insights'
         },
-        {
-            id: 6,
-            image: "https://images.unsplash.com/photo-1488229297570-58520851e868?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            text1: 'Chapter 3',
-            title2: 'Global Carbon inequality'
-        },
-        {
-            id: 4,
-            image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            text1: 'Chapter 2',
-            title2: 'Rich Countries, poor Government'
-        },
-        {
-            id: 5,
-            image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            text1: 'Chapter 4',
-            title2: 'Global Health'
-        },
+        // {
+        //     id: 6,
+        //     image: "https://images.unsplash.com/photo-1488229297570-58520851e868?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        //     text1: 'Chapter 3',
+        //     title2: 'Global Carbon inequality'
+        // },
+        // {
+        //     id: 4,
+        //     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        //     text1: 'Chapter 2',
+        //     title2: 'Rich Countries, poor Government'
+        // },
+        // {
+        //     id: 5,
+        //     image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        //     text1: 'Chapter 4',
+        //     title2: 'Global Health'
+        // },
     ]
 
     return (
@@ -63,7 +63,7 @@ function Reports() {
                 <div className="col-12">
                     <div className="row">
                         <div className="col-12 pt-4">
-                            <h2 className="mb-2 text-center ms-0" style={{ color: 'var(--primary)' }}>Reports</h2>
+                            <h2 className="mb-2 text-center ms-0" style={{ color: 'var(--primary)' }}>Reports Chapter Wise</h2>
                         </div>
                     </div>
                 </div>
@@ -75,9 +75,9 @@ function Reports() {
                             <ResearchCards link={'#'} item={item} index={index} key={index} />
                         ))}
                     </div>
-                    <div className="my-5">
+                    {/* <div className="my-5">
                         <PaginationAll currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

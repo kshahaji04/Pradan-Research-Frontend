@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from "@/app/styles/research/researchCard.module.css"
 import ResearchCards from '@/app/cards/research/ResearchCards';
+import ResearchPageCards from '@/app/cards/research/ResearchPageCards';
 
 function ConcludedResearch() {
     const [currentPage, setCurrentPage] = useState<number>(1);
@@ -70,7 +71,7 @@ function ConcludedResearch() {
             <div className='col-12'>
                 <div className='row'>
                     {arr.map((item: any, index: number) => (
-                        <ResearchCards link={`/research/concluded-research/about-the-research`} item={item} index={index} key={index} />
+                        <ResearchPageCards link={`/research/concluded-research/about-the-research`} item={item} index={index} key={index} />
                     ))}
                 </div>
                 <div className="my-5">

@@ -85,7 +85,7 @@ const FeturedResearch = () => {
                                     </div>
                                     <div className="card-text" >
                                         <Link href='/' className={styles.card2text}>
-                                            {researchData.authorDetails.links}
+                                            {researchData.authorDetails.short_desc.slice(1,240)}
                                         </Link>
                                     </div>
                                 </div>

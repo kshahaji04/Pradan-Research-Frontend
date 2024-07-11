@@ -57,6 +57,11 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "www.pradan.net",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
         hostname: "99percentinvisible.org",
         pathname: "**",
       },
@@ -79,11 +84,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "www.atree.org",
         pathname: "**",
-      },
-      {
-        protocol:'https',
-        hostname: 'www.ceew.in',
-        pathname: '**',
+      },{
+        protocol: "https",
+        hostname: "www.ceew.in",
+        pathname: "**",
       },
       {
         protocol:'https',
