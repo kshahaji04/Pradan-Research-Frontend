@@ -9,7 +9,7 @@ import Image from 'next/image';
 const navMenu = [
     { id: 1, menu_title: 'Research', link: '/research' },
     { id: 2, menu_title: 'Contact Us', link: '/' },
-    { id: 3, menu_title: 'Join Our Event', link: '/' },
+    { id: 3, menu_title: 'Join Our Event', link: '/join-our-even' },
     { id: 4, menu_title: 'Meet Our Team', link: '/' },
 ];
 

@@ -28,7 +28,7 @@ const PublicationMaster = ({ title }: any) => {
     autoplay: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1200,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
@@ -37,7 +37,7 @@ const PublicationMaster = ({ title }: any) => {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 995,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -45,7 +45,7 @@ const PublicationMaster = ({ title }: any) => {
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
