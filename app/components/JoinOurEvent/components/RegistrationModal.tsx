@@ -307,13 +307,13 @@ const RegistrationModal = () => {
                                                                     </label>
                                                                     <div className="form-check">
                                                                         <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                                                        <label className="form-check-label" htmlFor="flexRadioDefault1">
+                                                                        <label className="form-check-label text-secondary" htmlFor="flexRadioDefault1">
                                                                             Male
                                                                         </label>
                                                                     </div>
                                                                     <div className="form-check">
                                                                         <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-                                                                        <label className="form-check-label" htmlFor="flexRadioDefault2">
+                                                                        <label className="form-check-label text-secondary" htmlFor="flexRadioDefault2">
                                                                             Female
                                                                         </label>
                                                                     </div>
