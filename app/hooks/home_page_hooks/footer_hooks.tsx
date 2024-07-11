@@ -3,24 +3,36 @@ import { fetchFooter, get_footer_from_store } from "@/app/store/slices/home_page
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import GetFooterApi from "@/app/services/api/home_page_api/footer_api";
 
 const useFooter = () => {
-  const dispatch = useDispatch();
-  const router = useRouter();
-  const footerFromStore = useSelector(get_footer_from_store);
-  const [footerData, setSetFooterData] = useState<any>([]);
+  const [footerData, setSetFooterData] = useState<any>([]);const [loading, setLoading] = useState<boolean>(false);
+  const fetchFooter = async () => {
+    setLoading(true);
+    try {
+      const response = await GetFooterApi();
+      console.log(response)
+      response?.length > 0 && setSetFooterData(response[0]);
+      setLoading(false);
+      // return response;
+    } catch (error) {
+      setLoading(false);
+      throw error;
+    }
+    return;
+  }
 
   useEffect(() => {
-    dispatch(fetchFooter() as any);
+    fetchFooter();
   }, []);
 
-  useEffect(() => {
-    if (footerFromStore?.data) {
-      setSetFooterData(footerFromStore?.data[0]);
-    }
-  }, [footerFromStore]);
+  // useEffect(() => {
+  //   if (footerFromStore?.data) {
+  //     setSetFooterData(footerFromStore?.data[0]);
+  //   }
+  // }, [footerFromStore]);
 
-  return { footerData, loadingFooter: footerFromStore?.loading };
+  return { footerData, loadingFooter: loading };
 };
 
 export default useFooter;

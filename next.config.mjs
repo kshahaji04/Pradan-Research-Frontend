@@ -19,7 +19,7 @@ const nextConfig = {
         const entries = await originalEntry();
 
         // Adjust the path to polyfills.js based on your project structure
-        const polyfillPath = path.resolve("./polyfills.js");
+        const polyfillPath = path.resolve("./polyfills.ts");
 
         if (
           entries["main-app"] &&
@@ -35,7 +35,7 @@ const nextConfig = {
         const entries = await originalEntry();
 
         // Adjust the path to polyfills.js based on your project structure
-        const polyfillPath = path.resolve("./polyfills.js");
+        const polyfillPath = path.resolve("./polyfills.ts");
 
         if (
           entries["main-app"] &&

@@ -10,7 +10,6 @@ const GetFooterApi = async (language?: any) => {
             `${CONSTANTS.API_BASE_URL}/api/method/pradan.pradan.doctype.footer.api.get_footer.get_footer_api?project_name=${CONSTANTS.PROJECT_NAME}`,
             {
                 ...API_CONFIG,
-
             }
         )
         .then((res: any) => {
