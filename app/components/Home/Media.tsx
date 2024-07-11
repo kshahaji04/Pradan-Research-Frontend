@@ -6,33 +6,42 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Slider from 'react-slick';
 import moment from 'moment';
-
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import XIcon from '@mui/icons-material/X';
 function Media() {
     const items = [
         {
             src: "https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             para: 'Oilseed farming is a crucial component of rural Indias agricultural landscape, involving the cultivation of crops such as mustard, soybean, groundnut, sunflower, and sesame',
-            date: '05.18.24'
+            date: '05.18.24',
+            icon:<FacebookIcon/>
         },
         {
             src: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             para: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.',
-            date: '03.18.24'
+            date: '03.18.24',
+            icon:<InstagramIcon/>
         },
         {
             src: "https://images.unsplash.com/photo-1581090700227-1e37b190418e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             para: 'Oilseed farming is a crucial component of rural Indias agricultural landscape, involving the cultivation of crops such as mustard, soybean, groundnut, sunflower, and sesame',
-            date: '09.18.24'
+            date: '09.18.24',
+            icon:<WhatsAppIcon/>
         },
         {
             src: "https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             para: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.',
-            date: '08.18.24'
+            date: '08.18.24',
+            icon:<LinkedInIcon/>
         },
         {
             src: "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             para: 'Oilseed farming is a crucial component of rural Indias agricultural landscape, involving the cultivation of crops such as mustard, soybean, groundnut, sunflower, and sesame',
-            date: '05.18.24'
+            date: '05.18.24',
+            icon:<XIcon/>
         },
         {
             src: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -105,11 +114,16 @@ function Media() {
                                     </p>
                                 </Link>
                                 <div className={`card-footer`} style={{background:'transparent', border:0}}>
-                                    <div className="d-flex align-items-end justify-content-between">
-                                        <div className="col-12 pb-3">
+                                    <div className="row d-flex align-items-center justify-content-center">
+                                        <div className="col-6">
                                             <div>
-                                                <p>{moment(item.date).format('MMM DD, YYYY')}</p>
+                                                <p className='mb-0'>{moment(item.date).format('MMM DD, YYYY')}</p>
                                             </div>
+                                        </div>
+                                        <div className="col-6 text-center">
+                                            {
+                                                item?.icon
+                                            }
                                         </div>
                                     </div>
                                 </div>
