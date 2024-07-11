@@ -9,6 +9,7 @@ import Link from 'next/link';
 import FeturedResearch from '../featuredResearch/FeturedResearch';
 
 
+
 function Featured({ title }: any) {
 
     const settings = {
