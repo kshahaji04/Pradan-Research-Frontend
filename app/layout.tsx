@@ -5,6 +5,7 @@ import Error from "./error";
 // import Link from "next/link";
 import ClientLayout from "./ClientLayout";
 import 'regenerator-runtime/runtime';
+
 // import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import { Ubuntu } from 'next/font/google'
 
