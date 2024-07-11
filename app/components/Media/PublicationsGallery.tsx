@@ -10,7 +10,7 @@ function PublicationsGallery({ title }: any) {
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     pauseOnHover: true,
     autoplay: true,
@@ -71,7 +71,7 @@ function PublicationsGallery({ title }: any) {
   ];
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="row">
         <div className="col-12">
           <h2 className="text-center ms-0">{title}</h2>

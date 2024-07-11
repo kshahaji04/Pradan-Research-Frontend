@@ -300,6 +300,32 @@ const RegistrationModal = () => {
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                {/* gender */}
+                                                                <div className="col-md-6 mt-3">
+                                                                    <label className="mb-1 grey">
+                                                                        Select Gender
+                                                                    </label>
+                                                                    <div className="form-check">
+                                                                        <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                                                                        <label className="form-check-label" htmlFor="flexRadioDefault1">
+                                                                            Male
+                                                                        </label>
+                                                                    </div>
+                                                                    <div className="form-check">
+                                                                        <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
+                                                                        <label className="form-check-label" htmlFor="flexRadioDefault2">
+                                                                            Female
+                                                                        </label>
+                                                                    </div>
+
+                                                                    <div className="row">
+                                                                        <div className="col-12">
+                                                                            <div className={styles.error_msg}>
+                                                                                <ErrorMessage name="confirm_password" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </Form.Group>
 

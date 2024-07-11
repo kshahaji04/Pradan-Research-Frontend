@@ -17,7 +17,7 @@ const UpcomingEvents = () => {
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     pauseOnHover: true,
     autoplay: true,
@@ -53,20 +53,18 @@ const UpcomingEvents = () => {
 
   return (
     <div className='bgImageWrapper pt-4'>
-      <div className={`container-fluid px-5 ${styles.news_carousel_container}`} style={{ zIndex: '2', position: "relative" }}>
+      <div className={`container-fluid ${styles.news_carousel_container}`} style={{ zIndex: '2', position: "relative" }}>
         <div className="row">
           {/* <div className="col-12">
                         <h2 className="mb-4 text-center ms-0">Upcoming Events</h2>
                     </div> */}
           <div className="col-12">
           </div>
-          <div className="container">
-            <Slider {...settings}>
-              {data.map((item) => (
-                <JoinOurEventCards data={item} id={item.id} key={item.id} />
-              ))}
-            </Slider>
-          </div>
+          <Slider {...settings}>
+            {data.map((item) => (
+              <JoinOurEventCards data={item} id={item.id} key={item.id} />
+            ))}
+          </Slider>
         </div>
       </div>
 

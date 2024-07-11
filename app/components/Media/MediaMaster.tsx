@@ -2,20 +2,20 @@ import React from 'react'
 import VideoSection from './VideoSection'
 import SectionDivider from '@/app/components/SectionDivider'
 import AudioSection from './AudioSection'
-import PublicationMaster from './PublicationMaster'
+import ReportMaster from './ReportMaster'
 import PublicationsGallery from './PublicationsGallery'
 
 const MediaMaster = () => {
   return (
-   <>
-   <VideoSection  title={'Video'}/>
-   <SectionDivider/>
-   <AudioSection  title={'Audio'}/>
-   <SectionDivider/>
-   <PublicationMaster title={'Publication'}/>
-   <SectionDivider/>
-   <PublicationsGallery title={'Gallery'}/>
-   </>
+    <>
+      <ReportMaster title={'Reports'} />
+      <SectionDivider />
+      <VideoSection title={'Video'} />
+      <SectionDivider />
+      <AudioSection title={'Audio'} />
+      <SectionDivider />
+      <PublicationsGallery title={'Gallery'} />
+    </>
   )
 }
 

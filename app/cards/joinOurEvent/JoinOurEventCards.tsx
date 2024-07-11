@@ -25,9 +25,7 @@ const JoinOurEventCards = ({ data }: any) => {
                                 <p className="card-title text-secondary">{data?.title}</p>
                                 <p>{data?.text?.length > 60 ? `${data.text.slice(0, 60)}...` : data?.text}</p>
                             </div>
-                            {/* <div className="row"> */}
-                            <div className="d-flex align-items-start gap-3 pb-2 pe-0" style={{ marginTop: '-10px', fontSize: '14px' }}>
-
+                            <div className="d-flex align-items-start gap-3 pb-2 pe-0" style={{ marginTop: '-10px', fontSize: '13px' }}>
                                 <p className={`card-text text-secondary mb-0 ${styles.vertical_bar}`}>{moment(data?.date, "DD.MM.YY").format('D MMMM YYYY')}</p>
                                 {/* <Link href={`/media/publication/${data?.slug}`} className="text-primary align-items-start justify-content-start">
                                         Subscribe
@@ -36,7 +34,6 @@ const JoinOurEventCards = ({ data }: any) => {
 
                             </div>
                             <RegistrationModal />
-                            {/* </div> */}
                         </div>
                     </div>
                 </div>

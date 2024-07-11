@@ -11,21 +11,22 @@ import styles from '@/app/styles/joinOurEvent/join_our_event.module.css'
 import Image from "next/image";
 import topRoundedBorders from '@/public/assets/images/bg/topRoundedBorders.jpg';
 import JoinOurEventCards from "@/app/cards/joinOurEvent/JoinOurEventCards";
-import PublicationCards from "@/app/cards/joinOurEvent/PublicationCards";
-import { data } from "@/app/utils/data2";
+import ReportCards from "@/app/cards/joinOurEvent/ReportCards";
+import { InterActiveInfographicData } from "@/app/utils/data2";
 
 
-const PublicationMaster = ({ title }: any) => {
+const ReportMaster = ({ title }: any) => {
+  console.log("??", InterActiveInfographicData)
   useEffect(() => {
     AOS.init();
   }, []);
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     pauseOnHover: true,
-    autoplay: true,
+    autoplay: false,
     responsive: [
       {
         breakpoint: 1200,
@@ -57,28 +58,26 @@ const PublicationMaster = ({ title }: any) => {
 
 
   return (
-    <div className='bgImageWrapper'>
-      <div className={`container-fluid px-5 ${styles.news_carousel_container}`} style={{ zIndex: '2', position: "relative" }}>
-        <div className="row">
-          <div className="col-12">
-            <h2 className="mb-4 text-center ms-0">{title}</h2>
-          </div>
-          <div className="col-12">
 
-          </div>
-          <div className="container">
-            <Slider {...settings}>
-              {data.map((item) => (
-                <PublicationCards data={item} id={item.id} key={item.id} />
-              ))}
-            </Slider>
-          </div>
+    <div className={`container-fluid ${styles.news_carousel_container}`} style={{ zIndex: '2', position: "relative" }}>
+      <div className="row">
+        <div className="col-12 mt-4">
+          <h2 className="mb-4 text-center ms-0">{title}</h2>
         </div>
-      </div>
+        <div className="col-12">
 
+        </div>
+        <Slider {...settings}>
+          {InterActiveInfographicData?.map((item) => (
+            <ReportCards item={item} id={item.id} key={item.id} />
+          ))}
+        </Slider>
+      </div>
     </div>
+
+
   );
 };
 
-export default PublicationMaster;
+export default ReportMaster;
 
