@@ -84,6 +84,11 @@ const nextConfig = {
         protocol:'https',
         hostname: 'www.ceew.in',
         pathname: '**',
+      },
+      {
+        protocol:'https',
+        hostname: 'www.zarla.com',
+        pathname: '**',
       }
     ],
   },

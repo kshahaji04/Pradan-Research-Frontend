@@ -1,0 +1,106 @@
+
+.topContainer {
+  background-color: #dadada;
+  display: flex;
+  justify-content: center;
+}
+
+.img {
+  overflow: visible;
+  margin-top: -15%;
+  margin-bottom: 15%;
+  width: 60%;
+  height: 100%;
+}
+
+.cardText {
+  font-size: 14px;
+  margin: 2rem 0rem;
+  font-weight: 500;
+  line-height: 1.5;
+  height: 100% !important;
+}
+
+@media(max-width:1024px) {
+  .cardText {
+    margin: 0 !important;
+  }
+}
+
+.cardTitle {
+  font-size: 1rem;
+  min-height: 25px;
+}
+
+.card1 {
+  font-family: "Bree Light", serif;
+  line-height: 1;
+  font-size: 1.5rem;
+
+}
+
+.car {
+  width: 95% !important;
+  height: 462.5px
+}
+
+@media(max-width:480px) {
+  .car {
+    height: 470px;
+  }
+}
+
+.teams .item .desc {
+  margin: 0px;
+  opacity: 0;
+  max-height: 0px;
+  padding: 5px 10px;
+  font-size: 15px;
+  border-bottom: 1px solid #E6E6E6;
+  transition: all 0.5s ease-in-out 0s;
+}
+
+.teams .item .itemName:hover~.desc,
+.teams .item .desc:hover {
+  opacity: 1;
+  max-height: 500px;
+  transition: all 1s ease-in-out 0s;
+}
+
+.teams .item:hover>.itemName {
+  border-bottom: transparent;
+}
+
+.teams .item:last-child>.itemName,
+.teams .item:last-child>.desc {
+  border-bottom: transparent;
+}
+
+.mainHeader {
+  color: var(--primary);
+  font-family: Lato;
+  font-weight: 400;
+  font-size: 2.4rem;
+  line-height: 2;
+}
+
+.teamsContainer {
+  max-width: 2100px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.btnInner:after {
+  content: '';
+  position: absolute;
+  left: 60px;
+  height: 20px;
+  width: 1px;
+  background-color: #dadada;
+  color: #dadada;
+}
+
+.cardLink:hover{
+cursor: pointer !important;
+color: var(--primary) !important;
+}

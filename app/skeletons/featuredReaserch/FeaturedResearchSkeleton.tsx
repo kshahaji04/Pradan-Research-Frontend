@@ -3,7 +3,6 @@ import Link from 'next/link'
 import React from 'react'
 import styles from '@/app/styles/featuredResearch/featuredReseareh.module.css'
 import Slider from 'react-slick'
-import { researchData } from '@/app/utils/data'
 import { NextArrow, PrevArrow } from '@/app/cards/SlickButtons/SlickButtons'
 import Skeleton from 'react-loading-skeleton'
 
