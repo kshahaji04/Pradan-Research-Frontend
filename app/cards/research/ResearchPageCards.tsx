@@ -4,7 +4,7 @@ import React from 'react'
 import styles from "@/app/styles/research/researchCard.module.css"
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import pdfIcon from '@/public/assets/images/pdfIcon.svg'
-function ResearchCards({ item, index, link }: any) {
+function ResearchPageCards({ item, index, link }: any) {
     const languages = ["English", "Hindi", "Marathi", "Bangali", "Telugu"]
 
     return (
@@ -16,13 +16,13 @@ function ResearchCards({ item, index, link }: any) {
                     </div>
 
                     <div className='row card-body h-100'>
-                        <div className="col-9">
+                        <div className="col-12">
                             <div className='h-100 d-flex flex-column justify-content-center'>
                                 <h5>{item.text1}</h5>
                                 <p className='mb-0'>{item.title2}</p>
                             </div>
                         </div>
-                        <div className="col-3 text-end">
+                        {/* <div className="col-3 text-end">
                             <div className="d-flex flex-column align-items-end justify-content-end">
                                 <div className="d-flex flex-column align-items-start justify-content-end" style={{ width: '100px' }}>
                                     {languages?.length > 0 && languages?.map((info: any, index: any) => (<button key={index} className={`btn my-0 text-uppercase d-flex pe-2`} style={{ fontSize: '12px' }}>
@@ -32,7 +32,7 @@ function ResearchCards({ item, index, link }: any) {
                                 </div>
 
                             </div>
-                        </div>
+                        </div> */}
 
                     </div>
                 </div>
@@ -41,4 +41,4 @@ function ResearchCards({ item, index, link }: any) {
     )
 }
 
-export default ResearchCards
+export default ResearchPageCards

@@ -57,6 +57,11 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "www.pradan.net",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
         hostname: "99percentinvisible.org",
         pathname: "**",
       },
