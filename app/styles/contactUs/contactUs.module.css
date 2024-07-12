@@ -1,0 +1,76 @@
+.title {
+    color: var(--primary);
+    text-align: center;
+}
+
+.iconContainer {
+    width: 80px !important;
+    height: 80px !important;
+}
+
+.bannerImage {
+    width: 100% !important;
+}
+
+.name {
+    font-size: 1.5rem;
+}
+
+.mainConatiner {
+    margin-top: 80px !important;
+    margin-bottom: 80px !important;
+}
+
+.cardOrganization {
+    margin-bottom: 80px !important;
+}
+
+.insta_icon {
+    color: RGB(195, 42, 163) !important;
+}
+
+.faceBook {
+    color: RGB(24, 119, 242) !important;
+}
+
+.whats_app_icon {
+    color: RGB(37, 211, 102) !important;
+}
+
+.tweeter_icon {
+    color: rgb(0, 0, 0) !important;
+}
+
+.linkdin {
+    color: rgb(10, 102, 194) !important;
+}
+
+.cardText2 {
+    margin-top: 1rem;
+    font-size: 1.2rem !important;
+    font-weight: 400 !important;
+}
+
+.foot {
+    border: none !important;
+    background-color: transparent !important;
+}
+
+.iconCont {
+    width: 80px;
+    height: 80px;
+}
+
+.organizationCard {
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+}
+.carText{
+    font-size: 0.8rem;
+}
+@media(max-width:426px) {
+    .organizationCard {
+        margin-left: 20px !important;
+        margin-right: 20px !important;
+    }
+}
