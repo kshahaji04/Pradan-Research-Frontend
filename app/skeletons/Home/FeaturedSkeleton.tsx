@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Link from 'next/link';
 import Skeleton from 'react-loading-skeleton';
+import FeaturedResearchSkeleton from '../featuredReaserch/FeaturedResearchSkeleton';
 
 function FeaturedSkeleton({ title }: any) {
     const settings = {
@@ -53,6 +54,9 @@ function FeaturedSkeleton({ title }: any) {
                             </div>
                         ))}
                 </div>
+            </div>
+            <div className="row teamSlider" style={{marginBottom:'100px'}}>
+                <FeaturedResearchSkeleton/>
             </div>
         </div>
     )
