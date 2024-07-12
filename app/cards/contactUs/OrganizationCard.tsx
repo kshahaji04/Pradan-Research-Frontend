@@ -6,10 +6,6 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import XIcon from '@mui/icons-material/X';
-import AccessibilityIcon from '@mui/icons-material/Accessibility';
-import PersonIcon from '@mui/icons-material/Person';
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
 import OrganizationCardSkeleton from '@/app/skeletons/cards/OrganizationCardSkeleton';
 import Image from 'next/image';
 const OrganizationCard = () => {
@@ -60,7 +56,7 @@ const OrganizationCard = () => {
                                 return (
                                     <div className="col-md-6 col-xl-3 col-sm-6 g-4" key={index}>
                                         <div className="card h-100">
-                                            <div className={`mx-4 ${styles.iconCont}`}>
+                                            <div className={`px-3 ${styles.iconCont}`}>
                                               <Image width={80} height={80} src={`${item.icon}`}
                                               alt='com' className={styles.iconContainer}
                                               />
@@ -70,7 +66,7 @@ const OrganizationCard = () => {
                                                 <div className={`card-title ${styles.name}`}>
                                                     {item.name}
                                                 </div>
-                                                <div className="card-text pt-2">
+                                                <div className={`card-text pt-2 ${styles.carText}`}>
                                                     {item.desc}
                                                 </div>
                                                 {/* <div className={`card-text ${styles.cardText2}`}>
