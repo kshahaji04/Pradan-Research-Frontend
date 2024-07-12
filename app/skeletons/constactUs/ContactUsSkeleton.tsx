@@ -49,43 +49,7 @@ const ContactUsSkeleton = () => {
       },
     ],
   };
-  const data = [
-    {
-      img: 'https://archive.cdn-thecorrespondent.com/image/KYLF_5N3RYgrBKQQ2wbRJJTWixM=/380x440/0495c5cb7d0a420a88dd1871292f1afb.png',
-      title1: 'OluTimehin Adegbeye ',
-      company: '8848 Digital',
-      mail: 'test@mail.com',
-      text: 'As the Climate correspondent, I seek to tell better stories about the biggest problem facing our world – from the complex science to visions of a better society that works for everyone. Ask me about: slow travel, beekeeping, autism.',
-    },
-    {
-      img: 'https://archive.cdn-thecorrespondent.com/image/vN99Hg0cW0j0xvHFO9zaTnxRjaQ=/380x440/1c2433e933c84307ae162c52b706f750.png',
-      title1: 'Eric Holthaus',
-      company: '8848 Digital',
-      mail: 'test@mail.com',
-      text: 'As the Climate correspondent, I seek to tell better stories about the biggest problem facing our world – from the complex science to visions of a better society that works for everyone. Ask me about: slow travel, beekeeping, autism'
-    },
-    {
-      img: 'https://archive.cdn-thecorrespondent.com/image/VQXB9E7AZmUbkQDc-YZRNCyne5Q=/380x440/cb67e766a93b428a870c6a23de77204d.png',
-      title1: ' Sanne Blauw',
-      company: '8848 Digital',
-      mail: 'test@mail.com',
-      text: 'Sanne holds a PhD in Econometrics from the Erasmus School of Economics. As the Numeracy correspondent, she explores the world of numbers and how they affect our lives. She is the author of the Dutch bestseller "The Number Bias".'
-    },
-    {
-      img: 'https://archive.cdn-thecorrespondent.com/image/KYLF_5N3RYgrBKQQ2wbRJJTWixM=/380x440/0495c5cb7d0a420a88dd1871292f1afb.png',
-      title1: 'Irane Caseli',
-      company: '8848 Digital',
-      mail: 'test@mail.com',
-      text: 'I will report on how important the beginning of life is, and show why children’s perspectives should not be left out of journalism and policymaking. Ask me about: nomadic lifestyles, breastfeeding, Latin America.'
-    },
-    {
-      img: 'https://archive.cdn-thecorrespondent.com/image/vN99Hg0cW0j0xvHFO9zaTnxRjaQ=/380x440/1c2433e933c84307ae162c52b706f750.png',
-      title1: 'Thomas Oudman',
-      company: '8848 Digital',
-      mail: 'test@mail.com',
-      text: 'I will report on how important the beginning of life is, and show why children’s perspectives should not be left out of journalism and policymaking. Ask me about: nomadic lifestyles, breastfeeding, Latin America.'
-    }
-  ]
+
   return (
     <>
       <Skeleton
@@ -102,8 +66,8 @@ const ContactUsSkeleton = () => {
           <div style={{ width: '95%', margin: '0 auto' }}>
             <Slider {...settings}>
               {
-                data.map((e, idx) => (
-                  <ContactUsCardSkeleton e={e} idx={idx} key={idx} />
+                Array.from({length:6}).map((e, idx) => (
+                  <ContactUsCardSkeleton  idx={idx} key={idx} />
                 ))}
             </Slider>
           </div>

@@ -48,7 +48,8 @@ const OrganizationCard = () => {
 
     return (
         <>
-            { loading ? <OrganizationCardSkeleton/> :
+            { 
+              loading ? <OrganizationCardSkeleton/> :
                 <>
                     <h2 className={styles.title}>
                         Organization

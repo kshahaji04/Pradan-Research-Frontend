@@ -20,7 +20,8 @@ const ContactUsCard: React.FC<contactUs> = ({ e, idx }) => {
     const [loading, setLoading] = useState(false)
     return (
         <>
-            { loading ? <ContactUsCardSkeleton e={e} idx={idx}/> :
+            { 
+               loading ? <ContactUsCardSkeleton  idx={idx}/> :
                 <div className={`card col-sm-6 ${styles.car}`} key={idx}>
                     <div className={styles.topContainer}>
                         <Image

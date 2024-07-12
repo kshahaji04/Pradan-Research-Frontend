@@ -6,17 +6,11 @@ import Link from 'next/link';
 import Skeleton from 'react-loading-skeleton';
 
 interface contactUs {
-    e: {
-        img: string;
-        title1: string;
-        company: string;
-        mail: string;
-        text: string;
-    },
+
     idx: any
 }
 
-const ContactUsCardSkeleton: React.FC<contactUs> = ({ e, idx }) => {
+const ContactUsCardSkeleton: React.FC<contactUs> = ({ idx }) => {
 
     return (
         <div className={`card col-sm-6 ${styles.car}`} key={idx}>
