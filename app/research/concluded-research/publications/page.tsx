@@ -1,5 +1,5 @@
 import Featured from '@/app/components/Home/Featured'
-import PublicationsGallery from '@/app/components/research/PublicationsGallery'
+import PublicationsGallery from '@/app/components/Media/PublicationsGallery'
 import FeaturedSkeleton from '@/app/skeletons/Home/FeaturedSkeleton'
 import PublicationsGallerySkeleton from '@/app/skeletons/Research/PublicationsGallerySkeleton'
 import React from 'react'

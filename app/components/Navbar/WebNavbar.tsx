@@ -106,7 +106,7 @@ function WebNavbar({ navbarData, logoData }: any) {
             <nav className={`navbar navbar-expand-sm row py-3`}>
               <div className={`col d-flex justify-content-center ${styles.navbar_list}`}>
                 {navbarData?.length > 0 ? navbarData?.map((menu: any, index: any) => (
-                  <div key={menu.id} className={styles.dropdown}>
+                  <div key={index} className={styles.dropdown}>
                     <Link href={menu?.url}>
                       <button className={styles.dropbtn}>{menu?.label}</button>
                     </Link>

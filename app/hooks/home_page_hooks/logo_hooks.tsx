@@ -7,13 +7,28 @@ import { useDispatch, useSelector } from "react-redux";
 const useLogo = () => {
   const [logoData, setSetLogoData] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [logoError, setSetLogoError] = useState<boolean>(false);
   const fetchLogo = async () => {
     setLoading(true);
     try {
       const response = await GetLogoApi();
-      console.log(response)
+      // console.log(response)
       setSetLogoData(response);
       setLoading(false);
+
+      let error = '';
+      if (response.code === "ECONNABORTED") {
+        error = "Request timed out";
+      } else if (response.code === "ERR_BAD_REQUEST") {
+        error = "Bad Request";
+      } else if (response.code === "ERR_INVALID_URL") {
+        error = "Invalid URL";
+      }
+      if (error !== '') {
+        setSetLogoError(true);
+      } else {
+        setSetLogoError(false);
+      }
       // return response;
     } catch (error) {
       setLoading(false);
@@ -32,7 +47,7 @@ const useLogo = () => {
   //   }
   // }, [logoFromStore]);
 
-  return { logoData, loadingLogo: loading };
+  return { logoData, loadingLogo: loading, logoError };
 };
 
 export default useLogo;

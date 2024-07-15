@@ -11,14 +11,20 @@ import { persistor, store } from "@/app/store/store";
 import useFooter from './hooks/home_page_hooks/footer_hooks';
 
 function ClientLayout({ children }: any) {
-    const { footerData, loadingFooter } = useFooter();
+    const { footerData, loadingFooter, footerError } = useFooter();
     return (
         <>
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
                     <Navbar />
                     <div style={{ marginTop: '76px' }}>{children}</div>
-                    {loadingFooter && footerData ? <FooterSkeleton /> : <Footer footerData={footerData} />}
+                    {footerError ? <>
+                    <div className="container py-5">
+                        <div className="w-full d-flex align-items-center justify-content-center py-5">
+                            <h3>Footer is not available for this page.</h3>
+                        </div>
+                    </div>
+                    </> : <>{loadingFooter && footerData ? <FooterSkeleton /> : <Footer footerData={footerData} />}</>}
                     <ToastContainer />
                 </PersistGate>
             </Provider>

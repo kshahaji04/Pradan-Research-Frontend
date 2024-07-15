@@ -17,7 +17,7 @@ const Queries = () => {
               </div>
               <div className="card-body">
                 <h5 className="card-title">Do you have any query?</h5>
-                <p className="card-text">Let's Discuss click below</p>
+                <p className="card-text">Let&apos;s Discuss click below</p>
                 <button type='button' className='btn btn-outline-success'>For Queries</button>
               </div>
             </div>

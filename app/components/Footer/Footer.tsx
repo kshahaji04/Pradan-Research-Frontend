@@ -56,25 +56,29 @@ function Footer({ footerData }: any) {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
 
-    try {
-      const response = await axios.post(`${CONSTANTS.API_BASE_URL}/api/method/pradan.pradan.doctype.subscriber.api.create_subscriber.create_subscriber`, {
-        email: email
-      }, {
-        ...API_CONFIG,
-        timeout: 5000,
-      });
-      if (response.data?.message?.status === 'success') {
-        showToast(response.data?.message?.data?.message || 'Subscription successful!!', 'success')
-        setEmail('');
-      } else if (response.data?.message?.status === 'error') {
-        showToast(response.data?.message?.data?.error || 'User is already subscribed', 'error')
-        setEmail('');
-      } else {
-        showToast('User is already subscribed', 'warning')
+    if (email !== '') {
+      try {
+        const response = await axios.post(`${CONSTANTS.API_BASE_URL}/api/method/pradan.pradan.doctype.subscriber.api.create_subscriber.create_subscriber`, {
+          email: email
+        }, {
+          ...API_CONFIG,
+          timeout: 5000,
+        });
+        if (response.data?.message?.status === 'success') {
+          showToast(response.data?.message?.data?.message || 'Subscription successful!!', 'success')
+          setEmail('');
+        } else if (response.data?.message?.status === 'error') {
+          showToast(response.data?.message?.data?.error || 'User is already subscribed', 'error')
+          setEmail('');
+        } else {
+          showToast('User is already subscribed', 'warning')
+        }
+      } catch (error) {
+        showToast('Error in subscribing', 'error')
+        console.error('Error in subscribing:', error);
       }
-    } catch (error) {
-      showToast('Error in subscribing', 'error')
-      console.error('Error in subscribing:', error);
+    } else {
+      showToast('Please enter email to continue', 'warning')
     }
   };
 
@@ -123,15 +127,15 @@ function Footer({ footerData }: any) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)} />
               </div>
-              <button type="submit" className={`btn  text-uppercase py-2 px-5 ${styles.footer_btn}`}>Subscribe</button>
+              <button type="submit" className={`btn  text-uppercase ${styles.footer_btn}`}>Subscribe</button>
             </form>
 
             {/* social links */}
             <ul className='list-inline my-4'>
-              <li className='list-inline-item'><Link href={pradan_contact_us?.social_links?.facebook_url ?? '/'}><FacebookIcon /></Link></li>
+              <li className='list-inline-item'><Link href={pradan_contact_us?.social_links?.facebook_url ?? '/'} className={`${styles.blue_icon}`}><FacebookIcon /></Link></li>
               <li className='list-inline-item'><Link href={pradan_contact_us?.social_links?.instagram_url ?? '/'} className={`${styles.insta_icon}`}><InstagramIcon /></Link></li>
               <li className='list-inline-item'><Link href={pradan_contact_us?.social_links?.whatsapp_url ?? '/'} className={`${styles.whats_app_icon}`}><WhatsAppIcon /></Link></li>
-              <li className='list-inline-item'><Link href={pradan_contact_us?.social_links?.linked_in_url ?? '#'}><LinkedInIcon /></Link></li>
+              <li className='list-inline-item'><Link href={pradan_contact_us?.social_links?.linked_in_url ?? '#'} className={`${styles.blue_icon}`}><LinkedInIcon /></Link></li>
               <li className='list-inline-item'><Link href={pradan_contact_us?.social_links?.x_url ?? '/'} className={`${styles.tweeter_icon}`}><XIcon /></Link></li>
             </ul>
           </div>

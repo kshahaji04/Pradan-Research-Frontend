@@ -60,7 +60,7 @@ const VideoSection = ({ title }: any) => {
                     <div className="col-12 mb-5">
                         <div className="row">
                             <div className="col-12">
-                                <h2 className="mb-2 text-center ms-0">{title}'s</h2>
+                                <h2 className="mb-2 text-center ms-0">{title}&apos;s</h2>
                             </div>
                         </div>
                     </div>

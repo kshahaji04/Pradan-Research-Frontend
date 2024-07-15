@@ -8,16 +8,33 @@ import { useDispatch, useSelector } from "react-redux";
 const useNavbar = () => {
   const [navbarData, setSetNavbarData] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [navbarError, setSetNavbarError] = useState<boolean>(false);
+
   const fetchNavbar = async () => {
     setLoading(true);
     try {
       const response = await GetNavbarApi();
-      // console.log(response)
+      // console.log(response, 'nav 1')
       setSetNavbarData(response);
       setLoading(false);
+
+      let error = '';
+      if (response.code === "ECONNABORTED") {
+        error = "Request timed out";
+      } else if (response.code === "ERR_BAD_REQUEST") {
+        error = "Bad Request";
+      } else if (response.code === "ERR_INVALID_URL") {
+        error = "Invalid URL";
+      }
+      if(error !== ''){
+        setSetNavbarError(true);
+      } else {
+        setSetNavbarError(false);
+      }
       // return response;
     } catch (error) {
       setLoading(false);
+      setSetNavbarError(true)
       throw error;
     }
     return;
@@ -33,7 +50,7 @@ const useNavbar = () => {
   //   }
   // }, [navbarFromStore]);
 
-  return { navbarData, loadingNavbar: loading };
+  return { navbarData, loadingNavbar: loading, navbarError };
 };
 
 export default useNavbar;
