@@ -1,12 +1,16 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { PublicationsGallerySkeleton, PublicationGallerySlick } from "@/app/skeletons/Media/PublicationsGallerySkeleton";
+import ReportMasterSkeleton from "@/app/skeletons/Media/ReportMasterSkeleton";
+import Skeleton from "react-loading-skeleton";
 function PublicationsGallery({ title }: any) {
+  const [loading, setLoading] = useState(false)
   const settings = {
     dots: false,
     infinite: true,
@@ -73,18 +77,38 @@ function PublicationsGallery({ title }: any) {
   return (
     <div className="container-fluid">
       <div className="row">
-        <div className="col-12">
-          <h2 className="text-center ms-0">{title}</h2>
-        </div>
+        {
+          loading ? <ReportMasterSkeleton /> :
+            <div className="col-12">
+              <h2 className="text-center ms-0">{title}</h2>
+            </div>
+        }
+
       </div>
       <div className="row my-5">
         <div className="col-12">
           <div className="text-end me-3">
-            <h5><Link href='/'>See More <ChevronRightIcon /></Link> </h5>
+            {
+              loading ? <PublicationsGallerySkeleton /> :
+                <h5><Link href='/'>See More <ChevronRightIcon /></Link> </h5>
+            }
+
           </div>
         </div>
         <Slider {...settings}>
-          {data &&
+          {loading ? Array.from({ length: 6 }).map((info: any, index: number) => (
+            <div
+              key={index}
+              // style={{ width: "95%", height: "100%", maxHeight: "300px" }}
+              className={`mx-auto my-0`}
+            >
+              <Skeleton
+                width={200}
+                height={200}
+              />
+            </div>
+          )) :
+            data &&
             data.length > 0 &&
             data.map((info: any, index: number) => (
               <Link
@@ -102,7 +126,9 @@ function PublicationsGallery({ title }: any) {
                   className={`mx-auto rounded-2 my-0`}
                 />
               </Link>
-            ))}
+            ))
+          }
+
         </Slider>
       </div>
     </div>

@@ -1,10 +1,9 @@
 "use client"
 import React, { useState } from 'react';
 import styles from '@/app/styles/joinOurEvent/join_our_event.module.css'
-import UpcomingEvents from './UpcomingEventsSkeleton';
-import PastEvents from './PastEvents';
 import Skeleton from 'react-loading-skeleton';
-import UpcomingEventsSkeleton from './UpcomingEventsSkeleton';
+import UpcomingEvents from '@/app/components/JoinOurEvent/UpcomingEvents';
+
 
 const JoinOurEventMasterSkeleton = () => {
     const [tab, setTab] = useState('upcoming_events');
@@ -32,7 +31,7 @@ const JoinOurEventMasterSkeleton = () => {
                 </li>
               </ul>
 
-               <UpcomingEventsSkeleton /> 
+               <UpcomingEvents /> 
 
             </div>
           </div>

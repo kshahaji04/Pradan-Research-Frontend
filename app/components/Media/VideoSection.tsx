@@ -1,14 +1,17 @@
 
 import { data } from "@/app/utils/data2";
 import AOS from "aos";
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import VideoSectionsCards from "@/app/cards/joinOurEvent/VideoSectionsCards";
+import VideoSectionSkeleton from "@/app/skeletons/Media/VideoSectionSkeleton";
+import ReportMasterSkeleton from "@/app/skeletons/Media/ReportMasterSkeleton";
 
 
 const VideoSection = ({ title }: any) => {
+    const [loading,setLoading] = useState(false)
     useEffect(() => {
         AOS.init();
     }, []);
@@ -52,6 +55,8 @@ const VideoSection = ({ title }: any) => {
         <>
             <div className={`container-fluid`} style={{ overflow: 'hidden' }}>
                 <div className="row">
+                    {
+                    loading ? <ReportMasterSkeleton/> :              
                     <div className="col-12 mb-5">
                         <div className="row">
                             <div className="col-12">
@@ -59,6 +64,7 @@ const VideoSection = ({ title }: any) => {
                             </div>
                         </div>
                     </div>
+                  }
                     <Slider {...settings}>{data?.slice(0, 5).map((doc) => (<VideoSectionsCards data={doc} id={doc.id} key={doc.id} />))}</Slider>
                 </div>
             </div>

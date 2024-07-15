@@ -17,7 +17,7 @@ import ReportMasterSkeleton from "@/app/skeletons/Media/ReportMasterSkeleton";
 
 
 const ReportMaster = ({ title }: any) => {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   console.log("??", InterActiveInfographicData)
   useEffect(() => {
     AOS.init();

@@ -8,7 +8,7 @@ import styles from '@/app/styles/joinOurEvent/join_our_event.module.css'
 import Image from "next/image";
 import JoinOurEventCards from "@/app/cards/joinOurEvent/JoinOurEventCards";
 import { data } from "@/app/utils/data2";
-import UpcomingEventsSkeleton from "@/app/skeletons/JoinOurEvent/UpcomingEventsSkeleton";
+
 
 
 const UpcomingEvents = () => {
@@ -51,12 +51,9 @@ const UpcomingEvents = () => {
     ],
   };
 
-
-
   return (
     <div className='bgImageWrapper pt-4'>
       { 
-      loading ? <UpcomingEventsSkeleton /> :
       <div className={`container-fluid ${styles.news_carousel_container}`} style={{ zIndex: '2', position: "relative" }}>
         <div className="row">
           {/* <div className="col-12">

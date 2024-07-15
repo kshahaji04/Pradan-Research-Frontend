@@ -42,7 +42,6 @@ const [loading,setLoading] = useState(false)
             </div>
         </div>
            }
-          
         </div>
     )
 }
