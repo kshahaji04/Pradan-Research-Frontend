@@ -9,8 +9,8 @@ import useLogo from '@/app/hooks/home_page_hooks/logo_hooks';
 
 function Navbar() {
   const [isMobile, setIsMobile] = useState(false);
-  const { navbarData, loadingNavbar } = useNavbar();
-  const { logoData, loadingLogo } = useLogo();
+  const { navbarData, loadingNavbar, navbarError } = useNavbar();
+  const { logoData, loadingLogo, logoError } = useLogo();
 
   useEffect(() => {
     const handleResize = () => {
@@ -27,12 +27,22 @@ function Navbar() {
     };
   }, []);
 
+  // console.log(navbarError, 'nav');
+
   return (
     <>
-      {loadingLogo && logoData?.length > 0 || loadingNavbar && navbarData?.length > 0 ? 
-      <>{isMobile ? <NavbarmobileSkeleton /> : <WebNavbarSkeleton />}</> : 
-      <>{isMobile ? <NavbarMobile navbarData={navbarData} logoData={logoData} /> : <WebNavbar navbarData={navbarData} logoData={logoData} />}</>}
-      {/* {isMobile ? <NavbarmobileSkeleton /> : <WebNavbarSkeleton />} */}
+      {navbarError || logoError ? <>
+      <nav className="navbar">
+        <div className="w-100 d-flex align-items-center justify-content-center py-3" style={{marginBottom:'-76px'}}>
+          <h3>Navbar Not Available For this page</h3>
+        </div>
+      </nav>
+      </> : <>
+        {loadingLogo || loadingNavbar ?
+          <>{isMobile ? <NavbarmobileSkeleton /> : <WebNavbarSkeleton />}</> :
+          <>{isMobile ? <NavbarMobile navbarData={navbarData} logoData={logoData} /> : <WebNavbar navbarData={navbarData} logoData={logoData} />}</>}
+        {/* {isMobile ? <NavbarmobileSkeleton /> : <WebNavbarSkeleton />} */}
+      </>}
     </>
   );
 }

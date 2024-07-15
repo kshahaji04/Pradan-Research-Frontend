@@ -13,6 +13,7 @@
   text-transform: uppercase;
   font-weight: 500;
   margin-bottom: 1.5rem;
+  
 }
 
 
@@ -30,11 +31,16 @@
 }
 
 .quick_link_list:hover {
-  color: #0E590A
+  color: #0E590A !important
 }
 
 .footer_input {
-  border-radius: 0px;
+  border-radius: 0px !important;
+}
+
+.footer_input:focus{
+  border-color: rgba(0, 0, 0, 0.125) !important;
+  box-shadow: none !important;
 }
 
 .footer_btn {
@@ -48,12 +54,13 @@
 
 .footer_btn:hover {
   border: 1px solid #0E590A !important;
+  color: var(--bs-btn-hover-color) !important;
+    background-color: var(--bs-btn-hover-bg) !important;
 }
 
 .quick_link_container {
-  padding-left: 10rem;
-  padding-right: 10rem;
-
+  padding-left: 10rem !important;
+  padding-right: 10rem !important;
 }
 
 .footer_link_list {
@@ -61,15 +68,19 @@
 }
 
 .tweeter_icon:hover {
-  color: #000000;
+  color: #000000 !important;
 }
 
 .whats_app_icon:hover {
-  color: #0E590A;
+  color: #0E590A !important;
 }
 
 .insta_icon:hover {
-  color: #E1306C;
+  color: #E1306C !important;
+}
+
+.blue_icon:hover{
+  color: blue !important;
 }
 
 .footer_line {

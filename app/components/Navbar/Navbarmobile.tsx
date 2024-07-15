@@ -5,6 +5,7 @@ import styles from '@/app/styles/Navbar/Navbar.module.css';
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition"
 import logo from '@/public/logo.png';
 import Image from 'next/image';
+import { imageLoader } from '@/app/utils/image_loader_utils';
 
 const navMenu = [
     { id: 1, menu_title: 'Research', link: '/research' },
@@ -13,7 +14,7 @@ const navMenu = [
     { id: 4, menu_title: 'Meet Our Team', link: '/' },
 ];
 
-function NavbarMobile({navbarData, logoData}:any) {
+function NavbarMobile({ navbarData, logoData }: any) {
     const [inputValue, setInputValue] = useState("");
     // const [voiceInput, setVoiceInput] = useState("");
     const [isRecording, setIsRecording] = useState(false);
@@ -73,13 +74,27 @@ function NavbarMobile({navbarData, logoData}:any) {
                     <div className='col-9'>
                         <div className='d-flex align-items-center'>
                             <div>
-                                <Link className={`navbar-brand ${styles.header_logo_link}`} href="/">
+                                {/* <Link className={`navbar-brand ${styles.vertical_bar} ${styles.header_logo_link}`} href="/">
                                     <Image src={logo} width={140} height={60}
                                         className={styles.logo} alt="Logo" />
-                                </Link>
+                                </Link> */}
+                                {
+                                    logoData && logoData.length > 0 ? logoData.map((logo: any, index: number) => {
+                                        return (
+                                            <Link className={`navbar-brand me-1 ${styles.vertical_bar} ${styles.header_logo_link}`} href="/" key={index}>
+                                                <Image src={logo?.image} alt={logo?.logo_name} width={140} height={60}
+                                                    className={styles.logo} loader={imageLoader} />
+                                            </Link>
+                                        )
+                                    })
+                                    : ""
+                                }
                             </div>
                             <div>
-                                <h5 className='mb-0'>Pradan Research</h5>
+                                <div className='ms-2'>
+                                    <h3 className='mb-0 primary' style={{ fontSize: '1.5rem' }}>Pradan</h3>
+                                    <p className='mb-0'><i>Research</i></p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -110,7 +125,7 @@ function NavbarMobile({navbarData, logoData}:any) {
                                 </div>
                             </div>
 
-                            {navMenu.map(menu => (
+                            {/* {navMenu.map(menu => (
                                 <div key={menu.id} className='col-12 mt-2'>
                                     <Link href={menu.link}>
                                         <button type="button" className={`btn ${styles.log_btn_mobile}`}>
@@ -118,7 +133,14 @@ function NavbarMobile({navbarData, logoData}:any) {
                                         </button>
                                     </Link>
                                 </div>
-                            ))}
+                            ))} */}
+                            {navbarData?.length > 0 ? navbarData?.map((menu: any, index: any) => (
+                                <div key={index} className={styles.dropdown}>
+                                    <Link href={menu?.url}>
+                                        <button className={styles.dropbtn}>{menu?.label}</button>
+                                    </Link>
+                                </div>
+                            )) : ''}
 
                         </div>
                     </div>
