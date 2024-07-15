@@ -26,7 +26,7 @@ const ReportMaster = ({ title }: any) => {
     slidesToShow: 4,
     slidesToScroll: 1,
     pauseOnHover: true,
-    autoplay: false,
+    autoplay: true,
     responsive: [
       {
         breakpoint: 1200,

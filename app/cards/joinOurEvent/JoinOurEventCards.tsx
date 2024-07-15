@@ -22,6 +22,7 @@ const JoinOurEventCards = ({ data }: any) => {
                     <div className="card-body px-0 pb-0">
                         <div className={`pb-3 ${styles.card_content}`}>
                             <div className={`${styles.card_body}`}>
+                                <p className={`card-text mb-0 pb-2`}>{data?.author}</p>
                                 <p className="card-title text-secondary">{data?.title}</p>
                                 <p>{data?.text?.length > 60 ? `${data.text.slice(0, 60)}...` : data?.text}</p>
                             </div>
@@ -33,6 +34,7 @@ const JoinOurEventCards = ({ data }: any) => {
                                 <p className={`card-text text-secondary mb-0`}>{data?.location}</p>
 
                             </div>
+
                             <RegistrationModal />
                         </div>
                     </div>
