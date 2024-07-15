@@ -7,18 +7,18 @@ import ClientLayout from "./ClientLayout";
 import 'regenerator-runtime/runtime';
 
 // import { ErrorBoundary } from "next/dist/client/components/error-boundary";
-import { Ubuntu } from 'next/font/google'
+// import { Ubuntu } from 'next/font/google'
 
 export const metadata: Metadata = {
   title: "Pradan Research",
   description: "Pradan Research",
 };
 
-const ubuntu = Ubuntu({
-  weight: ['300',"400","500","700"],
-  subsets: ['latin'],
-  display: 'swap',
-})
+// const ubuntu = Ubuntu({
+//   weight: ['300',"400","500","700"],
+//   subsets: ['latin'],
+//   display: 'swap',
+// })
 
 export default function RootLayout({
   children,
@@ -43,7 +43,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body className={ubuntu.className}>
+      <body>
         <ErrorBoundary errorComponent={Error}>
           <ClientLayout>
             {children}

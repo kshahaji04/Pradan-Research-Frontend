@@ -1,13 +1,17 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '@/app/styles/joinOurEvent/audio.module.css'
 import PlayCircleFilledWhiteRoundedIcon from '@mui/icons-material/PlayCircleFilledWhiteRounded';
 import moment from 'moment';
+import VideoSectionsCardsSkeleton from '@/app/skeletons/cards/joinOurEvent/VideoSectionsCardsSkeleton';
 
 const AudioSectionsCards = ({ data }: any) => {
+    const [loading,setLoading] = useState(false)
     return (
         <div className='d-flex align-items-center justify-content-center h-100'>
+         { 
+         loading ? <VideoSectionsCardsSkeleton/> :
             <div className={`card h-100 rounded-0 ${styles.gridViewCard}`} style={{ width: "90%", maxWidth: "380px" }}>
                 <div className="card-img-top position-relative">
                     {data?.src !== null && data?.src !== '' ? <Image src={data?.src} className="card-img-top rounded-0"
@@ -45,6 +49,7 @@ const AudioSectionsCards = ({ data }: any) => {
                     </div>
                 </div>
             </div>
+            }
         </div>
     )
 }

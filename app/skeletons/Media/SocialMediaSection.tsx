@@ -13,6 +13,8 @@ import img1 from '@/public/Arjun Dhrve.jpg';
 import img2 from '@/public/Arvind Netam.jpg';
 import img3 from '@/public/Ashwini Kange.jpg';
 import img4 from '@/public/Mohan Mandavi.jpg'
+import SocialMediaGridViewCard from "@/cards/MediaSectionCards/PublicationCards/SocialMediaGridViewCard";
+import SocialMediaListViewCard from "@/cards/MediaSectionCards/PublicationCards/SocialMediaListViewCard";
 const items = [
   {
     id: 1,
@@ -21,9 +23,9 @@ const items = [
     tag: "Popular",
     title: "Lorem Ipsum is simply",
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    image: 'https://images.squarespace-cdn.com/content/v1/56706f46cbced6afd974c6d5/1714065985483-LLBE8DERZ5D0YJR9VQGN/image-asset.jpeg?format=750w',
-    expertise: 'Teacher and Padma Awardee, Madhya Pradesh',
-    url: '/blog-details'
+     image: 'https://images.squarespace-cdn.com/content/v1/56706f46cbced6afd974c6d5/1714065985483-LLBE8DERZ5D0YJR9VQGN/image-asset.jpeg?format=750w',
+    expertise:'Teacher and Padma Awardee, Madhya Pradesh',
+    url:'/blog-details'
   },
   {
     id: 2,
@@ -34,8 +36,8 @@ const items = [
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
 
     image: 'https://images.squarespace-cdn.com/content/v1/56706f46cbced6afd974c6d5/1713274362861-0MGOY5YJH9SGE22OJ8WG/annie-spratt-goholCAVTRs-unsplash.jpg?format=500w',
-    expertise: 'Ex-Central Minister of State (Agriculture) and MP Kanker Constituency, Kanker, Chhattisgarh',
-    url: '/blog-details'
+    expertise:'Ex-Central Minister of State (Agriculture) and MP Kanker Constituency, Kanker, Chhattisgarh',
+    url:'/blog-details'
   },
   {
     id: 3,
@@ -45,8 +47,8 @@ const items = [
     title: "Lorem Ipsum is simply",
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     image: 'https://images.squarespace-cdn.com/content/v1/56706f46cbced6afd974c6d5/1711466611658-889AAFW2GZ34T6NTENZ5/AdobeStock_268031756.jpeg?format=500w',
-    expertise: 'Founder KBKS( Koya Bhumkal Kranti Sena), Joint Secretary- Sarv Adivasi Samaj , Chhattisgarh',
-    url: '/blog-details'
+    expertise:'Founder KBKS( Koya Bhumkal Kranti Sena), Joint Secretary- Sarv Adivasi Samaj , Chhattisgarh',
+    url:'/blog-details'
   },
   {
     id: 4,
@@ -56,12 +58,12 @@ const items = [
     title: "Lorem Ipsum is simply",
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     image: 'https://images.squarespace-cdn.com/content/v1/56706f46cbced6afd974c6d5/1694718072840-PJLEMLB610FU543N4QZG/image-asset.jpeg?format=500w',
-    expertise: 'Member of the Lok Sabha, Kanker Constituency, Chhattisgarh',
-    url: '/blog-details'
+    expertise:'Member of the Lok Sabha, Kanker Constituency, Chhattisgarh',
+    url:'/blog-details'
   }
 ];
 
-const SocialMediaSection = ({ quotes }: any) => {
+const SocialMediaSection = ({quotes}:any) => {
 
   const settings = {
     dots: false,
@@ -70,7 +72,7 @@ const SocialMediaSection = ({ quotes }: any) => {
     slidesToScroll: 1,
     pauseOnHover: true,
     autoplay: true,
-    vertical: true,
+    vertical: true, 
     verticalSwiping: true,
     responsive: [
       {
@@ -104,9 +106,9 @@ const SocialMediaSection = ({ quotes }: any) => {
     <div className={`container ${styles.news_carousel_container}`} >
       <div className="row">
         <Slider {...settings}>
-          {items.map((data: any, index: number) => (
+          {items.map((data:any , index:number) => (
             <div key={index} >
-              {/* {isSmallScreen ? <SocialMediaGridViewCard data={data} /> : <SocialMediaListViewCard data={data} />} */}
+                          {isSmallScreen ?   <SocialMediaGridViewCard data={data}/>  : <SocialMediaListViewCard data={data}/>}
             </div>
           ))}
         </Slider>
@@ -115,4 +117,4 @@ const SocialMediaSection = ({ quotes }: any) => {
   );
 };
 
-export default SocialMediaSection;
+export default  SocialMediaSection  ;

@@ -1,4 +1,5 @@
-import Reports from '@/app/components/research/concluded-research/Reports'
+
+import Reports from '@/app/components/research/concluded-research/components/Reports'
 import ReportsSkeleton from '@/app/skeletons/Research/ReportsSkeleton'
 import React from 'react'
 

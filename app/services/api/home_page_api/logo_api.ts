@@ -10,22 +10,13 @@ const GetLogoApi = async (language?: any) => {
             `${CONSTANTS.API_BASE_URL}/api/method/pradan.pradan.doctype.logo.api.get_logo.get_logo?project_name=${CONSTANTS.PROJECT_NAME}`,
             {
                 ...API_CONFIG,
-
             }
         )
         .then((res: any) => {
             response = res?.data?.message?.data;
         })
         .catch((err: any) => {
-            if (err.code === "ECONNABORTED") {
-                response = "Request timed out";
-            } else if (err.code === "ERR_BAD_REQUEST") {
-                response = "Bad Request";
-            } else if (err.code === "ERR_INVALID_URL") {
-                response = "Invalid URL";
-            } else {
-                response = err;
-            }
+            response = err;
         });
 
     return response;

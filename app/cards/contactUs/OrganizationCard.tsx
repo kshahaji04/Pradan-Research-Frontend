@@ -6,7 +6,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import XIcon from '@mui/icons-material/X';
-import OrganizationCardSkeleton from '@/app/skeletons/cards/OrganizationCardSkeleton';
+import OrganizationCardSkeleton from '@/app/skeletons/cards/contactUs/OrganizationCardSkeleton';
 import Image from 'next/image';
 const OrganizationCard = () => {
     const [loading, setLoading] = useState(false)
