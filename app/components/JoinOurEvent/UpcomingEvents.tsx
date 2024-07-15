@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -10,7 +10,9 @@ import JoinOurEventCards from "@/app/cards/joinOurEvent/JoinOurEventCards";
 import { data } from "@/app/utils/data2";
 
 
+
 const UpcomingEvents = () => {
+  const [loading,setLoading] = useState(false)
   useEffect(() => {
     AOS.init();
   }, []);
@@ -49,10 +51,9 @@ const UpcomingEvents = () => {
     ],
   };
 
-
-
   return (
     <div className='bgImageWrapper pt-4'>
+      { 
       <div className={`container-fluid ${styles.news_carousel_container}`} style={{ zIndex: '2', position: "relative" }}>
         <div className="row">
           {/* <div className="col-12">
@@ -67,7 +68,7 @@ const UpcomingEvents = () => {
           </Slider>
         </div>
       </div>
-
+      } 
     </div>
   );
 };

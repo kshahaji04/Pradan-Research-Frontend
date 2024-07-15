@@ -1,8 +1,6 @@
 
-import React, { useState } from 'react'
+import React from 'react'
 import styles from '@/app/styles/contactUs/contactUsCard.module.css'
-import Image from 'next/image'
-import Link from 'next/link';
 import Skeleton from 'react-loading-skeleton';
 
 interface contactUs {
