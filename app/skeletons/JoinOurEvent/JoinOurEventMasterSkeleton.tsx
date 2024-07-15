@@ -1,44 +1,45 @@
 "use client"
 import React, { useState } from 'react';
 import styles from '@/app/styles/joinOurEvent/join_our_event.module.css'
-import UpcomingEvents from './UpcomingEvents';
+import UpcomingEvents from './UpcomingEventsSkeleton';
 import PastEvents from './PastEvents';
-import JoinOurEventMasterSkeleton from '@/app/skeletons/JoinOurEvent/JoinOurEventMasterSkeleton';
+import Skeleton from 'react-loading-skeleton';
+import UpcomingEventsSkeleton from './UpcomingEventsSkeleton';
 
-const JoinOurEventMaster = () => {
-  const [loading,setLoading] = useState(false)
+const JoinOurEventMasterSkeleton = () => {
     const [tab, setTab] = useState('upcoming_events');
   return (
     <div className="container mb-4">
-      {
-
-      loading ? <JoinOurEventMasterSkeleton /> : 
-
       <div className="row pb-4" >
         <div className="container p-4">
           <div className={`row align-items-center justify-content-center ${styles.mainHeader}`} >
-            Events
+            <div style={{width:'fit-content'}}>
+                <Skeleton width={150} height={40} />
+            </div>
           </div>
           <div className='container position-relative'>
             <div id="exTab3" className="container pt-2">
               <ul className="nav nav-tabs mx-auto my-4" style={{  justifyContent: 'center' }}>
                 <li className="nav-item">
-                  <button className={`nav-link ${tab === 'upcoming_events' ? 'active' : ''}`} onClick={() => setTab('upcoming_events')}>Upcoming Events</button>
+                  <button className={`nav-link `} >
+                      <Skeleton width={'100%'} height={'100%'}/> 
+                  </button>
                 </li>
                 <li className="nav-item">
-                  <button className={`nav-link ${tab === 'past_events' ? 'active' : ''}`} onClick={() => setTab('past_events')}>Past Events</button>
+                  <button className={`nav-link ${tab === 'past_events' ? 'active' : ''}`} >
+                       <Skeleton width={'100%'} height={'100%'} />
+                    </button>
                 </li>
               </ul>
 
-              {tab === 'upcoming_events' ? <UpcomingEvents /> : <PastEvents />}
+               <UpcomingEventsSkeleton /> 
 
             </div>
           </div>
         </div>
       </div>
-      }
     </div>
   )
 }
 
-export default JoinOurEventMaster
+export default JoinOurEventMasterSkeleton

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import styles from '@/app/styles/contactUs/contactUsCard.module.css'
 import Image from 'next/image'
 import Link from 'next/link';
-import ContactUsCardSkeleton from '@/app/skeletons/cards/ContactUsCardSkeleton';
+import ContactUsCardSkeleton from '@/app/skeletons/cards/contactUs/ContactUsCardSkeleton';
 import EmailIcon from '@mui/icons-material/Email';
 
 interface contactUs {

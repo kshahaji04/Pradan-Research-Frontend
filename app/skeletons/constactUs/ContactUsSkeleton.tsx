@@ -9,8 +9,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import Skeleton from 'react-loading-skeleton';
-import OrganizationCardSkeleton from '../cards/OrganizationCardSkeleton';
-import ContactUsCardSkeleton from '../cards/ContactUsCardSkeleton';
+import OrganizationCardSkeleton from '../cards/contactUs/OrganizationCardSkeleton';
+import ContactUsCardSkeleton from '../cards/contactUs/ContactUsCardSkeleton';
 
 const ContactUsSkeleton = () => {
   const settings = {

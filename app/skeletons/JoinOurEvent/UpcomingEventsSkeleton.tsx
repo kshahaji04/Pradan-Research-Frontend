@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -8,11 +8,10 @@ import styles from '@/app/styles/joinOurEvent/join_our_event.module.css'
 import Image from "next/image";
 import JoinOurEventCards from "@/app/cards/joinOurEvent/JoinOurEventCards";
 import { data } from "@/app/utils/data2";
-import UpcomingEventsSkeleton from "@/app/skeletons/JoinOurEvent/UpcomingEventsSkeleton";
+import JoinOurEventCardsSkeleton from "../cards/joinOurEvent/JoinOurEventCardsSkeleton";
 
 
-const UpcomingEvents = () => {
-  const [loading,setLoading] = useState(false)
+const UpcomingEventsSkeleton = () => {
   useEffect(() => {
     AOS.init();
   }, []);
@@ -55,8 +54,6 @@ const UpcomingEvents = () => {
 
   return (
     <div className='bgImageWrapper pt-4'>
-      { 
-      loading ? <UpcomingEventsSkeleton /> :
       <div className={`container-fluid ${styles.news_carousel_container}`} style={{ zIndex: '2', position: "relative" }}>
         <div className="row">
           {/* <div className="col-12">
@@ -65,16 +62,16 @@ const UpcomingEvents = () => {
           <div className="col-12">
           </div>
           <Slider {...settings}>
-            {data.map((item) => (
-              <JoinOurEventCards data={item} id={item.id} key={item.id} />
+            {Array.from({length:4}).map((item,index) => (
+              <JoinOurEventCardsSkeleton  key={index} />
             ))}
           </Slider>
         </div>
       </div>
-      } 
+
     </div>
   );
 };
 
-export default UpcomingEvents;
+export default UpcomingEventsSkeleton;
 
