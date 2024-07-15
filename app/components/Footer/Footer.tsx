@@ -56,25 +56,29 @@ function Footer({ footerData }: any) {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
 
-    try {
-      const response = await axios.post(`${CONSTANTS.API_BASE_URL}/api/method/pradan.pradan.doctype.subscriber.api.create_subscriber.create_subscriber`, {
-        email: email
-      }, {
-        ...API_CONFIG,
-        timeout: 5000,
-      });
-      if (response.data?.message?.status === 'success') {
-        showToast(response.data?.message?.data?.message || 'Subscription successful!!', 'success')
-        setEmail('');
-      } else if (response.data?.message?.status === 'error') {
-        showToast(response.data?.message?.data?.error || 'User is already subscribed', 'error')
-        setEmail('');
-      } else {
-        showToast('User is already subscribed', 'warning')
+    if (email !== '') {
+      try {
+        const response = await axios.post(`${CONSTANTS.API_BASE_URL}/api/method/pradan.pradan.doctype.subscriber.api.create_subscriber.create_subscriber`, {
+          email: email
+        }, {
+          ...API_CONFIG,
+          timeout: 5000,
+        });
+        if (response.data?.message?.status === 'success') {
+          showToast(response.data?.message?.data?.message || 'Subscription successful!!', 'success')
+          setEmail('');
+        } else if (response.data?.message?.status === 'error') {
+          showToast(response.data?.message?.data?.error || 'User is already subscribed', 'error')
+          setEmail('');
+        } else {
+          showToast('User is already subscribed', 'warning')
+        }
+      } catch (error) {
+        showToast('Error in subscribing', 'error')
+        console.error('Error in subscribing:', error);
       }
-    } catch (error) {
-      showToast('Error in subscribing', 'error')
-      console.error('Error in subscribing:', error);
+    } else {
+      showToast('Please enter email to continue', 'warning')
     }
   };
 
