@@ -10,42 +10,26 @@ const JoinOurEventMaster = () => {
   const [activeTab, setActiveTab] = useState('upcoming_events'); // Use 'activeTab' for clarity
 
   return (
-    <div className="container mb-4">
-      <div className="row pb-4">
-        <div className="container p-4">
-          {isLoading ? (
-            <JoinOurEventMasterSkeleton />
-          ) : (
-            <>
-              <div className={`row align-items-center justify-content-center ${styles.mainHeader}`}>
-                Events
-              </div>
-              <div className="container position-relative">
-                <div id="exTab3" className="container pt-2">
-                  <ul className="nav nav-tabs mx-auto my-4" style={{ justifyContent: 'center' }}>
-                    <li className="nav-item">
-                      <button
-                        className={`nav-link ${activeTab === 'upcoming_events' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('upcoming_events')}
-                      >
-                        Upcoming Events
-                      </button>
-                    </li>
-                    <li className="nav-item">
-                      <button
-                        className={`nav-link ${activeTab === 'past_events' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('past_events')}
-                      >
-                        Past Events
-                      </button>
-                    </li>
-                  </ul>
-                </div>
+    <div className="container-fluid mb-4">
+      <div className="row pb-4" >
+        <div className="p-4">
+          <div className={`row align-items-center justify-content-center ${styles.mainHeader}`} >
+            Events
+          </div>
+          <div className='position-relative'>
+            <div id="exTab3" className="pt-2">
+              <ul className="nav nav-tabs mx-auto my-4" style={{ justifyContent: 'center' }}>
+                <li className="nav-item">
+                  <button className={`nav-link ${activeTab === 'upcoming_events' ? 'active' : ''}`} onClick={() => setActiveTab('upcoming_events')}>Upcoming Events</button>
+                </li>
+                <li className="nav-item">
+                  <button className={`nav-link ${activeTab === 'past_events' ? 'active' : ''}`} onClick={() => setActiveTab('past_events')}>Past Events</button>
+                </li>
+              </ul>
 
-                {activeTab === 'upcoming_events' ? <UpcomingEvents /> : <PastEvents />}
-              </div>
-            </>
-          )}
+              {activeTab === 'upcoming_events' ? <UpcomingEvents /> : <PastEvents />}
+            </div>
+          </div>
         </div>
       </div>
     </div>

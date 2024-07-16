@@ -12,7 +12,7 @@ import { data } from "@/app/utils/data2";
 
 
 const UpcomingEvents = () => {
-  const [loading,setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   useEffect(() => {
     AOS.init();
   }, []);
@@ -53,8 +53,7 @@ const UpcomingEvents = () => {
 
   return (
     <div className='bgImageWrapper pt-4'>
-      { 
-      <div className={`container-fluid ${styles.news_carousel_container}`} style={{ zIndex: '2', position: "relative" }}>
+      <div className={`${styles.news_carousel_container}`} style={{ zIndex: '2', position: "relative" }}>
         <div className="row">
           {/* <div className="col-12">
                         <h2 className="mb-4 text-center ms-0">Upcoming Events</h2>
@@ -68,7 +67,6 @@ const UpcomingEvents = () => {
           </Slider>
         </div>
       </div>
-      } 
     </div>
   );
 };
