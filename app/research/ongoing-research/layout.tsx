@@ -14,7 +14,7 @@ function layout({ children }: any) {
     <>
     {/* <ResearchLayoutSkeleton navItems={navItems} /> */}
       {/* <ResearchLayout navItems={navItems} /> */}
-      <div style={{paddingTop:'52px'}}>{children}</div>
+      <div style={{paddingTop:'0px'}}>{children}</div>
     </>
   )
 }

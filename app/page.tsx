@@ -8,6 +8,9 @@ import Skeleton from "react-loading-skeleton";
 import AboutSkeleton from "./skeletons/Home/AboutSkeleton";
 import MediaSkeleton from "./skeletons/Home/MediaSkeleton";
 import FeaturedSkeleton from "./skeletons/Home/FeaturedSkeleton";
+import FeaturedResearch from "./components/featuredResearch/FeaturedResearch";
+import whiteBannerDots from '@/public/assets/images/bg/whiteBannerDots.jpg';
+import topBorders from '@/public/assets/images/bg/topBorders.jpeg';
 
 export default function Home() {
   return (
@@ -16,9 +19,33 @@ export default function Home() {
       <Banner />
       <About />
       {/* <AboutSkeleton /> */}
-      <Featured title={'Featured Publications'} />
+      <div className="bgImageWrapper" style={{ backgroundColor: '#f5f5f5' }}>
+        <div style={{ zIndex: '2', position: "relative", padding: "40px 20px" }}>
+          <Featured title={'Featured Publications'} />
+        </div>
+        {/* <figure>
+          <Image width={1200} height={1200} src={bannerBg} alt="bg" />
+        </figure> */}
+      </div>
+      <div className="bgImageWrapper">
+        <div className="container" style={{ zIndex: '2', position: "relative", padding: "140px 20px 80px" }}>
+          <div className="row teamSlider">
+            <FeaturedResearch />
+          </div>
+        </div>
+        <figure>
+          <Image width={1200} height={1200} src={whiteBannerDots} alt="bg" />
+        </figure>
+      </div>
       {/* <FeaturedSkeleton /> */}
-      <Media />
+      <div className="bgImageWrapper">
+        <div style={{ zIndex: '2', position: "relative", padding: "80px 20px 80px" }}>
+          <Media />
+        </div>
+        <figure>
+          <Image width={1200} height={1200} src={topBorders} alt="bg" />
+        </figure>
+      </div>
       {/* <MediaSkeleton /> */}
     </>
   );

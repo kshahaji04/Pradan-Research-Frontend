@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
@@ -7,7 +8,7 @@ import { researchData } from '@/app/utils/data'
 import { NextArrow, PrevArrow } from '@/app/cards/SlickButtons/SlickButtons'
 import FeaturedResearchSkeleton from '@/app/skeletons/featuredReaserch/FeaturedResearchSkeleton'
 
-const FeturedResearch = () => {
+const FeaturedResearch = () => {
     const [loading, setLoading] = useState(false)
     const settings = {
         dots: false,
@@ -99,4 +100,4 @@ const FeturedResearch = () => {
     )
 }
 
-export default FeturedResearch
+export default FeaturedResearch

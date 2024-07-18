@@ -26,6 +26,8 @@ const useFooter = () => {
         error = "Bad Request";
       } else if (response.code === "ERR_INVALID_URL") {
         error = "Invalid URL";
+      } else if (response.name === "AxiosError") {
+        error = "error";
       }
       if (error !== '') {
         setSetFooterError(true);

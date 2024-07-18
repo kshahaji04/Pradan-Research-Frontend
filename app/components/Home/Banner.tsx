@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image';
 import { Carousel, CarouselItem } from 'react-bootstrap';
 // import 'react-loading-skeleton/dist/skeleton.css';
+import bannerBg from '@/public/assets/images/bg/bannerBg.jpg';
 
 function Banner() {
 
@@ -13,14 +14,14 @@ function Banner() {
 
     return (
         <div className='bgImageWrapper banner-image-wrapper'>
-            <div className="container-fluid" style={{ zIndex: '2', position: "relative", padding: "0px" }}>
+            <div className="container-fluid" style={{ zIndex: '2', position: "relative", padding: "0px 0px 180px" }}>
                 <div className="row align-items-center">
                     <div className="col-12 position-relative">
                         <div className="banner-wrapper mt-0">
                             <Carousel controls={false}>
                                 {items.map((item: any) => (
                                     <CarouselItem key={item.id}>
-                                        <Image src={item.src} width={1200} height={550} alt='banners' className='w-100' style={{objectFit:'cover'}} />
+                                        <Image src={item.src} width={1200} height={550} alt='banners' className='w-100' style={{ objectFit: 'cover' }} />
                                     </CarouselItem>
                                 ))}
                             </Carousel>
@@ -28,6 +29,9 @@ function Banner() {
                     </div>
                 </div>
             </div>
+            <figure>
+                <Image width={1200} height={1200} src={bannerBg} alt="bg" />
+            </figure>
         </div>
     )
 }

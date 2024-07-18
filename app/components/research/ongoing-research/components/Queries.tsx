@@ -3,7 +3,7 @@ import React from 'react'
 
 const Queries = () => {
   return (
-    <div className="container mb-5">
+    <div className="container pb-5">
       <div className="row">
         <div className="col-12">
           <h3 className="text-center mt-5 mb-5" style={{ color: 'var(--primary)' }}>Queries</h3>

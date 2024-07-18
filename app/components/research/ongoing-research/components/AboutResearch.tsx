@@ -111,7 +111,7 @@ function AboutResearch({title}:any) {
                     </div>
                 </div>
             </div>
-            <div className="col-lg-4 d-flex align-items-center" style={{ background: '#e3e4e6' }}>
+            <div className="col-lg-4 d-flex align-items-center" style={{ background: '#f7f7f7' }}>
                 <div className="container pt-2 pb-5 ps-5">
                     <h3 className='pb-2' style={{ color: 'var(--primary)' }}>Our Team</h3>
                     {/* <h4 className='pb-2'>Research</h4> */}
