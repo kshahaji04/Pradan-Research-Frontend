@@ -85,7 +85,7 @@ function AboutResearch({ title }: any) {
     return (
         <div className='row'>
             <div className="col-lg-8">
-                <div className="container py-5 px-5">
+                <div className="container pt-3 pb-5 px-5">
                     <div className="row align-items-center">
                         <div className="col-md-7">
                             <h3 style={{ color: 'var(--primary)', marginBottom: '20px' }}>About Concluded Research</h3>
@@ -115,7 +115,7 @@ function AboutResearch({ title }: any) {
                                             style={{ width: '100%', borderRadius: '5px' }}
                                         />
                                     </div>
-                                    <div className='row py-3'>
+                                    <div className='row py-3 mx-1'>
                                         <div className="col-8 d-flex align-items-center">
                                             <div >
                                                 <h5>Concluded Report</h5>
@@ -143,7 +143,7 @@ function AboutResearch({ title }: any) {
                     </div>
                 </div>
             </div>
-            <div className="col-lg-4 d-flex align-items-center" style={{ background: '#e3e4e6' }}>
+            <div className="col-lg-4 d-flex align-items-center" style={{ background: '#f7f7f7' }}>
                 <div className="container pt-2 pb-5 ps-5">
                     <h3 className='pb-2' style={{ color: 'var(--primary)' }}>Our Team</h3>
                     {/* <h4 className='pb-2'>Research</h4> */}

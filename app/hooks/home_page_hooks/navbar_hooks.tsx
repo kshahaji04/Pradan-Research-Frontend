@@ -19,12 +19,14 @@ const useNavbar = () => {
       setLoading(false);
 
       let error = '';
-      if (response.code === "ECONNABORTED") {
+      if (response.name === "ECONNABORTED") {
         error = "Request timed out";
       } else if (response.code === "ERR_BAD_REQUEST") {
         error = "Bad Request";
       } else if (response.code === "ERR_INVALID_URL") {
         error = "Invalid URL";
+      } else if (response.name === "AxiosError") {
+        error = "error";
       }
       if(error !== ''){
         setSetNavbarError(true);

@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react'
 import styles from '@/app/styles/contactUs/contactUs.module.css'
 import { NextArrow, PrevArrow } from '@/app/cards/SlickButtons/SlickButtons';
@@ -9,10 +10,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import OrganizationCard from '@/app/cards/contactUs/OrganizationCard';
 import ContactUsSkeleton from '@/app/skeletons/constactUs/ContactUsSkeleton';
+import bannerBg from '@/public/assets/images/bg/bannerBg.jpg';
+import whiteBanner from '@/public/assets/images/bg/whiteBanner.jpg';
 
 
 const ContactUs = () => {
-  const [loading,setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const settings = {
     dots: false,
     infinite: true,
@@ -88,37 +91,54 @@ const ContactUs = () => {
   ]
   return (
     <>
-    {
-      loading ? <ContactUsSkeleton/> :
-    <>
-      <Image
-        width={1040}
-        className={styles.bannerImage}
-        height={500}
-        alt='Images'
-        src={'https://images.unsplash.com/photo-1506765515384-028b60a970df?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'}
-      />
-      <div className={`container ${styles.mainConatiner}`}>
-        <div className={styles.organizationCard}>
-        <OrganizationCard />
-        </div>
-       
-        <h2 className={styles.title}>
-          Experts
-        </h2>
-        <div className="row teamSlider teams">
-          <div style={{ width: '95%', margin: '0 auto' }}>
-            <Slider {...settings}>
-              {
-                data.map((e, idx) => (
-                  <ContactUsCard e={e} idx={idx} key={idx} />
-                ))}
-            </Slider>
-          </div>
-        </div>
-      </div>
-    </>
-    }
+      {
+        loading ? <ContactUsSkeleton /> :
+          <>
+            <div className="bgImageWrapper">
+              <div style={{ zIndex: '2', position: "relative", padding: "0px 0px 160px" }}>
+                <Image
+                  width={1040}
+                  className={styles.bannerImage}
+                  height={500}
+                  alt='Images'
+                  src={'https://images.unsplash.com/photo-1506765515384-028b60a970df?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'}
+                />
+              </div>
+              <figure>
+                <Image width={1200} height={1200} src={bannerBg} alt="bg" />
+              </figure>
+            </div>
+            <div className="bgImageWrapper">
+              <div className={`container`} style={{ zIndex: '2', position: "relative", padding: '0px 20px 80px', marginTop: '-40px' }}>
+                <div className={styles.organizationCard}>
+                  <OrganizationCard />
+                </div>
+              </div>
+              <figure>
+                {/* {width < 768 ?
+                                <Image width={1200} height={1200} src={mobWhiteBanner} alt="bg" /> : */}
+                <Image width={1200} height={1200} src={whiteBanner} alt="bg" />
+                {/* } */}
+              </figure>
+            </div>
+            <div className="bgImageWrapper py-5" style={{backgroundColor:'#f5f5f5'}}>
+              <div className="container">
+                <h2 className={styles.title}>
+                  Experts
+                </h2>
+                <div className="row teamSlider teams">
+                  <div style={{ width: '95%', margin: '0 auto' }}>
+                    <Slider {...settings}>
+                      {
+                        data.map((e, idx) => (
+                          <ContactUsCard e={e} idx={idx} key={idx} />
+                        ))}
+                    </Slider>
+                  </div>
+                </div>
+              </div></div>
+          </>
+      }
     </>
 
   )

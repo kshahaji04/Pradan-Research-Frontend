@@ -10,9 +10,9 @@ const JoinOurEventMaster = () => {
   const [activeTab, setActiveTab] = useState('upcoming_events'); // Use 'activeTab' for clarity
 
   return (
-    <div className="container-fluid mb-4">
-      <div className="row pb-4" >
-        <div className="p-4">
+    <div className="container-fluid p-0">
+      <div className="row" >
+        <div className="pt-4">
           <div className={`row align-items-center justify-content-center ${styles.mainHeader}`} >
             Events
           </div>

@@ -8,6 +8,8 @@ import styles from '@/app/styles/joinOurEvent/join_our_event.module.css'
 import Image from "next/image";
 import JoinOurEventCards from "@/app/cards/joinOurEvent/JoinOurEventCards";
 import { data } from "@/app/utils/data2";
+import whiteBanner from '@/public/assets/images/bg/whiteBanner.jpg';
+import topRoundedBorders from '@/public/assets/images/bg/topRoundedBorders.jpg'
 
 
 
@@ -53,7 +55,7 @@ const UpcomingEvents = () => {
 
   return (
     <div className='bgImageWrapper pt-4'>
-      <div className={`${styles.news_carousel_container}`} style={{ zIndex: '2', position: "relative" }}>
+      <div className={`${styles.news_carousel_container} container`} style={{ zIndex: '2', position: "relative", paddingTop:'140px' }}>
         <div className="row">
           {/* <div className="col-12">
                         <h2 className="mb-4 text-center ms-0">Upcoming Events</h2>
@@ -67,6 +69,9 @@ const UpcomingEvents = () => {
           </Slider>
         </div>
       </div>
+      <figure>
+        <Image width={1200} height={1200} src={topRoundedBorders} alt="bg" />
+      </figure>
     </div>
   );
 };
