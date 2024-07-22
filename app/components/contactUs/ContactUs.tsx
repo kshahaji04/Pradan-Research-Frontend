@@ -27,7 +27,16 @@ const ContactUs = () => {
     prevArrow: <PrevArrow />,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1400,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 1200,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -55,7 +64,8 @@ const ContactUs = () => {
   const data = [
     {
       img: 'https://archive.cdn-thecorrespondent.com/image/KYLF_5N3RYgrBKQQ2wbRJJTWixM=/380x440/0495c5cb7d0a420a88dd1871292f1afb.png',
-      title1: 'OluTimehin Adegbeye ',
+      title1: ' OluTimehin Adegbeye OluTimehin Adegbeye',
+      designation:'Scientist',
       company: '8848 Digital',
       mail: 'test@mail.com',
       text: 'As the Climate correspondent, I seek to tell better stories about the biggest problem facing our world – from the complex science to visions of a better society that works for everyone. Ask me about: slow travel, beekeeping, autism.',
@@ -63,6 +73,7 @@ const ContactUs = () => {
     {
       img: 'https://archive.cdn-thecorrespondent.com/image/vN99Hg0cW0j0xvHFO9zaTnxRjaQ=/380x440/1c2433e933c84307ae162c52b706f750.png',
       title1: 'Eric Holthaus',
+      designation:'Analyst',
       company: '8848 Digital',
       mail: 'test@mail.com',
       text: 'As the Climate correspondent, I seek to tell better stories about the biggest problem facing our world – from the complex science to visions of a better society that works for everyone. Ask me about: slow travel, beekeeping, autism'
@@ -70,6 +81,7 @@ const ContactUs = () => {
     {
       img: 'https://archive.cdn-thecorrespondent.com/image/VQXB9E7AZmUbkQDc-YZRNCyne5Q=/380x440/cb67e766a93b428a870c6a23de77204d.png',
       title1: ' Sanne Blauw',
+      designation:'Scientist',
       company: '8848 Digital',
       mail: 'test@mail.com',
       text: 'Sanne holds a PhD in Econometrics from the Erasmus School of Economics. As the Numeracy correspondent, she explores the world of numbers and how they affect our lives. She is the author of the Dutch bestseller "The Number Bias".'
@@ -77,6 +89,7 @@ const ContactUs = () => {
     {
       img: 'https://archive.cdn-thecorrespondent.com/image/KYLF_5N3RYgrBKQQ2wbRJJTWixM=/380x440/0495c5cb7d0a420a88dd1871292f1afb.png',
       title1: 'Irane Caseli',
+      designation:'Manager',
       company: '8848 Digital',
       mail: 'test@mail.com',
       text: 'I will report on how important the beginning of life is, and show why children’s perspectives should not be left out of journalism and policymaking. Ask me about: nomadic lifestyles, breastfeeding, Latin America.'
@@ -84,6 +97,7 @@ const ContactUs = () => {
     {
       img: 'https://archive.cdn-thecorrespondent.com/image/vN99Hg0cW0j0xvHFO9zaTnxRjaQ=/380x440/1c2433e933c84307ae162c52b706f750.png',
       title1: 'Thomas Oudman',
+      designation:'Analyst',
       company: '8848 Digital',
       mail: 'test@mail.com',
       text: 'I will report on how important the beginning of life is, and show why children’s perspectives should not be left out of journalism and policymaking. Ask me about: nomadic lifestyles, breastfeeding, Latin America.'

@@ -1,7 +1,6 @@
-
-import React, { useState } from 'react'
-import styles from '@/app/styles/contactUs/contactUsCard.module.css'
-import Image from 'next/image'
+import React, { useState } from 'react';
+import styles from '@/app/styles/contactUs/contactUsCard.module.css';
+import Image from 'next/image';
 import Link from 'next/link';
 import ContactUsCardSkeleton from '@/app/skeletons/cards/contactUs/ContactUsCardSkeleton';
 import EmailIcon from '@mui/icons-material/Email';
@@ -10,6 +9,7 @@ interface contactUs {
     e: {
         img: string;
         title1: string;
+        designation:String;
         company: string;
         mail: string;
         text: string;
@@ -35,7 +35,10 @@ const ContactUsCard: React.FC<contactUs> = ({ e, idx }) => {
                         </div>
                         <div className="card-body">
                             <div className={`card-title ${styles.card1}`}>
-                                {e.title1.length > 20 ? `${e.title1.slice(0, 20)}...` : e.title1}
+                                {e.title1.length > 50 ? `${e.title1.slice(0, 50)}...` : e.title1}
+                            </div>
+                            <div className={`${styles.designation}`}>
+                                {e.designation}
                             </div>
                             <div className={`card-title ${styles.company}`}>
                                 {e?.company?.length > 30 ? ` ${e?.company?.slice(0, 30)}...` : e?.company}
