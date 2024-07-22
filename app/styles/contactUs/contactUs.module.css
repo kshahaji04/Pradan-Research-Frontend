@@ -89,6 +89,7 @@ margin: 0 auto !important;
 .mainOrgCard{
   border: none !important;
    border-radius: 50px;  
+   background-color: transparent !important;
 }
 
 @media(max-width:426px) {
