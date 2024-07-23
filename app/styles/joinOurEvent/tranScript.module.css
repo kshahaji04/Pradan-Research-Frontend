@@ -1,0 +1,244 @@
+.card1{
+    padding:3px 30px
+}
+
+@media(max-width:768px){
+    .cardInner{
+        padding-right: 0 !important;
+    }
+    .ActioRow2{
+        display: none !important;
+    }
+}
+
+@media(max-width:1200px){
+   .cardInner{
+    padding-right: 20%;
+   }
+}
+
+
+.postHeader{
+    background-color: var(--primary);
+    text-decoration: none;
+    transition: color .15s ease;
+    width: 100%;
+}
+.postHeader:hover{
+    opacity: 0.8;
+    transition: all 0.2s ease;
+}
+.postLabel{
+    font-family: Open Sans, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    padding: 4px 24px;
+    margin-bottom: 0;
+    position: relative;
+    top: -15px;
+    background-color: #231f20;
+    color: #fff;
+    display: inline-block;
+}
+
+.postActions{
+    height: 40px;
+    width: 100%;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    background-color: #fff;
+    opacity: 0.9;
+}
+
+.listItem3{
+    height: 100%;
+    width: 2px !important;
+    background-color: black;
+    opacity: 0.5;
+}
+
+.postContent{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0px ;
+    z-index: 1;
+    width: 100%;
+}
+.heading{
+
+max-width: 728px;
+
+}
+
+.postLabel{
+    font-family: Open Sans, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    padding: 4px 24px;
+    margin-bottom: 0;
+    position: relative;
+    top: -15px;
+    background-color: #231f20;
+    color: #fff;
+    display: inline-block;
+}
+.postTitle{
+    font-size: 34px;
+    background-color: var(--primary);
+    width: 100%;
+    padding: 8px 22px 18px;
+    margin: -10px -40px 0 0;
+    transition: all .15s;
+    color: var(--white);
+    font-family: 'Slabo 13px', serif;
+    font-weight: 400;
+}
+.listItem1{
+        display: flex;
+        flex-direction:column;
+        padding: 10px 15px;
+      }
+ 
+.listItem1:hover{
+    cursor: pointer;
+}
+.listItem1:hover{
+    color: var(--primary);
+}
+.listItem2{
+    display: flex;
+    flex-direction:column;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px; 
+}
+.ActionRow{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+.ActioRow2{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 40%;
+    height: 100%;
+}
+.p{
+    font-size: 10px;
+    margin-top: 0.5rem;
+    font-weight: 800;
+    font-family: 'Open Sans', sans-serif;
+    margin: 5px 0px 0px;
+}
+.tans{
+    padding:0px 10px;
+    color: var(--primary);
+}
+.iconText{
+    font-size: 12px;
+    font-style: italic;
+}
+
+.postExpert{
+    padding:  20px 0px;
+    font-weight: 400;
+    line-height: 2;
+}
+.para{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+}
+/* .para{
+    margin: 0;
+    padding: 0;
+   } */
+.postTitle{
+    font-size: 2rem;
+    background-color: var(--primary);
+    width: 100%;
+    padding: 8px 22px 18px;
+    margin: -10px -40px 0 0;
+    transition: all .15s;
+}
+.strongText{
+    font-size: 14px;
+    letter-spacing: .02em;
+    margin-bottom: 5px;
+    font-family:'Open Sans', sans-serif;
+}
+.strongTex{
+    font-size: 14px;
+    letter-spacing: .02em;
+    margin-bottom: 5px;
+    font-family:'Open Sans', sans-serif;
+}
+
+.strongText:hover{
+    color: var(--primary);
+    cursor: pointer;
+}
+.list2Item{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0px 5px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+  }
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    color: var(--primary);
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+   font-size: 0.8rem;
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+  
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--white);
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }

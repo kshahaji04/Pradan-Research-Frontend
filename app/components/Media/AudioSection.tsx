@@ -7,18 +7,20 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import AudioSectionsCards from "@/app/cards/joinOurEvent/AudioSectionsCards";
 import ReportMasterSkeleton from "@/app/skeletons/Media/ReportMasterSkeleton";
+import useAudioVideoList from "@/app/hooks/media_page_hooks/audio_video_list_hook";
 
 const AudioSection = ({ title }: any) => {
-    const [loading,setLoading] = useState(false)
+    const { audioList, loadingAudioVideoList } = useAudioVideoList();
+
     useEffect(() => {
         AOS.init();
     }, []);
 
     const settings = {
         dots: false,
-        infinite: true,
+        infinite: audioList?.length > 1,
         slidesToShow: 4,
-        slidesToScroll: 1,
+        slidesToScroll: audioList?.length > 3 ? 1 : 0,
         pauseOnHover: true,
         autoplay: true,
         responsive: [
@@ -26,8 +28,8 @@ const AudioSection = ({ title }: any) => {
                 breakpoint: 1200,
                 settings: {
                     slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
+                    slidesToScroll: audioList?.length > 2 ? 1 : 0,
+                    infinite: audioList?.length > 1,
                     dots: true,
                 },
             },
@@ -35,7 +37,7 @@ const AudioSection = ({ title }: any) => {
                 breakpoint: 995,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 2,
+                    slidesToScroll: audioList?.length > 1 ? 1 : 0,
                     initialSlide: 2,
                 },
             },
@@ -48,13 +50,11 @@ const AudioSection = ({ title }: any) => {
             },
         ],
     };
-
     return (
         <>
             <div className={`container-fluid`} style={{ overflow: 'hidden' }}>
                 <div className="row">
-                    {
-                     loading ? <ReportMasterSkeleton/> :
+
                     <div className="col-12 mb-5">
                         <div className="row">
                             <div className="col-12">
@@ -62,8 +62,8 @@ const AudioSection = ({ title }: any) => {
                             </div>
                         </div>
                     </div>
-                      }
-                    <Slider {...settings}>{data?.map((doc) => (<AudioSectionsCards data={doc} id={doc.id} key={doc.id} />))}</Slider>
+                    <Slider {...settings}>{Array.isArray(audioList) && audioList?.length > 0 && audioList?.map((info: any, index: any) => (
+                        <AudioSectionsCards audioData={info} loadingAudioVideoList={loadingAudioVideoList} id={info?.id} key={index} />))}</Slider>
                 </div>
             </div>
         </>

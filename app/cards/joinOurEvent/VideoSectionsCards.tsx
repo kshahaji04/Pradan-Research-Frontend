@@ -6,41 +6,57 @@ import styles from '@/app/styles/joinOurEvent/video.module.css'
 import PlayCircleOutlineOutlinedIcon from '@mui/icons-material/PlayCircleOutlineOutlined';
 import moment from 'moment';
 import VideoSectionsCardsSkeleton from '@/app/skeletons/cards/joinOurEvent/VideoSectionsCardsSkeleton';
+import { imageLoader } from '@/app/utils/image_loader_utils copy';
+import NoImage from '@/public/assets/images/no_image.jpg';
+import { showToast } from '@/app/components/ToastNotification';
+import YoutubeModal from '@/app/components/Media/YoutubeModal';
 
-const VideoSectionsCards = ({ data }: any) => {
-    const [loading,setLoading] = useState(false)
+const VideoSectionsCards = ({ audioVideoData, loadingAudioVideoList }: any) => {
+    // console.log(audioVideoData, "youtube data");
+    const [showModal, setShowModal] = useState<boolean>(false);
+
+    const handleShowModal = () => {
+        setShowModal(true);
+    }
+
     return (
-        <div className='d-flex align-items-center justify-content-center h-100'>
-            {
-          loading ? <VideoSectionsCardsSkeleton /> :
-            <div className={`card h-100 rounded-0 ${styles.videoCard}`} style={{ width: "90%", maxWidth: "380px" }}>
-                <Link href={'/join-our-event'} className="card-img-top position-relative">
-                    <Image src={data.src} className="card-img-top rounded-0" height={200} width={100} alt={data.text} />
-                    <div className={styles.videoPlayBtn}>
-                        <PlayCircleOutlineOutlinedIcon />
-                    </div>
-                </Link>
-                <div className="card-body px-0 pb-0">
-                    <div className={`pb-3 ${styles.card_content}`}>
-                        <div className={`${styles.card_body}`}>
-                            <p className={`card-text mb-0 pb-2`}>{data?.author}</p>
-                            <p className="card-title text-secondary">{data?.title}</p>
-                            <p>{data?.text?.length > 60 ? `${data.text.slice(0, 60)}...` : data?.text}</p>
+        <>
+            {loadingAudioVideoList ? <VideoSectionsCardsSkeleton /> : <>
+                <div className='d-flex align-items-center justify-content-center h-100'>
+                    <div className={`card h-100 rounded-0 ${styles.videoCard}`} style={{ width: "90%", maxWidth: "380px" }}>
+                        <div className="card-img-top position-relative">
+                            {audioVideoData?.artwork !== null && audioVideoData?.artwork !== '' ? <Image src={audioVideoData?.artwork} className="card-img-top rounded-0"
+                                height={200} width={100} alt='' loader={imageLoader} /> : <Image src={NoImage.src} className="card-img-top rounded-0"
+                                    height={200} width={200} alt='' object-fit="cover" />}
+                            {/* <Image src={data.src} className="card-img-top rounded-0" height={200} width={100} alt={data.text} /> */}
+                            <div className={styles.videoPlayBtn} onClick={() => (audioVideoData?.video !== null && audioVideoData?.video !== '') ? handleShowModal() : showToast('No Video Found', 'warning')}>
+                                <PlayCircleOutlineOutlinedIcon />
+                            </div>
                         </div>
-                        <div className="d-flex align-items-start gap-3 pb-2 pe-0" style={{ marginTop: '-10px', fontSize: '14px' }}>
-
-                            <p className={`card-text text-secondary mb-0 ${styles.vertical_bar}`}>{moment(data?.date, "DD.MM.YY").format('D MMMM YYYY')}</p>
-                            {/* <Link href={`/media/publication/${data?.slug}`} className="text-primary align-items-start justify-content-start">
-                                        Subscribe
-                                    </Link> */}
-                            <p className={`card-text text-secondary mb-0`}>{data?.location}</p>
-
+                        <div className="card-body pt-2 ps-0 mt-2 position-relative">
+                            {audioVideoData?.Authors?.length > 0 && audioVideoData?.Authors?.map((info: any, i: number) => <p className={`card-text m-0 mb-2 ${styles.videoText}`} key={i}>{info?.author_name}</p>)}
+                            {/* <p className={`card-text m-0 mb-2 ${styles.videoText}`}>
+                        {data.author?.length > 0 && data.author[0]}
+                    </p> */}
+                            <p className={`card-title m-0 ${styles.videoTitle}`}>
+                                <span dangerouslySetInnerHTML={{ __html: audioVideoData?.podcast_description?.length > 40 ? `${audioVideoData?.podcast_description.slice(0, 40)}...` : audioVideoData?.podcast_description }}></span>
+                                {/* {data.text?.length > 40 ? `${data.text.slice(0, 40)}...` : data.text} */}
+                            </p>
+                        </div>
+                        <div className={`card-footer p-0 ${styles.videoFooter}`}>
+                            <div className="d-flex align-items-end justify-content-between">
+                                <div className="col-12 pb-3">
+                                    <div>
+                                        <p>{moment(audioVideoData?.date_of_publishing).format('MMM.YYYY')}</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-              }
-        </div>
+                <YoutubeModal show={showModal} toHide={() => setShowModal(false)} data={audioVideoData} />
+            </>}
+        </>
     )
 }
 
