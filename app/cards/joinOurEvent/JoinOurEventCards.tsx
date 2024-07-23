@@ -12,7 +12,7 @@ const JoinOurEventCards = ({ data }: any) => {
         <div key={data.id} >
             {
                 loading ? <JoinOurEventCardsSkeleton /> :
-                    <div className="col-lg-12 px-2 mb-5 pt-0 pb-3 mx-0 d-flex align-items-center justify-content-center">
+                    <div className="col-lg-12 px-2 mb-5 pt-5 pb-3 mx-0 d-flex align-items-center justify-content-center">
                         <div className={`card py-0 text-left cursor`} style={{ width: '97%', maxWidth: '380px' }}>
                             <Link href='/join-our-event' className={`${styles.news_slide} pt-0 pb-0`}>
                                 <Image

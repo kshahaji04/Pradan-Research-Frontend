@@ -10,6 +10,7 @@ import JoinOurEventCards from "@/app/cards/joinOurEvent/JoinOurEventCards";
 import { data } from "@/app/utils/data2";
 import whiteBanner from '@/public/assets/images/bg/whiteBanner.jpg';
 import topRoundedBorders from '@/public/assets/images/bg/topRoundedBorders.jpg'
+import { NextArrow, PrevArrow } from "@/app/cards/SlickButtons";
 
 
 
@@ -59,7 +60,9 @@ const UpcomingEvents = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     pauseOnHover: true,
-    autoplay: true
+    autoplay: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
 
   const dataForFeaturedEvent = [
@@ -85,23 +88,23 @@ const UpcomingEvents = () => {
 
   return (
     <div className='bgImageWrapper pt-4'>
-      <div className={`${styles.news_carousel_container} container`} style={{ zIndex: '2', position: "relative", paddingTop: '140px' }}>
+      <div className={`${styles.news_carousel_container} container`} style={{ zIndex: '2', position: "relative", paddingTop: '100px' }}>
         <div className="row">
           <div className="col-12">
             <h2 className="mb-4 text-center ms-0">Upcoming Events</h2>
           </div>
           <div className="col-12">
-          <h2 className="mb-4 ">Featured Events</h2>
+          {/* <h2 className="mb-4 ">Featured Events</h2> */}
             <div className="row">
               <div className="col-lg-1"></div>
               <div className="col-lg-10">
-                <div className="my-4">
+                <div className="my-4 teamSlider">
                 <Slider {...settings2}>
                   {
                     dataForFeaturedEvent.map((item,index)=>{
                       return(
                         <div className="container" key={index}>
-                        <div className="row bg-success justify-content-center ">
+                        <div className={`row pointer bg-success justify-content-center ${styles.mainRow}`}>
                         <div className={`col-xl-4 col-sm-6 ${styles.imageContainer}`}>
                            <Image className={styles.mainImage} src={`${item?.images}`} height={410} width={200} alt="Image" />
                          </div>
@@ -140,7 +143,7 @@ const UpcomingEvents = () => {
               <div className="col-lg-1"></div>
             </div>
           </div>
-          <h2 className="my-4">Regular Events</h2>
+         
           <Slider {...settings}>
             {data.map((item) => (
               <JoinOurEventCards data={item} id={item.id} key={item.id} />
