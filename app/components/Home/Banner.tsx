@@ -16,7 +16,7 @@ function Banner() {
 
     return (
         <>{loadingBanner ? <div className='mb-5'><Skeleton width={'100%'} height={520} /></div> : <div className='bgImageWrapper banner-image-wrapper'>
-            {bannerError ?<div className="mb-5 pb-5 position-relative" style={{zIndex:9}}><ErrorComponent /></div> : <div className="container-fluid" style={{ zIndex: '2', position: "relative", padding: "0px 0px 180px" }}>
+            {bannerError ?<div className="mb-5 pb-5 position-relative" style={{zIndex:9}}><ErrorComponent title={bannerError} /></div> : <div className="container-fluid" style={{ zIndex: '2', position: "relative", padding: "0px 0px 180px" }}>
                 <div className="row align-items-center">
                     <div className="col-12 position-relative">
                         <div className="banner-wrapper mt-0">

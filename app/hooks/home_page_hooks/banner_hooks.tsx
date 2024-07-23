@@ -11,7 +11,6 @@ const useBanner = () => {
   // const router = useRouter();
   const bannerFromStore = useSelector(get_banner_from_store);
   const [bannerData, setBannerData] = useState<any>([]);
-  const [bannerError, setBannerError] = useState<boolean>(false);
 
   useEffect(() => {
     dispatch(fetchBanner() as any);
@@ -21,12 +20,12 @@ const useBanner = () => {
     if (bannerFromStore?.data && bannerFromStore?.data?.length > 0) {
       setBannerData(bannerFromStore?.data[0]);
     }
-    if (bannerFromStore?.error !== "") {
-      setBannerError(true);
-    }
+    // if (bannerFromStore?.error !== "") {
+    //   setBannerError(true);
+    // }
   }, [bannerFromStore]);
 
-  return { bannerData, loadingBanner: bannerFromStore?.loading, bannerError};
+  return { bannerData, loadingBanner: bannerFromStore?.loading, bannerError: bannerFromStore?.error};
 };
 
 export default useBanner;

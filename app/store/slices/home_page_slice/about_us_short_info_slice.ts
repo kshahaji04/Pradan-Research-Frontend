@@ -48,7 +48,7 @@ const aboutUsShortInfoSliceScreen = createSlice({
                 state.error = "";
             })
             .addCase(fetchAboutUsShortInfo.rejected, (state, action) => {
-                state.loading = true;
+                state.loading = false;
                 state.data = [];
                 state.error = "An error occurred.";
             });
