@@ -16,6 +16,7 @@ import authGoogleSliceScreen from "@/app/store/slices/auth-slice/google_login_sl
 import AudioVideoListSliceScreen from "@/app/store/slices/media_slice/audio_video_list_slice"
 import AudioDetailsSliceScreen from "@/app/store/slices/media_slice/audio_details_slice"
 import PublicationPrintMediaListSliceScreen from "@/app/store/slices/home_page_slice/publication_print_media_list_slice";
+import playerSlice from "@/app/store/slices/media_slice/playerSlice";
 
 const appReducer = combineReducers({
   authSliceScreen: authSliceScreen,
@@ -35,6 +36,7 @@ const appReducer = combineReducers({
   audioVideoList:AudioVideoListSliceScreen,
   audioDetails:AudioDetailsSliceScreen,
   publicationPrintMediaList: PublicationPrintMediaListSliceScreen,
+  audioPlayer: playerSlice,
 
 });
 

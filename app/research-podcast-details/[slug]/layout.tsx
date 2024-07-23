@@ -1,3 +1,4 @@
+'use client'
 import { CONSTANTS } from "@/app/services/config/app-config";
 import { API_CONFIG } from "@/app/services/config/api-config";
 import { play, pause, setCurrentTime } from '@/app/store/slices/media_slice/playerSlice';

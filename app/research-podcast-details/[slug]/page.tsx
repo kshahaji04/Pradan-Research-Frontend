@@ -2,7 +2,7 @@ import React from 'react';
 import AudioDetails from '@/app/components/Media/AudioDetails/AudioDetails';
 import Layout from './layout';
 
-const index = () => {
+const page = () => {
   return (
     <Layout>
         <AudioDetails />
@@ -10,4 +10,4 @@ const index = () => {
   )
 }
 
-export default index
+export default page

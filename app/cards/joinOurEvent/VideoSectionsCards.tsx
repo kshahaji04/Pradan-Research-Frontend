@@ -33,7 +33,7 @@ const VideoSectionsCards = ({ audioVideoData, loadingAudioVideoList }: any) => {
                                 <PlayCircleOutlineOutlinedIcon />
                             </div>
                         </div>
-                        <div className="card-body pt-2 ps-0 mt-2 position-relative">
+                        <div className="card-body pt-2 ps-0 mt-2 position-relative" style={{height:'100px'}}>
                             {audioVideoData?.Authors?.length > 0 && audioVideoData?.Authors?.map((info: any, i: number) => <p className={`card-text m-0 mb-2 ${styles.videoText}`} key={i}>{info?.author_name}</p>)}
                             {/* <p className={`card-text m-0 mb-2 ${styles.videoText}`}>
                         {data.author?.length > 0 && data.author[0]}

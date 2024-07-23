@@ -1,15 +1,16 @@
+'use client'
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 import ReactPlayer from 'react-player';
 import AudioDetailsTop from './AudioDetailsTop';
-import styles from "@/styles/media/audioDetails.module.css";
+import styles from "@/app/styles/joinOurEvent/audioDetails.module.css";
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import PauseOutlinedIcon from '@mui/icons-material/PauseOutlined';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import AppleIcon from '@mui/icons-material/Apple';
-import NoImage from '@/public/assets/images/no-image.jpg'
+import NoImage from '@/public/assets/images/no_image.jpg'
 import MoreCardGroup from './MoreCardGroup';
 import useAudioDetails from '@/app/hooks/media_page_hooks/audio_details_hook';
 import { CONSTANTS } from '@/app/services/config/app-config';

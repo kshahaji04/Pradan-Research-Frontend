@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import styles from "@/styles/media/audioDetailsTop.module.css"
+import styles from "@/app/styles/joinOurEvent/audioDetailsTop.module.css"
 import { imageLoader } from '@/app/utils/image_loader_utils';
 
 const AudioDetailsTop: React.FC<{ details: any }> = ({ details }) => {

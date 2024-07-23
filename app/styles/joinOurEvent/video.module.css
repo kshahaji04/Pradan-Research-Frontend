@@ -84,29 +84,6 @@
   margin-bottom: 0;
 }
 
-.card_content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100% !important;
-  padding: 0 5px;
-}
-
-.vertical_bar {
-  position: relative;
-
-}
-
-.vertical_bar::after {
-  content: '';
-  position: absolute;
-  right: -10px;
-  top: 0px;
-  height: 20px;
-  width: 1px;
-  background-color: #DDDDDD;
-}
-
 /* Icons */
 
 .iconContainer {
