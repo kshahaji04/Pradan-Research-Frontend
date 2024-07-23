@@ -17,7 +17,7 @@ const JoinOurEventMaster = () => {
             Events
           </div>
           <div className='position-relative'>
-            <div id="exTab3" className="pt-2">
+            {/* <div id="exTab3" className="pt-2">
               <ul className="nav nav-tabs mx-auto my-4" style={{ justifyContent: 'center' }}>
                 <li className="nav-item">
                   <button className={`nav-link ${activeTab === 'upcoming_events' ? 'active' : ''}`} onClick={() => setActiveTab('upcoming_events')}>Upcoming Events</button>
@@ -28,7 +28,9 @@ const JoinOurEventMaster = () => {
               </ul>
 
               {activeTab === 'upcoming_events' ? <UpcomingEvents /> : <PastEvents />}
-            </div>
+            </div> */}
+            <UpcomingEvents/>
+            <PastEvents/>
           </div>
         </div>
       </div>

@@ -104,7 +104,7 @@ function ResearchSkeleton() {
                 {/*research card section with pagination*/}
                 <div className="col-12">
                   <div className="row">
-                    {arr.map((item: any, index: number) => (
+                    {Array.from({length:5}).map((item: any, index: number) => (
                       <div className="col-md-6 col-lg-4 g-4 p-4" key={index}>
                         <div style={{ textDecoration: "none" }}>
                           <div className={`card  ${styles.car}`}>
