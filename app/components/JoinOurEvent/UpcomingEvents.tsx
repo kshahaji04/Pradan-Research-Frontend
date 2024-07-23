@@ -100,7 +100,7 @@ const UpcomingEvents = () => {
                   {
                     dataForFeaturedEvent.map((item,index)=>{
                       return(
-                        <div className="container">
+                        <div className="container" key={index}>
                         <div className="row bg-success justify-content-center ">
                         <div className={`col-xl-4 col-sm-6 ${styles.imageContainer}`}>
                            <Image className={styles.mainImage} src={`${item?.images}`} height={410} width={200} alt="Image" />
