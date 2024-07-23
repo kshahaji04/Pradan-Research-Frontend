@@ -81,14 +81,15 @@ function WebNavbar({ navbarData, logoData }: any) {
             <div className='d-flex align-items-center'>
               <div>
                 {
-                  logoData && logoData.length > 0 ? logoData.map((logo: any, index: number) => {
-                    return (
-                      <Link className={`navbar-brand ${styles.vertical_bar} ${styles.header_logo_link}`} href="/" key={index}>
-                        <Image src={logo?.image} alt={logo?.logo_name} width={160} height={60}
+                  logoData && logoData.length > 0 ? <Link className={`navbar-brand ${styles.vertical_bar} ${styles.header_logo_link}`} href="/">
+                    {logoData.map((logo: any, index: number) => {
+                      return (
+
+                        <Image key={index} src={logo?.image} alt={logo?.logo_name} width={160} height={60}
                           className={styles.logo} loader={imageLoader} />
-                      </Link>
-                    )
-                  })
+
+                      )
+                    })}</Link>
                     : ""
                 }
                 {/* <Link className={`navbar-brand ${styles.vertical_bar} ${styles.header_logo_link}`} href="/">
