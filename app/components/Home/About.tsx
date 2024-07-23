@@ -1,14 +1,23 @@
+"use client"
 import React from 'react'
 import styles from '@/app/styles/Home/about.module.css'
-import SalImg from '@/public/assets/images/SAL.png'
+// import SalImg from '@/public/assets/images/SAL.png'
+import SalImg from '@/public/assets/images/salImage.avif'
 import Image from 'next/image'
 import Link from 'next/link'
 import whiteBanner from '@/public/assets/images/bg/whiteBanner.jpg';
+import useAboutUsShortInfo from '@/app/hooks/home_page_hooks/about_us_short_info_hooks'
+import ErrorComponent from '../ErrorComponent'
+import Skeleton from 'react-loading-skeleton'
+import { imageLoader } from '@/app/utils/image_loader_utils'
+import AboutSkeleton from '@/app/skeletons/Home/AboutSkeleton'
 
 function About() {
+  const { shortInfoData, loadingShortInfo, shortInfoError } = useAboutUsShortInfo()
+  console.log(shortInfoData, loadingShortInfo, shortInfoError)
   return (
-    <div className="bgImageWrapper">
-      <div className={`${styles.about_section_wrapper} py-5`}>
+    <>{loadingShortInfo ? <AboutSkeleton /> : <div className="bgImageWrapper">
+      {shortInfoError ? <div className="mb-5 pb-5 position-relative" style={{ zIndex: 9 }}><ErrorComponent /></div> : <div className={`${styles.about_section_wrapper} py-5`}>
         {/* <SectionDivider /> */}
         <div className='container' style={{ zIndex: '2', position: "relative", padding: '0px 20px 120px', marginTop: '-40px' }}>
           <div className="row">
@@ -22,13 +31,9 @@ function About() {
                 </div> */}
                   <div className="col-11">
                     <div className={`${styles.content} mb-3`}>
-                      <h3 style={{ color: 'var(--primary)' }}>Welcome To Pradan Research</h3>
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                        and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                      <h3 style={{ color: 'var(--primary)' }}>{shortInfoData?.title}</h3>
+                      <p>
+                        <span dangerouslySetInnerHTML={{ __html: shortInfoData?.short_description }}></span>
                       </p>
                       <Link href='/research' className='btn btn-outline-danger'> Learn More</Link>
                     </div>
@@ -40,24 +45,27 @@ function About() {
             <div className='col-lg-5'>
               <div className={`${styles.image_wrapper}`}>
                 <div className={`${styles.cover_image}`}>
-                  <Image src={"https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?q=80&w=1748&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
+                  <Image
+                    src={shortInfoData?.image}
                     alt='Sal Image'
-                    width={300}
-                    height={300}
-                    className='rounded-4' />
+                    width={1200}
+                    height={1200}
+                    className='rounded-4'
+                    loader={imageLoader}
+                  />
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div>}
       <figure>
         {/* {width < 768 ?
                                 <Image width={1200} height={1200} src={mobWhiteBanner} alt="bg" /> : */}
         <Image width={1200} height={1200} src={whiteBanner} alt="bg" />
         {/* } */}
       </figure>
-    </div>
+    </div>}</>
   )
 }
 
