@@ -8,9 +8,10 @@ import "slick-carousel/slick/slick-theme.css";
 import AudioSectionsCards from "@/app/cards/joinOurEvent/AudioSectionsCards";
 import ReportMasterSkeleton from "@/app/skeletons/Media/ReportMasterSkeleton";
 import useAudioVideoList from "@/app/hooks/media_page_hooks/audio_video_list_hook";
+import ErrorComponent from '@/app/components/ErrorComponent'
 
 const AudioSection = ({ title }: any) => {
-    const { audioList, loadingAudioVideoList } = useAudioVideoList();
+    const { audioList, loadingAudioVideoList, audioVideoError } = useAudioVideoList();
 
     useEffect(() => {
         AOS.init();
@@ -52,7 +53,7 @@ const AudioSection = ({ title }: any) => {
     };
     return (
         <>
-            <div className={`container-fluid`} style={{ overflow: 'hidden' }}>
+            {audioVideoError ? <ErrorComponent /> : <div className={`container-fluid`} style={{ overflow: 'hidden' }}>
                 <div className="row">
 
                     <div className="col-12 mb-5">
@@ -65,7 +66,8 @@ const AudioSection = ({ title }: any) => {
                     <Slider {...settings}>{Array.isArray(audioList) && audioList?.length > 0 && audioList?.map((info: any, index: any) => (
                         <AudioSectionsCards audioData={info} loadingAudioVideoList={loadingAudioVideoList} id={info?.id} key={index} />))}</Slider>
                 </div>
-            </div>
+            </div>}
+
         </>
     )
 }

@@ -16,9 +16,9 @@ const useAudioVideoList = () => {
   useEffect(() => {
     // console.log(AudioVideoListFromStore);
     if (AudioVideoListFromStore?.data && AudioVideoListFromStore?.data?.data?.length > 0) {
-      const audioList = AudioVideoListFromStore?.data?.data?.filter((info:any)=> info.audio !== null && info.audio !== "")
+      const audioList = AudioVideoListFromStore?.data?.data?.filter((info: any) => info.audio !== null && info.audio !== "")
       setAudioList(audioList);
-      const videoList = AudioVideoListFromStore?.data?.data?.filter((info:any)=> info.video !== null && info.video !== "")
+      const videoList = AudioVideoListFromStore?.data?.data?.filter((info: any) => info.video !== null && info.video !== "")
       setVideoList(videoList);
 
       // console.log(audioList, videoList, AudioVideoListFromStore?.data?.data, "data")
@@ -26,7 +26,7 @@ const useAudioVideoList = () => {
   }, [AudioVideoListFromStore]);
 
 
-  return { audioList, videoList, loadingAudioVideoList: AudioVideoListFromStore?.loading };
+  return { audioList, videoList, loadingAudioVideoList: AudioVideoListFromStore?.loading, audioVideoError: AudioVideoListFromStore?.error !== '' };
 };
 
 export default useAudioVideoList;

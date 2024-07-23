@@ -9,12 +9,13 @@ import VideoSectionsCards from "@/app/cards/joinOurEvent/VideoSectionsCards";
 import VideoSectionSkeleton from "@/app/skeletons/Media/VideoSectionSkeleton";
 import ReportMasterSkeleton from "@/app/skeletons/Media/ReportMasterSkeleton";
 import useAudioVideoList from "@/app/hooks/media_page_hooks/audio_video_list_hook";
+import ErrorComponent from '@/app/components/ErrorComponent'
 
 
 const VideoSection = ({ title }: any) => {
     const [loading, setLoading] = useState(false)
 
-    const { videoList, loadingAudioVideoList } = useAudioVideoList();
+    const { videoList, loadingAudioVideoList, audioVideoError } = useAudioVideoList();
 
     useEffect(() => {
         AOS.init();
@@ -57,24 +58,21 @@ const VideoSection = ({ title }: any) => {
 
     return (
         <>
-            <div className={`container-fluid`} style={{ overflow: 'hidden' }}>
+            {audioVideoError ? <ErrorComponent /> : <div className={`container-fluid`} style={{ overflow: 'hidden' }}>
                 <div className="row">
-                    {
-                        loading ? <ReportMasterSkeleton /> :
-                            <div className="col-12 mb-5">
-                                <div className="row">
-                                    <div className="col-12">
-                                        <h2 className="mb-2 text-center ms-0">{title}&apos;s</h2>
-                                    </div>
-                                </div>
+                    <div className="col-12 mb-5">
+                        <div className="row">
+                            <div className="col-12">
+                                <h2 className="mb-2 text-center ms-0">{title}&apos;s</h2>
                             </div>
-                    }
-
+                        </div>
+                    </div>
                     <Slider {...settings}>{Array.isArray(videoList) && videoList?.length > 0 && videoList?.map((info: any, index: any) => (
                         <VideoSectionsCards audioVideoData={info} loadingAudioVideoList={loadingAudioVideoList} id={info?.id} key={index} />))}
                     </Slider>
                 </div>
-            </div>
+            </div>}
+
         </>
     )
 }

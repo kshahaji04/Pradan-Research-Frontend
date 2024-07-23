@@ -12,9 +12,10 @@ import Skeleton from "react-loading-skeleton";
 import gallery_hooks from "@/app/hooks/media_page_hooks/gallery_hooks";
 import { imageLoader } from "@/app/utils/image_loader_utils";
 import NoImage from '@/public/assets/images/no_image.jpg';
+import ErrorComponent from '@/app/components/ErrorComponent'
 
 function PublicationsGallery({ title }: any) {
-  const { gallery, isLoading } = gallery_hooks()
+  const { gallery, isLoading, galleryError } = gallery_hooks()
   const settings = {
     dots: false,
     infinite: true,
@@ -50,59 +51,62 @@ function PublicationsGallery({ title }: any) {
     ],
   };
 
-
+  // isLoading ? <PublicationsGallerySkeleton />
 
   return (
     <>
       {
-        isLoading ? <PublicationsGallerySkeleton /> :
+        galleryError ? <ErrorComponent /> :
           <div className="container">
-            <div className="row">
-              <div className="col-12">
-                <h2 className="text-center ms-0">{title}</h2>
-              </div>
-            </div>
-            <div className="row my-5">
-              <div className="col-12">
-                <div className="text-end me-3">
-                  <h5><Link href='/'>See More <ChevronRightIcon /></Link> </h5>
+            {isLoading ? <PublicationsGallerySkeleton /> : <>
+              <div className="row">
+                <div className="col-12">
+                  <h2 className="text-center ms-0">{title}</h2>
                 </div>
               </div>
-              <Slider {...settings}>
-                {gallery &&
-                  gallery?.length > 0 &&
-                  gallery?.map((info: any) => (
-                    <Link
-                      href={`${info?.url}`}
-                      key={info?.sequence}
-                      // style={{ width: "95%", height: "100%", maxHeight: "300px" }}
-                      className={`mx-auto my-0`}
-                    >
-                      {
-                        info?.image !== null && info?.image !== '' ?
-                          <Image
-                            src={info?.image}
-                            alt={"gallery-image"}
-                            width={1200}
-                            height={300}
-                            style={{ width: "92%" }}
-                            className={`mx-auto rounded-2 my-0`}
-                            loader={imageLoader}
-                          /> :
-                          <Image
-                            src={NoImage.src}
-                            alt={"gallery-image"}
-                            width={1200}
-                            height={300}
-                            style={{ width: "92%" }}
-                            className={`mx-auto rounded-2 my-0`}
-                          />
-                      }
+              <div className="row my-5">
+                <div className="col-12">
+                  <div className="text-end me-3">
+                    <h5><Link href='/'>See More <ChevronRightIcon /></Link> </h5>
+                  </div>
+                </div>
+                <Slider {...settings}>
+                  {gallery &&
+                    gallery?.length > 0 &&
+                    gallery?.map((info: any) => (
+                      <Link
+                        href={`${info?.url}`}
+                        key={info?.sequence}
+                        // style={{ width: "95%", height: "100%", maxHeight: "300px" }}
+                        className={`mx-auto my-0`}
+                      >
+                        {
+                          info?.image !== null && info?.image !== '' ?
+                            <Image
+                              src={info?.image}
+                              alt={"gallery-image"}
+                              width={1200}
+                              height={300}
+                              style={{ width: "92%" }}
+                              className={`mx-auto rounded-2 my-0`}
+                              loader={imageLoader}
+                            /> :
+                            <Image
+                              src={NoImage.src}
+                              alt={"gallery-image"}
+                              width={1200}
+                              height={300}
+                              style={{ width: "92%" }}
+                              className={`mx-auto rounded-2 my-0`}
+                            />
+                        }
 
-                    </Link>
-                  ))}
-              </Slider>
-            </div>
+                      </Link>
+                    ))}
+                </Slider>
+              </div>
+            </>}
+
           </div>
       }
     </>

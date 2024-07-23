@@ -6,13 +6,13 @@ import styles from '@/app/styles/joinOurEvent/video.module.css'
 import PlayCircleOutlineOutlinedIcon from '@mui/icons-material/PlayCircleOutlineOutlined';
 import moment from 'moment';
 import VideoSectionsCardsSkeleton from '@/app/skeletons/cards/joinOurEvent/VideoSectionsCardsSkeleton';
-import { imageLoader } from '@/app/utils/image_loader_utils copy';
+import { imageLoader } from '@/app/utils/image_loader_utils';
 import NoImage from '@/public/assets/images/no_image.jpg';
 import { showToast } from '@/app/components/ToastNotification';
 import YoutubeModal from '@/app/components/Media/YoutubeModal';
 
 const VideoSectionsCards = ({ audioVideoData, loadingAudioVideoList }: any) => {
-    // console.log(audioVideoData, "youtube data");
+    
     const [showModal, setShowModal] = useState<boolean>(false);
 
     const handleShowModal = () => {

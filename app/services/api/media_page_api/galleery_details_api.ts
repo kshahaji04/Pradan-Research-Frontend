@@ -21,15 +21,16 @@ const GetGalleryApi = async () => {
             response = res?.data?.message?.data;
         })
         .catch((err: any) => {
-            if (err.code === "ECONNABORTED") {
-                response = "Request timed out";
-            } else if (err.code === "ERR_BAD_REQUEST") {
-                response = "Bad Request";
-            } else if (err.code === "ERR_INVALID_URL") {
-                response = "Invalid URL";
-            } else {
-                response = err;
-            }
+            // if (err.code === "ECONNABORTED") {
+            //     response = "Request timed out";
+            // } else if (err.code === "ERR_BAD_REQUEST") {
+            //     response = "Bad Request";
+            // } else if (err.code === "ERR_INVALID_URL") {
+            //     response = "Invalid URL";
+            // } else {
+            //     response = err;
+            // }
+            response = err;
         });
 
     return response;
