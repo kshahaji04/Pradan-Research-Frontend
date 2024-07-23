@@ -27,7 +27,7 @@ const ContactUsCard = ({ e, idx, loading }:any) => {
                         </div>
                         <div className="card-body">
                             <div className={`card-title ${styles.card1}`}>
-                                {e?.Name?.length > 50 ? `${e?.Name.slice(0, 50)}...` : e?.Name}
+                                {e?.name?.length > 50 ? `${e?.name.slice(0, 50)}...` : e?.name}
                             </div>
                             <div className={`${styles.designation}`}>
                                 {e.designation}

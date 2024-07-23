@@ -103,13 +103,26 @@ const OrganizationCard = ({ data, loading }: any) => {
 
                           </div>
                           <ul className={`card-footer list-inline  ${styles.foot}`}>
-                            <li className='list-inline-item'><Link href={`${item.fd}`} className={`${styles.faceBook}`}><FacebookIcon /></Link></li>
-                            <li className='list-inline-item'><Link href={`${item.insta}`} className={`${styles.insta_icon}`}><InstagramIcon /></Link></li>
-                            {/* <li className='list-inline-item'><Link href={`${item.whatsApp}`} className={`${styles.whats_app_icon}`}><WhatsAppIcon /></Link></li> */}
-                            <li className='list-inline-item'><Link href={`${item.linkdin}`} className={`${styles.linkdin}`}  ><LinkedInIcon /></Link></li>
-                            <li className='list-inline-item'><Link href={`${item.x}`} className={`${styles.tweeter_icon}`}><XIcon /></Link></li>
+                            {
+                              item?.social_link?.length > 0 &&
+                              item?.social_link?.map((e: any, index: any) => {
+                                console.log(e)
+                                return (
+                                  <>
+                                   {e.title==='Facebook' ? <li className='list-inline-item'><Link href={`${e.link}`} target='blank' className={`${styles.faceBook}`}><FacebookIcon /></Link></li> :''}
+                                  { e.title === 'Instagram' ?  <li className='list-inline-item'><Link href={`${e.link}`} target='blank' className={`${styles.insta_icon}`}><InstagramIcon /></Link></li> : ''}
+                                    {/* <li className='list-inline-item'><Link href={`${item.whatsApp}`} className={`${styles.whats_app_icon}`}><WhatsAppIcon /></Link></li> */}
+                                   {e.title === 'Linkedin' ? <li className='list-inline-item'><Link href={`${e.link}`} target='blank' className={`${styles.linkdin}`}  ><LinkedInIcon /></Link></li> : ''}
+                                   {e.title ==='Twitter' ? <li className='list-inline-item'><Link href={`${e.link}`}  className={`${styles.tweeter_icon}`}><XIcon /></Link></li> : ''}
+                                  </>
+                                )
+                              }
+                              )
+
+                            }
                           </ul>
                         </div>
+
                     }
                   </div>
                 )
