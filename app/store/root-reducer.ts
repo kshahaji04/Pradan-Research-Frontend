@@ -13,6 +13,7 @@ import popularTagSliceScreen from '@/app/store/slices/home_page_slice/popular_ta
 import SignUpUserAccessTokenSlice from '@/app/store/slices/auth-slice/signup_user_access_token_slice'
 import whatsAppDetailSliceScreen from '@/app/store/slices/home_page_slice/whats_app_slice'
 import authGoogleSliceScreen from "@/app/store/slices/auth-slice/google_login_slice"
+import PublicationPrintMediaListSliceScreen from "@/app/store/slices/home_page_slice/publication_print_media_list_slice";
 
 const appReducer = combineReducers({
   authSliceScreen: authSliceScreen,
@@ -29,6 +30,8 @@ const appReducer = combineReducers({
   SignUpUserAccessToken: SignUpUserAccessTokenSlice,
   whatsAppDetail: whatsAppDetailSliceScreen,
   authGoogleSliceScreen: authGoogleSliceScreen,
+  publicationPrintMediaList: PublicationPrintMediaListSliceScreen,
+
 });
 
 const rootReducer = (state: any, action: any) => {

@@ -12,7 +12,7 @@ import OrganizationCard from '@/app/cards/contactUs/OrganizationCard';
 import bannerBg from '@/public/assets/images/bg/bannerBg.jpg';
 import whiteBanner from '@/public/assets/images/bg/whiteBanner.jpg';
 import GetContactUs from '@/app/hooks/contactUs/Contact_Us_hooks';
-import { imageLoader } from '@/app/utils/image_loader_utils copy';
+import { imageLoader } from '@/app/utils/image_loader_utils';
 import Skeleton from 'react-loading-skeleton';
 import ErrorComponent from '../ErrorComponent';
 const ContactUs = () => {

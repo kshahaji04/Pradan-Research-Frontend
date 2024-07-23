@@ -10,7 +10,7 @@ const GetPublicationsApi = async () => {
             `${CONSTANTS.API_BASE_URL}/api/method/pradan.pradan.doctype.quotes.api.get_quote.get_quote?project_name=${CONSTANTS.PROJECT_NAME}`,
             {
                 ...API_CONFIG,
-            }
+            }   
         )
         .then((res: any) => {
             response = res?.data?.message?.data;

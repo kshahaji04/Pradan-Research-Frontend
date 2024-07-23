@@ -1,26 +1,27 @@
 import { CONSTANTS } from "@/app/services/config/app-config";
+import { API_CONFIG } from "@/app/services/config/api-config";
 import axios from "axios";
-import { API_CONFIG } from '@/app/services/config/api-config'
 
-const GetBannerApi = async () => {
-
+const GetPublicationsApi = async (type: any) => {
     let response: any;
+
+    let url = `${CONSTANTS.API_BASE_URL}/api/method/pradan.pradan.doctype.publications.api.get_publications.get_publications?project_name=${CONSTANTS.PROJECT_NAME}&type=${type}`
+
     await axios
         .get(
-            `${CONSTANTS.API_BASE_URL}/api/method/pradan.pradan.doctype.banner.api.get_banner.get_banner?project_name=${CONSTANTS.PROJECT_NAME}`,
+            url,
             {
                 ...API_CONFIG,
-
             }
         )
         .then((res: any) => {
             response = res?.data?.message?.data;
         })
         .catch((err: any) => {
-            throw err
+            throw err;
         });
 
     return response;
 };
 
-export default GetBannerApi;
+export default GetPublicationsApi;

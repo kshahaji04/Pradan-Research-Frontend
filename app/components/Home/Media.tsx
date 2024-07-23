@@ -11,58 +11,20 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import XIcon from '@mui/icons-material/X';
+import usePublicationList from '@/app/hooks/home_page_hooks/publication_list_hook';
+import Skeleton from 'react-loading-skeleton';
+import ErrorComponent from '../ErrorComponent';
+import { imageLoader } from '@/app/utils/image_loader_utils';
+import NoDataFound from '../NoDataFound';
+import { iconHandler } from '@/app/utils/icon_handler';
+import MediaCardSkeleton from '@/app/skeletons/Home/MediaCardSkeleton';
 function Media() {
-    const items = [
-        {
-            src: "https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            para: 'Oilseed farming is a crucial component of rural Indias agricultural landscape, involving the cultivation of crops such as mustard, soybean, groundnut, sunflower, and sesame',
-            date: '05.18.24',
-            icon:<FacebookIcon/>
-        },
-        {
-            src: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            para: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.',
-            date: '03.18.24',
-            icon:<InstagramIcon/>
-        },
-        {
-            src: "https://images.unsplash.com/photo-1581090700227-1e37b190418e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            para: 'Oilseed farming is a crucial component of rural Indias agricultural landscape, involving the cultivation of crops such as mustard, soybean, groundnut, sunflower, and sesame',
-            date: '09.18.24',
-            icon:<WhatsAppIcon/>
-        },
-        {
-            src: "https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            para: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.',
-            date: '08.18.24',
-            icon:<LinkedInIcon/>
-        },
-        {
-            src: "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            para: 'Oilseed farming is a crucial component of rural Indias agricultural landscape, involving the cultivation of crops such as mustard, soybean, groundnut, sunflower, and sesame',
-            date: '05.18.24',
-            icon:<XIcon/>
-        },
-        {
-            src: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            para: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.',
-            date: '03.18.24'
-        },
-        {
-            src: "https://images.unsplash.com/photo-1581090700227-1e37b190418e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            para: 'Oilseed farming is a crucial component of rural Indias agricultural landscape, involving the cultivation of crops such as mustard, soybean, groundnut, sunflower, and sesame',
-            date: '09.18.24'
-        },
-        {
-            src: "https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            para: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.',
-            date: '08.18.24'
-        },
-    ]
+
+    const { socialMediaData, loadingSocialMediaList, error } = usePublicationList();
 
     const settings = {
         dots: false,
-        infinite: true,
+        infinite: socialMediaData?.length > 1,
         slidesToShow: 4,
         slidesToScroll: 1,
         pauseOnHover: true,
@@ -73,7 +35,7 @@ function Media() {
                 settings: {
                     slidesToShow: 3,
                     slidesToScroll: 3,
-                    infinite: true,
+                    infinite: socialMediaData?.length > 1,
                     dots: true,
                 },
             },
@@ -96,43 +58,46 @@ function Media() {
     };
 
     return (
-        <div className="container">
-            <div className="d-flex align-items-center justify-content-center w-100">
-                <h2 style={{color:'var(--primary)'}}>Social Media</h2>
-            </div>
-            <div className="row my-5">
-                <Slider {...settings}>
-                    {items?.slice(0, 5).map((item, index) => (
-                        <div className='d-flex align-items-center justify-content-center h-100' key={index}>
-                            <div className={`card h-100 rounded-0`} style={{ width: "90%", maxWidth: "380px", border:0 }}>
-                                <Link href={'#'} className="w-full d-flex align-items-center justify-content-center position-relative">
-                                    <Image src={item.src} className="rounded-circle" height={150} width={150} alt={'media'} />
-                                </Link>
-                                <Link href={'#'} className="card-body position-relative text-decoration-none text-start py-4">
-                                    <p className={`card-title m-0`}>
-                                        {item.para?.length > 140 ? `${item.para.slice(0, 140)}...` : item.para}
-                                    </p>
-                                </Link>
-                                <div className={`card-footer`} style={{background:'transparent', border:0}}>
-                                    <div className="row d-flex align-items-center justify-content-center">
-                                        <div className="col-6">
-                                            <div>
-                                                <p className='mb-0'>{moment(item.date).format('MMM DD, YYYY')}</p>
+        <>
+            {error ? <div className="mb-5 pb-5 position-relative" style={{ zIndex: 9 }}><ErrorComponent /></div> : <div className="container">
+                <div className="d-flex align-items-center justify-content-center w-100">
+                    {loadingSocialMediaList ? <h2 style={{ color: 'var(--primary)' }}><Skeleton width={200} /></h2> : 
+                        <h2 style={{ color: 'var(--primary)' }}>Social Media</h2>}
+                </div>
+                {socialMediaData?.length > 0 ? <div className="row my-5">
+                    <Slider {...settings}>
+                        {socialMediaData?.map((item: any, index: any) => (
+                            <div key={index}>
+                                {loadingSocialMediaList ? <MediaCardSkeleton /> : <div className='d-flex align-items-center justify-content-center h-100'>
+                                    <div className={`card h-100 rounded-0`} style={{ width: "90%", maxWidth: "380px", border: 0 }}>
+                                        <Link href={'#'} className="w-full d-flex align-items-center justify-content-center position-relative">
+                                            <Image src={item?.image} loader={imageLoader} className="rounded-circle" height={150} width={150} alt={item?.title} />
+                                        </Link>
+                                        <Link href={'#'} className="card-body position-relative text-decoration-none text-start py-4">
+                                            <p className={`card-title m-0`}>
+                                                <span dangerouslySetInnerHTML={{ __html: item?.short_description }}></span>
+                                            </p>
+                                        </Link>
+                                        <div className={`card-footer`} style={{ background: 'transparent', border: 0 }}>
+                                            <div className="row d-flex align-items-center justify-content-center">
+                                                <div className="col-6">
+                                                    <div>
+                                                        <p className='mb-0'>{item?.creation && moment(item.creation).format('MMM DD, YYYY')}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="col-6 text-center">
+                                                    {item?.social_platform_name && <Link href={item?.url}>{iconHandler(item.social_platform_name)}</Link>}
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="col-6 text-center">
-                                            {
-                                                item?.icon
-                                            }
-                                        </div>
                                     </div>
-                                </div>
+                                </div>}
                             </div>
-                        </div>
-                    ))}
-                </Slider>
-            </div>
-        </div>
+                        ))}
+                    </Slider>
+                </div> : <div className="mb-5 pt-3"><NoDataFound /></div>}
+            </div>}
+        </>
     )
 }
 

@@ -11,7 +11,7 @@ import Image from 'next/image';
 import Slider from 'react-slick';
 import { NextArrow, PrevArrow } from '../SlickButtons/SlickButtons';
 import { max } from 'moment';
-import { imageLoader } from '@/app/utils/image_loader_utils copy';
+import { imageLoader } from '@/app/utils/image_loader_utils';
 import Skeleton from 'react-loading-skeleton';
 
 

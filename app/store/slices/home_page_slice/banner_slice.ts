@@ -47,7 +47,7 @@ const bannerSliceScreen = createSlice({
                 state.error = "";
             })
             .addCase(fetchBanner.rejected, (state, action) => {
-                state.loading = true;
+                state.loading = false;
                 state.data = [];
                 state.error = "An error occurred.";
             });
