@@ -21,6 +21,8 @@
   height: 100% !important;
 }
 
+
+
 @media(max-width:1024px) {
   .cardText {
     margin: 0 !important;
@@ -36,7 +38,7 @@
   font-family: "Bree Light", serif;
   line-height: 1;
   font-size: 1.5rem;
-
+  min-height: 50px;
 }
 
 .car {

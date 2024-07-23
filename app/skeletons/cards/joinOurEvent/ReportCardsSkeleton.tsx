@@ -37,10 +37,6 @@ const ReportCardsSkeleton = ({ item }: any) => {
                                     <span><Skeleton width={16} height= {16} /></span> <Skeleton width={50} height={10}/>
                                 </button>))}
                             </div>
-                            {/* <button className={`btn text-uppercase ps-2`}>
-                                <Image width={30} height={30} src={excel} alt={'excel icon'} />
-                                <span><FileDownloadOutlinedIcon /></span>
-                            </button> */}
                         </div>
                     </div>
                 </div>

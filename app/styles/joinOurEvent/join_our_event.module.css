@@ -235,3 +235,82 @@
 }
 
 /* css for upcoming events end */
+
+
+.first{
+  font-size: 2rem;
+  text-align: center;
+}
+
+.second{
+  font-size: 4rem;
+  text-align: center;
+}
+
+.third{
+  font-size: 1rem;
+  text-align: center;
+}
+
+.four{
+  font-size: 2rem;
+  text-align: center;
+}
+
+.five{
+  font-size: 4rem;
+  text-align: center;
+}
+
+.mainImage{
+  width: 100% !important;
+  height: 100% !important;
+}
+
+@media(max-width:1024px){
+
+  .first{
+    font-size: 1rem;
+  }
+  
+  .second{
+    font-size: 2rem;
+  }
+  
+  .third{
+    font-size: 0.7rem;
+  }
+  
+  .four{
+    font-size: 1rem;
+  }
+  
+  .five{
+    font-size: 2rem;
+  }
+  
+}
+.imageContainer {
+  --mask: linear-gradient(#000 0 0) center/calc(100% - 60px) calc(100% - 60px)
+      no-repeat,
+    conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) 0 0/60px
+      30px repeat-x,
+    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 0
+      100%/60px 30px repeat-x,
+    conic-gradient(from 45deg at left, #0000, #000 1deg 89deg, #0000 90deg) 0 0/30px
+      60px repeat-y,
+    conic-gradient(from -135deg at right, #0000, #000 1deg 89deg, #0000 90deg)
+      100% 0/30px 60px repeat-y;
+display: inline-block;
+width: 320px;
+aspect-ratio: 1;
+
+-webkit-mask: var(--mask);
+mask: var(--mask);
+}
+
+.mainRow{
+  cursor: pointer;
+  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+
+}

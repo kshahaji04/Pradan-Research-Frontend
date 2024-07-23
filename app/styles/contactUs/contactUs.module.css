@@ -1,6 +1,12 @@
+.car{
+width: 95% !important;
+margin: 0 auto !important;
+}
+
 .title {
     color: var(--primary);
     text-align: center;
+    margin-bottom: 50px ;
 }
 
 .iconContainer {
@@ -67,7 +73,25 @@
 }
 .carText{
     font-size: 0.8rem;
+    height: 60px !important;
 }
+
+.designation{
+    min-height: 25px !important;
+}
+
+@media(max-width:1400px){
+    .carText{
+        height: 80px !important;
+    }
+}
+
+.mainOrgCard{
+  border: none !important;
+   border-radius: 50px;  
+   background-color: transparent !important;
+}
+
 @media(max-width:426px) {
     .organizationCard {
         margin-left: 20px !important;
