@@ -8,7 +8,7 @@ import { imageLoader } from '@/app/utils/image_loader_utils';
 
 
 
-const ContactUsCard = ({ e, idx, loading }:any) => {
+const ContactUsCard = ({ e, idx, loading }: any) => {
 
     return (
         <>
@@ -41,7 +41,7 @@ const ContactUsCard = ({ e, idx, loading }:any) => {
                                 }
                             </p>
                             <div className={`card-title ${styles.cardTitle}`}>
-                                <a href={`mailto:${e?.mail}`} className={styles.cardLink}>
+                                <a href={`mailto:${e?.email}`} className={styles.cardLink}>
                                     <span className='me-2'>
                                         <EmailIcon sx={{ fontSize: '1rem' }} />
                                     </span>
