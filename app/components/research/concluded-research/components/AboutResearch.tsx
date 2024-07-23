@@ -84,10 +84,10 @@ function AboutResearch({ title }: any) {
 
     return (
         <div className='row'>
-            <div className="col-lg-8">
+            <div className="col-lg-9">
                 <div className="container pt-3 pb-5 px-5">
                     <div className="row align-items-center">
-                        <div className="col-md-7">
+                        <div className="col-md-6">
                             <h3 style={{ color: 'var(--primary)', marginBottom: '20px' }}>About Concluded Research</h3>
                             <p style={{ width: '95%' }}>
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -105,7 +105,7 @@ function AboutResearch({ title }: any) {
                                 and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                             </p>
                         </div>
-                        <div className="col-md-5 g-4 p-4">
+                        <div className="col-md-6 g-4 p-4">
                             <Link href='' style={{ textDecoration: 'none' }}>
                                 <div className={`card  ${styles.car}`}>
                                     <div>
@@ -143,7 +143,7 @@ function AboutResearch({ title }: any) {
                     </div>
                 </div>
             </div>
-            <div className="col-lg-4 d-flex align-items-center" style={{ background: '#f7f7f7' }}>
+            <div className="col-lg-3 d-flex align-items-center" style={{ background: '#f7f7f7' }}>
                 <div className="container pt-2 pb-5 ps-5">
                     <h3 className='pb-2' style={{ color: 'var(--primary)' }}>Our Team</h3>
                     {/* <h4 className='pb-2'>Research</h4> */}
