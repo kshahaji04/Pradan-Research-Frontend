@@ -7,7 +7,7 @@ const GetAboutUsShortInfoApi = async () => {
     let response: any;
     await axios
         .get(
-            `${CONSTANTS.API_BASE_URL}/api/method/pradan.pradan.doctype.about_us.api.get_about_sal_report.get_about_sal_report?project_name=${CONSTANTS.PROJECT_NAME}`,
+            `${CONSTANTS.API_BASE_URL}/api/method/pradan.pradan.doctype.about_us.api.get_about_us_research.get_about_us_research?project_name=${CONSTANTS.PROJECT_NAME}`,
             {
                 ...API_CONFIG,
             }
@@ -16,15 +16,7 @@ const GetAboutUsShortInfoApi = async () => {
             response = res?.data?.message?.data;
         })
         .catch((err: any) => {
-            if (err.code === "ECONNABORTED") {
-                response = "Request timed out";
-            } else if (err.code === "ERR_BAD_REQUEST") {
-                response = "Bad Request";
-            } else if (err.code === "ERR_INVALID_URL") {
-                response = "Invalid URL";
-            } else {
-                response = err;
-            }
+            throw err;
         });
 
     return response;
