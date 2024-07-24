@@ -9,6 +9,7 @@ import banner from '@/public/assets/images/banner.jpg'
 import banner1 from '@/public/assets/images/banner1.avif'
 import SectionDivider from '../../SectionDivider';
 import RegistrationForm from '../components/RegistrationForm';
+import VenueCard from './VenueCard';
 const EventDetails = () => {
     return (
 
@@ -94,6 +95,9 @@ const EventDetails = () => {
                         </div>
                     </div>
                     <SectionDivider/>
+                    <VenueCard/>
+                    <SectionDivider/>
+
                     <div className="col-12">
                         <div>
                             <h4 className='text-success text-center'>Here you can Register</h4>
