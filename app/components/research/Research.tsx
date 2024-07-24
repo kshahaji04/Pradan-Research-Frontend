@@ -5,12 +5,22 @@ import ConcludedResearch from './ConcludedResearch';
 import styles from "@/app/styles/research/researchCard.module.css"
 import whiteBanner from '@/public/assets/images/bg/whiteBanner.jpg';
 import Image from 'next/image';
+import research_hooks from '@/app/hooks/research_hooks/research_hooks';
+import { useRouter } from 'next/navigation';
 
 function Research() {
-  const [tab, setTab] = useState('ongoing');
+  let searchParams = new URLSearchParams(window.location.search);
+  const type = searchParams.get('type')
+  const router = useRouter()
+  const [tab, setTab] = useState(type || 'ongoing');
+  const handleTabChange = (e:any)=>{
+    router.push(`research/?type=${e}`)
+    setTab(e)
+  }
   return (
     <div className="bgImageWrapper">
       <div className="container" style={{ zIndex: '2', position: "relative" }}>
+        {
         <div className="row pb-4" >
           <div className="container">
             <div className={`row align-items-center justify-content-center mainHeader`} >
@@ -20,19 +30,19 @@ function Research() {
               <div id="exTab3" className="container pt-2">
                 <ul className="nav nav-tabs mx-auto my-4" style={{ justifyContent: 'center', borderBottomColor: 'var(--primary)' }}>
                   <li className="nav-item">
-                    <button className={`nav-link ${tab === 'ongoing' ? 'active' : ''}`} onClick={() => setTab('ongoing')}>Ongoing</button>
+                    <button className={`nav-link ${tab === 'ongoing' ? 'active' : ''}`} onClick={() =>handleTabChange('ongoing')}>Ongoing</button>
                   </li>
                   <li className="nav-item">
-                    <button className={`nav-link ${tab === 'concluded' ? 'active' : ''}`} onClick={() => setTab('concluded')}>Concluded</button>
+                    <button className={`nav-link ${tab === 'concluded' ? 'active' : ''}`} onClick={()=>handleTabChange('concluded')}>Concluded</button>
                   </li>
                 </ul>
-
                 {tab === 'ongoing' ? <OngoingResearch /> : <ConcludedResearch />}
 
               </div>
             </div>
           </div>
         </div>
+         }
       </div>
       <figure>
         {/* {width < 768 ?

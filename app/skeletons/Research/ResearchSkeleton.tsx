@@ -64,7 +64,7 @@ function ResearchSkeleton() {
   ];
 
   return (
-    <div className="container mb-4">
+  
       <div className="row pb-4">
         <div className="container">
           <div
@@ -89,59 +89,10 @@ function ResearchSkeleton() {
                   </button>
                 </li>
               </ul>
-
-              <div className="row pt-3">
-                <div className="col-12">
-                  <div className="row">
-                    <div className="col-12">
-                      <h2 className="mb-2 text-center ms-0">
-                        <Skeleton width={300} />
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-
-                {/*research card section with pagination*/}
-                <div className="col-12">
-                  <div className="row">
-                    {Array.from({length:5}).map((item: any, index: number) => (
-                      <div className="col-md-6 col-lg-4 g-4 p-4" key={index}>
-                        <div style={{ textDecoration: "none" }}>
-                          <div className={`card  ${styles.car}`}>
-                            <div>
-                              <Skeleton
-                                width={"100%"}
-                                height={300}
-                                className={`${styles.img}`}
-                              />
-                              {/* <Image width={470} height={300} className={`${styles.img}`} src={item.image} alt='Image' /> */}
-                            </div>
-                            <div className="p-4">
-                              <div>
-                                <p>
-                                  <Skeleton width={"50%"} height={50} />
-                                  {/* {item.text1} */}
-                                </p>
-                              </div>
-                              <div>
-                                <h4>
-                                  <Skeleton width={"100%"} height={50} />
-                                  {/* {item.title2} */}
-                                </h4>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
   );
 }
 
