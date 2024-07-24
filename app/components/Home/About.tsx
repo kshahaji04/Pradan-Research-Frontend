@@ -14,7 +14,7 @@ import AboutSkeleton from '@/app/skeletons/Home/AboutSkeleton'
 
 function About() {
   const { shortInfoData, loadingShortInfo, shortInfoError } = useAboutUsShortInfo()
-  console.log(shortInfoData, loadingShortInfo, shortInfoError)
+  // console.log(shortInfoData, loadingShortInfo, shortInfoError)
   return (
     <>{loadingShortInfo ? <AboutSkeleton /> : <div className="bgImageWrapper">
       {shortInfoError ? <div className="mb-5 pb-5 position-relative" style={{ zIndex: 9 }}><ErrorComponent /></div> : <div className={`${styles.about_section_wrapper} py-5`}>

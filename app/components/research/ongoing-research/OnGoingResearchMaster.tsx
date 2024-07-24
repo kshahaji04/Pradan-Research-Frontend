@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import AboutResearch from './components/AboutResearch'
 import Partners from './components/Partners'
@@ -7,8 +8,12 @@ import Image from 'next/image'
 import topBorders from "@/public/assets/images/bg/topBorders.jpeg"
 import topRoundedBorders from "@/public/assets/images/bg/topRoundedBorders.jpg"
 import whiteBannerDots from "@/public/assets/images/bg/whiteBannerDots.jpg"
+import useResearchDetails from '@/app/hooks/research_hooks/research-details-hooks'
 
 const OnGoingResearchMaster = () => {
+  const {researchDetails , loadingResearchDetails, researchError} = useResearchDetails();
+  console.log('research d' , researchDetails)
+
   return (
     <>
       <div style={{ backgroundColor: '#f7f7f7', padding: '40px 0 0px' }}>

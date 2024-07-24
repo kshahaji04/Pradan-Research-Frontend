@@ -6,7 +6,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import XIcon from '@mui/icons-material/X';
 
 export const iconHandler = (title: string) => {
-    console.log("iconHandler",title)
+    // console.log("iconHandler",title)
     switch (title.toLowerCase()) {
       case 'facebook':
         return <FacebookIcon />;
