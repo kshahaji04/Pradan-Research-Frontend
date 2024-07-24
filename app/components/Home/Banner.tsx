@@ -20,7 +20,7 @@ function Banner() {
                 <div className="row align-items-center">
                     <div className="col-12 position-relative">
                         <div className="banner-wrapper mt-0">
-                            {bannerData?.details?.portrait_image?.length > 0 ? <Carousel controls={false}>
+                            {bannerData?.details?.portrait_image && bannerData?.details?.portrait_image?.length > 0 ? <Carousel controls={false}>
                                 {bannerData?.details?.portrait_image?.map((item: any, index: any) => (
                                     <CarouselItem key={index}>
                                         <Image src={item.image} loader={imageLoader} width={1200} height={550} alt='banners' className='w-100' style={{ objectFit: 'cover' }} />

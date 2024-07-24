@@ -222,102 +222,30 @@ const RegistrationModal = () => {
                                                         </Form.Group>
                                                         <Form.Group controlId="formPassword">
                                                             <div className="row mt-3">
-                                                                <div className="col-md-6">
-                                                                    <label className="mb-1 grey">
-                                                                        Password
-                                                                    </label>
-                                                                    <TextField
-                                                                        onChange={handleChange}
-                                                                        onBlur={handleBlur}
-                                                                        type={showPassword ? "text" : "password"} // Toggle password visibility
-                                                                        name="password"
-                                                                        className="login_inputs w-100"
-                                                                        onKeyDown={onKeydown}
-                                                                        placeholder='Enter Your Password'
-                                                                        required
-                                                                        autoComplete="off"
-                                                                        InputProps={{
-                                                                            endAdornment: (
-                                                                                <InputAdornment position="end">
-                                                                                    <IconButton
-                                                                                        onClick={togglePasswordVisibility}
-                                                                                    >
-                                                                                        {showPassword ? (
-                                                                                            <VisibilityIcon />
-                                                                                        ) : (
-                                                                                            <VisibilityOffIcon />
-                                                                                        )}
-                                                                                    </IconButton>
-                                                                                </InputAdornment>
-                                                                            ),
-                                                                        }}
-                                                                    />
-                                                                    <div className="row">
-                                                                        <div className="col-12">
-                                                                            <div className={styles.error_msg}>
-                                                                                <ErrorMessage name="password" />
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                {/* confirm pass */}
-                                                                <div className="col-md-6">
-                                                                    <label className="mb-1 grey">
-                                                                        Confirm Password
-                                                                    </label>
-                                                                    <TextField
-                                                                        onChange={handleChange}
-                                                                        onBlur={handleBlur}
-                                                                        type={showConfirmPassword ? "text" : "password"} // Toggle password visibility
-                                                                        name="confirm_password"
-                                                                        className="login_inputs w-100"
-                                                                        onKeyDown={onKeydown}
-                                                                        placeholder='Confirm Your Password'
-                                                                        required
-                                                                        autoComplete="off"
-                                                                        InputProps={{
-                                                                            endAdornment: (
-                                                                                <InputAdornment position="end">
-                                                                                    <IconButton
-                                                                                        onClick={toggleConfirmPasswordVisibility}
-                                                                                    >
-                                                                                        {showConfirmPassword ? (
-                                                                                            <VisibilityIcon />
-                                                                                        ) : (
-                                                                                            <VisibilityOffIcon />
-                                                                                        )}
-                                                                                    </IconButton>
-                                                                                </InputAdornment>
-                                                                            ),
-                                                                        }}
-                                                                    />
-                                                                    <div className="row">
-                                                                        <div className="col-12">
-                                                                            <div className={styles.error_msg}>
-                                                                                <ErrorMessage name="confirm_password" />
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                             
                                                                 {/* gender */}
-                                                                <div className="col-md-6 mt-3">
+                                                                <div className="col-md-12 mt-3 d-flex">
                                                                     <label className="mb-1 grey">
                                                                         Select Gender
                                                                     </label>
-                                                                    <div className="form-check">
+                                                                    <div className="form-check ms-3">
                                                                         <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
                                                                         <label className="form-check-label text-secondary" htmlFor="flexRadioDefault1">
                                                                             Male
                                                                         </label>
                                                                     </div>
-                                                                    <div className="form-check">
+                                                                    <div className="form-check ms-3">
                                                                         <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
                                                                         <label className="form-check-label text-secondary" htmlFor="flexRadioDefault2">
                                                                             Female
                                                                         </label>
                                                                     </div>
-
+                                                                    <div className="form-check ms-3">
+                                                                        <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" />
+                                                                        <label className="form-check-label text-secondary" htmlFor="flexRadioDefault2">
+                                                                            Others
+                                                                        </label>
+                                                                    </div>
                                                                     <div className="row">
                                                                         <div className="col-12">
                                                                             <div className={styles.error_msg}>

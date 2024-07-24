@@ -267,6 +267,7 @@
   height: 100% !important;
 }
 
+
 @media(max-width:1024px){
 
   .first{
@@ -314,3 +315,7 @@ mask: var(--mask);
   background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
 
 }
+
+/* Event details css start*/
+
+/* Event details css end*/

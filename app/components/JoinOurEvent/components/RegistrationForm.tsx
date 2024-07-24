@@ -6,7 +6,6 @@ import {
   useFormikContext,
 } from "formik";
 import { Form } from "react-bootstrap";
-import { useRouter } from "next/router";
 
 import Link from "next/link";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -22,7 +21,7 @@ import styles from '@/app/styles/joinOurEvent/registration.module.css'
 
 
 
-const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }:any) => {
+const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: any) => {
   const [message, setMessage] = useState("");
   const [newValue, setNewValue] = useState<any>("");
   const [isAlertVisible, setIsAlertVisible] = useState(false);
@@ -32,8 +31,7 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }:a
   const [err, setErr] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showErrorToast, setShowErrorToast] = useState(false);
- 
-  const router = useRouter();
+
   const [isLoginModalShow, setIsLoginModalShow] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -45,7 +43,7 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }:a
   };
 
   let handleSubmit = async (values: any) => {
-   
+
   };
 
   const onKeydown = (keyEvent: any) => {
@@ -90,9 +88,9 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }:a
                 <div className={`${styles.signup_wrapper}`}>
                   <div className="row">
                     <div className="col-lg-12 p-0 text-center">
-                      <p className={styles.signup_header}>
+                      {/* <p className={styles.signup_header}>
                         Sign up
-                      </p>
+                      </p> */}
                     </div>
                     <div className="col-lg-12 p-0">
 
@@ -150,7 +148,7 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }:a
                       </Form.Group>
 
                       <Form.Group controlId="formName">
-                        <div className="row mt-3">
+                        <div className="row mt-4">
                           <div className="col-md-6">
                             <label className="mb-1 grey">
                               Email
@@ -202,94 +200,40 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }:a
                           </div>
                         </div>
                       </Form.Group>
-                      <Form.Group controlId="formPassword">
-                        <div className="row mt-3">
-                          <div className="col-md-6">
-                            <label className="mb-1 grey">
-                              Password
-                            </label>
-                            <TextField
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              type={showPassword ? "text" : "password"} // Toggle password visibility
-                              name="password"
-                              className="login_inputs w-100"
-                              onKeyDown={onKeydown}
-                              placeholder='Enter Your Password'
-                              required
-                              autoComplete="off"
-                              InputProps={{
-                                endAdornment: (
-                                  <InputAdornment position="end">
-                                    <IconButton
-                                      onClick={togglePasswordVisibility}
-                                    >
-                                      {showPassword ? (
-                                        <VisibilityIcon />
-                                      ) : (
-                                        <VisibilityOffIcon />
-                                      )}
-                                    </IconButton>
-                                  </InputAdornment>
-                                ),
-                              }}
-                            />
-                            <div className="row">
-                              <div className="col-12">
-                                <div className={styles.error_msg}>
-                                  <ErrorMessage name="password" />
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                     
+                    </div>
+                    <div className="col-md-6 mt-4 d-flex">
+                      <label className="mb-1 grey">
+                        Select Gender :
+                      </label>
+                      <div className="form-check ms-3">
+                        <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                        <label className="form-check-label text-secondary" htmlFor="flexRadioDefault1">
+                          Male
+                        </label>
+                      </div>
+                      <div className="form-check ms-3">
+                        <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
+                        <label className="form-check-label text-secondary" htmlFor="flexRadioDefault2">
+                          Female
+                        </label>
+                      </div>
 
-                          {/* confirm pass */}
-                          <div className="col-md-6">
-                            <label className="mb-1 grey">
-                              Confirm Password
-                            </label>
-                            <TextField
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              type={showConfirmPassword ? "text" : "password"} // Toggle password visibility
-                              name="confirm_password"
-                              className="login_inputs w-100"
-                              onKeyDown={onKeydown}
-                              placeholder='Confirm Your Password'
-                              required
-                              autoComplete="off"
-                              InputProps={{
-                                endAdornment: (
-                                  <InputAdornment position="end">
-                                    <IconButton
-                                      onClick={toggleConfirmPasswordVisibility}
-                                    >
-                                      {showConfirmPassword ? (
-                                        <VisibilityIcon />
-                                      ) : (
-                                        <VisibilityOffIcon />
-                                      )}
-                                    </IconButton>
-                                  </InputAdornment>
-                                ),
-                              }}
-                            />
-                            <div className="row">
-                              <div className="col-12">
-                                <div className={styles.error_msg}>
-                                  <ErrorMessage name="confirm_password" />
-                                </div>
-                              </div>
-                            </div>
+                      <div className="form-check ms-3">
+                        <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" />
+                        <label className="form-check-label text-secondary" htmlFor="flexRadioDefault3">
+                          others
+                        </label>
+                      </div>
+
+                      <div className="row">
+                        <div className="col-12">
+                          <div className={styles.error_msg}>
+                            <ErrorMessage name="confirm_password" />
                           </div>
                         </div>
-                      </Form.Group>
-
-
-
-
+                      </div>
                     </div>
-
                     <div
                       className={`mt-5 pt-2 ${isAlertVisible === true ? "login_btn" : ""
                         } mt-3 mb-3 text-center p-0 `}
@@ -298,12 +242,12 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }:a
                         type="submit"
                         className={` btn ${styles.btn_sign_up}`}
                       >
-                        Sign up
+                        Register
                       </button>
                       <br />
                     </div>
 
-                    <div className="text-center">
+                    {/* <div className="text-center">
                       <p>
                         <span className="grey fs-16 fw-400 lh-24">
                           Have an account?
@@ -321,7 +265,7 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }:a
                           </button>
                         </span>
                       </p>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                 <FormObserver />
