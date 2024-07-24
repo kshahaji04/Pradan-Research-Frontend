@@ -5,6 +5,6 @@ export const CONSTANTS = {
     VERSION: "v1",
     DOMAIN_NAME: "",
     PROJECT_NAME:"Research Site",
-
+    PODCAST_LINK: `http://50.112.15.45:3028`,
   };
   

@@ -9,8 +9,13 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { PublicationsGallerySkeleton, PublicationGallerySlick } from "@/app/skeletons/Media/PublicationsGallerySkeleton";
 import ReportMasterSkeleton from "@/app/skeletons/Media/ReportMasterSkeleton";
 import Skeleton from "react-loading-skeleton";
+import gallery_hooks from "@/app/hooks/media_page_hooks/gallery_hooks";
+import { imageLoader } from "@/app/utils/image_loader_utils";
+import NoImage from '@/public/assets/images/no_image.jpg';
+import ErrorComponent from '@/app/components/ErrorComponent'
+
 function PublicationsGallery({ title }: any) {
-  const [loading, setLoading] = useState(false)
+  const { gallery, isLoading, galleryError } = gallery_hooks()
   const settings = {
     dots: false,
     infinite: true,
@@ -46,92 +51,65 @@ function PublicationsGallery({ title }: any) {
     ],
   };
 
-  const data: any = [
-    {
-      id: 3,
-      src: "https://images.unsplash.com/photo-1488229297570-58520851e868?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      id: 1,
-      src: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      id: 2,
-      src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    ,
-    {
-      id: 3,
-      src: "https://images.unsplash.com/photo-1488229297570-58520851e868?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      id: 1,
-      src: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      id: 2,
-      src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-  ];
+  // isLoading ? <PublicationsGallerySkeleton />
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        {
-          loading ? <ReportMasterSkeleton /> :
-            <div className="col-12">
-              <h2 className="text-center ms-0">{title}</h2>
-            </div>
-        }
+    <>
+      {
+        galleryError ? <ErrorComponent /> :
+          <div className="container">
+            {isLoading ? <PublicationsGallerySkeleton /> : <>
+              <div className="row">
+                <div className="col-12">
+                  <h2 className="text-center ms-0">{title}</h2>
+                </div>
+              </div>
+              <div className="row my-5">
+                <div className="col-12">
+                  <div className="text-end me-3">
+                    <h5><Link href='/'>See More <ChevronRightIcon /></Link> </h5>
+                  </div>
+                </div>
+                <Slider {...settings}>
+                  {gallery &&
+                    gallery?.length > 0 &&
+                    gallery?.map((info: any) => (
+                      <Link
+                        href={`${info?.url}`}
+                        key={info?.sequence}
+                        // style={{ width: "95%", height: "100%", maxHeight: "300px" }}
+                        className={`mx-auto my-0`}
+                      >
+                        {
+                          info?.image !== null && info?.image !== '' ?
+                            <Image
+                              src={info?.image}
+                              alt={"gallery-image"}
+                              width={1200}
+                              height={300}
+                              style={{ width: "92%" }}
+                              className={`mx-auto rounded-2 my-0`}
+                              loader={imageLoader}
+                            /> :
+                            <Image
+                              src={NoImage.src}
+                              alt={"gallery-image"}
+                              width={1200}
+                              height={300}
+                              style={{ width: "92%" }}
+                              className={`mx-auto rounded-2 my-0`}
+                            />
+                        }
 
-      </div>
-      <div className="row my-5">
-        <div className="col-12">
-          <div className="text-end me-3">
-            {
-              loading ? <PublicationsGallerySkeleton /> :
-                <h5><Link href='/'>See More <ChevronRightIcon /></Link> </h5>
-            }
+                      </Link>
+                    ))}
+                </Slider>
+              </div>
+            </>}
 
           </div>
-        </div>
-        <Slider {...settings}>
-          {loading ? Array.from({ length: 6 }).map((info: any, index: number) => (
-            <div
-              key={index}
-              // style={{ width: "95%", height: "100%", maxHeight: "300px" }}
-              className={`mx-auto my-0`}
-            >
-              <Skeleton
-                width={200}
-                height={200}
-              />
-            </div>
-          )) :
-            data &&
-            data.length > 0 &&
-            data.map((info: any, index: number) => (
-              <Link
-                href={`#`}
-                key={index}
-                // style={{ width: "95%", height: "100%", maxHeight: "300px" }}
-                className={`mx-auto my-0`}
-              >
-                <Image
-                  src={info.src}
-                  alt={"gallery-image"}
-                  width={1200}
-                  height={300}
-                  style={{ width: "92%" }}
-                  className={`mx-auto rounded-2 my-0`}
-                />
-              </Link>
-            ))
-          }
-
-        </Slider>
-      </div>
-    </div>
+      }
+    </>
   );
 }
 

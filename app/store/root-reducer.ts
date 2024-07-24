@@ -9,7 +9,10 @@ import searchSliceScreen from '@/app/store/slices/search_slice/search_slice'
 import aboutUsShortInfoSliceScreen from '@/app/store/slices/home_page_slice/about_us_short_info_slice'
 import SignUpUserAccessTokenSlice from '@/app/store/slices/auth-slice/signup_user_access_token_slice'
 import authGoogleSliceScreen from "@/app/store/slices/auth-slice/google_login_slice"
+import AudioVideoListSliceScreen from "@/app/store/slices/media_slice/audio_video_list_slice"
+import AudioDetailsSliceScreen from "@/app/store/slices/media_slice/audio_details_slice"
 import PublicationPrintMediaListSliceScreen from "@/app/store/slices/home_page_slice/publication_print_media_list_slice";
+import playerSlice from "@/app/store/slices/media_slice/playerSlice";
 
 const appReducer = combineReducers({
   authSliceScreen: authSliceScreen,
@@ -22,7 +25,10 @@ const appReducer = combineReducers({
   aboutUsShortInfo: aboutUsShortInfoSliceScreen,
   SignUpUserAccessToken: SignUpUserAccessTokenSlice,
   authGoogleSliceScreen: authGoogleSliceScreen,
+  audioVideoList:AudioVideoListSliceScreen,
+  audioDetails:AudioDetailsSliceScreen,
   publicationPrintMediaList: PublicationPrintMediaListSliceScreen,
+  audioPlayer: playerSlice,
 
 });
 
