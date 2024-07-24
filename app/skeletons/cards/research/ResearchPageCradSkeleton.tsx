@@ -21,13 +21,13 @@ const ResearchPageCradSkeleton = () => {
                     <div className="p-4">
                       <div>
                         <p>
-                          <Skeleton width={"50%"} height={50} />
+                          <Skeleton width={"50%"} height={20} />
                           {/* {item.text1} */}
                         </p>
                       </div>
                       <div>
                         <h4>
-                          <Skeleton width={"100%"} height={50} />
+                          <Skeleton width={"100%"} height={20} />
                           {/* {item.title2} */}
                         </h4>
                       </div>
