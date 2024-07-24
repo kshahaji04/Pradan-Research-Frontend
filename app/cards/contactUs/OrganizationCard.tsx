@@ -13,7 +13,8 @@ import { NextArrow, PrevArrow } from '../SlickButtons/SlickButtons';
 import { max } from 'moment';
 import { imageLoader } from '@/app/utils/image_loader_utils';
 import Skeleton from 'react-loading-skeleton';
-
+import NoDataFound from '@/app/components/NoDataFound';
+import noImage from '@/public/assets/images/no_image.jpg'
 
 const OrganizationCard = ({ data, loading }: any) => {
 
@@ -77,15 +78,15 @@ const OrganizationCard = ({ data, loading }: any) => {
         <div >
           <Slider {...settings}>
             {
+              data?.length > 0 &&
               data?.map((item: any, index: any) => {
                 return (
-
                   <div className={`col-md-6 col-xl-3 col-sm-6 ${styles.car}`} key={index} >
                     {
                       loading ? <OrganizationCardSkeleton idx={index} /> :
                         <div className={`card  ${styles.mainOrgCard}`}>
                           <div className={`px-3 ${styles.iconCont}`}>
-                            <Image width={80} height={80} src={`${item.logo}`}
+                            <Image width={80} height={80} src={`${item?.logo || noImage.src}`}
                               alt='com' className={styles.iconContainer}
                               loader={imageLoader}
                             />
@@ -95,7 +96,7 @@ const OrganizationCard = ({ data, loading }: any) => {
                               {item?.company_name}
                             </div>
                             <div className={`card-text pt-2  ${styles.carText}`}>
-                              {item.company_address?.length > 108 ? item.company_address?.slice(0, 108) : item?.company_address}
+                              {item?.company_address?.length > 108 ? item?.company_address?.slice(0, 108) : item?.company_address}
                             </div>
                             {/* <div className={`card-text ${styles.cardText2}`}>
                                                     {item.address}
@@ -106,14 +107,13 @@ const OrganizationCard = ({ data, loading }: any) => {
                             {
                               item?.social_link?.length > 0 &&
                               item?.social_link?.map((e: any, index: any) => {
-                                console.log(e)
                                 return (
                                   <>
-                                   {e.title==='Facebook' ? <li className='list-inline-item'><Link href={`${e.link}`} target='blank' className={`${styles.faceBook}`}><FacebookIcon /></Link></li> :''}
-                                  { e.title === 'Instagram' ?  <li className='list-inline-item'><Link href={`${e.link}`} target='blank' className={`${styles.insta_icon}`}><InstagramIcon /></Link></li> : ''}
+                                   {e?.title==='Facebook' ? <li className='list-inline-item'><Link href={`${e?.link}`} target='blank' className={`${styles.faceBook}`}><FacebookIcon /></Link></li> :''}
+                                  { e?.title === 'Instagram' ?  <li className='list-inline-item'><Link href={`${e?.link}`} target='blank' className={`${styles.insta_icon}`}><InstagramIcon /></Link></li> : ''}
                                     {/* <li className='list-inline-item'><Link href={`${item.whatsApp}`} className={`${styles.whats_app_icon}`}><WhatsAppIcon /></Link></li> */}
-                                   {e.title === 'Linkedin' ? <li className='list-inline-item'><Link href={`${e.link}`} target='blank' className={`${styles.linkdin}`}  ><LinkedInIcon /></Link></li> : ''}
-                                   {e.title ==='Twitter' ? <li className='list-inline-item'><Link href={`${e.link}`}  className={`${styles.tweeter_icon}`}><XIcon /></Link></li> : ''}
+                                   {e?.title === 'Linkedin' ? <li className='list-inline-item'><Link href={`${e?.link}`} target='blank' className={`${styles.linkdin}`}  ><LinkedInIcon /></Link></li> : ''}
+                                   {e?.title ==='Twitter' ? <li className='list-inline-item'><Link href={`${e?.link}`}  className={`${styles.tweeter_icon}`}><XIcon /></Link></li> : ''}
                                   </>
                                 )
                               }
@@ -126,8 +126,9 @@ const OrganizationCard = ({ data, loading }: any) => {
                     }
                   </div>
                 )
-              })
-            }
+              } 
+            ) 
+          }
 
           </Slider>
         </div>

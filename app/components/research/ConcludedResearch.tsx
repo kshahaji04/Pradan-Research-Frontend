@@ -15,13 +15,10 @@ interface ResearchCardItem {
     url?: any; 
     languages?: string[]; 
   }
-function ConcludedResearch() {
+function ConcludedResearch({pageNumber}:any) {
     const router = useRouter()
-    let searchParams = new URLSearchParams(window.location.search);
-    const pageNo = searchParams.get('page') 
-    const [currentPage, setCurrentPage] = useState<any>(pageNo || 1);
+    const [currentPage, setCurrentPage] = useState<any>(pageNumber || 1);
     const {data,totalPages,loading,error} = research_hooks(`Concluded Research`,currentPage)
-
     const handlePageChange = (pageNumber: number) => {
         setCurrentPage(pageNumber);
         router.push(`/research?page=${pageNumber}&type=concluded`)

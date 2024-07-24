@@ -20,13 +20,11 @@ function ResearchPageCards({ item, index, link }: ResearchCard) {
                     <div>
                         <Image width={470} height={300}
                          className={`${styles.img}`}
-                         src={item?.image || noImage}
+                         src={item?.image || noImage.src}
                          alt='Image' 
                          loader={imageLoader}
                          /> 
-
                     </div>
-
                     <div className='row card-body h-100'>
                         <div className="col-12">
                             <div className='h-100 d-flex flex-column justify-content-center'>

@@ -15,6 +15,9 @@ import GetContactUs from '@/app/hooks/contactUs/Contact_Us_hooks';
 import { imageLoader } from '@/app/utils/image_loader_utils';
 import Skeleton from 'react-loading-skeleton';
 import ErrorComponent from '../ErrorComponent';
+import noImage from '@/public/assets/images/no_image.jpg'
+import NoDataFound from '../NoDataFound';
+
 const ContactUs = () => {
   const { contactUs, loading, error } = GetContactUs()
   const settings = {
@@ -80,7 +83,7 @@ const ContactUs = () => {
                       className={styles.bannerImage}
                       height={500}
                       alt='Images'
-                      src={`${contactUs?.banner}`}
+                      src={ contactUs?.banner ||  noImage.src}
                       loader={imageLoader}
 
                     />
@@ -113,10 +116,16 @@ const ContactUs = () => {
                 <div className="row teamSlider teams">
                   <div style={{ width: '95%', margin: '0 auto' }}>
                     <Slider {...settings}>
-                      {
+                        {
+                        contactUs?.experts?.length > 0 ?
                         contactUs?.experts?.map((e: any, idx: any) => (
                           <ContactUsCard e={e} idx={idx} key={idx} loading={loading} />
-                        ))}
+                        ))  :
+                        <div className="mb-5 pt-3">
+                          <NoDataFound />
+                          </div>
+                        }
+                      
                     </Slider>
                   </div>
                 </div>

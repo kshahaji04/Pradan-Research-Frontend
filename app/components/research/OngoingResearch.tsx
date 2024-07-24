@@ -7,20 +7,16 @@ import ErrorComponent from '../ErrorComponent';
 import ResearchPageCradSkeleton from '@/app/skeletons/cards/research/ResearchPageCradSkeleton';
 import NoDataFound from '../NoDataFound';
 import { ResearchCardItem } from '@/app/interfaces/research_interface';
+import page from '@/app/contact-us/page';
 
-function OngoingResearch() {
+function OngoingResearch({pageNumber}:any) {
     const router = useRouter()
-    let searchParams = new URLSearchParams(window.location.search);
-    const pageNo = searchParams.get('page')
-    const [currentPage, setCurrentPage] = useState<any>(pageNo || 1);
-
+    const [currentPage, setCurrentPage] = useState<any>(pageNumber || 1);
     const { data, totalPages, loading, error } = research_hooks(`Ongoing Research`, currentPage)
     const handlePageChange = (pageNumber: number) => {
         setCurrentPage(pageNumber);
-
         router.push(`/research?page=${pageNumber}&type=ongoing`)
     }
-
     return (
         <>
             {

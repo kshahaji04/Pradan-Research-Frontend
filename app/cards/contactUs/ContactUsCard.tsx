@@ -5,7 +5,7 @@ import Link from 'next/link';
 import ContactUsCardSkeleton from '@/app/skeletons/cards/contactUs/ContactUsCardSkeleton';
 import EmailIcon from '@mui/icons-material/Email';
 import { imageLoader } from '@/app/utils/image_loader_utils';
-
+import noImage from '@/public/assets/images/no_image.jpg'
 
 
 const ContactUsCard = ({ e, idx, loading }: any) => {
@@ -20,7 +20,7 @@ const ContactUsCard = ({ e, idx, loading }: any) => {
                                 className={` ${styles.img}`}
                                 width={120}
                                 height={200}
-                                src={e?.image}
+                                src={e?.image || noImage.src}
                                 alt="Team Image"
                                 loader={imageLoader}
                             />
