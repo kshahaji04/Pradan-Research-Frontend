@@ -44,7 +44,7 @@ function ConcludedResearch() {
             <div className='col-12'>
                 <div className='row'>
                     {
-                    !loading ? <ResearchPageCradSkeleton /> :
+                    loading ? <ResearchPageCradSkeleton /> :
                     data?.length > 0 ?
                     data.map((item: ResearchCardItem, index: number) => (
                         <ResearchPageCards link={`/research/concluded-research/about-the-research`} item={item} index={index} key={index} />

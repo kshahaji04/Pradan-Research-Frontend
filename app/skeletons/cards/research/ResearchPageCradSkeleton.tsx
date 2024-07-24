@@ -5,7 +5,7 @@ const ResearchPageCradSkeleton = () => {
   return (
     <>
     {
-        Array.from({length:3}).map((item,index)=>{
+        Array.from({length:2}).map((item,index)=>{
             return(
                 <div className="col-md-6 col-lg-4 g-4 p-4" key={index}>
                 <div style={{ textDecoration: "none" }}>
@@ -13,7 +13,7 @@ const ResearchPageCradSkeleton = () => {
                     <div>
                       <Skeleton
                         width={"100%"}
-                        height={300}
+                        height={270}
                         className={`${styles.img}`}
                       />
                       {/* <Image width={470} height={300} className={`${styles.img}`} src={item.image} alt='Image' /> */}
