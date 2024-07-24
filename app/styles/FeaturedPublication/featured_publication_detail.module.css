@@ -1,0 +1,133 @@
+.media_master_wrapper {
+
+    margin-top: 175px;
+}
+
+/* top bar css */
+.top_bar_wrapper {
+    margin-bottom: 20px;
+}
+
+.total_result {}
+
+.sort_by_wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.select_timeline {
+    max-width: 160px;
+    width: 100%;
+
+}
+
+/* Search Bar css */
+.search_media_wrapper {
+    /* margin-bottom: 50px; */
+}
+
+.pseudo_search {
+    display: inline;
+    border: 2px solid #ccc;
+    border-radius: 100px;
+    padding: 10px 15px;
+    transition: background-color 0.5s ease-in-out;
+}
+
+.pseudo_search input {
+    border: 0;
+    background-color: transparent;
+    width: 200px;
+}
+
+.pseudo_search input:focus {
+    outline: none;
+}
+
+.pseudo_search button,
+.pseudo_search i {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.pseudo_search select {
+    border: none;
+}
+
+/* search bar css end */
+
+/* media card start */
+.media_card_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.media_card {
+    border: none;
+    cursor: pointer;
+    width: 380px;
+    margin-bottom: 50px;
+}
+
+.card_content {
+    margin-top: 40px;
+}
+
+.image_container_grid_view {
+    overflow: hidden;
+    /* max-height: 190px;
+    height: 100%; */
+    /* width: 290px; */
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.zoom_image {
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+    height: 215px;
+    /* height: 100%; */
+    object-fit: cover;
+
+}
+
+
+.news_slide:hover .zoom_image {
+    transform: scale(1.05);
+    /* Scale to create the zoom effect */
+}
+
+/* media card end */
+
+/* media Details css start */
+.media_details_wrapper {
+    margin: 175px auto 50px auto;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.author_detail {
+    color: grey;
+    /* text-align: center; */
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+
+.meida_content_wrapper {}
+
+.meida_content {}
+
+.meida_text {
+    margin-top: 30px;
+}
+
+.meida_image_container {}
+
+.bullet_point_content {}
+
+/* Media Details css end*/

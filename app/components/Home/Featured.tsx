@@ -6,8 +6,28 @@ import Slider from 'react-slick'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Link from 'next/link';
+import useFeaturedPublication from '@/app/hooks/home_page_hooks/featured_ publications_hooks';
+import { imageLoader } from '@/app/utils/image_loader_utils';
+import NoImage from '@/public/assets/images/no_image.jpg';
+import FeaturedCardSkeleton from '@/app/skeletons/featuredReaserch/FeaturedCardSkeleton';
+import ErrorComponent from '@/app/components/ErrorComponent';
+import NoDataFound from '@/app/components/NoDataFound';
+// src={data?.image !== null && data?.image !== '' ? data?.image : NoImage.src}
 
 function Featured({ title }: any) {
+    const { featuredPublicationData, featuredPublicationError, featuredPublicationLoading } = useFeaturedPublication()
+
+
+    const latestPublication = Array.isArray(featuredPublicationData) && featuredPublicationData.length > 0
+        ? featuredPublicationData.filter((data: any) => data?.latest_category === 1)
+        : [];
+
+    const featuredPublicationlist = Array.isArray(featuredPublicationData) && featuredPublicationData.length > 0
+        ? featuredPublicationData.filter((data: any) => data?.latest_category !== 1)
+        : [];
+
+
+    console.log("featuredPublicationlist", featuredPublicationlist)
 
     const settings = {
         dots: false,
@@ -45,19 +65,28 @@ function Featured({ title }: any) {
         //     },
         // ],
     };
-
+    // src={data?.image !== null && data?.image !== '' ? data?.image : NoImage.src}
     function ImageOverlay({ isText = false, icon, src, text }: any) {
         return (
             <div className="imageOverlay">
                 <Image
-                    src={src}
+                    src={src !== null && src !== '' ? src : NoImage.src}
                     width={1200}
                     height={1200}
                     alt='featuredImage'
                     className='bgImg'
+                    loader={imageLoader}
                 />
                 <div className="data">
-                    {icon}
+                    <Image
+                        src={icon !== null && icon !== '' ? icon : NoImage.src}
+                        width={100}
+                        height={80}
+                        alt='featuredImageLogo'
+                        className=''
+                        loader={imageLoader}
+
+                    />
                     {isText && <h3>{text}</h3>}
                 </div>
             </div>
@@ -65,35 +94,47 @@ function Featured({ title }: any) {
     }
 
     return (
-        <div className="container">
-            <div className="d-flex align-items-center justify-content-center w-100">
-                <h2 style={{ color: 'var(--primary)' }}>{title}</h2>
-            </div>
-            <div className="row w-full my-5">
-                <div className="col-md-6 mb-4">
-                    <Link href="#">
-                        <ImageOverlay icon={<featuredData.latest.icon />} text={featuredData.latest.text}
-                            src={featuredData.latest.src} isText={true} />
-                    </Link>
-                </div>
+        <>
+            {featuredPublicationError ? <ErrorComponent /> : <div className="container">
+                {featuredPublicationLoading ? <FeaturedCardSkeleton /> :
+                    <>
+                        <div className="d-flex align-items-center justify-content-center w-100">
+                            <h2 style={{ color: 'var(--primary)' }}>{title}</h2>
+                        </div>
+                        {featuredPublicationData?.length > 0 ? <div className="row w-full my-5">
+                            <div className="col-md-6 mb-4">
+                                {latestPublication?.length > 0 ? latestPublication?.map((data: any, index: number) => (
+                                    <Link href="#">
+                                        {/* <ImageOverlay icon={<featuredData.latest.icon />} text={featuredData.latest.text}
+                            src={featuredData.latest.src} isText={true} /> */}
+                                        <ImageOverlay icon={data?.icon_logo_image} text={data?.title}
+                                            src={data?.image} isText={true} />
+                                    </Link>
+                                )) : 'No Data'}
+                            </div>
 
-                <div className="col-md-6" style={{ overflow: 'hidden' }}>
-                    <Slider {...settings}>{featuredData?.data && featuredData?.data?.length > 0 &&
-                        featuredData.data.map((info: any, index: number) => (
-                            <Link href='#' className="details" key={index}>
-                                <ImageOverlay icon={<info.icon />} src={info.src} />
-                                <div className="info">
-                                    <h4>{info.title}</h4>
-                                    <div className="detailInfo">
-                                        <p>{info.para}</p>
-                                    </div>
-                                </div>
-                            </Link>
-                        ))}
-                    </Slider>
-                </div>
-            </div>
-        </div>
+                            <div className="col-md-6" style={{ overflow: 'hidden' }}>
+                                <Slider {...settings}>{featuredPublicationlist?.length > 0 &&
+                                    featuredPublicationlist?.map((data: any, index: number) => (
+                                        <Link href={`/featured-publication-list/${data?.title}`} className="details" key={index}>
+                                            <ImageOverlay icon={data?.icon_logo_image} src={data?.image} />
+                                            <div className="info">
+                                                <h4>{data?.title}</h4>
+                                                <div className="detailInfo">
+                                                    <p>{data?.short_description}</p>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    ))}
+                                </Slider>
+                            </div>
+                        </div> : <NoDataFound />
+                        }
+                    </>
+                }
+
+            </div>}
+        </>
     )
 }
 

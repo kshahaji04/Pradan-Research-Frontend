@@ -14,6 +14,7 @@ import ErrorComponent from '../ErrorComponent'
 import NoDataFound from '../NoDataFound'
 import SpotlightCardSkeleton from '@/app/skeletons/featuredReaserch/SpotlightCardSkeleton'
 import FeaturedResearchSkeleton from '@/app/skeletons/featuredReaserch/FeaturedResearchSkeleton'
+import NoImage from '@/public/assets/images/no_image.jpg';
 
 const FeaturedResearch = () => {
 
@@ -44,7 +45,7 @@ const FeaturedResearch = () => {
                             {featuredData?.map((item: any, index: any) => {
                                 return featuredLoading ? <FeaturedCardSkeleton /> : <div className={`row  ${styles.mainRow}`} key={index}>
                                     <div className={`col-sm-7 `}>
-                                        <Image width={500} height={416} className={`${styles.featuredImage}`} loader={imageLoader} alt='Image' src={item?.image} />
+                                        <Image width={500} height={416} className={`${styles.featuredImage}`} loader={imageLoader} alt='Image' src={item?.image !== null && item?.image !== '' ? item?.image : NoImage.src} />
                                     </div>
                                     <div className={`col-sm-5 card ${styles.cardMain}`}>
                                         <div className="card-body">
@@ -82,7 +83,7 @@ const FeaturedResearch = () => {
                             {spotlightLoading ? <SpotlightCardSkeleton /> : <>
                                 <div className={`card ${styles.cardMain2}`}>
                                     <Image width={200} height={200} className='card-img-top'
-                                        src={spotlightData?.image} loader={imageLoader} alt='images' />
+                                        src={spotlightData?.image !== null && spotlightData?.image !== '' ? spotlightData?.image : NoImage.src} loader={imageLoader} alt='images' />
                                     <div className="card-body">
                                         <div className={`card-title`}>
                                             <Link href={'/'} className={`${styles.card1Title}`} >
@@ -100,7 +101,7 @@ const FeaturedResearch = () => {
                                     </div>
                                 </div>
                             </>}
-                        </div></> : <>{!featuredLoading && !spotlightLoading ? <div className="mb-5 pt-3"><NoDataFound /></div>: <FeaturedResearchSkeleton />}</>}
+                        </div></> : <>{!featuredLoading && !spotlightLoading ? <div className="mb-5 pt-3"><NoDataFound /></div> : <FeaturedResearchSkeleton />}</>}
                 </>}
         </>
     )
