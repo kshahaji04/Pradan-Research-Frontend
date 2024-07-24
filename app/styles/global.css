@@ -222,3 +222,11 @@ a {
 .btn-danger{
   color: white !important;
 }
+
+.btn-outline-success{
+  color: #0e590a !important;
+}
+
+.btn-outline-success:hover{
+  color: white !important;
+}

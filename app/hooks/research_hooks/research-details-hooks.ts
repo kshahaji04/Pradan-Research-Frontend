@@ -2,10 +2,14 @@ import React from 'react'
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import GetResearchDetailsApi from '@/app/services/api/research_api/research_details_api';
+import { useParams } from 'next/navigation';
 
 
 const useResearchDetails = () => {
     const dispatch = useDispatch();
+    const { slug } = useParams();
+
+    // console.log(slug, "slug")
     const [researchDetails, setResearchDetails] = useState<any>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [researchError, setResearchError] = useState<boolean>(false);
@@ -14,9 +18,9 @@ const useResearchDetails = () => {
 
         setLoading(true);
         try {
-          const response = await GetResearchDetailsApi();
-          console.log('research d',response)
-          console.log('research d code',response.code)
+          const response = await GetResearchDetailsApi(slug);
+          // console.log('research d',response)
+          // console.log('research d code',response.code)
           response?.length > 0 && setResearchDetails(response[0]);
           setLoading(false);
           
@@ -30,7 +34,7 @@ const useResearchDetails = () => {
           } else if (response.name === "AxiosError") {
             error = "axios error";
           }
-          console.log('research error !!',error)
+          // console.log('research error !!',error)
           if (error !== '') {
             setResearchError(true);
           } else {

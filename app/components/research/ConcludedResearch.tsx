@@ -47,7 +47,7 @@ function ConcludedResearch() {
                     loading ? <ResearchPageCradSkeleton /> :
                     data?.length > 0 ?
                     data.map((item: ResearchCardItem, index: number) => (
-                        <ResearchPageCards link={`/research/concluded-research/about-the-research`} item={item} index={index} key={index} />
+                        <ResearchPageCards link={`/research/concluded-research/${item?.slug}/about-the-research`} item={item} index={index} key={index} />
                     ))
                     : <NoDataFound/>
                     }

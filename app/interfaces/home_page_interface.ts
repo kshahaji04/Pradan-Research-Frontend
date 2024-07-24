@@ -27,9 +27,9 @@ export interface AboutDataInterface {
 }
 
 interface MediaAuthorDataInterface {
-    author_name?: string | null;
-    author_image?: string | null;
-  }
+  author_name?: string | null;
+  author_image?: string | null;
+}
 
 export interface MediaDataInterface {
   authors: MediaAuthorDataInterface[];
