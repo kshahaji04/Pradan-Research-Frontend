@@ -5,9 +5,14 @@ import styles from "@/app/styles/research/researchCard.module.css"
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import pdfIcon from '@/public/assets/images/pdfIcon.svg'
 import { imageLoader } from '@/app/utils/image_loader_utils';
-function ResearchPageCards({ item, index, link }: any) {
-    const languages = ["English", "Hindi", "Marathi", "Bangali", "Telugu"]
-    console.log(item)
+import noImage from '@/public/assets/images/no_image.jpg'
+import { utimes } from 'fs';
+import { ResearchCard } from '@/app/interfaces/research_interface';
+
+
+
+function ResearchPageCards({ item, index, link }: ResearchCard) {
+    // const languages = ["English", "Hindi", "Marathi", "Bangali", "Telugu"]
     return (
         <div className="col-md-6 col-lg-4 g-4 p-4" key={index}>
             <Link href={link} style={{ textDecoration: 'none' }}>
@@ -15,10 +20,11 @@ function ResearchPageCards({ item, index, link }: any) {
                     <div>
                         <Image width={470} height={300}
                          className={`${styles.img}`}
-                         src={item?.image}
+                         src={item?.image || noImage}
                          alt='Image' 
                          loader={imageLoader}
-                         />
+                         /> 
+
                     </div>
 
                     <div className='row card-body h-100'>
