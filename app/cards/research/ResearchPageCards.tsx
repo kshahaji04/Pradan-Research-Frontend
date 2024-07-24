@@ -7,22 +7,9 @@ import pdfIcon from '@/public/assets/images/pdfIcon.svg'
 import { imageLoader } from '@/app/utils/image_loader_utils';
 import noImage from '@/public/assets/images/no_image.jpg'
 import { utimes } from 'fs';
+import { ResearchCard } from '@/app/interfaces/research_interface';
 
-interface ResearchCardItem {
-    image?: any;
-    name?: string; 
-    slug?: string; 
-    sub_title?: string; 
-    title: string; 
-    url?: any; 
-    languages?: string[]; 
-  }
 
-  interface ResearchCard{
-    item : ResearchCardItem;
-    index : number;
-    link:any
-  }
 
 function ResearchPageCards({ item, index, link }: ResearchCard) {
 

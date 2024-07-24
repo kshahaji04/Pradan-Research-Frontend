@@ -6,15 +6,7 @@ import { useRouter } from 'next/navigation';
 import ErrorComponent from '../ErrorComponent';
 import ResearchPageCradSkeleton from '@/app/skeletons/cards/research/ResearchPageCradSkeleton';
 import NoDataFound from '../NoDataFound';
-interface ResearchCardItem {
-    image?: any;
-    name?: string; 
-    slug?: string; 
-    sub_title?: string; 
-    title: string; 
-    url?: any; 
-    languages?: string[]; 
-  }
+import { ResearchCardItem } from '@/app/interfaces/research_interface';
 
 function OngoingResearch() {
     const router = useRouter()
