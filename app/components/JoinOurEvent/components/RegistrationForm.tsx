@@ -6,7 +6,6 @@ import {
   useFormikContext,
 } from "formik";
 import { Form } from "react-bootstrap";
-import { useRouter } from "next/router";
 
 import Link from "next/link";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -33,7 +32,6 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }:a
   const [loading, setLoading] = useState(false);
   const [showErrorToast, setShowErrorToast] = useState(false);
  
-  const router = useRouter();
   const [isLoginModalShow, setIsLoginModalShow] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -90,9 +88,9 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }:a
                 <div className={`${styles.signup_wrapper}`}>
                   <div className="row">
                     <div className="col-lg-12 p-0 text-center">
-                      <p className={styles.signup_header}>
+                      {/* <p className={styles.signup_header}>
                         Sign up
-                      </p>
+                      </p> */}
                     </div>
                     <div className="col-lg-12 p-0">
 
@@ -298,12 +296,12 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }:a
                         type="submit"
                         className={` btn ${styles.btn_sign_up}`}
                       >
-                        Sign up
+                        Register
                       </button>
                       <br />
                     </div>
 
-                    <div className="text-center">
+                    {/* <div className="text-center">
                       <p>
                         <span className="grey fs-16 fw-400 lh-24">
                           Have an account?
@@ -321,7 +319,7 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }:a
                           </button>
                         </span>
                       </p>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                 <FormObserver />
