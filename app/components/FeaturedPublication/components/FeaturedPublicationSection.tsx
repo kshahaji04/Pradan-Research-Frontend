@@ -26,7 +26,7 @@ const FeaturedPublicationSection = () => {
     const limit = 1;
     const totalPages = Math.ceil(totalCount / limit);
 
-    const Skeleton = () => {
+    const SkeletonLoader = () => {
         return (
             <div className='d-flex gap-4'>
                 {Array.from({ length: 3 }).map((_, index) => (
@@ -38,8 +38,8 @@ const FeaturedPublicationSection = () => {
     };
     return (
         <>
-            {featuredPublicationListError ? <ErrorComponent /> : <div className={'container'}>
-                {featuredPublicationListLoading ? <Skeleton /> : <div className="row">
+            {featuredPublicationListError ? <ErrorComponent /> : <div className={'container-fluid'}>
+                {featuredPublicationListLoading ? <SkeletonLoader /> : <div className="row">
                     {/* <div className="col-12">
                         <h5 className="ms-3">
                             Print Media
