@@ -8,7 +8,7 @@ import GetBannerApi from "@/app/services/api/home_page_api/banner_api";
 const initialState: {
     data: any | null;
     loading: boolean;
-    error: string | null;
+    error: string | undefined | null;
 } = {
     data: [],
     loading: false,
@@ -49,7 +49,7 @@ const bannerSliceScreen = createSlice({
             .addCase(fetchBanner.rejected, (state, action) => {
                 state.loading = false;
                 state.data = [];
-                state.error = "An error occurred.";
+                state.error = action.error.code;
             });
     },
 });
