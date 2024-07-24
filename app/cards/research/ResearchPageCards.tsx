@@ -12,18 +12,15 @@ import { ResearchCard } from '@/app/interfaces/research_interface';
 
 
 function ResearchPageCards({ item, index, link }: ResearchCard) {
-
-    console.log(item,index,link)
-    const languages = ["English", "Hindi", "Marathi", "Bangali", "Telugu"]
-    console.log(item)
+    // const languages = ["English", "Hindi", "Marathi", "Bangali", "Telugu"]
     return (
         <div className="col-md-6 col-lg-4 g-4 p-4" key={index}>
             <Link href={link} style={{ textDecoration: 'none' }}>
                 <div className={`card ${styles.car}`}>
                     <div>
                         <Image width={470} height={300}
-                         className={`${styles.img || noImage}`}
-                         src={item?.image}
+                         className={`${styles.img}`}
+                         src={item?.image || noImage}
                          alt='Image' 
                          loader={imageLoader}
                          /> 
