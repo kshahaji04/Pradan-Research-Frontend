@@ -148,7 +148,7 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
                       </Form.Group>
 
                       <Form.Group controlId="formName">
-                        <div className="row mt-3">
+                        <div className="row mt-4">
                           <div className="col-md-6">
                             <label className="mb-1 grey">
                               Email
@@ -200,90 +200,9 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
                           </div>
                         </div>
                       </Form.Group>
-                      <Form.Group controlId="formPassword">
-                        <div className="row mt-3">
-                          <div className="col-md-6">
-                            <label className="mb-1 grey">
-                              Password
-                            </label>
-                            <TextField
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              type={showPassword ? "text" : "password"} // Toggle password visibility
-                              name="password"
-                              className="login_inputs w-100"
-                              onKeyDown={onKeydown}
-                              placeholder='Enter Your Password'
-                              required
-                              autoComplete="off"
-                              InputProps={{
-                                endAdornment: (
-                                  <InputAdornment position="end">
-                                    <IconButton
-                                      onClick={togglePasswordVisibility}
-                                    >
-                                      {showPassword ? (
-                                        <VisibilityIcon />
-                                      ) : (
-                                        <VisibilityOffIcon />
-                                      )}
-                                    </IconButton>
-                                  </InputAdornment>
-                                ),
-                              }}
-                            />
-                            <div className="row">
-                              <div className="col-12">
-                                <div className={styles.error_msg}>
-                                  <ErrorMessage name="password" />
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* confirm pass */}
-                          <div className="col-md-6">
-                            <label className="mb-1 grey">
-                              Confirm Password
-                            </label>
-                            <TextField
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              type={showConfirmPassword ? "text" : "password"} // Toggle password visibility
-                              name="confirm_password"
-                              className="login_inputs w-100"
-                              onKeyDown={onKeydown}
-                              placeholder='Confirm Your Password'
-                              required
-                              autoComplete="off"
-                              InputProps={{
-                                endAdornment: (
-                                  <InputAdornment position="end">
-                                    <IconButton
-                                      onClick={toggleConfirmPasswordVisibility}
-                                    >
-                                      {showConfirmPassword ? (
-                                        <VisibilityIcon />
-                                      ) : (
-                                        <VisibilityOffIcon />
-                                      )}
-                                    </IconButton>
-                                  </InputAdornment>
-                                ),
-                              }}
-                            />
-                            <div className="row">
-                              <div className="col-12">
-                                <div className={styles.error_msg}>
-                                  <ErrorMessage name="confirm_password" />
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </Form.Group>
+                     
                     </div>
-                    <div className="col-md-6 mt-3 d-flex">
+                    <div className="col-md-6 mt-4 d-flex">
                       <label className="mb-1 grey">
                         Select Gender :
                       </label>

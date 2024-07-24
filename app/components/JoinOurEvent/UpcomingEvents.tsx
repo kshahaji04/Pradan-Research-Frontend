@@ -128,7 +128,9 @@ const UpcomingEvents = () => {
                                   <h2 className={styles.five}>
                                     {item.detail5}
                                   </h2>
-
+                                </div>
+                                <div>
+                                  <h4 className="text-center">Type: Online</h4>
                                 </div>
                                 <div className="text-center mt-3">
                                   <Link href='/components/JoinOurEvent/event-details' className="btn btn-outline-success">Register</Link>
