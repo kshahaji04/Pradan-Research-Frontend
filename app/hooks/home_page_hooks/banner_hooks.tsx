@@ -1,4 +1,5 @@
 // 'use client'
+import { BannerDataInterface } from "@/app/interfaces/home_page_interface";
 import { fetchBanner, get_banner_from_store } from "@/app/store/slices/home_page_slice/banner_slice";
 // import { fetchLogo, get_logo_from_store } from "@/app/store/slices/home_page_slice/logo_slice";
 // import { fetchNavbar, get_navbar_from_store } from "@/app/store/slices/home_page_slice/navbar_slice";
@@ -25,7 +26,7 @@ const useBanner = () => {
     // }
   }, [bannerFromStore]);
 
-  return { bannerData, loadingBanner: bannerFromStore?.loading, bannerError: bannerFromStore?.error};
+  return { bannerData: bannerData as BannerDataInterface, loadingBanner: bannerFromStore?.loading as boolean, bannerError: bannerFromStore?.error as string | null};
 };
 
 export default useBanner;

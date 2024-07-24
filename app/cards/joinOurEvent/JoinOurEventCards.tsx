@@ -27,6 +27,7 @@ const JoinOurEventCards = ({ data }: any) => {
                                     <div className={`${styles.card_body}`}>
                                         <p className={`card-text mb-0 pb-2`}>{data?.author}</p>
                                         <p className="card-title text-secondary">{data?.title}</p>
+                                        <h6 className='mb-0'>Type : In-Person</h6>
                                         <p>{data?.text?.length > 60 ? `${data.text.slice(0, 60)}...` : data?.text}</p>
                                     </div>
                                     <div className="d-flex align-items-start gap-3 pb-2 pe-0" style={{ marginTop: '-10px', fontSize: '13px' }}>
