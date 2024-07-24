@@ -6,8 +6,15 @@ import { useRouter } from 'next/navigation';
 import ErrorComponent from '../ErrorComponent';
 import ResearchPageCradSkeleton from '@/app/skeletons/cards/research/ResearchPageCradSkeleton';
 import NoDataFound from '../NoDataFound';
-
-
+interface ResearchCardItem {
+    image?: any;
+    name?: string; 
+    slug?: string; 
+    sub_title?: string; 
+    title: string; 
+    url?: any; 
+    languages?: string[]; 
+  }
 
 function OngoingResearch() {
     const router = useRouter()
@@ -42,7 +49,7 @@ function OngoingResearch() {
                      {
                     loading ? <ResearchPageCradSkeleton/> :
                     data?.length > 0 ? 
-                    data?.map((item: any, index: number) => (
+                    data?.map((item: ResearchCardItem, index: number) => (
                         <ResearchPageCards link={`/research/ongoing-research/about-the-research`} item={item} index={index} key={index} />
                     )) : 
                     <NoDataFound />

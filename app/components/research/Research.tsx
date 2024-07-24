@@ -2,10 +2,8 @@
 import React, { useState } from 'react'
 import OngoingResearch from './OngoingResearch';
 import ConcludedResearch from './ConcludedResearch';
-import styles from "@/app/styles/research/researchCard.module.css"
 import whiteBanner from '@/public/assets/images/bg/whiteBanner.jpg';
 import Image from 'next/image';
-import research_hooks from '@/app/hooks/research_hooks/research_hooks';
 import { useRouter } from 'next/navigation';
 
 function Research() {
