@@ -5,10 +5,10 @@
     cursor: pointer;
 }
 
-.card1Title:hover,
+/* .card1Title:hover,
 .card2text:hover {
     border-bottom: 2px solid var(--primary);
-}
+} */
 
 .head {
     color: var(--primary) !important;
@@ -63,13 +63,15 @@
 
 .cardMain2 {
     background-color: rgb(245, 238, 235) !important;
-    height: 92% !important;
+    /* height: 88% !important; */
 }
 
 .mainRow {
     display: flex !important;
     flex-direction: row !important;
-    background-color: rgb(222, 222, 222)
+    background-color: rgb(222, 222, 222);
+    max-width: 98%;
+    /* margin: 0 auto; */
 }
 
 @media(max-width:1025px){
@@ -83,9 +85,9 @@
         padding: 0 !important;
     }
 
-    .cardMain2 {
+    /* .cardMain2 {
         height: 350px !important;
-    }
+    } */
 }
 
 @media(max-width:426px) {

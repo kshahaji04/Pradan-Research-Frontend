@@ -12,6 +12,7 @@ import axios from 'axios';
 import { API_CONFIG } from '@/app/services/config/api-config';
 import { showToast } from '../ToastNotification';
 import FooterSkeleton from '@/app/skeletons/Footer/FooterSkeleton';
+import { FooterDataInterface } from '@/app/interfaces/general_interface';
 // import AOS from "aos";
 // import "aos/dist/aos.css";
 const quickLinks = [
@@ -41,7 +42,11 @@ const quickLinks = [
   }
 ]
 
-function Footer({ footerData }: any) {
+interface FooterInterface {
+  footerData: FooterDataInterface
+}
+
+function Footer({ footerData }: FooterInterface) {
   const [email, setEmail] = useState('');
 
 
@@ -51,7 +56,7 @@ function Footer({ footerData }: any) {
   // }, []);
 
   // const { footerData, loadingFooter } = useFooter();
-  // console.log('footer ', footerData, loadingFooter);
+  console.log('footer ', footerData);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -132,11 +137,11 @@ function Footer({ footerData }: any) {
 
             {/* social links */}
             <ul className='list-inline my-4'>
-              <li className='list-inline-item'><Link href={pradan_contact_us?.social_links?.facebook_url ?? '/'} className={`${styles.blue_icon}`}><FacebookIcon /></Link></li>
-              <li className='list-inline-item'><Link href={pradan_contact_us?.social_links?.instagram_url ?? '/'} className={`${styles.insta_icon}`}><InstagramIcon /></Link></li>
-              <li className='list-inline-item'><Link href={pradan_contact_us?.social_links?.whatsapp_url ?? '/'} className={`${styles.whats_app_icon}`}><WhatsAppIcon /></Link></li>
-              <li className='list-inline-item'><Link href={pradan_contact_us?.social_links?.linked_in_url ?? '#'} className={`${styles.blue_icon}`}><LinkedInIcon /></Link></li>
-              <li className='list-inline-item'><Link href={pradan_contact_us?.social_links?.x_url ?? '/'} className={`${styles.tweeter_icon}`}><XIcon /></Link></li>
+              <li className='list-inline-item'><Link href={pradan_contact_us?.facebook_url ?? '/'} className={`${styles.blue_icon}`}><FacebookIcon /></Link></li>
+              <li className='list-inline-item'><Link href={pradan_contact_us?.instagram_url ?? '/'} className={`${styles.insta_icon}`}><InstagramIcon /></Link></li>
+              <li className='list-inline-item'><Link href={pradan_contact_us?.whatsapp_url ?? '/'} className={`${styles.whats_app_icon}`}><WhatsAppIcon /></Link></li>
+              <li className='list-inline-item'><Link href={pradan_contact_us?.linked_in_url ?? '#'} className={`${styles.blue_icon}`}><LinkedInIcon /></Link></li>
+              <li className='list-inline-item'><Link href={pradan_contact_us?.x_url ?? '/'} className={`${styles.tweeter_icon}`}><XIcon /></Link></li>
             </ul>
           </div>
         </div>

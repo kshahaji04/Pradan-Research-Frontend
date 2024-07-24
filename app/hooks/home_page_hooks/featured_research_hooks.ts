@@ -27,7 +27,7 @@ const useFeatured = () => {
         fetchFeatured();
     }, []);
   
-    return {featuredData, featuredError, featuredLoading}
+    return {featuredData, featuredError: featuredError as boolean, featuredLoading:featuredLoading as boolean}
 
 };
 

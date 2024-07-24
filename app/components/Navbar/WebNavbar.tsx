@@ -9,15 +9,13 @@ import useNavbar from '@/app/hooks/home_page_hooks/navbar_hooks';
 import useLogo from '@/app/hooks/home_page_hooks/logo_hooks';
 import { imageLoader } from '@/app/utils/image_loader_utils';
 import WebNavbarSkeleton from '@/app/skeletons/Navbar/WebNavbarSkeleton';
+import { LogoDataInterface, NavbarDataInteface } from '@/app/interfaces/general_interface';
+interface WebNavbarInterface {
+  navbarData: NavbarDataInteface[];
+  logoData: LogoDataInterface[];
+}
 
-const navMenu = [
-  { id: 1, menu_title: 'Research', link: '/research' },
-  { id: 2, menu_title: 'Contact Us', link: '/' },
-  { id: 3, menu_title: 'Join Our Event', link: '/join-our-event' },
-  { id: 4, menu_title: 'Meet Our Team', link: '/' },
-];
-
-function WebNavbar({ navbarData, logoData }: any) {
+function WebNavbar({ navbarData, logoData }: WebNavbarInterface) {
   const [inputValue, setInputValue] = useState("");
   // const [voiceInput, setVoiceInput] = useState("");
   const [isRecording, setIsRecording] = useState(false);
@@ -27,7 +25,7 @@ function WebNavbar({ navbarData, logoData }: any) {
   // const { logoData, loadingLogo } = useLogo();
 
   // console.log("navbar: ", navbarData, loadingNavbar);
-  // console.log("logo: ", logoData, loadingLogo);
+  // console.log("logo: ", logoData);
 
   const {
     transcript,
