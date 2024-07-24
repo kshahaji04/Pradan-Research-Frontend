@@ -1,3 +1,4 @@
+import { AboutDataInterface } from "@/app/interfaces/home_page_interface";
 import { fetchAboutUsShortInfo, get_about_us_short_info_from_store } from "@/app/store/slices/home_page_slice/about_us_short_info_slice";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,7 +22,7 @@ const useAboutUsShortInfo = () => {
     }
   }, [aboutUsShortInfoFromStore]);
 
-  return { shortInfoData, loadingShortInfo: aboutUsShortInfoFromStore?.loading, shortInfoError };
+  return { shortInfoData: shortInfoData as AboutDataInterface, loadingShortInfo: aboutUsShortInfoFromStore?.loading as boolean, shortInfoError: shortInfoError as boolean };
 };
 
 export default useAboutUsShortInfo;
