@@ -10,16 +10,21 @@ import useLogo from '@/app/hooks/home_page_hooks/logo_hooks';
 import { imageLoader } from '@/app/utils/image_loader_utils';
 import WebNavbarSkeleton from '@/app/skeletons/Navbar/WebNavbarSkeleton';
 import { LogoDataInterface, NavbarDataInteface } from '@/app/interfaces/general_interface';
+import { useRouter } from 'next/navigation'; 
+import { useDispatch, UseDispatch } from 'react-redux';
+import { fetchSearch } from '@/app/store/slices/search_slice/search_slice';
 interface WebNavbarInterface {
   navbarData: NavbarDataInteface[];
   logoData: LogoDataInterface[];
 }
 
 function WebNavbar({ navbarData, logoData }: WebNavbarInterface) {
+  const dispatch = useDispatch()
   const [inputValue, setInputValue] = useState("");
   // const [voiceInput, setVoiceInput] = useState("");
   const [isRecording, setIsRecording] = useState(false);
   const recordingDuration = 5000; // 5 seconds
+  const router = useRouter();
 
   // const { navbarData, loadingNavbar } = useNavbar();
   // const { logoData, loadingLogo } = useLogo();
@@ -67,9 +72,18 @@ function WebNavbar({ navbarData, logoData }: WebNavbarInterface) {
     setInputValue(e.target.value);
   };
 
-  const searchHandler = () => {
-    console.log("searching")
+  const searchHandler =async (e:any) => {
+  //  await dispatch(fetchSearch({page:1,searchQuery:inputValue,sortBy:'most_recent'}) as any)
+    router.push(`/search?search=${inputValue}`)
   }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      searchHandler(e);
+    }
+  };
+
+ 
 
   return (
     <div className={`py-2 px-5 ${styles.navbar_container}`}>
@@ -124,10 +138,12 @@ function WebNavbar({ navbarData, logoData }: WebNavbarInterface) {
             </nav>
           </div>
           <div className='d-flex justify-content-center'>
-            <form className={`form-inline my-2 my-lg-0 search_form d-flex ${styles.search_form_web}`}>
-              <input className={`form-control mr-sm-2 ${styles.search_input}`} value={inputValue} onChange={handleInputChange} placeholder="Search" aria-label="Search" />
+            <div className={`form-inline my-2 my-lg-0 search_form d-flex ${styles.search_form_web}`}>
+              <input 
+                onKeyDown={handleKeyDown}
+              className={`form-control mr-sm-2 ${styles.search_input}`} value={inputValue} onChange={handleInputChange} placeholder="Search" aria-label="Search" />
               <i className={`fa fa-search ${styles.search_icon}`} aria-hidden="true" onClick={searchHandler}></i>
-            </form>
+            </div>
             <div className={styles.mic_icon_container}>
               <i className={`fa fa-microphone ${styles.mic_icon}`} aria-hidden="true" onClick={handleVoiceInput}></i>
             </div>

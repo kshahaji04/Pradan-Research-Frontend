@@ -96,7 +96,7 @@ const OrganizationCard = ({ data, loading }: any) => {
                               {item?.company_name}
                             </div>
                             <div className={`card-text pt-2  ${styles.carText}`}>
-                              {item?.company_address?.length > 108 ? item?.company_address?.slice(0, 108) : item?.company_address}
+                              {item?.company_address?.length > 108 ? `${item?.company_address?.slice(0, 108)}...` : item?.company_address}
                             </div>
                             {/* <div className={`card-text ${styles.cardText2}`}>
                                                     {item.address}

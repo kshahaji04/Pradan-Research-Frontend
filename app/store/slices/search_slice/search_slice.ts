@@ -18,8 +18,8 @@ export const fetchSearch = createAsyncThunk(
     "search/fetchSearch",
     async ({ page, searchQuery, sortBy, selectedFilters }: { page: number, searchQuery?: string, sortBy?: string, selectedFilters?: any }) => {
         try {
-            const response = await GetSearchApi(page, searchQuery, sortBy, selectedFilters);
-            // console.log(response)
+            const response = await GetSearchApi(page, searchQuery, sortBy);
+            console.log(response)
             return response;
         } catch (error) {
             throw error;

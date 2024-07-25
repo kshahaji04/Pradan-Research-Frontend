@@ -2,12 +2,12 @@ import { CONSTANTS } from "@/app/services/config/app-config";
 import axios from "axios";
 import { API_CONFIG } from '@/app/services/config/api-config'
 
-const GetSearchApi = async (page: number, searchQuery?: string, sortBy?: string, selectedFilters?: any) => {
+const GetSearchApi = async (page: number, searchQuery?: string, sortBy?: string) => {
 
     const limit = 3;
     let response: any;
 
-    let url = `${CONSTANTS.API_BASE_URL}/api/method/pradan.pradan.doctype.content.api.get_content.get_content?project_name=${CONSTANTS.PROJECT_NAME}&limit=${limit}&page_no=${page || 1}`;
+    let url = `${CONSTANTS.API_BASE_URL}/api/method/pradan.pradan.customizations.search_api.api.research_api.get_research_search_api?project_name=${CONSTANTS.PROJECT_NAME}&limit=${limit}&page_no=${page || 1}`;
 
     if (searchQuery) {
         url += `&search_key=${searchQuery}`;
@@ -15,12 +15,12 @@ const GetSearchApi = async (page: number, searchQuery?: string, sortBy?: string,
     if (sortBy) {
         url += `&sort_by=${sortBy}`;
     }
-
-    if (selectedFilters) {
-        const categoryList = selectedFilters.split(',')
-        const categoryParam = JSON.stringify(categoryList);
-        url += `&category=${categoryParam}`;
-    }
+    // selectedFilters?: any
+    // if (selectedFilters) {
+    //     const categoryList = selectedFilters.split(',')
+    //     const categoryParam = JSON.stringify(categoryList);
+    //     url += `&category=${categoryParam}`;
+    // }
 
     await axios
         .get(

@@ -7,7 +7,7 @@ const research_hooks = (tab: any, page_no: any) => {
     const [count, setCount] = useState<any>()
     const [loading, setLoading] = useState<boolean>(false)
     const [error, setError] = useState<boolean>(false)
-    const limit = 1
+    const limit = 3
     const getResearchListData = async () => {
         try {
             setLoading(true)

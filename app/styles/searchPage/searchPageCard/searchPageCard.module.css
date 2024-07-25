@@ -1,0 +1,80 @@
+
+.cardBody{
+    width: 95% !important;
+}
+
+.splitButton{
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.filterTitle{
+    font-size: 20px;
+}
+
+.gridCard{
+    border: none !important;
+    box-shadow: 4px 4px 16px rgba(0.2, 0.2, 0.2, 0.2);
+}
+
+.listCard{
+    box-shadow:  8px 8px 16px rgba(0.2, 0.1, 0.1, 0.2);
+    border: none !important;
+}
+.listImg{
+ box-shadow:  4px 4px 4px rgba(0.2, 0.1, 0.1, 0.2);
+ border-radius: 10px;
+}
+
+.fixedBottomFilter {
+    margin: 1rem;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    text-align: center !important;
+    padding: 10px;
+    background-color: var(--blue);
+    border-top: 1px solid #e7e7e7;
+    z-index: 1050;
+    border-radius: 50px;
+    color: var(--white);
+}
+
+@media(max-width:768px){
+    .filterSection{
+       border: none !important;
+    }
+.mainFilter{
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center;
+}
+.filterTop{
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between;
+}
+}
+
+.active{
+    color: var(--blue) !important;
+}
+
+.searchContainer{
+    margin-top: 120px !important;
+}
+.slelectNav{
+    border: none !important;
+    border-bottom: 2px solid var(--blue) !important;
+    width: 80px;
+}
+
+
+@media (max-width:376px){
+.searchResult{
+    padding: 0 !important;
+}
+.sortBy{
+ margin-right: 0px !important;
+}
+}
