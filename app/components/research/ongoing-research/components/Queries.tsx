@@ -1,3 +1,4 @@
+"use client";
 import useQueries from "@/app/hooks/research_hooks/research-queries-hooks";
 import { imageLoader } from "@/app/utils/image_loader_utils";
 import Image from "next/image";
@@ -7,6 +8,9 @@ import NoDataFound from "@/app/components/NoDataFound";
 import ErrorComponent from "@/app/components/ErrorComponent";
 import noImage from "@/public/assets/images/no_image.jpg";
 import { QueriesInterface } from "@/app/interfaces/research_interface";
+import QueriesSkeleton from "@/app/skeletons/Research/QueriesSkeleton";
+import QueriesCard from "@/app/cards/research/research_details/QueriesCard";
+import Skeleton from "react-loading-skeleton";
 
 const Queries = () => {
   const { queriesData, loadingQueries, queriesError } = useQueries();
@@ -19,6 +23,8 @@ const Queries = () => {
         <div className="mb-5 pb-5 position-relative" style={{ zIndex: 9 }}>
           <ErrorComponent />
         </div>
+      ) : loadingQueries ? (
+        <QueriesSkeleton />
       ) : (
         <div className="row">
           <div className="col-12">
@@ -34,39 +40,14 @@ const Queries = () => {
               <>
                 {queriesData?.map((item: QueriesInterface, index: any) => (
                   <div className="d-flex justify-content-center" key={index}>
-                    <div
-                      className="card shadow d-flex flex-row align-items-center py-4"
-                      style={{ width: "40rem" }}
-                    >
-                      <div>
-                        <Image
-                          src={item?.image || noImage}
-                          height={200}
-                          width={200}
-                          alt={item?.heading || ''}
-                          loader={imageLoader}
-                        />
-                      </div>
-                      <div className="card-body">
-                        <h5 className="card-title">{item?.title}</h5>
-                        <p className="card-text">{item?.sub_title}</p>
-                        <Link
-                          href={item?.url || ''}
-                          className="btn btn-outline-success"
-                        >
-                          For Queries
-                        </Link>
-                      </div>
-                    </div>
+                    <QueriesCard item={item} />
                   </div>
                 ))}
               </>
             ) : (
-              !loadingQueries && (
-                <div className="mb-5 pt-3">
-                  <NoDataFound />
-                </div>
-              )
+              <div className="mb-5 pt-3">
+                <NoDataFound />
+              </div>
             )}
           </div>
         </div>

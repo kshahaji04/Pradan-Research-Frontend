@@ -33,7 +33,7 @@ const OnGoingResearchMaster = () => {
             padding: "80px 0px 60px",
           }}
         >
-          <PublicationsGallery />
+          <PublicationsGallery title={'Gallery'} />
         </div>
         <figure>
           <Image width={1200} height={1200} src={topBorders} alt="bg" />

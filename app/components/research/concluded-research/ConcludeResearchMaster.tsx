@@ -15,7 +15,7 @@ const ConcludeResearchMaster = () => {
     <Reports/>
     <PublicationsGallery/>
     <Queries/> */}
-      <div style={{ backgroundColor: '#f7f7f7', padding: '0px 0 0px' }}>
+      <div style={{ backgroundColor: '#f7f7f7', padding: '40px 0 0px' }}>
         <AboutResearch />
       </div>
       <div className="bgImageWrapper">

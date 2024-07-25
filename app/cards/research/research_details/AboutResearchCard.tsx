@@ -28,7 +28,7 @@ function AboutResearchCard({item}:AboutResearchCardInterface) {
           ></span>
         </p>
       </div>
-      <div className="col-md-5 pt-4">
+      <div className="col-md-5 pt-0">
         <Image
           width={550}
           height={350}

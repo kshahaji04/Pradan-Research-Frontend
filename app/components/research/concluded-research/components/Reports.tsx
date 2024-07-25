@@ -9,18 +9,20 @@ import Slider from "react-slick";
 import NoDataFound from "@/app/components/NoDataFound";
 import ErrorComponent from "@/app/components/ErrorComponent";
 import useReportChapters from "@/app/hooks/research_hooks/research-report-chapter-hooks";
+import ResearchCardsSkeleton from "@/app/skeletons/Research/ResearchCardsSkeleton";
+import Skeleton from "react-loading-skeleton";
 
 function Reports() {
   const { reportChaptersData, loadingReportChapters, reportChaptersError } =
     useReportChapters("Concluded Research");
 
-    console.log(reportChaptersData)
+  // console.log(reportChaptersData)
 
   const settings = {
     dots: false,
-    infinite: false,
+    infinite: reportChaptersData?.length > 3,
+    slidesToScroll: reportChaptersData?.length > 3 ? 1 : 0,
     slidesToShow: 3,
-    slidesToScroll: 0,
     pauseOnHover: true,
     autoplay: true,
     responsive: [
@@ -28,8 +30,8 @@ function Reports() {
         breakpoint: 1200,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
+          infinite: reportChaptersData?.length > 3,
+          slidesToScroll: reportChaptersData?.length > 3 ? 1 : 0,
           dots: true,
         },
       },
@@ -37,7 +39,8 @@ function Reports() {
         breakpoint: 995,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: reportChaptersData?.length > 2 ? 1 : 0,
+          infinite: reportChaptersData?.length > 2,
           initialSlide: 2,
         },
       },
@@ -56,6 +59,32 @@ function Reports() {
       {reportChaptersError ? (
         <div className="mb-5 pb-5 position-relative" style={{ zIndex: 9 }}>
           <ErrorComponent />
+        </div>
+      ) : loadingReportChapters ? (
+        <div className="row pt-3">
+          <div className="col-12">
+            <div className="row">
+              <div className="col-12 pt-4">
+                <h2
+                  className="mb-2 text-center ms-0"
+                  style={{ color: "var(--primary)" }}
+                >
+                  <Skeleton width={240} />
+                </h2>
+              </div>
+            </div>
+          </div>
+
+          {/*research card section with pagination*/}
+          <div className="col-12">
+            <div className="row">
+              <Slider {...settings}>
+                <ResearchCardsSkeleton />
+                <ResearchCardsSkeleton />
+                <ResearchCardsSkeleton />
+              </Slider>
+            </div>
+          </div>
         </div>
       ) : (
         <div className="row pt-3">
@@ -83,7 +112,7 @@ function Reports() {
                 </Slider>
               </div>
             ) : (
-              !loadingReportChapters && <div className="mb-5 pt-3">
+              <div className="mb-5 pt-3">
                 <NoDataFound />
               </div>
             )}

@@ -9,19 +9,21 @@ import NoDataFound from "@/app/components/NoDataFound";
 import ErrorComponent from "@/app/components/ErrorComponent";
 import AboutConcludedResearchCard from "@/app/cards/research/research_details/AboutConcludedResearchCard";
 import ResearchDetailsCard from "@/app/cards/research/research_details/ResearchDetailsCard";
-
+import AboutConcludedResearchCardSkeleton from "@/app/skeletons/Research/AboutConcludedResearchCardSkeleton";
+import ResearchDetailsCardSkeleton from "@/app/skeletons/Research/ResearchDetailsCardSkeleton";
+import Skeleton from "react-loading-skeleton";
 
 function AboutResearch() {
   const { researchDetails, loadingResearchDetails, researchError } =
     useResearchDetails();
 
-    // console.log(researchDetails)
+  // console.log(researchDetails)
 
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: researchDetails?.teams_detail?.length > 3,
     slidesToShow: 3,
-    slidesToScroll: 0,
+    slidesToScroll: researchDetails?.teams_detail?.length > 3 ? 1 : 0,
     pauseOnHover: true,
     autoplay: true,
     vertical: true,
@@ -38,7 +40,29 @@ function AboutResearch() {
       ) : (
         <>
           {loadingResearchDetails ? (
-            ""
+            <>
+              <div className="col-lg-9">
+                <div className="container pt-3 pb-5 px-5">
+                  <AboutConcludedResearchCardSkeleton />
+                </div>
+              </div>
+              <div
+                className="col-lg-3 d-flex align-items-center"
+                style={{ background: "#f7f7f7" }}
+              >
+                <div className="container pt-2 pb-5 ps-5">
+                  <h3 className="pb-2" style={{ color: "var(--primary)" }}>
+                    <Skeleton width={200} />
+                  </h3>
+                  {/* <h4 className='pb-2'>Research</h4> */}
+                  <Slider {...settings}>
+                    <ResearchDetailsCardSkeleton />
+                    <ResearchDetailsCardSkeleton />
+                    <ResearchDetailsCardSkeleton />
+                  </Slider>
+                </div>
+              </div>
+            </>
           ) : (
             <>
               {researchDetails?.research_detail?.length > 0 &&

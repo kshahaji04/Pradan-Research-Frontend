@@ -15,7 +15,7 @@ interface ResearchCardsInterface {
 
 function ResearchCards({ item }: ResearchCardsInterface) {
   return (
-    <div className="col-md-12 g-4 p-4">
+    <div className="col-12 g-4 p-4">
       <div className={`card ${styles.car}`}>
         <div>
           <Image

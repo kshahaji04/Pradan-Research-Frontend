@@ -19,6 +19,11 @@ function PartnerCards({ item }: PartnerCardsInterface) {
         src={item.partners_image && !item.partners_image?.includes('private') ? item.partners_image : noImage}
         alt="Partner Image"
         loader={imageLoader}
+        style={{
+          aspectRatio:'3/2',
+          objectFit: 'contain',
+          mixBlendMode:'color-burn'
+        }}
       />
     </div>
   );

@@ -9,16 +9,19 @@ import ErrorComponent from "@/app/components/ErrorComponent";
 import AboutResearchCard from "@/app/cards/research/research_details/AboutResearchCard";
 import ResearchDetailsCard from "@/app/cards/research/research_details/ResearchDetailsCard";
 import Slider from "react-slick";
+import AboutResearchCardSkeleton from "@/app/skeletons/Research/AboutResearchCardSkeleton";
+import ResearchDetailsCardSkeleton from "@/app/skeletons/Research/ResearchDetailsCardSkeleton";
+import Skeleton from "react-loading-skeleton";
 
 function AboutResearch() {
   const { researchDetails, loadingResearchDetails, researchError } =
-    useResearchDetails();    
-    
+    useResearchDetails();
+
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: researchDetails?.teams_detail?.length > 3,
     slidesToShow: 3,
-    slidesToScroll: 0,
+    slidesToScroll: researchDetails?.teams_detail?.length > 3 ? 1 : 0,
     pauseOnHover: true,
     autoplay: true,
     vertical: true,
@@ -35,24 +38,40 @@ function AboutResearch() {
       ) : (
         <>
           {loadingResearchDetails ? (
-            ""
+            <>
+              <div className="col-lg-8">
+                <div className="container pt-3 pb-5 px-5">
+                  <AboutResearchCardSkeleton />
+                </div>
+              </div>
+              <div
+                className="col-lg-4 d-flex align-items-center"
+                style={{ background: "#f7f7f7" }}
+              >
+                <div className="container pt-3 pb-5 ps-5">
+                  <h3 className="pb-2" style={{ color: "var(--primary)" }}>
+                    <Skeleton width={200} />
+                  </h3>
+                  {/* <h4 className='pb-2'>Research</h4> */}
+                  <Slider {...settings}>
+                    <ResearchDetailsCardSkeleton />
+                    <ResearchDetailsCardSkeleton />
+                    <ResearchDetailsCardSkeleton />
+                  </Slider>
+                </div>
+              </div>
+            </>
           ) : (
             <>
               {researchDetails?.research_detail?.length > 0 &&
               researchDetails?.teams_detail?.length > 0 ? (
                 <>
                   <div className="col-lg-8">
-                    <div className="container py-5 px-5">
-                      {researchDetails?.research_detail?.length > 0 ? (
-                        <>
-                          {researchDetails?.research_detail?.map(
-                            (item: any, index: any) => (
-                              <AboutResearchCard item={item} key={index} />
-                            )
-                          )}
-                        </>
-                      ) : (
-                        ""
+                    <div className="container pt-3 pb-5 px-5">
+                      {researchDetails?.research_detail?.map(
+                        (item: any, index: any) => (
+                          <AboutResearchCard item={item} key={index} />
+                        )
                       )}
                     </div>
                   </div>
@@ -60,7 +79,7 @@ function AboutResearch() {
                     className="col-lg-4 d-flex align-items-center"
                     style={{ background: "#f7f7f7" }}
                   >
-                    <div className="container pt-2 pb-5 ps-5">
+                    <div className="container pt-3 pb-5 ps-5">
                       <h3 className="pb-2" style={{ color: "var(--primary)" }}>
                         Our Team
                       </h3>

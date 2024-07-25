@@ -8,16 +8,17 @@ import "slick-carousel/slick/slick-theme.css";
 import usePartners from "@/app/hooks/research_hooks/research-partner-hooks";
 import NoDataFound from "@/app/components/NoDataFound";
 import ErrorComponent from "@/app/components/ErrorComponent";
+import Skeleton from "react-loading-skeleton";
 function Partners() {
   const { partnersData, loadingPartners, partnersError } = usePartners();
 
-//   console.log(partnersData, "partners");
+  //   console.log(partnersData, "partners");
 
   const settings = {
     dots: false,
-    infinite: true,
+    slidesToScroll: partnersData?.length > 4 ? 1 : 0,
+    infinite: partnersData?.length > 4,
     slidesToShow: 4,
-    slidesToScroll: 1,
     pauseOnHover: true,
     autoplay: true,
     responsive: [
@@ -25,8 +26,8 @@ function Partners() {
         breakpoint: 1200,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
+          slidesToScroll: partnersData?.length > 3 ? 1 : 0,
+          infinite: partnersData?.length > 3,
           dots: true,
         },
       },
@@ -34,7 +35,8 @@ function Partners() {
         breakpoint: 995,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: partnersData?.length > 2 ? 1 : 0,
+          infinite: partnersData?.length > 2,
           initialSlide: 2,
         },
       },
@@ -59,27 +61,56 @@ function Partners() {
           <div className="col-12">
             <div className="text-center">
               <h3 style={{ color: "var(--primary)", marginBottom: "20px" }}>
-                Partners
+                {loadingPartners ? <Skeleton width={200} /> : 'Partners'}
               </h3>
             </div>
           </div>
-          <div className="col-12 py-5">
-            {partnersData?.partners_detail?.length > 0 ? (
+          {loadingPartners ? (
+            <div className="col-12 py-5">
               <div className="row">
                 <Slider {...settings}>
-                  {partnersData?.partners_detail?.map((item: any, index: number) => (
-                    <PartnerCards item={item} key={index} />
-                  ))}
+                  <div>
+                    <div style={{ width: "fit-content", margin: "0 auto" }}>
+                      <Skeleton width={100} height={50} />
+                    </div>
+                  </div>
+                  <div>
+                    <div style={{ width: "fit-content", margin: "0 auto" }}>
+                      <Skeleton width={100} height={50} />
+                    </div>
+                  </div>
+                  <div>
+                    <div style={{ width: "fit-content", margin: "0 auto" }}>
+                      <Skeleton width={100} height={50} />
+                    </div>
+                  </div>
+                  <div>
+                    <div style={{ width: "fit-content", margin: "0 auto" }}>
+                      <Skeleton width={100} height={50} />
+                    </div>
+                  </div>
                 </Slider>
               </div>
-            ) : (
-              !loadingPartners && (
+            </div>
+          ) : (
+            <div className="col-12 py-5">
+              {partnersData?.partners_detail?.length > 0 ? (
+                <div className="row">
+                  <Slider {...settings}>
+                    {partnersData?.partners_detail?.map(
+                      (item: any, index: number) => (
+                        <PartnerCards item={item} key={index} />
+                      )
+                    )}
+                  </Slider>
+                </div>
+              ) : (
                 <div className="mb-5 pt-3">
                   <NoDataFound />
                 </div>
-              )
-            )}
-          </div>
+              )}
+            </div>
+          )}
         </div>
       )}
     </div>
