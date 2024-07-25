@@ -7,7 +7,9 @@ import Skeleton from "react-loading-skeleton";
 export function PublicationsGallerySkeleton({ title }: any) {
   return (
     <>
-      <Skeleton width={50} height={30} />
+      <div className='d-flex align-items-center justify-content-center h-100'>
+        <Skeleton width={300} height={350} />
+      </div>
     </>
   );
 }
@@ -29,6 +31,7 @@ export function PublicationGallerySlick() {
           </div>
         ))}
     </div>
+
   )
 }
 

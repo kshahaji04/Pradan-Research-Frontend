@@ -7,13 +7,15 @@ import { useParams, useRouter } from "next/navigation";
 import PublicationSectionsCardsSkeleton from '@/app/skeletons/MediaPage/MediaSectionCardsSkeleton/PublicationCardsSkeleton/PublicationSectionsCardsSkeleton';
 import ErrorComponent from '@/app/components/ErrorComponent';
 import NoDataFound from '@/app/components/NoDataFound';
+import { featuredPublicationListData } from '@/app/interfaces/featured_publication_interface';
+import SkeletonCard from '@/app/skeletons/general/SkeletonCard';
 
 const FeaturedPublicationSection = () => {
     let params = new URLSearchParams(window.location.search);
-    const pageParam: any = params.get('page_no');
+    const pageParam = params.get('page_no');
     const router = useRouter();
     const { slug } = useParams();
-    const [currentPage, setCurrentPage] = useState<number>(pageParam || 1);
+    const [currentPage, setCurrentPage] = useState<number>(Number(pageParam) || 1);
     const { featuredPublicationListData, featuredPublicationListError, featuredPublicationListLoading, totalCount } = useFeaturedPublicationList(currentPage);
 
     console.log("featuredPublicationListData", featuredPublicationListData)
@@ -26,26 +28,26 @@ const FeaturedPublicationSection = () => {
     const limit = 1;
     const totalPages = Math.ceil(totalCount / limit);
 
-    const SkeletonLoader = () => {
-        return (
-            <div className='d-flex gap-4'>
-                {Array.from({ length: 3 }).map((_, index) => (
-                    <PublicationSectionsCardsSkeleton key={index} />
+    // const SkeletonLoader = () => {
+    //     return (
+    //         <div className='d-flex gap-4'>
+    //             {Array.from({ length: limit || 2 }).map((_, index) => (
+    //                 <PublicationSectionsCardsSkeleton key={index} />
 
-                ))}
-            </div>
-        );
-    };
+    //             ))}
+    //         </div>
+    //     );
+    // };
     return (
         <>
             {featuredPublicationListError ? <ErrorComponent /> : <div className={'container-fluid'}>
-                {featuredPublicationListLoading ? <SkeletonLoader /> : <div className="row">
+                {featuredPublicationListLoading ? <SkeletonCard Component={PublicationSectionsCardsSkeleton} limit={limit || 3} /> : <div className="row">
                     {/* <div className="col-12">
                         <h5 className="ms-3">
                             Print Media
                         </h5>
                     </div> */}
-                    {featuredPublicationListData?.length > 0 ? featuredPublicationListData?.map((info: any, index: any) => (<FeaturedPublicationCards data={info} key={index} />)) : <NoDataFound />}
+                    {featuredPublicationListData?.length > 0 ? featuredPublicationListData?.map((info: featuredPublicationListData, index: number) => (<FeaturedPublicationCards data={info} key={index} />)) : <NoDataFound />}
                 </div>}
 
 
