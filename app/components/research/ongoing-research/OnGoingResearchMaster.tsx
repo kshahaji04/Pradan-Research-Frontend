@@ -2,12 +2,12 @@
 import React from "react";
 import AboutResearch from "./components/AboutResearch";
 import Partners from "./components/Partners";
-import PublicationsGallery from '@/app/components/Media/PublicationsGallery'
 import Queries from "./components/Queries";
 import Image from "next/image";
 import topBorders from "@/public/assets/images/bg/topBorders.jpeg";
 import topRoundedBorders from "@/public/assets/images/bg/topRoundedBorders.jpg";
 import whiteBannerDots from "@/public/assets/images/bg/whiteBannerDots.jpg";
+import PublicationsGallery from "./components/PublicationsGallery";
 
 const OnGoingResearchMaster = () => {
   return (
