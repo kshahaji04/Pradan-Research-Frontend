@@ -12,22 +12,20 @@ import NoImage from '@/public/assets/images/no_image.jpg';
 import FeaturedCardSkeleton from '@/app/skeletons/featuredReaserch/FeaturedCardSkeleton';
 import ErrorComponent from '@/app/components/ErrorComponent';
 import NoDataFound from '@/app/components/NoDataFound';
-// src={data?.image !== null && data?.image !== '' ? data?.image : NoImage.src}
+import { FeaturedPublicationData, ImageOverlayProps } from '@/app/interfaces/featured_publication_interface';
 
-function Featured({ title }: any) {
+function Featured({ title }: { title?: string }) {
     const { featuredPublicationData, featuredPublicationError, featuredPublicationLoading } = useFeaturedPublication()
 
 
     const latestPublication = Array.isArray(featuredPublicationData) && featuredPublicationData.length > 0
-        ? featuredPublicationData.filter((data: any) => data?.latest_category === 1)
+        ? featuredPublicationData.filter((data: FeaturedPublicationData) => data?.latest_category === 1)
         : [];
 
     const featuredPublicationlist = Array.isArray(featuredPublicationData) && featuredPublicationData.length > 0
-        ? featuredPublicationData.filter((data: any) => data?.latest_category !== 1)
+        ? featuredPublicationData.filter((data: FeaturedPublicationData) => data?.latest_category !== 1)
         : [];
 
-
-    console.log("featuredPublicationlist", featuredPublicationlist)
 
     const settings = {
         dots: false,
@@ -38,35 +36,9 @@ function Featured({ title }: any) {
         autoplay: true,
         vertical: true,
         verticalSwiping: true, // Enable vertical swiping
-        // responsive: [
-        //     {
-        //         breakpoint: 1024,
-        //         settings: {
-        //             slidesToShow: 2,
-        //             slidesToScroll: 1,
-        //             infinite: true,
-        //             dots: false,
-        //         },
-        //     },
-        //     {
-        //         breakpoint: 600,
-        //         settings: {
-        //             slidesToShow: 2,
-        //             slidesToScroll: 1,
-        //             initialSlide: 1,
-        //         },
-        //     },
-        //     {
-        //         breakpoint: 480,
-        //         settings: {
-        //             slidesToShow: 1,
-        //             slidesToScroll: 1,
-        //         },
-        //     },
-        // ],
     };
-    // src={data?.image !== null && data?.image !== '' ? data?.image : NoImage.src}
-    function ImageOverlay({ isText = false, icon, src, text }: any) {
+
+    function ImageOverlay({ isText = false, icon = '', src = '', text = '' }: ImageOverlayProps) {
         return (
             <div className="imageOverlay">
                 <Image
@@ -103,7 +75,7 @@ function Featured({ title }: any) {
                         </div>
                         {featuredPublicationData?.length > 0 ? <div className="row w-full my-5">
                             <div className="col-md-6 mb-4">
-                                {latestPublication?.length > 0 ? latestPublication?.map((data: any, index: number) => (
+                                {latestPublication?.length > 0 ? latestPublication?.map((data: FeaturedPublicationData, index: number) => (
                                     <Link href="#">
                                         {/* <ImageOverlay icon={<featuredData.latest.icon />} text={featuredData.latest.text}
                             src={featuredData.latest.src} isText={true} /> */}
@@ -115,7 +87,7 @@ function Featured({ title }: any) {
 
                             <div className="col-md-6" style={{ overflow: 'hidden' }}>
                                 <Slider {...settings}>{featuredPublicationlist?.length > 0 &&
-                                    featuredPublicationlist?.map((data: any, index: number) => (
+                                    featuredPublicationlist?.map((data: FeaturedPublicationData, index: number) => (
                                         <Link href={`/featured-publication-list/${data?.title}`} className="details" key={index}>
                                             <ImageOverlay icon={data?.icon_logo_image} src={data?.image} />
                                             <div className="info">
