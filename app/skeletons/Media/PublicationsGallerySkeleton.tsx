@@ -25,8 +25,6 @@ export function PublicationGallerySlick() {
             <Skeleton
               width={200}
               height={200}
-
-
             />
           </div>
         ))}

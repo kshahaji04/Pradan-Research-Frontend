@@ -1,31 +1,59 @@
-import Image from 'next/image'
-import React from 'react'
+"use client";
+import useQueries from "@/app/hooks/research_hooks/research-queries-hooks";
+import { imageLoader } from "@/app/utils/image_loader_utils";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import NoDataFound from "@/app/components/NoDataFound";
+import ErrorComponent from "@/app/components/ErrorComponent";
+import noImage from "@/public/assets/images/no_image.jpg";
+import { QueriesInterface } from "@/app/interfaces/research_interface";
+import QueriesSkeleton from "@/app/skeletons/Research/QueriesSkeleton";
+import QueriesCard from "@/app/cards/research/research_details/QueriesCard";
+import Skeleton from "react-loading-skeleton";
 
 const Queries = () => {
+  const { queriesData, loadingQueries, queriesError } = useQueries();
+
+  // console.log(queriesData);
+
   return (
     <div className="container pb-5">
-      <div className="row">
-        <div className="col-12">
-          <h3 className="text-center mt-5 mb-5" style={{ color: 'var(--primary)' }}>Queries</h3>
+      {queriesError ? (
+        <div className="mb-5 pb-5 position-relative" style={{ zIndex: 9 }}>
+          <ErrorComponent />
         </div>
-        <div className="col-12">
-
-          <div className='d-flex justify-content-center'>
-            <div className="card shadow d-flex flex-row align-items-center py-4" style={{ width: '40rem' }}>
-              <div>
-                <Image src='/assets/images/query-image.png' height={200} width={200} alt='' />
+      ) : loadingQueries ? (
+        <QueriesSkeleton />
+      ) : (
+        <div className="row">
+          <div className="col-12">
+            <h3
+              className="text-center mt-5 mb-5"
+              style={{ color: "var(--primary)" }}
+            >
+              Queries
+            </h3>
+          </div>
+          <div className="col-12">
+            {queriesData?.length > 0 ? (
+              <>
+                {queriesData?.map((item: QueriesInterface, index: any) => (
+                  <div className="d-flex justify-content-center" key={index}>
+                    <QueriesCard item={item} />
+                  </div>
+                ))}
+              </>
+            ) : (
+              <div className="mb-5 pt-3">
+                <NoDataFound />
               </div>
-              <div className="card-body">
-                <h5 className="card-title">Do you have any query?</h5>
-                <p className="card-text">Let&apos;s Discuss click below</p>
-                <button type='button' className='btn btn-outline-success'>For Queries</button>
-              </div>
-            </div>
+            )}
           </div>
         </div>
-      </div>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Queries
+export default Queries;

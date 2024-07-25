@@ -5,14 +5,17 @@ import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { PublicationsGallerySkeleton, PublicationGallerySlick } from "@/app/skeletons/Media/PublicationsGallerySkeleton";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import {
+  PublicationsGallerySkeleton,
+  PublicationGallerySlick,
+} from "@/app/skeletons/Media/PublicationsGallerySkeleton";
 import ReportMasterSkeleton from "@/app/skeletons/Media/ReportMasterSkeleton";
 import Skeleton from "react-loading-skeleton";
 import gallery_hooks from "@/app/hooks/media_page_hooks/gallery_hooks";
 import { imageLoader } from "@/app/utils/image_loader_utils";
-import NoImage from '@/public/assets/images/no_image.jpg';
-import ErrorComponent from '@/app/components/ErrorComponent'
+import NoImage from "@/public/assets/images/no_image.jpg";
+import ErrorComponent from "@/app/components/ErrorComponent";
 import useGallery from "@/app/hooks/media_page_hooks/gallery_hooks";
 
 function PublicationsGallery({ title }: any) {
@@ -56,10 +59,37 @@ function PublicationsGallery({ title }: any) {
 
   return (
     <>
-      {
-        galleryError ? <ErrorComponent /> :
-          <div className="container">
-            {isLoading ? <PublicationsGallerySkeleton /> : <>
+      {galleryError ? (
+        <ErrorComponent />
+      ) : (
+        <div className="container">
+          {isLoading ? (
+            <>
+              <div className="row">
+                <div className="col-12">
+                  <h2 className="text-center ms-0">
+                    <Skeleton width={200} />
+                  </h2>
+                </div>
+              </div>
+              <div className="row my-5">
+                <div className="col-12">
+                  <div className="text-end me-3">
+                    <h5>
+                      <Skeleton width={160} />
+                    </h5>
+                  </div>
+                </div>
+                <Slider {...settings}>
+                  <Skeleton width={300} height={300} />
+                  <Skeleton width={300} height={300} />
+                  <Skeleton width={300} height={300} />
+                  <Skeleton width={300} height={300} />
+                </Slider>
+              </div>
+            </>
+          ) : (
+            <>
               <div className="row">
                 <div className="col-12">
                   <h2 className="text-center ms-0">{title}</h2>
@@ -68,7 +98,11 @@ function PublicationsGallery({ title }: any) {
               <div className="row my-5">
                 <div className="col-12">
                   <div className="text-end me-3">
-                    <h5><Link href='/'>See More <ChevronRightIcon /></Link> </h5>
+                    <h5>
+                      <Link href="/">
+                        See More <ChevronRightIcon />
+                      </Link>{" "}
+                    </h5>
                   </div>
                 </div>
                 <Slider {...settings}>
@@ -81,35 +115,34 @@ function PublicationsGallery({ title }: any) {
                         // style={{ width: "95%", height: "100%", maxHeight: "300px" }}
                         className={`mx-auto my-0`}
                       >
-                        {
-                          info?.image !== null && info?.image !== '' ?
-                            <Image
-                              src={info?.image}
-                              alt={"gallery-image"}
-                              width={1200}
-                              height={300}
-                              style={{ width: "92%" }}
-                              className={`mx-auto rounded-2 my-0`}
-                              loader={imageLoader}
-                            /> :
-                            <Image
-                              src={NoImage.src}
-                              alt={"gallery-image"}
-                              width={1200}
-                              height={300}
-                              style={{ width: "92%" }}
-                              className={`mx-auto rounded-2 my-0`}
-                            />
-                        }
-
+                        {info?.image !== null && info?.image !== "" ? (
+                          <Image
+                            src={info?.image}
+                            alt={"gallery-image"}
+                            width={1200}
+                            height={300}
+                            style={{ width: "92%" }}
+                            className={`mx-auto rounded-2 my-0`}
+                            loader={imageLoader}
+                          />
+                        ) : (
+                          <Image
+                            src={NoImage.src}
+                            alt={"gallery-image"}
+                            width={1200}
+                            height={300}
+                            style={{ width: "92%" }}
+                            className={`mx-auto rounded-2 my-0`}
+                          />
+                        )}
                       </Link>
                     ))}
                 </Slider>
               </div>
-            </>}
-
-          </div>
-      }
+            </>
+          )}
+        </div>
+      )}
     </>
   );
 }

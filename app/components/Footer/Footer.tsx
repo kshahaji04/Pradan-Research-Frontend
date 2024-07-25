@@ -56,7 +56,7 @@ function Footer({ footerData }: FooterInterface) {
   // }, []);
 
   // const { footerData, loadingFooter } = useFooter();
-  console.log('footer ', footerData);
+  // console.log('footer ', footerData);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
