@@ -13,9 +13,10 @@ import gallery_hooks from "@/app/hooks/media_page_hooks/gallery_hooks";
 import { imageLoader } from "@/app/utils/image_loader_utils";
 import NoImage from '@/public/assets/images/no_image.jpg';
 import ErrorComponent from '@/app/components/ErrorComponent'
+import useGallery from "@/app/hooks/media_page_hooks/gallery_hooks";
 
 function PublicationsGallery({ title }: any) {
-  const { gallery, isLoading, galleryError } = gallery_hooks()
+  const { gallery, isLoading, galleryError } = useGallery();
   const settings = {
     dots: false,
     infinite: true,

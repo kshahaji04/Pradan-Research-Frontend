@@ -104,7 +104,7 @@ function Featured({ title }: any) {
                         {featuredPublicationData?.length > 0 ? <div className="row w-full my-5">
                             <div className="col-md-6 mb-4">
                                 {latestPublication?.length > 0 ? latestPublication?.map((data: any, index: number) => (
-                                    <Link href="#">
+                                    <Link href="#" key={index}>
                                         {/* <ImageOverlay icon={<featuredData.latest.icon />} text={featuredData.latest.text}
                             src={featuredData.latest.src} isText={true} /> */}
                                         <ImageOverlay icon={data?.icon_logo_image} text={data?.title}

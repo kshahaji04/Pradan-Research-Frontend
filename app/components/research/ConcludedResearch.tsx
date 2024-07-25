@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import ErrorComponent from '../ErrorComponent';
 import ResearchPageCradSkeleton from '@/app/skeletons/cards/research/ResearchPageCradSkeleton';
 import NoDataFound from '../NoDataFound';
+import useResearchList from '@/app/hooks/research_hooks/research_hooks';
 interface ResearchCardItem {
     image?: any;
     name?: string; 
@@ -20,7 +21,7 @@ function ConcludedResearch() {
     let searchParams = new URLSearchParams(window.location.search);
     const pageNo = searchParams.get('page') 
     const [currentPage, setCurrentPage] = useState<any>(pageNo || 1);
-    const {data,totalPages,loading,error} = research_hooks(`Concluded Research`,currentPage)
+    const {data,totalPages,loading,error} = useResearchList(`Concluded Research`,currentPage)
 
     const handlePageChange = (pageNumber: number) => {
         setCurrentPage(pageNumber);
