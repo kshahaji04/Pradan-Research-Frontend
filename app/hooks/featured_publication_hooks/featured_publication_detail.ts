@@ -9,7 +9,7 @@ const useFeaturedPublicationDetail = () => {
     const [featuredPublicationDetailLoading, setFeaturedPublicationDetailLoading] = useState<boolean>(false);
     
 
-    const { slug } = useParams();
+    const { slug }:any = useParams();
     console.log("slug>>",slug, typeof(slug))
     const decodedSlug = decodeURIComponent(slug);
     

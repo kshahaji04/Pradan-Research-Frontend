@@ -7,7 +7,7 @@ const GetQueriesApi = async () => {
     let response: any;
     await axios
         .get(
-            `${CONSTANTS.API_BASE_URL}api/method/pradan.pradan.doctype.queries.api.queries.get_queries?project_name=${CONSTANTS.PROJECT_NAME}`,
+            `${CONSTANTS.API_BASE_URL}/api/method/pradan.pradan.doctype.queries.api.queries.get_queries?project_name=${CONSTANTS.PROJECT_NAME}`,
             {
                 ...API_CONFIG,
             }

@@ -13,8 +13,8 @@ import img1 from '@/public/Arjun Dhrve.jpg';
 import img2 from '@/public/Arvind Netam.jpg';
 import img3 from '@/public/Ashwini Kange.jpg';
 import img4 from '@/public/Mohan Mandavi.jpg'
-import SocialMediaGridViewCard from "@/cards/MediaSectionCards/PublicationCards/SocialMediaGridViewCard";
-import SocialMediaListViewCard from "@/cards/MediaSectionCards/PublicationCards/SocialMediaListViewCard";
+// import SocialMediaGridViewCard from "@/cards/MediaSectionCards/PublicationCards/SocialMediaGridViewCard";
+// import SocialMediaListViewCard from "@/cards/MediaSectionCards/PublicationCards/SocialMediaListViewCard";
 const items = [
   {
     id: 1,
@@ -108,7 +108,7 @@ const SocialMediaSection = ({quotes}:any) => {
         <Slider {...settings}>
           {items.map((data:any , index:number) => (
             <div key={index} >
-                          {isSmallScreen ?   <SocialMediaGridViewCard data={data}/>  : <SocialMediaListViewCard data={data}/>}
+                          {/* {isSmallScreen ?   <SocialMediaGridViewCard data={data}/>  : <SocialMediaListViewCard data={data}/>} */}
             </div>
           ))}
         </Slider>

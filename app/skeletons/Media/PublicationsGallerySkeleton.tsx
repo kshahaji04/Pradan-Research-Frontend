@@ -16,8 +16,20 @@ export function PublicationsGallerySkeleton({ title }: any) {
 
 export function PublicationGallerySlick() {
   return (
-    <div className='d-flex align-items-center justify-content-center h-100'>
-      <Skeleton width={100} height={150} />
+    <div>
+      {
+        Array.from({ length: 6 }).map((info: any, index: number) => (
+          <div
+            key={index}
+            // style={{ width: "95%", height: "100%", maxHeight: "300px" }}
+            className={`mx-auto my-0`}
+          >
+            <Skeleton
+              width={200}
+              height={200}
+            />
+          </div>
+        ))}
     </div>
 
   )
