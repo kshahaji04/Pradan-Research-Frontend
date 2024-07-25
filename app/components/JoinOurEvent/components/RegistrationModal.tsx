@@ -18,8 +18,9 @@ import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-
 import { signUpValidation } from "@/app/validations/signUpValidation";
+import RegistrationApi from '@/app/services/api/general_api/registration_api'
+import {showToast} from "@/app/components/ToastNotification"
 
 
 
@@ -51,8 +52,22 @@ const RegistrationModal = () => {
         setShowConfirmPassword(!showConfirmPassword);
     };
 
-    let handleSubmit = async (values: any) => {
-        console.log("Registration values", values)
+    const handleSubmit = async (values: any) => {
+        try {
+            const response = await RegistrationApi(values);
+            console.log("response regit",response)
+                // Assuming a successful response contains some specific success message
+                if (response.success) {
+                    setMessage("Registration successful!");
+                    showToast('Registration successful!!', 'success')
+                    toggleModal();
+                } else {
+                    setMessage("Registration failed. Please try again.");
+                }
+            
+        } catch (error) {
+            setMessage("An unexpected error occurred. Please try again.");
+        }
     };
 
     const onKeydown = (keyEvent: any) => {
@@ -95,7 +110,7 @@ const RegistrationModal = () => {
                                         contact_no: '',
                                         gender: ''
                                     }}
-                                    validationSchema={signUpValidation}
+                                    // validationSchema={signUpValidation}
                                     onSubmit={(values) => {
                                         handleSubmit(values);
                                         console.log("Form values:", values);
