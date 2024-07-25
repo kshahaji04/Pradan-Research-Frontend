@@ -219,7 +219,8 @@ a {
 .MuiInputBase-input {
   padding: 7.5px 7px !important;
 }
-.btn-danger{
+
+.btn-danger {
   color: white !important;
 }
 
@@ -229,4 +230,12 @@ a {
 
 .btn-outline-success:hover{
   color: white !important;
+/* css for innerHtml image */
+}
+.innerHtml {
+  width: 100%;
+}
+
+.innerHtml img {
+  width: 100%;
 }

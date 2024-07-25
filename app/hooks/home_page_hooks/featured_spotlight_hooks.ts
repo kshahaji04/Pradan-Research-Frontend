@@ -1,4 +1,3 @@
-import { spotlightDataInterface } from "@/app/interfaces/home_page_interface";
 import { GetSpotlightApi } from "@/app/services/api/home_page_api/featured_api";
 import { useEffect, useState } from "react";
 

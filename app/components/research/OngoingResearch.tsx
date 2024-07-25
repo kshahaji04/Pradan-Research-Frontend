@@ -7,6 +7,7 @@ import ErrorComponent from '../ErrorComponent';
 import ResearchPageCradSkeleton from '@/app/skeletons/cards/research/ResearchPageCradSkeleton';
 import NoDataFound from '../NoDataFound';
 import { ResearchCardItem } from '@/app/interfaces/research_interface';
+import useResearchList from '@/app/hooks/research_hooks/research_hooks';
 
 function OngoingResearch() {
     const router = useRouter()
@@ -14,7 +15,7 @@ function OngoingResearch() {
     const pageNo = searchParams.get('page')
     const [currentPage, setCurrentPage] = useState<any>(pageNo || 1);
 
-    const { data, totalPages, loading, error } = research_hooks(`Ongoing Research`, currentPage)
+    const { data, totalPages, loading, error } = useResearchList(`Ongoing Research`, currentPage)
     const handlePageChange = (pageNumber: number) => {
         setCurrentPage(pageNumber);
 

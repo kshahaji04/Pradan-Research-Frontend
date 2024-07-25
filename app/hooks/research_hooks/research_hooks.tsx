@@ -2,7 +2,7 @@ import GetResearchListApi from '@/app/services/api/research_api/research_list_ap
 import { useStepContext } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 
-const research_hooks = (tab: any, page_no: any) => {
+const useResearchList = (tab: any, page_no: any) => {
     const [data, setData] = useState<any>([])
     const [count, setCount] = useState<any>()
     const [loading, setLoading] = useState<boolean>(false)
@@ -46,4 +46,4 @@ const research_hooks = (tab: any, page_no: any) => {
     }
 }
 
-export default research_hooks
+export default useResearchList;
