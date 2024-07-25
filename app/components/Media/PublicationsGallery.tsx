@@ -13,6 +13,8 @@ import gallery_hooks from "@/app/hooks/media_page_hooks/gallery_hooks";
 import { imageLoader } from "@/app/utils/image_loader_utils";
 import NoImage from '@/public/assets/images/no_image.jpg';
 import ErrorComponent from '@/app/components/ErrorComponent'
+import NoDataFound from '@/app/components/NoDataFound'
+import SkeletonCard from "@/app/skeletons/general/SkeletonCard";
 
 function PublicationsGallery({ title }: any) {
   const { gallery, isLoading, galleryError } = gallery_hooks()
@@ -58,13 +60,13 @@ function PublicationsGallery({ title }: any) {
       {
         galleryError ? <ErrorComponent /> :
           <div className="container">
-            {isLoading ? <PublicationsGallerySkeleton /> : <>
+            {isLoading ? <SkeletonCard Component={PublicationsGallerySkeleton} limit={gallery?.length || 3} /> : <>
               <div className="row">
                 <div className="col-12">
                   <h2 className="text-center ms-0">{title}</h2>
                 </div>
               </div>
-              <div className="row my-5">
+              {gallery?.length > 0 ? <div className="row my-5">
                 <div className="col-12">
                   <div className="text-end me-3">
                     <h5><Link href='/'>See More <ChevronRightIcon /></Link> </h5>
@@ -104,7 +106,9 @@ function PublicationsGallery({ title }: any) {
                       </Link>
                     ))}
                 </Slider>
-              </div>
+              </div> : <NoDataFound />
+              }
+
             </>}
 
           </div>

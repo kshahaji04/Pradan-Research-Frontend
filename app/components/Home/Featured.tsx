@@ -9,7 +9,7 @@ import Link from 'next/link';
 import useFeaturedPublication from '@/app/hooks/home_page_hooks/featured_ publications_hooks';
 import { imageLoader } from '@/app/utils/image_loader_utils';
 import NoImage from '@/public/assets/images/no_image.jpg';
-import FeaturedCardSkeleton from '@/app/skeletons/featuredReaserch/FeaturedCardSkeleton';
+import FeaturedSkeleton from '@/app/skeletons/Home/FeaturedSkeleton';
 import ErrorComponent from '@/app/components/ErrorComponent';
 import NoDataFound from '@/app/components/NoDataFound';
 import { FeaturedPublicationData, ImageOverlayProps } from '@/app/interfaces/featured_publication_interface';
@@ -52,11 +52,12 @@ function Featured({ title }: { title?: string }) {
                 <div className="data">
                     <Image
                         src={icon !== null && icon !== '' ? icon : NoImage.src}
-                        width={100}
-                        height={80}
+                        width={90}
+                        height={60}
                         alt='featuredImageLogo'
                         className=''
                         loader={imageLoader}
+                        object-fit="cover"
 
                     />
                     {isText && <h3>{text}</h3>}
@@ -68,7 +69,7 @@ function Featured({ title }: { title?: string }) {
     return (
         <>
             {featuredPublicationError ? <ErrorComponent /> : <div className="container">
-                {featuredPublicationLoading ? <FeaturedCardSkeleton /> :
+                {featuredPublicationLoading ? <FeaturedSkeleton /> :
                     <>
                         <div className="d-flex align-items-center justify-content-center w-100">
                             <h2 style={{ color: 'var(--primary)' }}>{title}</h2>

@@ -6,17 +6,17 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import VideoSectionsCards from "@/app/cards/joinOurEvent/VideoSectionsCards";
-import VideoSectionSkeleton from "@/app/skeletons/Media/VideoSectionSkeleton";
-import ReportMasterSkeleton from "@/app/skeletons/Media/ReportMasterSkeleton";
 import useAudioVideoList from "@/app/hooks/media_page_hooks/audio_video_list_hook";
 import ErrorComponent from '@/app/components/ErrorComponent'
-
+import VideoSectionsCardsSkeleton from '@/app/skeletons/cards/joinOurEvent/VideoSectionsCardsSkeleton';
+import SkeletonCard from "@/app/skeletons/general/SkeletonCard";
+import NoDataFound from '@/app/components/NoDataFound'
 
 const VideoSection = ({ title }: any) => {
     const [loading, setLoading] = useState(false)
 
     const { videoList, loadingAudioVideoList, audioVideoError } = useAudioVideoList();
-
+   
     useEffect(() => {
         AOS.init();
     }, []);
@@ -67,9 +67,13 @@ const VideoSection = ({ title }: any) => {
                             </div>
                         </div>
                     </div>
-                    <Slider {...settings}>{Array.isArray(videoList) && videoList?.length > 0 && videoList?.map((info: any, index: any) => (
-                        <VideoSectionsCards audioVideoData={info} loadingAudioVideoList={loadingAudioVideoList} id={info?.id} key={index} />))}
-                    </Slider>
+                    {loadingAudioVideoList ? <SkeletonCard Component={VideoSectionsCardsSkeleton} limit={videoList?.length || 3} /> : <>
+                        {videoList?.length > 0 ? <Slider {...settings}>{Array.isArray(videoList) && videoList?.length > 0 && videoList?.map((info: any, index: any) => (
+                            <VideoSectionsCards audioVideoData={info} loadingAudioVideoList={loadingAudioVideoList} id={info?.id} key={index} />))}
+                        </Slider> : <NoDataFound />}
+
+                    </>
+                    }
                 </div>
             </div>}
 

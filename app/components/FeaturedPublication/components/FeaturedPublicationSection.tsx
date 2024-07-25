@@ -8,6 +8,7 @@ import PublicationSectionsCardsSkeleton from '@/app/skeletons/MediaPage/MediaSec
 import ErrorComponent from '@/app/components/ErrorComponent';
 import NoDataFound from '@/app/components/NoDataFound';
 import { featuredPublicationListData } from '@/app/interfaces/featured_publication_interface';
+import SkeletonCard from '@/app/skeletons/general/SkeletonCard';
 
 const FeaturedPublicationSection = () => {
     let params = new URLSearchParams(window.location.search);
@@ -27,20 +28,20 @@ const FeaturedPublicationSection = () => {
     const limit = 1;
     const totalPages = Math.ceil(totalCount / limit);
 
-    const SkeletonLoader = () => {
-        return (
-            <div className='d-flex gap-4'>
-                {Array.from({ length: limit || 2 }).map((_, index) => (
-                    <PublicationSectionsCardsSkeleton key={index} />
+    // const SkeletonLoader = () => {
+    //     return (
+    //         <div className='d-flex gap-4'>
+    //             {Array.from({ length: limit || 2 }).map((_, index) => (
+    //                 <PublicationSectionsCardsSkeleton key={index} />
 
-                ))}
-            </div>
-        );
-    };
+    //             ))}
+    //         </div>
+    //     );
+    // };
     return (
         <>
             {featuredPublicationListError ? <ErrorComponent /> : <div className={'container-fluid'}>
-                {featuredPublicationListLoading ? <SkeletonLoader /> : <div className="row">
+                {featuredPublicationListLoading ? <SkeletonCard Component={PublicationSectionsCardsSkeleton} limit={limit || 3} /> : <div className="row">
                     {/* <div className="col-12">
                         <h5 className="ms-3">
                             Print Media
