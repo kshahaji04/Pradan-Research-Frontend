@@ -48,14 +48,14 @@ const ReportCards :  React.FC<ReportCard>=({ item,loading }) => {
                             {item?.short_description?.length > 30 ? `${item?.short_description?.slice(0, 30)}...` : item?.short_description}
                         </p>
                         <div className={`row mt-2 mb-5`} >
-                            <div className="col-sm-4 d-flex flex-column justify-content-between">
+                            <div className="col-4 d-flex flex-column justify-content-between">
                                 <p className={`card-text m-0 ${styles.infographic_text}`}>
                                    {item?.title}
                                 </p>
                                 <p className='mb-0'>{item?.state}</p>
                                 <p className="text-start mb-0">{item?.year}</p>
                             </div>
-                            <div className="col-sm-8 mt-0">
+                            <div className="col-8 mt-0">
                                 <div className="d-flex flex-column align-items-end justify-content-end">
                                     <div className="d-flex flex-column align-items-start justify-content-end" style={{ width: '100px' }}>
                                         {item?.reports_detail?.length > 0 && item?.reports_detail?.map((info: any, index: any) => (

@@ -23,7 +23,7 @@ interface NavbarMobileInterface {
 
 function NavbarMobile({ navbarData, logoData }: NavbarMobileInterface) {
   const dispatch = useDispatch()
- const router  = useRouter()
+  const router = useRouter()
   const [inputValue, setInputValue] = useState("");
   // const [voiceInput, setVoiceInput] = useState("");
   const [isRecording, setIsRecording] = useState(false);
@@ -59,7 +59,7 @@ function NavbarMobile({ navbarData, logoData }: NavbarMobileInterface) {
     if (!isRecording) {
       setInputValue(transcript);
       if (transcript) {
-        dispatch(fetchSearch({page:1,searchQuery:transcript})as any)
+        dispatch(fetchSearch({ page: 1, searchQuery: transcript }) as any)
         router.push(`/search?page=1&search=${transcript}`)
       }
     }
@@ -71,10 +71,10 @@ function NavbarMobile({ navbarData, logoData }: NavbarMobileInterface) {
   };
 
 
-  const searchHandler =async (e:any) => {
+  const searchHandler = async (e: any) => {
     const inputValueCheck = inputValue.trim()
-    if(inputValueCheck !== '') {
-      dispatch(fetchSearch({page:1,searchQuery:inputValue}) as any)
+    if (inputValueCheck !== '') {
+      dispatch(fetchSearch({ page: 1, searchQuery: inputValue }) as any)
       router.push(`/search?page=1&search=${inputValue}`)
     }
     // else{
@@ -177,7 +177,7 @@ function NavbarMobile({ navbarData, logoData }: NavbarMobileInterface) {
             <div className="row">
               <div className="col-12 d-flex">
                < div className={`form-inline my-2 my-lg-0 search_form d-flex ${styles.search_form_mobile}`}>
-                  <input className="form-control mr-sm-2" value={inputValue} onKeyDown={handleKeyDown} onChange={handleInputChange} placeholder="Search" aria-label="Search" />
+                  <input className="form-control mr-sm-2" value={inputValue} onKeyDown={handleKeyDown} onChange={handleInputChange} placeholder="Search" />
                   <i className={`fa fa-search ${styles.search_icon}`} aria-hidden="true" onClick={searchHandler}></i>
                 </div>
                 <div className={`px-4 ${styles.mic_icon_container} `}>

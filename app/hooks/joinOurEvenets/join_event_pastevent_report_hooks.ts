@@ -10,7 +10,6 @@ const usePastEventReportHook = () => {
        try {
         setIsloading(true)
         const res = await GetJoinEventsReports()
-        console.log(res,"console for res in past  evevnt hook")
         setReportData(res?.message?.data)
         setIsloading(false)
        } catch (error) {

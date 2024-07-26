@@ -115,6 +115,7 @@
   height: inherit !important;
 }
 
-.row-slick .slick-slide > div, .row-slick .slick-slide > div > div {
+.row-slick .slick-slide > div, 
+.row-slick .slick-slide > div > div {
   height: 100% !important;
 }

@@ -26,7 +26,7 @@ const ReportMaster = ({ title }: any) => {
   }, []);
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: reportData?.length > 1,
     slidesToShow: 4,
     slidesToScroll: 1,
     pauseOnHover: true,

@@ -35,7 +35,7 @@ function AboutConcludedResearchCard({
           ></span>
         </p>
       </div>
-      <div className="col-md-6 g-4 p-4">
+      <div className="col-md-6 g-4 p-md-4">
         <Link href="" style={{ textDecoration: "none" }}>
           <div className={`card  ${styles.car}`}>
             <div>
@@ -55,7 +55,7 @@ function AboutConcludedResearchCard({
                 }}
               />
             </div>
-            <div className="row py-3 mx-1">
+            <div className="row py-3 align-items-center mx-1">
               <div className="col-8 d-flex align-items-center">
                 <div>
                   <h5>Concluded Report</h5>

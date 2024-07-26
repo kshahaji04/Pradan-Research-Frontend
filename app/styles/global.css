@@ -179,6 +179,9 @@ a {
 }
 
 /* css for registration form */
+.registration_modal_wrapper {
+  z-index: 999999 !important;
+}
 
 @media (max-width: 700px) {
   .registration_modal_wrapper .modal-dialog {
@@ -243,4 +246,7 @@ a {
 .form-control:focus{
   box-shadow: none !important;
   border-color: transparent !important;
+}
+.Toastify__toast-container{
+  z-index: 9999999 !important;
 }
