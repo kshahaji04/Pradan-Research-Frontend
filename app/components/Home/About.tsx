@@ -24,7 +24,7 @@ function About() {
       ) : (
         <div className="bgImageWrapper">
           {shortInfoError ? (
-            <div className="mb-5 pb-5 position-relative" style={{ zIndex: 9 }}>
+            <div className="pb-5 position-relative" style={{ zIndex: 9 }}>
               <ErrorComponent />
             </div>
           ) : (

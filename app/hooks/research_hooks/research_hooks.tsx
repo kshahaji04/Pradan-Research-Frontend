@@ -42,7 +42,7 @@ const useResearchList = (tab: any, page_no: any) => {
     }, [page_no])
 
     return {
-        data, loading, error, totalPages: Math.ceil(count / limit)
+        data, loading, error, totalPages: count
     }
 }
 

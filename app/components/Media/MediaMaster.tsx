@@ -13,7 +13,7 @@ const MediaMaster = () => {
   return (
     <>
       <div className="bgImageWrapper">
-        <div style={{ zIndex: '2', position: "relative", padding: "0px 0px 160px" }}>
+        <div className='container-fluid' style={{ zIndex: '2', position: "relative", padding: "0px 12px 160px" }}>
           <ReportMaster title={'Reports'} />
         </div>
         <figure>
@@ -22,18 +22,18 @@ const MediaMaster = () => {
       </div>
       {/* <SectionDivider /> */}
       <div className="bgImageWrapper">
-        <div style={{ zIndex: '2', position: "relative", padding: "0px 0px 160px" }}>
+        <div className='container-fluid' style={{ zIndex: '2', position: "relative", padding: "0px 12px 160px" }}>
           <VideoSection title={'Video'} />
         </div>
         <figure>
           <Image width={1200} height={1200} src={whiteBanner} alt="bg" />
         </figure>
       </div>
-      <div style={{ backgroundColor: '#f5f5f5', padding: '80px 0' }}>
+      <div className='container-fluid' style={{ backgroundColor: '#f5f5f5', padding: '80px 12px' }}>
         <AudioSection title={'Audio'} />
       </div>
       <div className="bgImageWrapper">
-        <div style={{ zIndex: '2', position: "relative", padding: "120px 0px 80px" }}>
+        <div className='container-fluid' style={{ zIndex: '2', position: "relative", padding: "120px 12px 80px" }}>
           <PublicationsGallery title={'Gallery'} />
         </div>
         <figure>

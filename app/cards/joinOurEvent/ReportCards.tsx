@@ -25,14 +25,14 @@ const ReportCards = ({ item }: any) => {
                             {item?.text?.length > 30 ? `${item?.text.slice(0, 30)}...` : item?.text}
                         </p>
                         <div className={`row mt-2 mb-5`} >
-                            <div className="col-sm-4 d-flex flex-column justify-content-between">
+                            <div className="col-4 d-flex flex-column justify-content-between">
                                 <p className={`card-text m-0 ${styles.infographic_text}`}>
                                     Chapter {item?.id}
                                 </p>
                                 <p className='mb-0'>{item?.state}</p>
                                 <p className="text-start mb-0">{item?.year}</p>
                             </div>
-                            <div className="col-sm-8 mt-0">
+                            <div className="col-8 mt-0">
                                 <div className="d-flex flex-column align-items-end justify-content-end">
                                     <div className="d-flex flex-column align-items-start justify-content-end" style={{ width: '100px' }}>
                                         {languages?.length > 0 && languages?.map((info: any, index: any) => (<button key={index} className={`btn my-0 text-uppercase pe-2`} style={{ fontSize: '12px' }}>
