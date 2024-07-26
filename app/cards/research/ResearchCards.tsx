@@ -28,7 +28,7 @@ function ResearchCards({ item }: ResearchCardsInterface) {
           />
         </div>
 
-        <div className="row card-body h-100">
+        <div className="row align-items-center card-body h-100">
           <div className="col-9">
             <div className="h-100 d-flex flex-column justify-content-center">
               <h5>{item?.name}</h5>

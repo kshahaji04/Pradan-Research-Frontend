@@ -104,3 +104,17 @@
   justify-content: center;
   padding-top: 40px;
 }
+
+/* slick slider css to maintain dynamic card height */
+
+.row-slick .slick-track {
+  display: flex !important;
+}
+
+.row-slick .slick-slide {
+  height: inherit !important;
+}
+
+.row-slick .slick-slide > div, .row-slick .slick-slide > div > div {
+  height: 100% !important;
+}

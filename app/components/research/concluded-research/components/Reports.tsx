@@ -105,7 +105,7 @@ function Reports() {
           <div className="col-12">
             {reportChaptersData?.length > 0 ? (
               <div className="row">
-                <Slider {...settings}>
+                <Slider {...settings} className="row-slick">
                   {reportChaptersData.map((item: any, index: number) => (
                     <ResearchCards item={item} key={index} />
                   ))}
