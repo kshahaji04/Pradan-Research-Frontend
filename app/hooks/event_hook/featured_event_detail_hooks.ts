@@ -10,9 +10,10 @@ const useFeaturedEventDetail = () => {
     const [featuredEventDetailLoading, setFeaturedEventDetailLoading] = useState<boolean>(false);
     
 
-    const { slug }:any = useParams();
-    console.log("slug>>",slug, typeof(slug))
-    const decodedSlug = decodeURIComponent(slug);
+    // const { slug }:any = useParams();
+    // console.log("slug>>",slug, typeof(slug))
+    // const decodedSlug = decodeURIComponent(slug);
+    const decodedSlug = 'feature-event';
     
 
     async function fetchFeaturedEventDetail(decodedSlug:any) {
@@ -22,7 +23,7 @@ const useFeaturedEventDetail = () => {
             console.log("response>>",response)
             setFeaturedEventDetailLoading(false);
         
-            setFeaturedEventDetailError(response?.data);
+            setFeaturedEventDetailData(response[0]);
             return;
         } catch (error) {
             setFeaturedEventDetailLoading(false);

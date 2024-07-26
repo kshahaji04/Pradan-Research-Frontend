@@ -10,10 +10,13 @@ function Research() {
   let searchParams = new URLSearchParams(window.location.search);
   const type = searchParams.get('type')
   const router = useRouter()
+    const pageNo = searchParams.get('page')
   const [tab, setTab] = useState(type || 'ongoing');
+  const [pageChange,setCurrentPage] = useState(pageNo || 1)
   const handleTabChange = (e:any)=>{
-    router.push(`research/?type=${e}`)
+    router.push(`research/?page=1&type=${e}`)
     setTab(e)
+    setCurrentPage(1)
   }
   return (
     <div className="bgImageWrapper">
@@ -34,7 +37,7 @@ function Research() {
                     <button className={`nav-link ${tab === 'concluded' ? 'active' : ''}`} onClick={()=>handleTabChange('concluded')}>Concluded</button>
                   </li>
                 </ul>
-                {tab === 'ongoing' ? <OngoingResearch /> : <ConcludedResearch />}
+                {tab === 'ongoing' ? <OngoingResearch pageNumber={pageChange}/> : <ConcludedResearch pageNumber={pageChange}/>}
 
               </div>
             </div>

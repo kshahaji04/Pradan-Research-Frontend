@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { GetFeaturedEventApi } from "@/app/services/api/event_api/featured_event_api";
 
-const useFeaturedEvents = (currentPage: any) => {
+const useFeaturedEvents = () => {
     const [featuredEventData, setFeaturedEventData] = useState<any>([]);
     const [featuredEventError, setFeaturedEventError] = useState<boolean>(false);
     const [featuredEventLoading, setFeaturedEventLoading] = useState<boolean>(false);
@@ -19,7 +19,7 @@ const useFeaturedEvents = (currentPage: any) => {
         try {
             const response = await GetFeaturedEventApi();
             setFeaturedEventLoading(false);
-            setFeaturedEventData(response?.data);
+            setFeaturedEventData(response);
             return;
         } catch (error) {
             setFeaturedEventLoading(false);
