@@ -26,4 +26,7 @@ export const signUpValidation = Yup.object().shape({
   confirm_password: Yup.string()
     .oneOf([Yup.ref('password')], 'Passwords must match')
     .required('Confirm Password is required'),
+  gender: Yup.string()
+    .required('gender is a required field')
+    
 });

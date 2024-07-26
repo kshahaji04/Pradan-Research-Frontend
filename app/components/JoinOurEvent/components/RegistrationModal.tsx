@@ -20,7 +20,8 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { signUpValidation } from "@/app/validations/signUpValidation";
 import RegistrationApi from '@/app/services/api/general_api/registration_api'
-import {showToast} from "@/app/components/ToastNotification"
+import { showToast } from "@/app/components/ToastNotification"
+import { validate } from '@/app/validations/registrationValidation';
 
 
 
@@ -55,18 +56,20 @@ const RegistrationModal = () => {
     const handleSubmit = async (values: any) => {
         try {
             const response = await RegistrationApi(values);
-            console.log("response regit",response)
-                // Assuming a successful response contains some specific success message
-                if (response.success) {
-                    setMessage("Registration successful!");
-                    showToast('Registration successful!!', 'success')
-                    toggleModal();
-                } else {
-                    setMessage("Registration failed. Please try again.");
-                }
-            
+            console.log("response regit", response)
+            // Assuming a successful response contains some specific success message
+            if (response?.status === 'success') {
+                setMessage("Registration successful!");
+                showToast('Registration successful!!', 'success')
+                toggleModal();
+            } else {
+                setMessage("Registration failed. Please try again.");
+                showToast('Registration failed!!', 'warning')
+            }
+
         } catch (error) {
             setMessage("An unexpected error occurred. Please try again.");
+            showToast('An unexpected error occurred!!', 'error')
         }
     };
 
@@ -110,7 +113,7 @@ const RegistrationModal = () => {
                                         contact_no: '',
                                         gender: ''
                                     }}
-                                    // validationSchema={signUpValidation}
+                                    validate={validate}
                                     onSubmit={(values) => {
                                         handleSubmit(values);
                                         console.log("Form values:", values);
@@ -235,7 +238,7 @@ const RegistrationModal = () => {
                                                                 </div>
                                                             </div>
                                                         </Form.Group>
-                                                         <Form.Group controlId="formGender">
+                                                        <Form.Group controlId="formGender">
                                                             <div className="row mt-3">
                                                                 <div className="col-md-12 mt-3 d-flex">
                                                                     <label className="mb-1 grey">Select Gender</label>
@@ -313,8 +316,6 @@ const RegistrationModal = () => {
 };
 
 export default RegistrationModal;
-
-
 
 
 
