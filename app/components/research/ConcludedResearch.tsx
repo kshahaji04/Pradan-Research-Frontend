@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import ErrorComponent from '../ErrorComponent';
 import ResearchPageCradSkeleton from '@/app/skeletons/cards/research/ResearchPageCradSkeleton';
 import NoDataFound from '../NoDataFound';
+import useResearchList from '@/app/hooks/research_hooks/research_hooks';
 interface ResearchCardItem {
     image?: any;
     name?: string; 
@@ -17,8 +18,11 @@ interface ResearchCardItem {
   }
 function ConcludedResearch({pageNumber}:any) {
     const router = useRouter()
-    const [currentPage, setCurrentPage] = useState<any>(pageNumber || 1);
-    const {data,totalPages,loading,error} = research_hooks(`Concluded Research`,currentPage)
+    let searchParams = new URLSearchParams(window.location.search);
+    const pageNo = searchParams.get('page') 
+    const [currentPage, setCurrentPage] = useState<any>(pageNo || 1);
+    const {data,totalPages,loading,error} = useResearchList(`Concluded Research`,currentPage)
+
     const handlePageChange = (pageNumber: number) => {
         setCurrentPage(pageNumber);
         router.push(`/research?page=${pageNumber}&type=concluded`)
@@ -44,7 +48,7 @@ function ConcludedResearch({pageNumber}:any) {
                     loading ? <ResearchPageCradSkeleton /> :
                     data?.length > 0 ?
                     data.map((item: ResearchCardItem, index: number) => (
-                        <ResearchPageCards link={`/research/concluded-research/about-the-research`} item={item} index={index} key={index} />
+                        <ResearchPageCards link={`/research/concluded-research/${item?.slug}`} item={item} index={index} key={index} />
                     ))
                     : <NoDataFound/>
                     }

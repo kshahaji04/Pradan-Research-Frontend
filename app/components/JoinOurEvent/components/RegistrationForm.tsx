@@ -18,8 +18,9 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { signUpValidation } from "@/app/validations/signUpValidation";
 // import RegistrationApi from "@/services/api/auth_api/signup_api";
 import styles from '@/app/styles/joinOurEvent/registration.module.css'
-
-
+import RegistrationApi from '@/app/services/api/general_api/registration_api'
+import { showToast } from "@/app/components/ToastNotification"
+import { validate } from '@/app/validations/registrationValidation';
 
 const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: any) => {
   const [message, setMessage] = useState("");
@@ -42,19 +43,36 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
     setShowConfirmPassword(!showConfirmPassword);
   };
 
-  let handleSubmit = async (values: any) => {
 
+
+  let handleSubmit = async (values: any, { resetForm }: any) => {
+    try {
+      const response = await RegistrationApi(values);
+      console.log("response regit", response)
+      // Assuming a successful response contains some specific success message
+      if (response?.status === 'success') {
+        setMessage("Registration successful!");
+        showToast('Registration successful!!', 'success')
+        resetForm();
+
+      } else {
+        setMessage("Registration failed. Please try again.");
+        showToast('Registration failed!!', 'warning')
+      }
+
+    } catch (error) {
+      setMessage("An unexpected error occurred. Please try again.");
+      showToast('An unexpected error occurred!!', 'error')
+    }
   };
 
   const onKeydown = (keyEvent: any) => {
     if ((keyEvent.charCode || keyEvent.keyCode) === 13) {
       keyEvent.preventDefault();
+          {/* @ts-ignore */}
       handleSubmit(newValue);
     }
   };
-
-
-
 
   const FormObserver: React.FC = () => {
     const { values } = useFormikContext();
@@ -76,11 +94,11 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
               contact_no: '',
               password: "",
             }}
-            validationSchema={signUpValidation}
-            onSubmit={(values) => {
-              handleSubmit(values);
+            validate={validate}
+            onSubmit={(values, { resetForm }) => {
+              handleSubmit(values, { resetForm });
               console.log("Form values:", values);
-            }}
+          }}
             className='formik'
           >
             {({ handleChange, handleBlur }) => (
@@ -200,9 +218,52 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
                           </div>
                         </div>
                       </Form.Group>
-                     
+                      <Form.Group controlId="formGender">
+                        <div className="row mt-3">
+                          <div className="col-md-12 mt-3 d-flex">
+                            <label className="mb-1 grey">Select Gender</label>
+                            <div className="form-check ms-3">
+                              <input
+                                className="form-check-input"
+                                type="radio"
+                                name="gender"
+                                value="Male"
+                                onChange={handleChange}
+                              />
+                              <label className="form-check-label text-secondary">Male</label>
+                            </div>
+                            <div className="form-check ms-3">
+                              <input
+                                className="form-check-input"
+                                type="radio"
+                                name="gender"
+                                value="Female"
+                                onChange={handleChange}
+                              />
+                              <label className="form-check-label text-secondary">Female</label>
+                            </div>
+                            <div className="form-check ms-3">
+                              <input
+                                className="form-check-input"
+                                type="radio"
+                                name="gender"
+                                value="Others"
+                                onChange={handleChange}
+                              />
+                              <label className="form-check-label text-secondary">Others</label>
+                            </div>
+                            <div className="row">
+                              <div className="col-12">
+                                <div className={styles.error_msg}>
+                                  <ErrorMessage name="gender" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </Form.Group>
                     </div>
-                    <div className="col-md-6 mt-4 d-flex">
+                    {/* <div className="col-md-6 mt-4 d-flex">
                       <label className="mb-1 grey">
                         Select Gender :
                       </label>
@@ -233,7 +294,7 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                     <div
                       className={`mt-5 pt-2 ${isAlertVisible === true ? "login_btn" : ""
                         } mt-3 mb-3 text-center p-0 `}

@@ -6,9 +6,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import AudioSectionsCards from "@/app/cards/joinOurEvent/AudioSectionsCards";
-import ReportMasterSkeleton from "@/app/skeletons/Media/ReportMasterSkeleton";
 import useAudioVideoList from "@/app/hooks/media_page_hooks/audio_video_list_hook";
 import ErrorComponent from '@/app/components/ErrorComponent'
+import SkeletonCard from "@/app/skeletons/general/SkeletonCard";
+import AudioSectionsCardsSkeleton from '@/app/skeletons/MediaPage/MediaSectionCardsSkeleton/AudioSectionsCardsSkeleton';
+import NoDataFound from '@/app/components/NoDataFound'
 
 const AudioSection = ({ title }: any) => {
     const { audioList, loadingAudioVideoList, audioVideoError } = useAudioVideoList();
@@ -63,8 +65,14 @@ const AudioSection = ({ title }: any) => {
                             </div>
                         </div>
                     </div>
-                    <Slider {...settings}>{Array.isArray(audioList) && audioList?.length > 0 && audioList?.map((info: any, index: any) => (
-                        <AudioSectionsCards audioData={info} loadingAudioVideoList={loadingAudioVideoList} id={info?.id} key={index} />))}</Slider>
+                    {loadingAudioVideoList ? <SkeletonCard Component={AudioSectionsCardsSkeleton} limit={audioList?.length || 3} /> : <>
+                        {audioList?.length > 0 ? (
+                            <Slider {...settings}>{Array.isArray(audioList) && audioList?.length > 0 && audioList?.map((info: any, index: any) => (
+                                <AudioSectionsCards audioData={info} loadingAudioVideoList={loadingAudioVideoList} id={info?.id} key={index} />))}
+                            </Slider>
+                        ) :
+                            <NoDataFound />}
+                    </>}
                 </div>
             </div>}
 

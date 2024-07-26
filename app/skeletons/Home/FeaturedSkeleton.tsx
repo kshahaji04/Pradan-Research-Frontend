@@ -32,7 +32,7 @@ function FeaturedSkeleton({ title }: any) {
     return (
         <div className="container">
             <div className="d-flex align-items-center justify-content-center w-100">
-                <h2 style={{ color: 'var(--primary)', width:'240px' }}><Skeleton width={240} /></h2>
+                <h2 style={{ color: 'var(--primary)', width: '240px' }}><Skeleton width={240} /></h2>
             </div>
             <div className="row w-full my-5">
                 <div className="col-md-6 mb-4">
@@ -46,17 +46,14 @@ function FeaturedSkeleton({ title }: any) {
                             <div className="details" key={index}>
                                 <ImageOverlay />
                                 <div className="info">
-                                    <h4 style={{width:'100%'}}><Skeleton width={'60%'} /></h4>
-                                    <div className="detailInfo" style={{width:'100%'}}>
+                                    <h4 style={{ width: '100%' }}><Skeleton width={'60%'} /></h4>
+                                    <div className="detailInfo" style={{ width: '100%' }}>
                                         <p><Skeleton count={3} /><Skeleton width={'60%'} /></p>
                                     </div>
                                 </div>
                             </div>
                         ))}
                 </div>
-            </div>
-            <div className="row teamSlider" style={{marginBottom:'100px'}}>
-                <FeaturedResearchSkeleton/>
             </div>
         </div>
     )

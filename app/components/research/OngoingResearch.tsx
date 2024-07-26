@@ -8,11 +8,15 @@ import ResearchPageCradSkeleton from '@/app/skeletons/cards/research/ResearchPag
 import NoDataFound from '../NoDataFound';
 import { ResearchCardItem } from '@/app/interfaces/research_interface';
 import page from '@/app/contact-us/page';
+import useResearchList from '@/app/hooks/research_hooks/research_hooks';
 
 function OngoingResearch({pageNumber}:any) {
     const router = useRouter()
-    const [currentPage, setCurrentPage] = useState<any>(pageNumber || 1);
-    const { data, totalPages, loading, error } = research_hooks(`Ongoing Research`, currentPage)
+    let searchParams = new URLSearchParams(window.location.search);
+    const pageNo = searchParams.get('page')
+    const [currentPage, setCurrentPage] = useState<any>(pageNo || 1);
+
+    const { data, totalPages, loading, error } = useResearchList(`Ongoing Research`, currentPage)
     const handlePageChange = (pageNumber: number) => {
         setCurrentPage(pageNumber);
         router.push(`/research?page=${pageNumber}&type=ongoing`)
@@ -38,7 +42,7 @@ function OngoingResearch({pageNumber}:any) {
                     loading ? <ResearchPageCradSkeleton/> :
                     data?.length > 0 ? 
                     data?.map((item: ResearchCardItem, index: number) => (
-                        <ResearchPageCards link={`/research/ongoing-research/about-the-research`} item={item} index={index} key={index} />
+                        <ResearchPageCards link={`/research/ongoing-research/${item?.slug}`} item={item} index={index} key={index} />
                     )) : 
                     <NoDataFound />
                     }

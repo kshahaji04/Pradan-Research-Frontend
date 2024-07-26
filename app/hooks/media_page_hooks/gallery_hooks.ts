@@ -2,9 +2,9 @@ import GetGalleryApi from '@/app/services/api/media_page_api/galleery_details_ap
 import React, { useState, useEffect } from 'react'
 
 
-const gallery_hooks = () => {
-    const [gallery, setGallery] = useState([])
-    const [isLoading, setIsloading] = useState(false)
+const useGallery = () => {
+    const [gallery, setGallery] = useState<any>([])
+    const [isLoading, setIsloading] = useState<boolean>(false)
     const [error, setError] = useState<boolean>(false);
 
     const fetchData = async () => {
@@ -41,4 +41,4 @@ const gallery_hooks = () => {
     return { gallery, isLoading, galleryError: error }
 }
 
-export default gallery_hooks
+export default useGallery;
