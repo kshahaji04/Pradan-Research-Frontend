@@ -45,7 +45,7 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
 
 
 
-  let handleSubmit = async (values: any) => {
+  let handleSubmit = async (values: any, { resetForm }: any) => {
     try {
       const response = await RegistrationApi(values);
       console.log("response regit", response)
@@ -53,6 +53,7 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
       if (response?.status === 'success') {
         setMessage("Registration successful!");
         showToast('Registration successful!!', 'success')
+        resetForm();
 
       } else {
         setMessage("Registration failed. Please try again.");
@@ -68,6 +69,7 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
   const onKeydown = (keyEvent: any) => {
     if ((keyEvent.charCode || keyEvent.keyCode) === 13) {
       keyEvent.preventDefault();
+          {/* @ts-ignore */}
       handleSubmit(newValue);
     }
   };
@@ -93,10 +95,10 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
               password: "",
             }}
             validate={validate}
-            onSubmit={(values) => {
-              handleSubmit(values);
+            onSubmit={(values, { resetForm }) => {
+              handleSubmit(values, { resetForm });
               console.log("Form values:", values);
-            }}
+          }}
             className='formik'
           >
             {({ handleChange, handleBlur }) => (
