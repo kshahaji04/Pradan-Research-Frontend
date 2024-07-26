@@ -9,7 +9,7 @@ const SearchPageGridCardSkeleton = () => {
        <>
         <div className="row ms-4 mt-4">
        {
-        Array.from({length:6})?.map((item:any,index:any)=>(
+        Array.from({length:3})?.map((item:any,index:any)=>(
             <div className="col-lg-4 m-2 mb-5 mx-0" key={index}>
             <div className={`card h-100 text-left cursor ${styles.gridCard}`} >
                 <div className={styles.image_container_grid_view}>

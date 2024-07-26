@@ -13,9 +13,13 @@ import PaginationAll from '@/app/components/PaginationAll';
 import SearchPageSkeleton from '@/app/skeletons/searchPage/SearchPageSkeleton';
 import useSearch from '@/app/hooks/search_hooks/search_hooks';
 import { useRouter } from 'next/navigation';
+import ErrorComponent from '../ErrorComponent';
+import { useDispatch } from 'react-redux';
+import { fetchSearch } from '@/app/store/slices/search_slice/search_slice';
 
 const SearchPage = () => {
   const [view, setView] = useState('grid')
+  const dispatch = useDispatch()
   const router = useRouter()
   const searchParams = new URLSearchParams(window.location.search);
   const pageNo = searchParams.get('page')
@@ -23,15 +27,17 @@ const SearchPage = () => {
   const filter = searchParams.get('filter')
   const [currentPage, setCurrentPage] = useState<any>(pageNo || 1);
   const [selected, setSelected] = useState(filter || 'most_recent')
-  const {searchData,loadingSearch} = useSearch(currentPage,searchVal,selected)
+  console.log(currentPage,searchVal,selected,"console in search page")
+  const {searchData,loadingSearch,error,searchListCount} = useSearch(pageNo,searchVal,selected)
 
+  const totalPages = searchListCount ? searchListCount : ''
 
-  const totalPages = (searchData?.length/3) 
   const handlePageChange = (pageNumber: number) => {
     router.push(
-      `search?page=${pageNumber}&filter=${selected}`
+      `/search?page=${pageNumber}&search=${searchVal}&filter=${selected}`
     )
     setCurrentPage(pageNumber)
+    dispatch(fetchSearch({ page: pageNumber , searchQuery: searchVal, sortBy: filter || ''}) as any);
   };
 
   const handleResize = () => {
@@ -50,59 +56,23 @@ const SearchPage = () => {
 
 const handleChangeSelect = (e:any)=>{
   router.push(
-    `search?page=${currentPage}&filter=${e.target.value}`
+    `/search?page=${currentPage}&search=${searchVal}&filter=${e.target.value}`
   )
+  dispatch(fetchSearch({ page: currentPage , searchQuery: searchVal, sortBy: e.target.value}) as any);
   setSelected(e.target.value)
 }
 
-
-  // const data = [
-  //   {
-  //     id: 1,
-  //     img: 'https://images.unsplash.com/photo-1720983590448-28b749bd403d?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  //     title: 'Net Zero 101:What, Why and How',
-  //     desc: 'I will report on how important the beginning of life is, and show why children’s perspectives',
-  //      state: 'Maharashtra',
-  //      year: '15-06-2024'
-  //   },
-  //   {
-  //     id: 2,
-  //     img: 'https://images.unsplash.com/photo-1586032788085-d75f745f26e0?q=80&w=2062&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  //     title: 'When writer met Correspondent member: Eric and Lina ',
-  //     desc: 'Nesrine Malik, Eric Holthaus, Irene Caselli, Nesrine Malik, Eric Holthaus, Irene Caselli, Tanmoy Goswami & OluTimehin Adegbeye in conversation',
-  //     state: 'Rajasthan', year: '13-02-2023'
-  //   },
-  //   {
-  //     id: 3,
-  //     img: "https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  //     title: 'The future of the planet is in our hands',
-  //     desc: 'Nesrine Malik, Eric Holthaus, Irene Caselli, Nesrine Malik, Eric Holthaus, Irene Caselli, Tanmoy Goswami & OluTimehin Adegbeye in conversation',
-  //     state: 'Gujrat', year: '10-04-2024'
-  //   },
-  //   {
-  //     id: 4,
-  //     img: 'https://images.unsplash.com/photo-1595147389795-37094173bfd8?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  //     title: 'When writer met Correspondent member: Eric and Lina',
-  //     desc: 'New York’s eastern grey squirrels are so much a part of the urban fabric that for a long time, it never occurred to anyone to study urban squirrels at all, which are everywhere today but were absent just a few centuries back.',
-  //     state: 'Karnataka', year: '20-02-2023'
-  //   },
-  //   {
-  //     id: 5,
-  //     img: 'https://images.unsplash.com/photo-1719937206109-7f4e933230c8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  //     title: 'The future of the planet is in our hands',
-  //     desc: 'I will report on how important the beginning of life is, and show why children’s perspectives', state: 'Sikkim', year: '16-07-2024'
-
-  //   }
-
-  // ]
+ 
   return (
     <div>
-      <div className={`container-fluid  ${styles.searchContainer}`}>
+      {
+        error ? <ErrorComponent/> :
+        <div className={`container-fluid  ${styles.searchContainer}`}>
         {
            loadingSearch ? <SearchPageSkeleton /> :
            <div className="row">
           <div className="col-6  d-flex align-items-center">
-            <div className={`ps-3`}> Search Result: {searchData?.length}</div>
+            <div className={`ps-3`}> Search Result: {totalPages}</div>
           </div>
           <div className={`col-6 p-0 d-flex align-items-center justify-content-end`}>
             <div className={`most`}>
@@ -113,7 +83,7 @@ const handleChangeSelect = (e:any)=>{
                className={`mx-1 cursor ${styles.slelectNav}`}
               >
                 <option  value="most_recent" className='b-none'>Recent</option>
-                <option value="most" className='b-none'>Last</option>
+               
               </select>
             </div>
             <div className='ms-2 d-flex direction-row'>
@@ -129,17 +99,23 @@ const handleChangeSelect = (e:any)=>{
         }
         
         <div className="row">
-          <div className={`col-md-2 col-12`}>
-            <Filters loadingSearch={loadingSearch}/>
+          <div className={`col-md-1 d-none d-md-block`}>
+            {/* <Filters loadingSearch={loadingSearch}/> */}
           </div>
           <div className="col-md-10 col-12">
             {
-              view === 'grid' ? <SearchPageGridCard  loadingSearch={loadingSearch} data={searchData} /> : <SearchPageListCard loadingSearch={loadingSearch} data={searchData} />
+              view === 'grid' ? <SearchPageGridCard  loading={loadingSearch} data={searchData} /> : <SearchPageListCard loading={loadingSearch} data={searchData} />
             }
           </div>
+          <div className="col-md-1 d-none d-md-block">
+
+          </div>
+
         </div>
         <PaginationAll currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
       </div>
+      }
+     
     </div>
   )
 }

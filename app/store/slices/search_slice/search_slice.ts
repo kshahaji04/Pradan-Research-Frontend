@@ -16,9 +16,9 @@ const initialState: {
 // Create an asynchronous thunk for fetching the technical skills
 export const fetchSearch = createAsyncThunk(
     "search/fetchSearch",
-    async ({ page, searchQuery, sortBy, selectedFilters }: { page: number, searchQuery?: string, sortBy?: string, selectedFilters?: any }) => {
+    async ({ page, searchQuery, sortBy, selectedFilters }: { page: any, searchQuery?: any, sortBy?: string, selectedFilters?: any }) => {
         try {
-            const response = await GetSearchApi(page, searchQuery, sortBy);
+            const response = await GetSearchApi(page, searchQuery, sortBy || 'most_recent');
             console.log(response)
             return response;
         } catch (error) {
@@ -39,9 +39,8 @@ const searchSliceScreen = createSlice({
                 state.error = "";
             })
             .addCase(fetchSearch.fulfilled, (state, action) => {
-                state.loading = false;
                 state.data = action.payload;
-                // console.log('language is in slice', action.payload);
+                state.loading = false;
                 state.error = "";
             })
             .addCase(fetchSearch.rejected, (state, action) => {

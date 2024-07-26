@@ -13,6 +13,8 @@ import { LogoDataInterface, NavbarDataInteface } from '@/app/interfaces/general_
 import { useRouter } from 'next/navigation'; 
 import { useDispatch, UseDispatch } from 'react-redux';
 import { fetchSearch } from '@/app/store/slices/search_slice/search_slice';
+import useSearch from '@/app/hooks/search_hooks/search_hooks';
+import { number } from 'yup';
 interface WebNavbarInterface {
   navbarData: NavbarDataInteface[];
   logoData: LogoDataInterface[];
@@ -34,9 +36,7 @@ function WebNavbar({ navbarData, logoData }: WebNavbarInterface) {
 
   const {
     transcript,
-    interimTranscript,
-    finalTranscript,
-    listening,
+    resetTranscript,
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
 
@@ -44,37 +44,47 @@ function WebNavbar({ navbarData, logoData }: WebNavbarInterface) {
     console.log("browser doesn't support speech recognition");
   }
 
-  const handleVoiceInput = () => {
+  const startRecording = () => {
     if (!isRecording) {
+      resetTranscript(); // Clear any existing transcript
       SpeechRecognition.startListening({ continuous: true });
       setIsRecording(true);
-
       setTimeout(() => {
-        stopVoiceInput();
+        SpeechRecognition.stopListening();
+        setIsRecording(false);
       }, recordingDuration);
     }
   };
 
-  const stopVoiceInput = () => {
-    SpeechRecognition.stopListening();
-    setIsRecording(false);
-    // setVoiceInput(transcript);
-    setInputValue(prevValue => `${prevValue} ${transcript}`.trim());
-  };
 
   useEffect(() => {
-    if (finalTranscript) {
-      setInputValue(prevValue => `${prevValue} ${finalTranscript}`.trim());
+    // Update capturedTranscript whenever transcript changes
+    if (!isRecording) {
+      setInputValue(transcript);
+      if (transcript) {
+        dispatch(fetchSearch({page:1,searchQuery:transcript})as any)
+        router.push(`/search?page=1&search=${transcript}`)
+      }
     }
-  }, [finalTranscript]);
+  }, [transcript, isRecording]);
 
   const handleInputChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
     setInputValue(e.target.value);
   };
 
   const searchHandler =async (e:any) => {
-  //  await dispatch(fetchSearch({page:1,searchQuery:inputValue,sortBy:'most_recent'}) as any)
-    router.push(`/search?search=${inputValue}`)
+    e.preventDefault()
+    const inputValueCheck = inputValue.trim()
+    if(inputValueCheck !== '') {
+      console.log(inputValue)
+      dispatch(fetchSearch({page:1,searchQuery:inputValue}) as any)
+      router.push(`/search?page=1&search=${inputValue}`)
+    }
+    // else{
+    //   const filter = 'most_recent'
+    //   dispatch(fetchSearch({page:1,searchQuery:inputValue,sortBy:filter}) as any)
+    //   router.push(`/search?page=1&search=${inputValue}&filter=${filter}`)
+    // }
   }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -145,7 +155,7 @@ function WebNavbar({ navbarData, logoData }: WebNavbarInterface) {
               <i className={`fa fa-search ${styles.search_icon}`} aria-hidden="true" onClick={searchHandler}></i>
             </div>
             <div className={styles.mic_icon_container}>
-              <i className={`fa fa-microphone ${styles.mic_icon}`} aria-hidden="true" onClick={handleVoiceInput}></i>
+              <i className={`fa fa-microphone ${styles.mic_icon} ${isRecording ? styles.activeMic : ''}`} aria-hidden="true" onClick={startRecording}></i>
             </div>
           </div>
         </div>

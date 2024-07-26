@@ -7,7 +7,6 @@ const useResearchList = (tab: any, page_no: any) => {
     const [count, setCount] = useState<any>()
     const [loading, setLoading] = useState<boolean>(false)
     const [error, setError] = useState<boolean>(false)
-    const limit = 3
     const getResearchListData = async () => {
         try {
             setLoading(true)
@@ -42,7 +41,7 @@ const useResearchList = (tab: any, page_no: any) => {
     }, [page_no])
 
     return {
-        data, loading, error, totalPages: Math.ceil(count / limit)
+        data, loading, error, totalPages: count
     }
 }
 

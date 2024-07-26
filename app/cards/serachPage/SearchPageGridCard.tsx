@@ -5,21 +5,27 @@ import Link from 'next/link'
 import SearchPageGridCardSkeleton from '@/app/skeletons/cards/serachPage/SearchPageGridCardSkeleton'
 import NoDataFound from '@/app/components/NoDataFound'
 import img from '@/public/assets/images/no_image.jpg'
-const SearchPageGridCard = ({ data,loading }: any) => {
-  
+import { imageLoader } from '@/app/utils/image_loader_utils'
+import { SearchPageGridCardProps } from '@/app/interfaces/search_interface'
+
+
+
+const SearchPageGridCard :React.FC<SearchPageGridCardProps>= ({ data,loading }: any) => {
+ 
     return (
        <>
         <div className="row  mt-4">
        {
         loading ? <SearchPageGridCardSkeleton/> :
-        data?.length ? 
+        data?.length > 0 ? 
         data?.map((item:any,index:any)=>(
             <div className="col-lg-4 col-sm-6 m-2 mb-5 mx-0" key={index}>
             <div className={`card h-100 text-left cursor ${styles.gridCard}`} >
                 <div className={styles.image_container_grid_view}>
-                    <Image src={item?.img ? item?.img : img.src}
-                        className='card-img-top'
+                    <Image src={item?.image ? item?.image : img.src}
+                        className='card-img-top' 
                         alt="pradan logo" height={200} width={200}
+                        loader={imageLoader}
                     />
                 </div>
                 <div className="card-body d-flex flex-column justify-content-between">

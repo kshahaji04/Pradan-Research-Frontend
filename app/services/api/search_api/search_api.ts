@@ -2,9 +2,9 @@ import { CONSTANTS } from "@/app/services/config/app-config";
 import axios from "axios";
 import { API_CONFIG } from '@/app/services/config/api-config'
 
-const GetSearchApi = async (page: number, searchQuery?: string, sortBy?: string) => {
+const GetSearchApi = async (page: number | String, searchQuery?: string, sortBy?: string) => {
 
-    const limit = 3;
+    const limit = 1;
     let response: any;
 
     let url = `${CONSTANTS.API_BASE_URL}/api/method/pradan.pradan.customizations.search_api.api.research_api.get_research_search_api?project_name=${CONSTANTS.PROJECT_NAME}&limit=${limit}&page_no=${page || 1}`;
