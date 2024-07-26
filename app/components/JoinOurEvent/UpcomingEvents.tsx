@@ -158,11 +158,9 @@ const UpcomingEvents = () => {
   
             <Slider {...settings} className="row-slick">
               {
-              data?.length > 0 ?
               data?.map((item,index) => (
                 <JoinOurEventCards data={item} loading={isLoading} id={index} key={index} />
-              )):
-                <NoDataFound/>
+              ))
               } 
             </Slider>
           </div>

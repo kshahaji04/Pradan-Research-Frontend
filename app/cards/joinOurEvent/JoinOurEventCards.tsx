@@ -7,13 +7,15 @@ import RegistrationModal from '@/app/components/JoinOurEvent/components/Registra
 import JoinOurEventCardsSkeleton from '@/app/skeletons/cards/joinOurEvent/JoinOurEventCardsSkeleton'
 import { imageLoader } from '@/app/utils/image_loader_utils'
 import noImage from '@/public/assets/images/no_image.jpg'
+import NoDataFound from '@/app/components/NoDataFound'
 
 const JoinOurEventCards = ({ data, loading }: any) => {
 
     return (
-        < >
+        <>
             {
                 loading ? <JoinOurEventCardsSkeleton /> :
+                data ?
                     <div className="col-lg-12 px-2 mb-5 pt-5 pb-3 mx-0 d-flex align-items-center justify-content-center">
                         <div className={`card h-100 py-0 text-left cursor`} style={{ width: '97%', maxWidth: '380px' }}>
                             <Link href={`/join-our-event/${data?.url}`} className={`${styles.news_slide} pt-0 pb-0`}>
@@ -58,10 +60,11 @@ const JoinOurEventCards = ({ data, loading }: any) => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> :
+                    <NoDataFound/>
             }
         </>
-    )
+      )
 }
 
 export default JoinOurEventCards
