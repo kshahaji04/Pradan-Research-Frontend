@@ -6,7 +6,7 @@ import topBorders from "@/public/assets/images/bg/topBorders.jpeg"
 import topRoundedBorders from "@/public/assets/images/bg/topRoundedBorders.jpg"
 import whiteBannerDots from "@/public/assets/images/bg/whiteBannerDots.jpg"
 import Image from 'next/image'
-import PublicationsGallery from '@/app/components/Media/PublicationsGallery'
+import PublicationsGallery from './components/PublicationsGallery'
 
 const ConcludeResearchMaster = () => {
   return (
