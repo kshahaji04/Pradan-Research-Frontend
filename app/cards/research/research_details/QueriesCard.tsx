@@ -12,7 +12,7 @@ interface QueriesCardInterface {
 function QueriesCard({ item }: QueriesCardInterface) {
   return (
     <div
-      className="card shadow d-flex flex-row align-items-center py-4"
+      className="card shadow d-flex flex-md-row align-items-center py-4"
       style={{ width: "40rem" }}
     >
       <div>

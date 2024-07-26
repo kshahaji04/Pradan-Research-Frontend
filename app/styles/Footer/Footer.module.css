@@ -91,7 +91,7 @@
 
 @media (max-width: 767px) {
   .quick_link_container {
-    padding-left: 12px;
-    padding-right: 0;
+    padding-left: 12px !important;
+    padding-right: 0 !important;
   }
 }

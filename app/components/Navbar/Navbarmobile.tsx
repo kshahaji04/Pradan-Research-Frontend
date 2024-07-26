@@ -163,11 +163,11 @@ function NavbarMobile({ navbarData, logoData }: NavbarMobileInterface) {
                 >
                   <input
                     className="form-control mr-sm-2"
-                    type="search"
+                    type="text"
                     value={inputValue}
                     onChange={handleInputChange}
                     placeholder="Search"
-                    aria-label="Search"
+                    // aria-label="Search"
                   />
                   <i
                     className={`fa fa-search ${styles.search_icon}`}
@@ -197,7 +197,11 @@ function NavbarMobile({ navbarData, logoData }: NavbarMobileInterface) {
                 ? navbarData?.map((menu: any, index: any) => (
                     <div key={index} className={styles.dropdown}>
                       <Link href={menu?.url}>
-                        <button className={styles.dropbtn}>
+                        <button
+                          data-bs-dismiss="offcanvas"
+                          aria-label="Close"
+                          className={styles.dropbtn}
+                        >
                           {menu?.label}
                         </button>
                       </Link>

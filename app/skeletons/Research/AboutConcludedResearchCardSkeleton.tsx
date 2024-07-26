@@ -18,7 +18,7 @@ function AboutConcludedResearchCardSkeleton() {
           <Skeleton count={4} /> <Skeleton width={"60%"} />
         </p>
       </div>
-      <div className="col-md-6 g-4 p-4">
+      <div className="col-md-6 g-4 p-md-4">
         <div style={{ textDecoration: "none" }}>
           <div className={`card  ${styles.car}`}>
             <div style={{marginTop:'-7px'}}>

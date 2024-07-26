@@ -31,4 +31,24 @@
   border-color: var(--primary);
 }
 
+.pagination .previous.disabled a{
+  cursor: not-allowed;
+  opacity: .7;
+}
+
+.pagination .previous.disabled a:hover{
+  color: rgb(33, 37, 41) !important;
+  background-color: #fff;
+}
+
+.pagination .next.disabled a{
+  cursor: not-allowed;
+  opacity: .7;
+}
+
+.pagination .next.disabled a:hover{
+  color: rgb(33, 37, 41) !important;
+  background-color: #fff;
+}
+
 /* Pagination css end */
