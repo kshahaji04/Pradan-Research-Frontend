@@ -7,7 +7,7 @@ import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import Skeleton from 'react-loading-skeleton'
 
 const ReportCardsSkeleton = ({ item }: any) => {
-    const languages = ["English", "Hindi", "Marathi", "Bangali", "Telugu"]
+   
     
     return (
             <div className={`card h-100 rounded-0 ${styles.infographic_card}`} style={{ width: "90%", maxWidth: "380px" }}>
@@ -32,9 +32,9 @@ const ReportCardsSkeleton = ({ item }: any) => {
                     <div className="col-sm-8 mt-0">
                         <div className="d-flex flex-column align-items-end justify-content-end">
                             <div className="d-flex flex-column align-items-start justify-content-end" style={{width:'100px'}}>
-                                {languages?.map((info: any, index: any) => (<button key={index} className={`btn my-0 text-uppercase pe-2`} style={{ fontSize: '12px' }}>
+                                {Array.from({length:4})?.map((info: any, index: any) => (<button key={index} className={`btn my-0 text-uppercase pe-2`} style={{ fontSize: '5px' }}>
                                     <Skeleton width={16} height={16} />
-                                    <span><Skeleton width={16} height= {16} /></span> <Skeleton width={50} height={10}/>
+                                    <span><Skeleton width={16} height= {16} /></span> <Skeleton width={40} height={10}/>
                                 </button>))}
                             </div>
                         </div>

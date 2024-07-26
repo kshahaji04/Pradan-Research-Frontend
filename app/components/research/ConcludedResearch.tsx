@@ -16,7 +16,7 @@ interface ResearchCardItem {
     url?: any; 
     languages?: string[]; 
   }
-function ConcludedResearch() {
+function ConcludedResearch({pageNumber}:any) {
     const router = useRouter()
     let searchParams = new URLSearchParams(window.location.search);
     const pageNo = searchParams.get('page') 

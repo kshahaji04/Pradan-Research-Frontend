@@ -113,6 +113,10 @@
   color: var(--primary);
 }
 
+.activeMic{
+  color: red !important;
+}
+
 .log_btn {
   position: relative;
   border: none;

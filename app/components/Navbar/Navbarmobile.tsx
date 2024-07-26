@@ -13,12 +13,17 @@ import {
   LogoDataInterface,
   NavbarDataInteface,
 } from "@/app/interfaces/general_interface";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { fetchSearch } from "@/app/store/slices/search_slice/search_slice";
 interface NavbarMobileInterface {
   navbarData: NavbarDataInteface[];
   logoData: LogoDataInterface[];
 }
 
 function NavbarMobile({ navbarData, logoData }: NavbarMobileInterface) {
+  const dispatch = useDispatch()
+  const router = useRouter()
   const [inputValue, setInputValue] = useState("");
   // const [voiceInput, setVoiceInput] = useState("");
   const [isRecording, setIsRecording] = useState(false);
@@ -28,9 +33,7 @@ function NavbarMobile({ navbarData, logoData }: NavbarMobileInterface) {
 
   const {
     transcript,
-    interimTranscript,
-    finalTranscript,
-    listening,
+    resetTranscript,
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
 
@@ -38,38 +41,53 @@ function NavbarMobile({ navbarData, logoData }: NavbarMobileInterface) {
     console.log("browser doesn't support speech recognition");
   }
 
-  const handleVoiceInput = () => {
+  const startRecording = () => {
     if (!isRecording) {
+      resetTranscript(); // Clear any existing transcript
       SpeechRecognition.startListening({ continuous: true });
       setIsRecording(true);
-
       setTimeout(() => {
-        stopVoiceInput();
+        SpeechRecognition.stopListening();
+        setIsRecording(false);
       }, recordingDuration);
     }
   };
 
-  const stopVoiceInput = () => {
-    SpeechRecognition.stopListening();
-    setIsRecording(false);
-    // setVoiceInput(transcript);
-    setInputValue((prevValue) => `${prevValue} ${transcript}`.trim());
-  };
 
   useEffect(() => {
-    if (finalTranscript) {
-      setInputValue((prevValue) => `${prevValue} ${finalTranscript}`.trim());
+    // Update capturedTranscript whenever transcript changes
+    if (!isRecording) {
+      setInputValue(transcript);
+      if (transcript) {
+        dispatch(fetchSearch({ page: 1, searchQuery: transcript }) as any)
+        router.push(`/search?page=1&search=${transcript}`)
+      }
     }
-  }, [finalTranscript]);
+  }, [transcript, isRecording]);
 
-  const handleInputChange = (e: {
-    target: { value: React.SetStateAction<string> };
-  }) => {
+
+  const handleInputChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
     setInputValue(e.target.value);
   };
 
-  const searchHandler = () => {
-    console.log("searching");
+
+  const searchHandler = async (e: any) => {
+    const inputValueCheck = inputValue.trim()
+    if (inputValueCheck !== '') {
+      dispatch(fetchSearch({ page: 1, searchQuery: inputValue }) as any)
+      router.push(`/search?page=1&search=${inputValue}`)
+    }
+    // else{
+    //   const filter = 'most_recent'
+    //   dispatch(fetchSearch({page:1,searchQuery:inputValue,sortBy:filter}) as any)
+    //   router.push(`/search?page=1&search=${inputValue}&filter=${filter}`)
+    // }
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      searchHandler(e);
+    }
   };
 
   return (
@@ -93,23 +111,23 @@ function NavbarMobile({ navbarData, logoData }: NavbarMobileInterface) {
                                 </Link> */}
                 {logoData && logoData.length > 0
                   ? logoData.map((logo: any, index: number) => {
-                      return (
-                        <Link
-                          className={`navbar-brand me-1 ${styles.vertical_bar} ${styles.header_logo_link}`}
-                          href="/"
-                          key={index}
-                        >
-                          <Image
-                            src={logo?.image}
-                            alt={logo?.logo_name}
-                            width={140}
-                            height={60}
-                            className={styles.logo}
-                            loader={imageLoader}
-                          />
-                        </Link>
-                      );
-                    })
+                    return (
+                      <Link
+                        className={`navbar-brand me-1 ${styles.vertical_bar} ${styles.header_logo_link}`}
+                        href="/"
+                        key={index}
+                      >
+                        <Image
+                          src={logo?.image}
+                          alt={logo?.logo_name}
+                          width={140}
+                          height={60}
+                          className={styles.logo}
+                          loader={imageLoader}
+                        />
+                      </Link>
+                    );
+                  })
                   : ""}
               </div>
               <div>
@@ -158,28 +176,15 @@ function NavbarMobile({ navbarData, logoData }: NavbarMobileInterface) {
           <div className="container">
             <div className="row">
               <div className="col-12 d-flex">
-                <form
-                  className={`form-inline my-2 my-lg-0 search_form d-flex ${styles.search_form_mobile}`}
-                >
-                  <input
-                    className="form-control mr-sm-2"
-                    type="text"
-                    value={inputValue}
-                    onChange={handleInputChange}
-                    placeholder="Search"
-                    // aria-label="Search"
-                  />
-                  <i
-                    className={`fa fa-search ${styles.search_icon}`}
-                    aria-hidden="true"
-                    onClick={searchHandler}
-                  ></i>
-                </form>
+               < div className={`form-inline my-2 my-lg-0 search_form d-flex ${styles.search_form_mobile}`}>
+                  <input className="form-control mr-sm-2" value={inputValue} onKeyDown={handleKeyDown} onChange={handleInputChange} placeholder="Search" />
+                  <i className={`fa fa-search ${styles.search_icon}`} aria-hidden="true" onClick={searchHandler}></i>
+                </div>
                 <div className={`px-4 ${styles.mic_icon_container} `}>
                   <i
                     className={`fa fa-microphone ${styles.mic_icon}`}
                     aria-hidden="true"
-                    onClick={handleVoiceInput}
+                    onClick={startRecording}
                   ></i>
                 </div>
               </div>
@@ -195,18 +200,14 @@ function NavbarMobile({ navbarData, logoData }: NavbarMobileInterface) {
                             ))} */}
               {navbarData?.length > 0
                 ? navbarData?.map((menu: any, index: any) => (
-                    <div key={index} className={styles.dropdown}>
-                      <Link href={menu?.url}>
-                        <button
-                          data-bs-dismiss="offcanvas"
-                          aria-label="Close"
-                          className={styles.dropbtn}
-                        >
-                          {menu?.label}
-                        </button>
-                      </Link>
-                    </div>
-                  ))
+                  <div key={index} className={styles.dropdown}>
+                    <Link href={menu?.url}>
+                      <button className={styles.dropbtn}>
+                        {menu?.label}
+                      </button>
+                    </Link>
+                  </div>
+                ))
                 : ""}
             </div>
           </div>

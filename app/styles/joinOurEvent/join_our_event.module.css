@@ -289,8 +289,8 @@
   .five{
     font-size: 2rem;
   }
-  
 }
+
 .imageContainer {
   --mask: linear-gradient(#000 0 0) center/calc(100% - 60px) calc(100% - 60px)
       no-repeat,
@@ -305,7 +305,6 @@
 display: inline-block;
 width: 320px;
 aspect-ratio: 1;
-
 -webkit-mask: var(--mask);
 mask: var(--mask);
 }

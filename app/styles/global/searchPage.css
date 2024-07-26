@@ -1,0 +1,47 @@
+/* css for accordian filter */
+
+.custom_accordian .accordion-body {
+    overflow: auto;
+  }
+  
+  
+  .custom_accordian .accordion-button {
+    box-shadow: none !important;
+    width: 110% !important;
+  }
+  
+  .custom_accordian .accordion-item {
+    background-color: transparent !important;
+  }
+  
+  /* css to remove focus from accordian */
+  .accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(0, 0, 0, 0.125);
+  }
+  
+  .accordion-button:not(.collapsed) {
+    box-shadow: none;
+    color: black;
+    background: none;
+  }
+  
+  /* Remove border from accordion items */
+  .accordion-item {
+    border: none !important;
+  }
+  
+  /* Style the accordion buttons */
+  .accordion-button {
+    background-color: #f8f9fa !important;
+    color: #212529;
+    border: none;
+  }
+  
+  .accordion-button:not(.collapsed)::after {
+    background-image: var(--bs-accordion-btn-icon);
+    transform: var(--bs-accordion-btn-icon-transform);
+    background-color:transparent !important;
+    color: transparent !important;
+  }
+  
