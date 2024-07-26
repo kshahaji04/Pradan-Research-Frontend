@@ -63,7 +63,7 @@ function Footer({ footerData }: FooterInterface) {
 
     if (email !== '') {
       try {
-        const response = await axios.post(`${CONSTANTS.API_BASE_URL}/api/method/pradan.pradan.doctype.subscriber.api.create_subscriber.create_subscriber`, {
+        const response = await axios.post(`${CONSTANTS.API_BASE_URL}/api/method/pradan.pradan.doctype.subscriber.api.create_subscriber.create_subscriber?project_name=${CONSTANTS.PROJECT_NAME}`, {
           email: email
         }, {
           ...API_CONFIG,

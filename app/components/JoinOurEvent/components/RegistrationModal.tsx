@@ -18,8 +18,10 @@ import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-
 import { signUpValidation } from "@/app/validations/signUpValidation";
+import RegistrationApi from '@/app/services/api/general_api/registration_api'
+import { showToast } from "@/app/components/ToastNotification"
+import { validate } from '@/app/validations/registrationValidation';
 
 
 
@@ -51,8 +53,24 @@ const RegistrationModal = () => {
         setShowConfirmPassword(!showConfirmPassword);
     };
 
-    let handleSubmit = async (values: any) => {
+    const handleSubmit = async (values: any) => {
+        try {
+            const response = await RegistrationApi(values);
+            console.log("response regit", response)
+            // Assuming a successful response contains some specific success message
+            if (response?.status === 'success') {
+                setMessage("Registration successful!");
+                showToast('Registration successful!!', 'success')
+                toggleModal();
+            } else {
+                setMessage("Registration failed. Please try again.");
+                showToast('Registration failed!!', 'warning')
+            }
 
+        } catch (error) {
+            setMessage("An unexpected error occurred. Please try again.");
+            showToast('An unexpected error occurred!!', 'error')
+        }
     };
 
     const onKeydown = (keyEvent: any) => {
@@ -93,9 +111,9 @@ const RegistrationModal = () => {
                                         last_name: '',
                                         email: '',
                                         contact_no: '',
-                                        password: "",
+                                        gender: ''
                                     }}
-                                    validationSchema={signUpValidation}
+                                    validate={validate}
                                     onSubmit={(values) => {
                                         handleSubmit(values);
                                         console.log("Form values:", values);
@@ -220,45 +238,50 @@ const RegistrationModal = () => {
                                                                 </div>
                                                             </div>
                                                         </Form.Group>
-                                                        <Form.Group controlId="formPassword">
+                                                        <Form.Group controlId="formGender">
                                                             <div className="row mt-3">
-                                                             
-                                                                {/* gender */}
                                                                 <div className="col-md-12 mt-3 d-flex">
-                                                                    <label className="mb-1 grey">
-                                                                        Select Gender
-                                                                    </label>
+                                                                    <label className="mb-1 grey">Select Gender</label>
                                                                     <div className="form-check ms-3">
-                                                                        <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                                                        <label className="form-check-label text-secondary" htmlFor="flexRadioDefault1">
-                                                                            Male
-                                                                        </label>
+                                                                        <input
+                                                                            className="form-check-input"
+                                                                            type="radio"
+                                                                            name="gender"
+                                                                            value="Male"
+                                                                            onChange={handleChange}
+                                                                        />
+                                                                        <label className="form-check-label text-secondary">Male</label>
                                                                     </div>
                                                                     <div className="form-check ms-3">
-                                                                        <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-                                                                        <label className="form-check-label text-secondary" htmlFor="flexRadioDefault2">
-                                                                            Female
-                                                                        </label>
+                                                                        <input
+                                                                            className="form-check-input"
+                                                                            type="radio"
+                                                                            name="gender"
+                                                                            value="Female"
+                                                                            onChange={handleChange}
+                                                                        />
+                                                                        <label className="form-check-label text-secondary">Female</label>
                                                                     </div>
                                                                     <div className="form-check ms-3">
-                                                                        <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" />
-                                                                        <label className="form-check-label text-secondary" htmlFor="flexRadioDefault2">
-                                                                            Others
-                                                                        </label>
+                                                                        <input
+                                                                            className="form-check-input"
+                                                                            type="radio"
+                                                                            name="gender"
+                                                                            value="Others"
+                                                                            onChange={handleChange}
+                                                                        />
+                                                                        <label className="form-check-label text-secondary">Others</label>
                                                                     </div>
                                                                     <div className="row">
                                                                         <div className="col-12">
                                                                             <div className={styles.error_msg}>
-                                                                                <ErrorMessage name="confirm_password" />
+                                                                                <ErrorMessage name="gender" />
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </Form.Group>
-
-
-
 
                                                     </div>
 
@@ -293,3 +316,6 @@ const RegistrationModal = () => {
 };
 
 export default RegistrationModal;
+
+
+

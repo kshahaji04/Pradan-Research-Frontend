@@ -16,10 +16,12 @@ import gallery_hooks from "@/app/hooks/media_page_hooks/gallery_hooks";
 import { imageLoader } from "@/app/utils/image_loader_utils";
 import NoImage from "@/public/assets/images/no_image.jpg";
 import ErrorComponent from "@/app/components/ErrorComponent";
+import NoDataFound from "../NoDataFound";
 import useGallery from "@/app/hooks/media_page_hooks/gallery_hooks";
 
 function PublicationsGallery({ title }: any) {
   const { gallery, isLoading, galleryError } = useGallery();
+
   const settings = {
     dots: false,
     infinite: true,
@@ -95,7 +97,7 @@ function PublicationsGallery({ title }: any) {
                   <h2 className="text-center ms-0">{title}</h2>
                 </div>
               </div>
-              <div className="row my-5">
+              {gallery?.length > 0 ? (<div className="row my-5">
                 <div className="col-12">
                   <div className="text-end me-3">
                     <h5>
@@ -106,7 +108,7 @@ function PublicationsGallery({ title }: any) {
                   </div>
                 </div>
                 <Slider {...settings}>
-                  {gallery &&
+                  {
                     gallery?.length > 0 &&
                     gallery?.map((info: any) => (
                       <Link
@@ -138,7 +140,8 @@ function PublicationsGallery({ title }: any) {
                       </Link>
                     ))}
                 </Slider>
-              </div>
+              </div>) : <NoDataFound />}
+
             </>
           )}
         </div>
