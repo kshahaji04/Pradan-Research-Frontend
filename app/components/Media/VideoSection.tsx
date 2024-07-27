@@ -16,7 +16,7 @@ const VideoSection = ({ title }: any) => {
     const [loading, setLoading] = useState(false)
 
     const { videoList, loadingAudioVideoList, audioVideoError } = useAudioVideoList();
-   
+
     useEffect(() => {
         AOS.init();
     }, []);
@@ -67,7 +67,22 @@ const VideoSection = ({ title }: any) => {
                             </div>
                         </div>
                     </div>
-                    {loadingAudioVideoList ? <SkeletonCard Component={VideoSectionsCardsSkeleton} limit={videoList?.length || 3} /> : <>
+                    {loadingAudioVideoList ? <div className="row my-5">
+                        <Slider {...settings}>
+                            <div>
+                                <VideoSectionsCardsSkeleton />
+                            </div>
+                            <div>
+                                <VideoSectionsCardsSkeleton />
+                            </div>
+                            <div>
+                                <VideoSectionsCardsSkeleton />
+                            </div>
+                            <div>
+                                <VideoSectionsCardsSkeleton />
+                            </div>
+                        </Slider>
+                    </div> : <>
                         {videoList?.length > 0 ? <Slider {...settings}>{Array.isArray(videoList) && videoList?.length > 0 && videoList?.map((info: any, index: any) => (
                             <VideoSectionsCards audioVideoData={info} loadingAudioVideoList={loadingAudioVideoList} id={info?.id} key={index} />))}
                         </Slider> : <NoDataFound />}

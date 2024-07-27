@@ -26,7 +26,7 @@ const useAudioDetails = () => {
     }
   }, [audioDetailsFromStore]);
 
-  return { audioDetails, loadingAudioDetails: audioDetailsFromStore?.loading };
+  return { audioDetails, loadingAudioDetails: audioDetailsFromStore?.loading, audioDetailError: audioDetailsFromStore?.error!=='' };
 };
 
 export default useAudioDetails;

@@ -65,7 +65,22 @@ const AudioSection = ({ title }: any) => {
                             </div>
                         </div>
                     </div>
-                    {loadingAudioVideoList ? <SkeletonCard Component={AudioSectionsCardsSkeleton} limit={audioList?.length || 3} /> : <>
+                    {loadingAudioVideoList ? <div className="row my-5">
+                        <Slider {...settings}>
+                            <div>
+                                <AudioSectionsCardsSkeleton />
+                            </div>
+                            <div>
+                                <AudioSectionsCardsSkeleton />
+                            </div>
+                            <div>
+                                <AudioSectionsCardsSkeleton />
+                            </div>
+                            <div>
+                                <AudioSectionsCardsSkeleton />
+                            </div>
+                        </Slider>
+                    </div> : <>
                         {audioList?.length > 0 ? (
                             <Slider {...settings}>{Array.isArray(audioList) && audioList?.length > 0 && audioList?.map((info: any, index: any) => (
                                 <AudioSectionsCards audioData={info} loadingAudioVideoList={loadingAudioVideoList} id={info?.id} key={index} />))}

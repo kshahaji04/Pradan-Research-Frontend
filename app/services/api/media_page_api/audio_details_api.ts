@@ -2,7 +2,7 @@ import { CONSTANTS } from "@/app/services/config/app-config";
 import { API_CONFIG } from "@/app/services/config/api-config";
 import axios from "axios";
 
-const GetAudioDetailsApi = async (slug?:any) => {
+const GetAudioDetailsApi = async (slug?: any) => {
     let response: any;
     await axios
         .get(
@@ -17,15 +17,7 @@ const GetAudioDetailsApi = async (slug?:any) => {
             response = res?.data?.message?.data;
         })
         .catch((err: any) => {
-            if (err.code === "ECONNABORTED") {
-                response = "Request timed out";
-            } else if (err.code === "ERR_BAD_REQUEST") {
-                response = "Bad Request";
-            } else if (err.code === "ERR_INVALID_URL") {
-                response = "Invalid URL";
-            } else {
-                response = err;
-            }
+            throw err;
         });
 
     return response;
