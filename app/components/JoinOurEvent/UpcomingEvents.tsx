@@ -15,6 +15,7 @@ import useRegularEvenetHook from "@/app/hooks/joinOurEvenets/join_evevnt_upcomin
 import ErrorComponent from "../ErrorComponent";
 import NoDataFound from "../NoDataFound";
 import useFeaturedEvents from "@/app/hooks/event_hook/featured_events_hooks";
+import JoinOurEventCardsSkeleton from "@/app/skeletons/cards/joinOurEvent/JoinOurEventCardsSkeleton";
 
 
 
@@ -164,6 +165,12 @@ const UpcomingEvents = () => {
   
             <Slider {...settings} className="row-slick">
               {
+              isLoading ? 
+              Array.from({length:4}).map((item,index)=>{
+                return(
+                  <JoinOurEventCardsSkeleton key={index} />
+                )
+              }) :
               data?.length > 0 ?
               data?.map((item,index) => (
                 <JoinOurEventCards data={item} loading={isLoading} id={index} key={index} />
