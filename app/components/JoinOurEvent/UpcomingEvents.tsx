@@ -14,6 +14,7 @@ import Link from "next/link";
 import useRegularEvenetHook from "@/app/hooks/joinOurEvenets/join_evevnt_upcomingevents_regular_hooks";
 import ErrorComponent from "../ErrorComponent";
 import NoDataFound from "../NoDataFound";
+import useFeaturedEvents from "@/app/hooks/event_hook/featured_events_hooks";
 
 
 
