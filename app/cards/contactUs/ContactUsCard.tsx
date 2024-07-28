@@ -11,9 +11,7 @@ import noImage from '@/public/assets/images/no_image.jpg'
 const ContactUsCard = ({ e, idx, loading }: any) => {
 
     return (
-        <>
-            {
-                loading ? <ContactUsCardSkeleton idx={idx} /> :
+ 
                     <div className={`card col-sm-6 ${styles.car}`} key={idx}>
                         <div className={styles.topContainer}>
                             <Image
@@ -50,8 +48,6 @@ const ContactUsCard = ({ e, idx, loading }: any) => {
                             </div>
                         </div>
                     </div>
-            }
-        </>
     )
 }
 
