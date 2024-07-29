@@ -8,6 +8,7 @@ import topBorders from "@/public/assets/images/bg/topBorders.jpeg";
 import topRoundedBorders from "@/public/assets/images/bg/topRoundedBorders.jpg";
 import whiteBannerDots from "@/public/assets/images/bg/whiteBannerDots.jpg";
 import PublicationsGallery from "./components/PublicationsGallery";
+import Publication from "@/app/components/research/ongoing-research/components/Publication";
 
 const OnGoingResearchMaster = () => {
   return (
@@ -23,6 +24,16 @@ const OnGoingResearchMaster = () => {
         </div>
         <figure>
           <Image width={1200} height={1200} src={whiteBannerDots} alt="bg" />
+        </figure>
+      </div>
+      <div className="bgImageWrapper">
+        <div
+          style={{ zIndex: "2", position: "relative", padding: "40px 0px 0px" }}
+        >
+          <Publication />
+        </div>
+        <figure>
+          <Image width={1200} height={1200} src={topRoundedBorders} alt="bg" />
         </figure>
       </div>
       <div className="bgImageWrapper">
