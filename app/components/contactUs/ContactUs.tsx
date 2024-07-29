@@ -17,12 +17,13 @@ import Skeleton from 'react-loading-skeleton';
 import ErrorComponent from '../ErrorComponent';
 import noImage from '@/public/assets/images/no_image.jpg'
 import NoDataFound from '../NoDataFound';
+import ContactUsCardSkeleton from '@/app/skeletons/cards/contactUs/ContactUsCardSkeleton';
 
 const ContactUs = () => {
   const { contactUs, loading, error } = GetContactUs()
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: contactUs?.experts?.length > 1,
     slidesToShow: 4,
     slidesToScroll: 1,
     pauseOnHover: true,
@@ -35,7 +36,7 @@ const ContactUs = () => {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          infinite: true,
+          infinite: contactUs?.experts?.length > 1,
           dots: false,
         },
       },
@@ -44,7 +45,7 @@ const ContactUs = () => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          infinite: true,
+          infinite: contactUs?.experts?.length > 1,
           dots: false,
         },
       },
@@ -83,7 +84,7 @@ const ContactUs = () => {
                       className={styles.bannerImage}
                       height={500}
                       alt='Images'
-                      src={ contactUs?.banner ||  noImage.src}
+                      src={contactUs?.banner || noImage.src}
                       loader={imageLoader}
 
                     />
@@ -116,16 +117,20 @@ const ContactUs = () => {
                 <div className="row teamSlider teams">
                   <div style={{ width: '95%', margin: '0 auto' }}>
                     <Slider {...settings}>
-                        {
-                        contactUs?.experts?.length > 0 ?
-                        contactUs?.experts?.map((e: any, idx: any) => (
-                          <ContactUsCard e={e} idx={idx} key={idx} loading={loading} />
-                        ))  :
-                        <div className="mb-5 pt-3">
-                          <NoDataFound />
-                          </div>
-                        }
-                      
+                      {
+                        loading
+                          ? Array.from({ length: 4 }).map((item, index) => (
+                            <ContactUsCardSkeleton key={index} />
+                          ))
+                          : contactUs?.experts?.length > 0
+                            ? contactUs.experts.map((e: any, idx: any) => (
+                              <ContactUsCard e={e} idx={idx} key={idx} loading={loading} />
+                            ))
+                            : (
+                              <div className="mb-5 pt-3">
+                                <NoDataFound />
+                              </div>
+                            )}
                     </Slider>
                   </div>
                 </div>

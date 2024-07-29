@@ -6,6 +6,7 @@ import SearchPageListCardSkeleton from '@/app/skeletons/cards/serachPage/SearchP
 import img from '@/public/assets/images/no_image.jpg'
 import { imageLoader } from '@/app/utils/image_loader_utils'
 import { SearchPageGridCardProps } from '@/app/interfaces/search_interface'
+import NoDataFound from '@/app/components/NoDataFound'
 
 
 
@@ -16,6 +17,7 @@ const SearchPageListCard : React.FC<SearchPageGridCardProps> = ({ data,loading }
     <div className="row ms-4 mt-4">
       {
       loading ? <SearchPageListCardSkeleton/> :
+      data?.length > 0 ?
       data.map((item: any, index: any) => (
         <div className="col-11 m-4">
           <div className={`card p-4  m-2 cursor d-flex  flex-row ${styles.listCard}`} key={index}>
@@ -40,8 +42,11 @@ const SearchPageListCard : React.FC<SearchPageGridCardProps> = ({ data,loading }
             </div>
           </div>
         </div>
-      ))
+      )) 
+      : 
+      <NoDataFound/>
       }
+
     </div>
   )
 }

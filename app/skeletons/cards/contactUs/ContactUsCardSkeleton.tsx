@@ -4,14 +4,12 @@ import styles from '@/app/styles/contactUs/contactUsCard.module.css'
 import Skeleton from 'react-loading-skeleton';
 
 interface contactUs {
-
-    idx: any
 }
 
-const ContactUsCardSkeleton: React.FC<contactUs> = ({ idx }) => {
+const ContactUsCardSkeleton: React.FC<contactUs> = () => {
 
     return (
-        <div className={`card col-sm-6 ${styles.car}`} key={idx}>
+        <div className={`card col-sm-6 ${styles.car}`} >
             <div className={styles.topContainer}>
                 <Skeleton
                   style={

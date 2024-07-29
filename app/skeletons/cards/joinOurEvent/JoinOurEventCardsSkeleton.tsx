@@ -9,7 +9,6 @@ import Skeleton from 'react-loading-skeleton'
 const JoinOurEventCardsSkeleton= () => {
 
     return (
-        <div >
             <div className="col-lg-12 px-2 mb-5 pt-0 pb-3 mx-0 d-flex align-items-center justify-content-center">
                 <div className={`card py-0 text-left cursor`} style={{ width: '97%', maxWidth: '380px' }}>
                     <div  className={`${styles.news_slide} pt-0 pb-0`}>
@@ -47,7 +46,6 @@ const JoinOurEventCardsSkeleton= () => {
                     </div>
                 </div>
             </div>
-        </div>
     )
 }
 
