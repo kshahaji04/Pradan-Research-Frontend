@@ -12,35 +12,40 @@ interface FeaturedResearchCardProps {
 
 function FeaturedResearchCard({ item }: FeaturedResearchCardProps) {
     return (
-        <div className={`row mx-auto  ${styles.mainRow}`}>
-            <div className={`col-md-7 px-0`}>
-                <Image width={500} height={450} className={`${styles.featuredImage}`} loader={imageLoader} alt='Image' src={item?.image || noImage} />
-            </div>
-            <div className={`col-md-5 card ${styles.cardMain}`}>
-                <div className="card-body">
-                    <div className='card-title'>
-                        <Link href='/' className={styles.card1Title}>
-                            {item?.title}
-                        </Link>
+        <>
+            <Link href={`/featured-publication-detail/${item?.slug}`}>
+                <div className={`row mx-auto  ${styles.mainRow}`}>
+
+                    <div className={`col-md-7 px-0`}>
+                        <Image width={500} height={450} className={`${styles.featuredImage}`} loader={imageLoader} alt='Image' src={item?.image || noImage} />
                     </div>
-                    <div className={`${styles.author}`}>
-                        <p>
-                            {item?.sub_title}
-                        </p>
-                    </div>
-                    <div className={styles.describtion}>
-                        <span dangerouslySetInnerHTML={{ __html: item?.short_description ?? '' }}></span>
-                    </div>
-                    <div>
-                        <div className={`${styles.roundedMain}`}>
-                            <div className={`${styles.rounded} ${styles.one}`}></div>
-                            <div className={`${styles.rounded} ${styles.two}`}></div>
-                            <div className={`${styles.rounded} ${styles.three}`}></div>
+                    <div className={`col-md-5 card ${styles.cardMain}`}>
+                        <div className="card-body">
+                            <div className='card-title'>
+                                <Link href='/' className={styles.card1Title}>
+                                    {item?.title}
+                                </Link>
+                            </div>
+                            <div className={`${styles.author}`}>
+                                <p>
+                                    {item?.sub_title}
+                                </p>
+                            </div>
+                            <div className={styles.describtion}>
+                                <span dangerouslySetInnerHTML={{ __html: item?.short_description ?? '' }}></span>
+                            </div>
+                            <div>
+                                <div className={`${styles.roundedMain}`}>
+                                    <div className={`${styles.rounded} ${styles.one}`}></div>
+                                    <div className={`${styles.rounded} ${styles.two}`}></div>
+                                    <div className={`${styles.rounded} ${styles.three}`}></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </Link >
+        </>
     )
 }
 
