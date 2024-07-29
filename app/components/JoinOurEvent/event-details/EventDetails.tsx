@@ -11,35 +11,39 @@ import SectionDivider from '../../SectionDivider';
 import RegistrationForm from '../components/RegistrationForm';
 import VenueCard from './VenueCard';
 import useFeaturedEventDetail from '@/app/hooks/event_hook/featured_event_detail_hooks';
+import ErrorComponent from '../../ErrorComponent';
 
 const EventDetails = () => {
     const { featuredEventDetailData, featuredEventDetailError, featuredEventDetailLoading } = useFeaturedEventDetail();
     console.log('featured events details', featuredEventDetailData);
 
     return (
-
         <>
-            <div className="">
-                <div style={{ zIndex: '2', }}>
+            {
+                featuredEventDetailError ? <ErrorComponent /> : (
+                    featuredEventDetailLoading ? <p className='text-center mt-5'>No Data Available</p> :
+                        <div>
+                            <div className="">
+                                <div style={{ zIndex: '2', }}>
 
-                    <Image
-                        width={1500}
-                        className=''
-                        height={500}
-                        alt='Images'
-                        src={featuredEventDetailData?.banner_image}
-                        loader={imageLoader}
-                        style={{ width: '100%' }}
-                    />
+                                    <Image
+                                        width={1500}
+                                        className=''
+                                        height={500}
+                                        alt='Images'
+                                        src={featuredEventDetailData?.banner_image}
+                                        loader={imageLoader}
+                                        style={{ width: '100%' }}
+                                    />
 
-                </div>
-            </div>
-            <SectionDivider />
+                                </div>
+                            </div>
+                            <SectionDivider />
 
-            <div className="container">
-                <div className="row">
-                    <div className="col-12">
-                        {/* <div className={styles.event_etails}>
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-12">
+                                        {/* <div className={styles.event_etails}>
                             <h1 className='text-success text-center mt-5 mb-3'>India Rural Colloquy 2024registration</h1>
                             <p className='text-center'>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus laudantium vitae consectetur deleniti maiores aliquam, minus officia facere, earum et culpa nisi asperiores fuga! Earum necessitatibus laborum deserunt ipsa nemo.
@@ -54,14 +58,14 @@ const EventDetails = () => {
                                 Vel sint, explicabo culpa nulla voluptate, deleniti debitis quam doloremque nemo expedita incidunt. Iusto, quasi. Dolorem expedita nisi, minus quia incidunt rem harum provident perferendis! Ea molestiae vero corrupti sapiente?
                             </p>
                         </div> */}
-                        <span dangerouslySetInnerHTML={{ __html: featuredEventDetailData?.about_event ? featuredEventDetailData?.about_event : '' }}></span>
-                    </div>
-                    <SectionDivider />
-                    <div className="col-12 mt-5">
-                        <div className={styles.more_about_event}>
-                            <div className="row">
-                                <div className="col-md-6">
-                                    {/* <div>
+                                        <span dangerouslySetInnerHTML={{ __html: featuredEventDetailData?.about_event ? featuredEventDetailData?.about_event : '' }}></span>
+                                    </div>
+                                    <SectionDivider />
+                                    <div className="col-12 mt-5">
+                                        <div className={styles.more_about_event}>
+                                            <div className="row">
+                                                <div className="col-md-6">
+                                                    {/* <div>
                                         <h1 className='text-success'>More About The Events</h1>
                                         <h5 className='text-secondary'>deleniti debitis quam doloremque</h5>
                                         <p className='text-secondary'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus laudantium vitae consectetur deleniti maiores aliquam, minus officia facere, earum et culpa nisi asperiores fuga! Earum necessitatibus laborum deserunt ipsa nemo.
@@ -71,44 +75,46 @@ const EventDetails = () => {
                                             A cum sunt nobis nesciunt id enim modi dolorem eos? Tempore, fuga modi! Neque quia quod accusantium assumenda, qui cupiditate iure a sapiente architecto nobis quos? Animi quia harum veritatis?
                                         </p>
                                     </div> */}
-                                    <span dangerouslySetInnerHTML={{ __html: featuredEventDetailData?.more_about_event ? featuredEventDetailData?.more_about_event : '' }}></span>
+                                                    <span dangerouslySetInnerHTML={{ __html: featuredEventDetailData?.more_about_event ? featuredEventDetailData?.more_about_event : '' }}></span>
 
-                                </div>
-                                <div className="col-md-6">
-                                    <div>
-                                        <Carousel>
-                                            {
-                                                featuredEventDetailData?.images && featuredEventDetailData?.images.map((data: any, index: number) => (
-                                                    <Carousel.Item key={index} >
-                                                        <Image
-                                                            src={data?.image}
-                                                            alt=''
-                                                            loader={imageLoader}
-                                                            height={400}
-                                                            width={600}
-                                                        />
-                                                    </Carousel.Item>
-                                                ))
-                                            }
-                                        </Carousel>
+                                                </div>
+                                                <div className="col-md-6">
+                                                    <div>
+                                                        <Carousel>
+                                                            {
+                                                                featuredEventDetailData?.images && featuredEventDetailData?.images.map((data: any, index: number) => (
+                                                                    <Carousel.Item key={index} >
+                                                                        <Image
+                                                                            src={data?.image}
+                                                                            alt=''
+                                                                            loader={imageLoader}
+                                                                            height={400}
+                                                                            width={600}
+                                                                        />
+                                                                    </Carousel.Item>
+                                                                ))
+                                                            }
+                                                        </Carousel>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <SectionDivider />
+                                    <VenueCard vanueData={featuredEventDetailData?.vanue} />
+                                    <SectionDivider />
+
+                                    <div className="col-12">
+                                        <div>
+                                            <h4 className='text-success text-center'>Here you can Register</h4>
+                                            <RegistrationForm />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <SectionDivider />
-                    <VenueCard vanueData={featuredEventDetailData?.vanue}/>
-                    <SectionDivider />
-
-                    <div className="col-12">
-                        <div>
-                            <h4 className='text-success text-center'>Here you can Register</h4>
-                            <RegistrationForm />
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+                )
+            }
         </>
     )
 

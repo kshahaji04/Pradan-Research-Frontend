@@ -39,7 +39,8 @@ const JoinOurEventCards = ({ data, loading }: any) => {
                                     <div className={`${styles.card_body}`}>
                                         {/* <p className={`card-text mb-0 pb-2`}>hello</p> */}
                                         <p className="card-title text-secondary">{data?.title}</p>
-                                        <h6 className='mb-0'>Type: {data?.sub_title}</h6>
+                                        <p className="card-title text-secondary">{data?.sub_title}</p>
+                                        <h6 className='mb-0'>Type: {data?.type}</h6>
                                         <p>
                                             <span dangerouslySetInnerHTML={{
                                                 /* @ts-ignore */

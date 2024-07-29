@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import styles from '@/app/styles/joinOurEvent/join_our_event.module.css'
 import Skeleton from 'react-loading-skeleton';
-import UpcomingEvents from '@/app/components/JoinOurEvent/UpcomingEvents';
+import UpcomingEvents from '@/app/components/JoinOurEvent/Events/UpcomingEvents';
 
 
 const JoinOurEventMasterSkeleton = () => {

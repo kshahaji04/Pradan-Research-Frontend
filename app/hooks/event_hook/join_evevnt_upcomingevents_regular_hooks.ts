@@ -1,6 +1,5 @@
-import GetJoinEventsReports from "@/app/services/api/join_events/join_events_reports";
-import GetUpcomingRegularEvents from "@/app/services/api/join_events/upcoimg_events_regular";
-import GetRegularEventsReports from "@/app/services/api/join_events/upcoimg_events_regular";
+import GetUpcomingRegularEvents from "@/app/services/api/event_api/upcoimg_events_regular";
+import GetRegularEventsReports from "@/app/services/api/event_api/upcoimg_events_regular";
 import React, { useEffect, useState } from "react";
 
 

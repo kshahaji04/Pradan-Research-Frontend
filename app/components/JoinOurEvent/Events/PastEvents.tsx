@@ -1,5 +1,5 @@
 import React from 'react'
-import MediaMaster from '../Media/MediaMaster'
+import MediaMaster from '../../Media/MediaMaster'
 
 const PastEvents = () => {
     return (

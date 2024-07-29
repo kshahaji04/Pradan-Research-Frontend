@@ -1,4 +1,4 @@
-import GetJoinEventsReports from '@/app/services/api/join_events/join_events_reports'
+import GetJoinEventsReports from '@/app/services/api/event_api/join_events_reports'
 import React, { useEffect, useState } from 'react'
 
 const usePastEventReportHook = () => {

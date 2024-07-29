@@ -10,10 +10,10 @@ const useFeaturedEventDetail = () => {
     const [featuredEventDetailLoading, setFeaturedEventDetailLoading] = useState<boolean>(false);
     
 
-    // const { slug }:any = useParams();
-    // console.log("slug>>",slug, typeof(slug))
-    // const decodedSlug = decodeURIComponent(slug);
-    const decodedSlug = 'feature-event';
+    const { slug }:any = useParams();
+    console.log("slug>>",slug, typeof(slug))
+    const decodedSlug = decodeURIComponent(slug);
+    // const decodedSlug = 'feature-event';
     
 
     async function fetchFeaturedEventDetail(decodedSlug:any) {
