@@ -23,8 +23,6 @@ const ReportCards :  React.FC<ReportCard>=({ item,loading }) => {
     }
     return (
         <div className='col-md-4 w-100' >
-            {
-                loading ? <ReportCardsSkeleton /> :
                     <div className={`card h-100 rounded-0 ${styles.infographic_card}`} style={{ width: "90%", maxWidth: "380px" }}>
                         {/* <ModalImage
                             small={item?.image ? `${CONSTANTS.API_BASE_URL}/${item?.image}` : noImage.src }
@@ -72,8 +70,6 @@ const ReportCards :  React.FC<ReportCard>=({ item,loading }) => {
                             </div>
                         </div>
                     </div>
-            }
-
         </div>
     )
 }

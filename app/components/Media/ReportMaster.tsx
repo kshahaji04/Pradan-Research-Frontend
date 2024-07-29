@@ -16,6 +16,8 @@ import { InterActiveInfographicData } from "@/app/utils/data2";
 import ReportMasterSkeleton from "@/app/skeletons/Media/ReportMasterSkeleton";
 import usePastEventReportHook from "@/app/hooks/joinOurEvenets/join_event_pastevent_report_hooks";
 import ErrorComponent from "../ErrorComponent";
+import ReportCardsSkeleton from "@/app/skeletons/cards/joinOurEvent/ReportCardsSkeleton";
+import NoDataFound from "../NoDataFound";
 
 
 const ReportMaster = ({ title }: any) => {
@@ -68,20 +70,35 @@ const ReportMaster = ({ title }: any) => {
     <div className={`container-fluid ${styles.news_carousel_container}`} style={{ zIndex: '2', position: "relative" }}>
       <div className="row">
           {
-          isLoading ? <ReportMasterSkeleton /> :
-            <>       <div className="col-12 mt-4">
+          isLoading ?
+           <ReportMasterSkeleton /> 
+           :
+            <>    
+             <div className="col-12 mt-4">
               <h2 className="mb-4 text-center ms-0">{title}</h2>
             </div>
             </>
- 
            }
         <div className="col-12">
-
         </div>
         <Slider {...settings}>
-          {reportData?.map((item,index) => (
+          {
+          isLoading ? 
+          Array.from({length:4}).map((item:any,index:any)=>{
+           return(
+            <div className='col-md-4 w-100' key={index}>
+              <ReportCardsSkeleton />
+            </div>
+           )
+          })
+          :
+          reportData?.length > 0 ?
+          reportData?.map((item,index) => (
             <ReportCards item={item} key={index} loading={isLoading}/>
-          ))}
+          )
+          )
+        : <NoDataFound/>
+        }
         </Slider>
       </div>
     </div>

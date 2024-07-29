@@ -14,21 +14,20 @@ import Link from "next/link";
 import useRegularEvenetHook from "@/app/hooks/joinOurEvenets/join_evevnt_upcomingevents_regular_hooks";
 import ErrorComponent from "../ErrorComponent";
 import NoDataFound from "../NoDataFound";
-import useFeaturedEventDetail from "@/app/hooks/event_hook/featured_event_detail_hooks";
 import useFeaturedEvents from "@/app/hooks/event_hook/featured_events_hooks";
-import {imageLoader} from '@/app/utils/image_loader_utils'
-import dateFormat from "@/app/utils/dateFormat";
+import JoinOurEventCardsSkeleton from "@/app/skeletons/cards/joinOurEvent/JoinOurEventCardsSkeleton";
+
 
 
 const UpcomingEvents = () => {
-   const {data,isLoading,error} = useRegularEvenetHook()
-   
+  const { data, isLoading, error } = useRegularEvenetHook()
+
   useEffect(() => {
     AOS.init();
   }, []);
   const settings = {
     dots: false,
-    infinite: data?.length > 1 ,
+    infinite: data?.length > 1,
     slidesToShow: 4,
     slidesToScroll: data?.length > 1 ? 1 : 0,
     pauseOnHover: true,
@@ -116,35 +115,35 @@ const UpcomingEvents = () => {
                   <div className="my-4 teamSlider">
                     <Slider {...settings2}>
                       {
-                       featuredEventData && featuredEventData.map((data:any, index:number) => {
+                        dataForFeaturedEvent.map((item, index) => {
                           return (
                             <div className="container" key={index}>
                               <div className={`row pointer bg-success justify-content-center ${styles.mainRow}`}>
                                 <div className={`col-xl-4 col-sm-6 ${styles.imageContainer}`}>
-                                  <Image className={styles.mainImage} src={`${data?.image}`} height={410} width={200} alt="Image" loader={imageLoader}/>
+                                  <Image className={styles.mainImage} src={`${item?.images}`} height={410} width={200} alt="Image" />
                                 </div>
                                 <div className="col-xl-8 col-sm-6 p-4 d-flex flex-column justify-content-center">
                                   <div className="">
-                                    {/* <h6 className={styles.first}>
-                                      {data?.title}
-                                    </h6> */}
+                                    <h6 className={styles.first}>
+                                      {item?.detail1}
+                                    </h6>
                                     <h1 className={styles.second}>
-                                    {data?.title}
+                                      {item.detail2}
                                     </h1>
                                     <p className={styles.third}>
-                                    <span dangerouslySetInnerHTML={{ __html: data?.short_description ? data?.short_description : '' }}></span>
+                                      {item.detail3}
                                     </p>
                                   </div>
                                   <div>
                                     <h6 className={styles.four}>
-                                    {data?.sub_title}
+                                      {item.detail4}
                                     </h6>
-                                    <h4 className="text-center mt-4">
-                                    {dateFormat(data?.from_date)} to  {dateFormat(data?.to_date)}
-                                    </h4>
+                                    <h2 className={styles.five}>
+                                      {item.detail5}
+                                    </h2>
                                   </div>
                                   <div>
-                                    <h4 className="text-center">Type: {data?.type}</h4>
+                                    <h4 className="text-center">Type: Online</h4>
                                   </div>
                                   <div className="text-center mt-3">
                                     <Link href='/components/JoinOurEvent/event-details' className="btn btn-outline-success">Register</Link>
@@ -166,6 +165,12 @@ const UpcomingEvents = () => {
   
             <Slider {...settings} className="row-slick">
               {
+              isLoading ? 
+              Array.from({length:4}).map((item,index)=>{
+                return(
+                  <JoinOurEventCardsSkeleton key={index} />
+                )
+              }) :
               data?.length > 0 ?
               data?.map((item,index) => (
                 <JoinOurEventCards data={item} loading={isLoading} id={index} key={index} />
@@ -181,7 +186,7 @@ const UpcomingEvents = () => {
       </div> 
        }
     </>
-   
+
   );
 };
 
