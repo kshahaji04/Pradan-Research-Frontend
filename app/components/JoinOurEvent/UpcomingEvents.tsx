@@ -21,7 +21,7 @@ import JoinOurEventCardsSkeleton from "@/app/skeletons/cards/joinOurEvent/JoinOu
 
 const UpcomingEvents = () => {
   const { data, isLoading, error } = useRegularEvenetHook()
-
+   console.log(data,'inside upcomg events')
   useEffect(() => {
     AOS.init();
   }, []);
