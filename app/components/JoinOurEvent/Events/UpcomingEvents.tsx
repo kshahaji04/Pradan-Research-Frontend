@@ -18,6 +18,7 @@ import useFeaturedEvents from "@/app/hooks/event_hook/featured_events_hooks";
 import JoinOurEventCardsSkeleton from "@/app/skeletons/cards/joinOurEvent/JoinOurEventCardsSkeleton";
 import dateFormat from "@/app/utils/dateFormat";
 import { imageLoader } from '@/app/utils/image_loader_utils';
+import FeaturedEventSkeleton from "@/app/skeletons/JoinOurEvent/FeaturedEventSkeleton";
 
 const UpcomingEvents = () => {
   const { data, isLoading, error } = useRegularEvenetHook()
@@ -111,6 +112,8 @@ const UpcomingEvents = () => {
               featuredEventError ? <ErrorComponent /> :
                 <div className="col-12">
                   {/* <h2 className="mb-4 ">Featured Events</h2> */}
+                  {
+                   featuredEventLoading ? <FeaturedEventSkeleton/> :
                   <div className="row">
                     <div className="col-lg-1"></div>
                     <div className="col-lg-10">
@@ -155,7 +158,7 @@ const UpcomingEvents = () => {
                                 </div>
 
                               )
-                            }) : <p className="text-center mt-5">No Data Available</p>
+                            }) : <NoDataFound/>
 
                           }
                         </Slider>
@@ -164,6 +167,7 @@ const UpcomingEvents = () => {
                     </div>
                     <div className="col-lg-1"></div>
                   </div>
+                  }
                 </div>
             }
 
