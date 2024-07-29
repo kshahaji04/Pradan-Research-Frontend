@@ -1,8 +1,8 @@
 'use client'
 import React, { useState } from 'react';
 import styles from '@/app/styles/joinOurEvent/join_our_event.module.css'; // Assuming the correct import path
-import UpcomingEvents from './UpcomingEvents';
-import PastEvents from './PastEvents';
+import UpcomingEvents from './Events/UpcomingEvents';
+import PastEvents from './Events/PastEvents';
 import JoinOurEventMasterSkeleton from '@/app/skeletons/JoinOurEvent/JoinOurEventMasterSkeleton';
 
 const JoinOurEventMaster = () => {

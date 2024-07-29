@@ -14,7 +14,7 @@ import JoinOurEventCards from "@/app/cards/joinOurEvent/JoinOurEventCards";
 import ReportCards from "@/app/cards/joinOurEvent/ReportCards";
 import { InterActiveInfographicData } from "@/app/utils/data2";
 import ReportMasterSkeleton from "@/app/skeletons/Media/ReportMasterSkeleton";
-import usePastEventReportHook from "@/app/hooks/joinOurEvenets/join_event_pastevent_report_hooks";
+import usePastEventReportHook from "@/app/hooks/event_hook/join_event_pastevent_report_hooks";
 import ErrorComponent from "../ErrorComponent";
 import ReportCardsSkeleton from "@/app/skeletons/cards/joinOurEvent/ReportCardsSkeleton";
 import NoDataFound from "../NoDataFound";
