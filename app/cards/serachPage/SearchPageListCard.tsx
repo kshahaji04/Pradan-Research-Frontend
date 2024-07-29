@@ -7,9 +7,7 @@ import img from '@/public/assets/images/no_image.jpg'
 import { imageLoader } from '@/app/utils/image_loader_utils'
 import { SearchPageGridCardProps } from '@/app/interfaces/search_interface'
 import NoDataFound from '@/app/components/NoDataFound'
-
-
-
+import { generatePublicationURL } from '@/app/utils/generate_publication_url'
 
 const SearchPageListCard: React.FC<SearchPageGridCardProps> = ({ data, loading }) => {
 
@@ -33,7 +31,7 @@ const SearchPageListCard: React.FC<SearchPageGridCardProps> = ({ data, loading }
                       <div className="text-success col-md-6">{item?.sub_title} <span className='mx-2 text-secondary'>{item?.year}</span> </div>
                       <div className="col-md-6 text-end">
                         {
-                          <Link href={`/featured-publication-detail/${item?.slug}`} className="btn btn-outline-success">
+                          <Link href={generatePublicationURL(item?.type, item?.slug)} className="btn btn-outline-success">
                             Read More
                           </Link>
                         }
