@@ -120,8 +120,10 @@ function WebNavbar({ navbarData, logoData }: WebNavbarInterface) {
               </Link> */}
               </div>
               <div>
+                <Link href='/'>
                 <h3 className='mb-0 primary' style={{ fontSize: '1.5rem' }}>Pradan</h3>
                 <p className='mb-0'><i>Research</i></p>
+                </Link>
               </div>
             </div>
           </div>

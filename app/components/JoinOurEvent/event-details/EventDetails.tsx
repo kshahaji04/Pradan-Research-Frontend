@@ -13,6 +13,7 @@ import VenueCard from './VenueCard';
 import useFeaturedEventDetail from '@/app/hooks/event_hook/featured_event_detail_hooks';
 import ErrorComponent from '../../ErrorComponent';
 import FeaturedEventDetailsSkeleton from '@/app/skeletons/JoinOurEvent/FeaturedEventDetailsSkeleton';
+import Link from 'next/link';
 
 const EventDetails = () => {
     const { featuredEventDetailData, featuredEventDetailError, featuredEventDetailLoading } = useFeaturedEventDetail();
@@ -22,29 +23,32 @@ const EventDetails = () => {
         <>
             {
                 featuredEventDetailError ? <ErrorComponent /> : (
-                    featuredEventDetailLoading ? <FeaturedEventDetailsSkeleton/> :
+                    featuredEventDetailLoading ? <FeaturedEventDetailsSkeleton /> :
                         <div>
-                            <div className="">
-                                <div style={{ zIndex: '2', }}>
+                            {
+                                featuredEventDetailData?.banner_image &&
+                                <div className="">
+                                    <div style={{ zIndex: '2', }}>
 
-                                    <Image
-                                        width={1500}
-                                        className=''
-                                        height={500}
-                                        alt='Images'
-                                        src={featuredEventDetailData?.banner_image}
-                                        loader={imageLoader}
-                                        style={{ width: '100%' }}
-                                    />
+                                        <Image
+                                            width={1500}
+                                            className=''
+                                            height={500}
+                                            alt='Images'
+                                            src={featuredEventDetailData?.banner_image}
+                                            loader={imageLoader}
+                                            style={{ width: '100%' }}
+                                        />
 
+                                    </div>
+                                    <SectionDivider />
                                 </div>
-                            </div>
-                            <SectionDivider />
+                            }
 
                             <div className="container">
                                 <div className="row">
                                     <div className="col-12">
-                                   
+
                                         <span dangerouslySetInnerHTML={{ __html: featuredEventDetailData?.about_event ? featuredEventDetailData?.about_event : '' }}></span>
                                     </div>
                                     <SectionDivider />
@@ -52,7 +56,7 @@ const EventDetails = () => {
                                         <div className={styles.more_about_event}>
                                             <div className="row">
                                                 <div className="col-md-6">
-                                                   
+
                                                     <span dangerouslySetInnerHTML={{ __html: featuredEventDetailData?.more_about_event ? featuredEventDetailData?.more_about_event : '' }}></span>
 
                                                 </div>
@@ -80,6 +84,11 @@ const EventDetails = () => {
                                     </div>
                                     <SectionDivider />
                                     <VenueCard venueData={featuredEventDetailData?.vanue} />
+                                    <div className='text-center'>
+
+                                        <Link href='/' target='_blank' className='btn btn-outline-success w-25'>Download Event Broucher</Link>
+                                    </div>
+
                                     <SectionDivider />
 
                                     <div className="col-12">
