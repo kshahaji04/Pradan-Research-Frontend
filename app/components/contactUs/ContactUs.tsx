@@ -79,15 +79,15 @@ const ContactUs = () => {
                     className={styles.bannerImage}
                     height={500}
                   /> :
+                  contactUs?.banner ? 
                     <Image
                       width={1040}
                       className={styles.bannerImage}
                       height={500}
                       alt='Images'
-                      src={contactUs?.banner || noImage.src}
+                      src={contactUs?.banner}
                       loader={imageLoader}
-
-                    />
+                    /> : ''
                 }
               </div>
               <figure>

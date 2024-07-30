@@ -21,7 +21,7 @@ const OrganizationCard = ({ data, loading }: any) => {
   const settings = {
     dots: false,
     infinite:  data?.length > 1,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     pauseOnHover: true,
     autoplay: false,
@@ -74,7 +74,8 @@ const OrganizationCard = ({ data, loading }: any) => {
       <h2 className={styles.title}>
         {loading ? <Skeleton width={150} height={30} /> : `Organization`}
       </h2>
-      <div className={`row teamSlider ${styles.cardOrganization}`}>
+      <div className="row">
+      <div className={`row teamSlider col-xl-9 ${styles.cardOrganization}`}>
           <Slider {...settings}>
             {
               loading ? 
@@ -131,7 +132,8 @@ const OrganizationCard = ({ data, loading }: any) => {
                    })
                   }
           </Slider>
-
+      </div>
+      <div className="com-xl-3"></div>
       </div>
     </>
 

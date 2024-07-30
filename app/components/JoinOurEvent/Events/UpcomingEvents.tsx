@@ -28,7 +28,7 @@ const UpcomingEvents = () => {
   }, []);
   const settings = {
     dots: false,
-    infinite: data?.length > 1,
+    infinite: data?.length > 4,
     slidesToShow: 4,
     slidesToScroll: data?.length > 3 ? 1 : 0,
     pauseOnHover: true,
