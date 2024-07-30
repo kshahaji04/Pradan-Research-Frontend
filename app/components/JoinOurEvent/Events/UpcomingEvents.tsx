@@ -73,6 +73,7 @@ const UpcomingEvents = () => {
       from_date: '2024-07-26',
       to_date:'2024-07-30',
       state:'Chatisgarh',
+      type:'In-person',
       slug:'feature-event',
       backgroungImage:false,
       fearturedImg:img
