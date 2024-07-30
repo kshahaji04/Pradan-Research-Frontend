@@ -93,7 +93,7 @@ const RegistrationModal = () => {
 
     return (
         <>
-            <button type="button" className={`btn btn-outline-success   ps-0 text-center ${styles.register_btn}`} onClick={toggleModal}>Register</button>
+            <button type="button" className={`btn btn-outline-success w-50  ps-0 text-center ${styles.register_btn}`} onClick={toggleModal}>Register</button>
 
             <Modal show={isModalOpen} onHide={toggleModal} centered className='registration_modal_wrapper'>
 

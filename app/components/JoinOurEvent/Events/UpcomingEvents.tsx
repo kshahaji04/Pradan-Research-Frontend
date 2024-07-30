@@ -129,9 +129,12 @@ const UpcomingEvents = () => {
                                         <h4 className="text-center mt-4">
                                           {dateFormat(data?.from_date)} to  {dateFormat(data?.to_date)}
                                         </h4>
+                                        <h4 className="text-center mt-4">
+                                         9:00 AM to 6:00 PM
+                                        </h4>
                                       </div>
                                       <div>
-                                        <h4 className="text-center">Type: {data?.type}</h4>
+                                        <h4 className="text-center">{data?.type}</h4>
                                       </div>
                                       <div className="text-center mt-3">
                                         <Link href={`/join-our-event/featured-event/${data?.slug}`} className="btn btn-outline-success">Register</Link>
