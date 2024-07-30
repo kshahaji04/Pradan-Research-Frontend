@@ -45,7 +45,7 @@ const VideoSectionsCards = ({ audioVideoData, loadingAudioVideoList }: any) => {
                         <div className="d-flex align-items-end justify-content-between">
                             <div className="col-12 pb-3">
                                 <div>
-                                    <p>{moment(audioVideoData?.date_of_publishing).format('MMM.YYYY')}</p>
+                                    <p>{audioVideoData?.date_of_publishing && moment(audioVideoData?.date_of_publishing).format('MMM.YYYY')}</p>
                                 </div>
                             </div>
                         </div>
