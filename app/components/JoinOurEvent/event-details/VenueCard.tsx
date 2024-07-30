@@ -4,7 +4,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import dateFormat from '@/app/utils/dateFormat';
 import Link from 'next/link';
 import { CONSTANTS } from '@/app/services/config/app-config';
-const VenueCard = ({vanueData}:any) => {
+const VenueCard = ({venueData}:any) => {
   const formatDate = (dateString: string) => {
     if (!dateString) return '';
   
@@ -19,14 +19,14 @@ const VenueCard = ({vanueData}:any) => {
     <div className="container pb-5">
       <div className="row">
         <div className="col-12">
-          <h3 className="text-center mt-5 mb-5" style={{ color: 'var(--primary)' }}>Vanue</h3>
+          <h3 className="text-center mt-5 mb-5" style={{ color: 'var(--primary)' }}>Venue</h3>
         </div>
         <div className="col-12">
 
           <div className='d-flex justify-content-center'>
             <div className="card shadow d-flex flex-row align-items-center py-4" style={{ width: '50rem' }}>
               {
-                vanueData && vanueData.map((data: any, index:number) => (
+                venueData && venueData.map((data: any, index:number) => (
                   <div className="col-12" key={index}>
                     <div className="row">
                       <div className="col-6">

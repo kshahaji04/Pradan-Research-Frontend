@@ -2,6 +2,11 @@ import React from 'react';
 import JoinOurEventMaster from '../components/JoinOurEvent/JoinOurEventMaster';
 import Image from 'next/image';
 import topRoundedBorders from '@/public/assets/images/bg/topRoundedBorders.jpg'
+import { Metadata } from "next";
+import useMetaData from "@/app/hooks/general_hooks/meta_data_hook";
+export async function generateMetadata(): Promise<Metadata> {
+ return useMetaData('join-our-event')
+}
 
 function page() {
   return (
