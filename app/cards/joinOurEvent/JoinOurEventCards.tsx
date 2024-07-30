@@ -54,6 +54,7 @@ const JoinOurEventCards = ({ data, loading }: any) => {
                                         {/* <p className={`card-text text-secondary mb-0 ${styles.vertical_bar}`}>{moment(data?.to_date, "YYYY-MM-DD").format('D MMMM YYYY')}</p> */}
                                         <p className={`card-text text-secondary mb-0`}>{data?.state}</p>
                                     </div>
+                                    
                                     <RegistrationModal />
                                 </div>
                             </div>

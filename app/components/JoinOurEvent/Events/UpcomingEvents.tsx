@@ -19,7 +19,7 @@ import JoinOurEventCardsSkeleton from "@/app/skeletons/cards/joinOurEvent/JoinOu
 import dateFormat from "@/app/utils/dateFormat";
 import { imageLoader } from '@/app/utils/image_loader_utils';
 import FeaturedEventSkeleton from "@/app/skeletons/JoinOurEvent/FeaturedEventSkeleton";
-
+import img from '@/public/assets/images/Screenshot 2024-07-30 180704.png'
 const UpcomingEvents = () => {
   const { data, isLoading, error } = useRegularEvenetHook()
   console.log(data, 'inside upcomg events')
@@ -61,47 +61,28 @@ const UpcomingEvents = () => {
     ],
   };
 
-  const settings2 = {
-    dots: false,
-    infinite: false,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    pauseOnHover: true,
-    autoplay: true,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-  };
+
 
   const dataForFeaturedEvent = [
     {
-      images: 'https://images.unsplash.com/photo-1591851395349-6d8c2fe76e24?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      detail1: 'Join Our Event 2024',
-      detail2: ' Indian Rural Colloquy',
-      detail3: '  Ignite With Rural Renaissance',
-      detail4: ' August Kranti Week ',
-      detail5: ' 1-8 August 2024'
-
-    },
-    {
-      images: 'https://images.unsplash.com/photo-1591851395349-6d8c2fe76e24?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      detail1: 'Join Our Event 2024',
-      detail2: ' Indian Rural Colloquy',
-      detail3: '  Ignite With Rural Renaissance',
-      detail4: ' August Kranti Week ',
-      detail5: ' 1-8 August 2024'
-
+      backGround:'https://images.unsplash.com/photo-1509078302641-7553084efc8f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      image: '/files/photo-1591851395349-6d8c2fe76e24.webp',
+      title: ' Indian Rural Colloquy',
+      short_description: '  Ignite With Rural Renaissance',
+      sub_title: ' August Kranti Week ',
+      from_date: '2024-07-26',
+      to_date:'2024-07-30',
+      state:'Chatisgarh',
+      slug:'feature-event',
+      backgroungImage:false,
+      fearturedImg:img
     }
   ]
 
+
   const { featuredEventData, featuredEventError, featuredEventLoading } = useFeaturedEvents();
-
-  console.log('featured events', featuredEventData);
-
-
   return (
     <>
-
-
       <div className='bgImageWrapper pt-4'>
         <div className={`${styles.news_carousel_container} container`} style={{ zIndex: '2', position: "relative", paddingTop: '100px' }}>
           <div className="row">
@@ -117,21 +98,22 @@ const UpcomingEvents = () => {
                   <div className="row">
                     <div className="col-lg-1"></div>
                     <div className="col-lg-10">
-                      <div className="my-4 teamSlider">
-                        <Slider {...settings2}>
+                      <div className="my-4 teamSlider">    
                           {
-                             featuredEventData.length > 0 ? featuredEventData?.map((data: any, index: number) => {
+                             dataForFeaturedEvent.length > 0 ? dataForFeaturedEvent?.map((data: any, index: number) => {
                               return (
                                 <div className="container" key={index}>
-                                  <div className={`row pointer bg-success justify-content-center ${styles.mainRow}`}>
-                                    <div className={`col-xl-4 col-sm-6 ${styles.imageContainer}`}>
-                                      <Image className={styles.mainImage} src={`${data?.image}`} height={410} width={200} alt="Image" loader={imageLoader} />
+                                  {
+                                   !data?.backgroungImage ?
+                                  <div className={`row pointer  justify-content-center ${styles.mainRow}`} 
+                                  style={{
+                                    backgroundImage: `url('${data.backGround}')`,
+                                    }}>
+                                    <div className={`col-xl-4 col-sm-6 p-4 ${styles.imageContainer}`}>
+                                      <Image className={styles.mainImage} src={`${data?.image}`} height={350} width={200} alt="Image" loader={imageLoader} />
                                     </div>
                                     <div className="col-xl-8 col-sm-6 p-4 d-flex flex-column justify-content-center">
                                       <div className="">
-                                        {/* <h6 className={styles.first}>
-                                      {data?.title}
-                                    </h6> */}
                                         <h1 className={styles.second}>
                                           {data?.title}
                                         </h1>
@@ -154,14 +136,27 @@ const UpcomingEvents = () => {
                                         <Link href={`/join-our-event/featured-event/${data?.slug}`} className="btn btn-outline-success">Register</Link>
                                       </div>
                                     </div>
-                                  </div>
+                                  </div> 
+                                  :
+                                    <div className={`position-relative ${styles.mainRow}`}>
+                                      <Image
+                                      unoptimized
+                                       src={data?.fearturedImg}
+                                       width={300}
+                                       height={300}
+                                       alt="image"
+                                       className={`${styles.bannerImage}`}
+                                      />
+                                      <Link href={`/join-our-event/featured-event/${data?.slug}`} className={`btn btn-outline-success ${styles.mainBannerImg}`}>Register</Link>
+                                    </div>
+                                   }
                                 </div>
-
+                                   
                               )
                             }) : <NoDataFound/>
 
                           }
-                        </Slider>
+                       
                       </div>
 
                     </div>
