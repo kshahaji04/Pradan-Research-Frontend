@@ -63,7 +63,7 @@ function About() {
                             </p>
                             <Link
                               href="/research"
-                              className="btn btn-outline-danger"
+                              className="btn btn-outline-success"
                             >
                               {" "}
                               Learn More

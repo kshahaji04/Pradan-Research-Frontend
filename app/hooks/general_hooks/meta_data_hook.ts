@@ -27,20 +27,20 @@ async function useMetaData(url:string) {
   // Optionally access and extend (rather than replace) parent metadata
 
   return {
-    title: fetchedDataFromServer[0]?.meta_title || "NRLM - Research",
-    description: fetchedDataFromServer[0]?.description || "NRLM - Research",
+    title: fetchedDataFromServer[0]?.meta_title || "Pradan - Research",
+    description: fetchedDataFromServer[0]?.description || "Pradan - Research",
     openGraph: {
       images: fetchedDataFromServer[0]?.og_image
         ? [fetchedDataFromServer[0].og_image]
         : [],
-      title: fetchedDataFromServer[0]?.og_title || "NRLM - Research",
-      description: fetchedDataFromServer[0]?.og_description || "NRLM - Research",
+      title: fetchedDataFromServer[0]?.og_title || "Pradan - Research",
+      description: fetchedDataFromServer[0]?.og_description || "Pradan - Research",
       url,
     },
     twitter: {
       card: "summary_large_image",
-      title: fetchedDataFromServer[0]?.meta_title || "NRLM - Research",
-      description: fetchedDataFromServer[0]?.description || "NRLM - Research",
+      title: fetchedDataFromServer[0]?.meta_title || "Pradan - Research",
+      description: fetchedDataFromServer[0]?.description || "Pradan - Research",
       // image: fetchedDataFromServer[0]?.og_image || '',
     },
     robots: fetchedDataFromServer[0]?.robot_name || "index",

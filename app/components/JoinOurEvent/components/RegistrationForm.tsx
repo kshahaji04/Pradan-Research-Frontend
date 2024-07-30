@@ -69,7 +69,7 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
   const onKeydown = (keyEvent: any) => {
     if ((keyEvent.charCode || keyEvent.keyCode) === 13) {
       keyEvent.preventDefault();
-          {/* @ts-ignore */}
+      {/* @ts-ignore */ }
       handleSubmit(newValue);
     }
   };
@@ -98,7 +98,7 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
             onSubmit={(values, { resetForm }) => {
               handleSubmit(values, { resetForm });
               console.log("Form values:", values);
-          }}
+            }}
             className='formik'
           >
             {({ handleChange, handleBlur }) => (
@@ -218,6 +218,53 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
                           </div>
                         </div>
                       </Form.Group>
+                      <Form.Group controlId="formOther">
+                        <div className="row mt-4">
+                          <div className="col-md-6">
+                            <label className="mb-1 grey">
+                              Organization
+                            </label>
+                            <TextField
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              type="text"
+                              name="organization"
+                              className="login_inputs w-100"
+                              onKeyDown={onKeydown}
+                              placeholder='Enter Your Organization'
+                              required
+                              autoComplete="off"
+                            />
+                            <div className="row">
+                              <div className="col-12">
+                                <div className={styles.error_msg}>
+                                  <ErrorMessage name="organization" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+                          <div className="col-md-6">
+                            <label className="mb-1 grey">
+                              Select Venue
+                            </label>
+                            <select className="form-select" aria-label="Default select example" style={{boxShadow:'none'}}>
+                              <option selected> Select</option>
+                              <option value="1">Mumbai 24 july 2024</option>
+                              <option value="2">Pune 24 july 2024</option>
+                              <option value="3">Delhi 24 july 2024</option>
+                            </select>
+                            <div className="row">
+                              <div className="col-12">
+                                <div className={styles.error_msg}>
+                                  <ErrorMessage name="contact_no" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </Form.Group>
                       <Form.Group controlId="formGender">
                         <div className="row mt-3">
                           <div className="col-md-12 mt-3 d-flex">
@@ -227,10 +274,10 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
                                 className="form-check-input"
                                 type="radio"
                                 name="gender"
-                                value="Male"
+                                value="Others"
                                 onChange={handleChange}
                               />
-                              <label className="form-check-label text-secondary">Male</label>
+                              <label className="form-check-label text-secondary">Non Binary</label>
                             </div>
                             <div className="form-check ms-3">
                               <input
@@ -247,11 +294,13 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
                                 className="form-check-input"
                                 type="radio"
                                 name="gender"
-                                value="Others"
+                                value="Male"
                                 onChange={handleChange}
                               />
-                              <label className="form-check-label text-secondary">Others</label>
+                              <label className="form-check-label text-secondary">Male</label>
                             </div>
+
+
                             <div className="row">
                               <div className="col-12">
                                 <div className={styles.error_msg}>
@@ -263,38 +312,6 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
                         </div>
                       </Form.Group>
                     </div>
-                    {/* <div className="col-md-6 mt-4 d-flex">
-                      <label className="mb-1 grey">
-                        Select Gender :
-                      </label>
-                      <div className="form-check ms-3">
-                        <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                        <label className="form-check-label text-secondary" htmlFor="flexRadioDefault1">
-                          Male
-                        </label>
-                      </div>
-                      <div className="form-check ms-3">
-                        <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-                        <label className="form-check-label text-secondary" htmlFor="flexRadioDefault2">
-                          Female
-                        </label>
-                      </div>
-
-                      <div className="form-check ms-3">
-                        <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" />
-                        <label className="form-check-label text-secondary" htmlFor="flexRadioDefault3">
-                          others
-                        </label>
-                      </div>
-
-                      <div className="row">
-                        <div className="col-12">
-                          <div className={styles.error_msg}>
-                            <ErrorMessage name="confirm_password" />
-                          </div>
-                        </div>
-                      </div>
-                    </div> */}
                     <div
                       className={`mt-5 pt-2 ${isAlertVisible === true ? "login_btn" : ""
                         } mt-3 mb-3 text-center p-0 `}
