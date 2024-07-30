@@ -30,7 +30,7 @@ const UpcomingEvents = () => {
     dots: false,
     infinite: data?.length > 1,
     slidesToShow: 4,
-    slidesToScroll: data?.length > 1 ? 1 : 0,
+    slidesToScroll: data?.length > 3 ? 1 : 0,
     pauseOnHover: true,
     autoplay: true,
     responsive: [
@@ -38,7 +38,7 @@ const UpcomingEvents = () => {
         breakpoint: 1200,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: data?.length > 1 ? 1 : 0,
+          slidesToScroll: data?.length > 2 ? 1 : 0,
           infinite: data?.length > 1,
           dots: true,
         },

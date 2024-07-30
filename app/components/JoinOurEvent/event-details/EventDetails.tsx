@@ -79,7 +79,7 @@ const EventDetails = () => {
                                         </div>
                                     </div>
                                     <SectionDivider />
-                                    <VenueCard vanueData={featuredEventDetailData?.vanue} />
+                                    <VenueCard venueData={featuredEventDetailData?.vanue} />
                                     <SectionDivider />
 
                                     <div className="col-12">

@@ -11,6 +11,11 @@ import FeaturedSkeleton from "./skeletons/Home/FeaturedSkeleton";
 import FeaturedResearch from "./components/featuredResearch/FeaturedResearch";
 import whiteBannerDots from '@/public/assets/images/bg/whiteBannerDots.jpg';
 import topBorders from '@/public/assets/images/bg/topBorders.jpeg';
+import { Metadata } from "next";
+import useMetaData from "@/app/hooks/general_hooks/meta_data_hook";
+export async function generateMetadata(): Promise<Metadata> {
+ return useMetaData('home')
+}
 
 export default function Home() {
   return (
