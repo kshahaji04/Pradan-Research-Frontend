@@ -67,20 +67,42 @@ const UpcomingEvents = () => {
 
   const dataForFeaturedEvent = [
     {
-      backGround:'https://images.unsplash.com/photo-1509078302641-7553084efc8f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      backGround: 'https://images.unsplash.com/photo-1509078302641-7553084efc8f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       image: '/files/photo-1591851395349-6d8c2fe76e24.webp',
       title: ' Indian Rural Colloquy',
-      short_description: '  Ignite With Rural Renaissance',
+      short_description: '  Ignite With Rural Renaissance lorem ipsum is a placeholder text commonly used to demonstrate the visual',
       sub_title: ' August Kranti Week ',
       from_date: '2024-07-26',
-      to_date:'2024-07-30',
-      state:'Chatisgarh',
-      type:'In-person',
-      slug:'feature-event',
-      backgroungImage:false,
-      fearturedImg:img
+      to_date: '2024-07-30',
+      state: 'Chatisgarh',
+      type: 'In-person',
+      slug: 'feature-event',
+      backgroungImage: false,
+      fearturedImg: img
     }
   ]
+
+  const venueData = [{
+    venue_name: 'Mumbai',
+    from_date: '2024-07-26',
+    to_date: '2024-07-30',
+    time: '9:00 AM to 6:00 PM'
+
+  },
+  {
+    venue_name: 'Gujarat',
+    from_date: '2024-07-26',
+    to_date: '2024-07-30',
+    time: '9:00 AM to 6:00 PM'
+
+  },
+  {
+    venue_name: 'Chatisgarh',
+    from_date: '2024-07-26',
+    to_date: '2024-07-30',
+    time: '9:00 AM to 6:00 PM'
+
+  }]
 
 
   const { featuredEventData, featuredEventError, featuredEventLoading } = useFeaturedEvents();
@@ -97,84 +119,99 @@ const UpcomingEvents = () => {
                 <div className="col-12">
                   {/* <h2 className="mb-4 ">Featured Events</h2> */}
                   {
-                   featuredEventLoading ? <FeaturedEventSkeleton/> :
-                  <div className="row">
-                    <div className="col-lg-1"></div>
-                    <div className="col-lg-10">
-                      <div className="my-4 teamSlider">    
-                          {
-                             dataForFeaturedEvent.length > 0 ? dataForFeaturedEvent?.map((data: any, index: number) => {
-                              return (
-                                <div className="container" key={index}>
-                                  {
-                                   !data?.backgroungImage ?
-                                  <div className={`row pointer  justify-content-center ${styles.mainRow}`} 
-                                  style={{
-                                    backgroundImage: `url('${data.backGround}')`,
-                                    }}>
-                                    <div className={`col-xl-4 col-sm-6 p-4 ${styles.imageContainer}`}>
-                                      <Image className={styles.mainImage} src={`${data?.image}`} height={350} width={200} alt="Image" loader={imageLoader} />
-                                    </div>
-                                    <div className="col-xl-8 col-sm-6 p-4 d-flex flex-column justify-content-center">
-                                      <div className="">
-                                        <h1 className={styles.second}>
-                                          {data?.title}
-                                        </h1>
-                                        <p className={styles.third}>
-                                          <span dangerouslySetInnerHTML={{ __html: data?.short_description ? data?.short_description : '' }}></span>
-                                        </p>
-                                      </div>
-                                      <div>
-                                        <h6 className={styles.four}>
-                                          {data?.sub_title}
-                                        </h6>
-                                        <h4 className="text-center mt-4">
-                                          {dateFormat(data?.from_date)} to  {dateFormat(data?.to_date)}
-                                        </h4>
-                                        <h4 className="text-center mt-4">
-                                         9:00 AM to 6:00 PM
-                                        </h4>
-                                      </div>
-                                      <div>
-                                        <h4 className="text-center">{data?.type}</h4>
-                                      </div>
-                                      <div className="text-center mt-3 my-0 mx-auto">
-                                        <Link href={`/join-our-event/featured-event/${data?.slug}`} className="btn btn-outline-success">Register</Link>
-                                      </div>
-                                    </div>
-                                  </div> 
-                                  :
-                                    <div className={`position-relative ${styles.mainRow}`}>
-                                      <Image
-                                      unoptimized
-                                       src={data?.fearturedImg}
-                                       width={300}
-                                       height={300}
-                                       alt="image"
-                                       className={`${styles.bannerImage}`}
-                                      />
-                                      <Link href={`/join-our-event/featured-event/${data?.slug}`} className={`btn btn-outline-success ${styles.mainBannerImg}`}>Register</Link>
-                                    </div>
-                                   }
-                                </div>
-                                   
-                              )
-                            }) : <NoDataFound/>
+                    featuredEventLoading ? <FeaturedEventSkeleton /> :
+                      <div className="row">
+                        <div className="col-lg-1"></div>
+                        <div className="col-lg-10">
+                          <div className="my-4 teamSlider">
+                            {
+                              dataForFeaturedEvent.length > 0 ? dataForFeaturedEvent?.map((data: any, index: number) => {
+                                return (
+                                  <div className="container" key={index}>
+                                    {
+                                      !data?.backgroungImage ?
+                                        <div className={`row pointer  justify-content-center ${styles.mainRow}`}
+                                          style={{
+                                            backgroundImage: `url('${data.backGround}')`,
+                                          }}>
+                                          <div className={`col-xl-4 col-sm-6 p-4 ${styles.imageContainer}`}>
+                                            <Image className={styles.mainImage} src={`${data?.image}`} height={350} width={200} alt="Image" loader={imageLoader} />
+                                          </div>
+                                          <div className="col-xl-8 col-sm-6 p-4 d-flex flex-column justify-content-center">
+                                            <div className="">
+                                              <h1 className={styles.second}>
+                                                {data?.title}
+                                              </h1>
+                                              <p className={styles.third}>
+                                                <span dangerouslySetInnerHTML={{ __html: data?.short_description ? data?.short_description : '' }}></span>
+                                              </p>
+                                            </div>
+                                            <div>
+                                              <h6 className={styles.four}>
+                                                {data?.sub_title}
+                                              </h6>
+                                              {/* <h4 className="text-center mt-4">
+                                                {dateFormat(data?.from_date)} to  {dateFormat(data?.to_date)}
+                                              </h4>
+                                              <h4 className="text-center mt-4">
+                                                9:00 AM to 6:00 PM
+                                              </h4> */}
+                                            </div>
+                                            {/* venue cards */}
+                                            <div className="text-center"><h4>Venue</h4></div>
+                                            <div className="d-flex gap-4 justify-content-center">
+                                              {venueData.length > 0 && venueData.map((data: any, index: number) =>
+                                                <div className="card mb-3" style={{ "width": '11rem' }}>
+                                                  <div className="card-body">
+                                                    <h6 className="card-subtitle mb-2">{data?.venue_name}</h6>
+                                                    <h6 className="card-subtitle mb-2 text-body-secondary" style={{ "fontSize": '12px' }}>{dateFormat(data?.from_date)} to  {dateFormat(data?.to_date)}</h6>
+                                                    <h6 className="card-subtitle text-body-secondary" style={{ "fontSize": '12px' }}>{data?.time}</h6>
+                                                  </div>
+                                                </div>
+                                              )}
 
-                          }
-                       
+                                            </div>
+
+                                            <div>
+                                              <h4 className="text-center">{data?.type}</h4>
+                                            </div>
+                                            <div className="text-center mt-3 my-0 mx-auto">
+                                              <Link href={`/join-our-event/featured-event/${data?.slug}`} className="btn btn-outline-success">Register</Link>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        :
+                                        <div className={`position-relative ${styles.mainRow}`}>
+                                          <Image
+                                            unoptimized
+                                            src={data?.fearturedImg}
+                                            width={300}
+                                            height={300}
+                                            alt="image"
+                                            className={`${styles.bannerImage}`}
+                                          />
+                                          <Link href={`/join-our-event/featured-event/${data?.slug}`} className={`btn btn-outline-success ${styles.mainBannerImg}`}>Register</Link>
+                                        </div>
+                                    }
+                                  </div>
+
+                                )
+                              }) : <NoDataFound />
+
+                            }
+
+                          </div>
+
+                        </div>
+                        <div className="col-lg-1"></div>
                       </div>
-
-                    </div>
-                    <div className="col-lg-1"></div>
-                  </div>
                   }
                 </div>
             }
 
 
             {
-              error ? <ErrorComponent /> :
+              error ? <ErrorComponent /> : <div className="pt-4">
                 <Slider {...settings} className="row-slick">
                   {
                     isLoading ?
@@ -190,6 +227,7 @@ const UpcomingEvents = () => {
                         <NoDataFound />
                   }
                 </Slider>
+              </div>
             }
           </div>
         </div >

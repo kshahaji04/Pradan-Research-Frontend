@@ -13,54 +13,54 @@ const JoinOurEventCards = ({ data, loading }: any) => {
 
     return (
 
-                    <div className="col-lg-12 px-2 mb-5 pt-5 pb-3 mx-0 d-flex align-items-center justify-content-center">
-                        <div className={`card h-100 py-0 text-left cursor`} style={{ width: '97%', maxWidth: '380px' }}>
-                            <Link href={`/join-our-event/${data?.url}`} className={`${styles.news_slide} pt-0 pb-0`}>
-                                {
-                                    data?.image ?
-                                        <Image
-                                            src={data?.image}
-                                            className={`card-img-top ${styles.zoom_image}`}
-                                            alt={data?.title}
-                                            height={500} width={500}
-                                            loader={imageLoader}
-                                        /> :
-                                        <Image
-                                            src={noImage}
-                                            className={`card-img-top ${styles.zoom_image}`}
-                                            alt={data?.title}
-                                            height={500} width={500}
-                                        />
-                                }
+        <div className="col-lg-12 px-2 mb-5 pt-5 pb-3 mx-0 d-flex align-items-center justify-content-center">
+            <div className={`card h-100 py-0 text-left cursor`} style={{ width: '97%', maxWidth: '380px' }}>
+                <Link href={`/join-our-event/${data?.url}`} className={`${styles.news_slide} pt-0 pb-0`}>
+                    {
+                        data?.image ?
+                            <Image
+                                src={data?.image}
+                                className={`card-img-top ${styles.zoom_image}`}
+                                alt={data?.title}
+                                height={500} width={500}
+                                loader={imageLoader}
+                            /> :
+                            <Image
+                                src={noImage}
+                                className={`card-img-top ${styles.zoom_image}`}
+                                alt={data?.title}
+                                height={500} width={500}
+                            />
+                    }
 
-                            </Link>
-                            <div className="card-body px-0 pb-0">
-                                <div className={`pb-1 ${styles.card_content}`}>
-                                    <div className={`${styles.card_body}`}>
-                                        {/* <p className={`card-text mb-0 pb-2`}>hello</p> */}
-                                        <p className="card-title text-secondary">{data?.title}</p>
-                                        <p className="card-title text-secondary">{data?.sub_title}</p>
-                                        <h6 className='mb-0'>Type: {data?.type}</h6>
-                                        <p>
-                                            <span dangerouslySetInnerHTML={{
-                                                /* @ts-ignore */
-                                                __html: data?.short_description?.length > 150 ? `${data?.short_description.slice(0, 150)}...` : data?.short_description
-                                            }}>
-                                            </span>
-                                          </p>
-                                    </div>
-                                    <div className="d-flex align-items-start gap-3 pb-2 pe-0" style={{ marginTop: '-10px', fontSize: '13px' }}>
-                                        <p className={`card-text text-secondary mb-0 ${styles.vertical_bar}`}>{moment(data?.from_date, "YYYY-MM-DD").format('D MMMM YYYY')}</p>
-                                        {/* <p className={`card-text text-secondary mb-0 ${styles.vertical_bar}`}>{moment(data?.to_date, "YYYY-MM-DD").format('D MMMM YYYY')}</p> */}
-                                        <p className={`card-text text-secondary mb-0`}>{data?.state}</p>
-                                    </div>
-                                    
-                                    <RegistrationModal />
-                                </div>
-                            </div>
+                </Link>
+                <div className="card-body px-0 pb-0">
+                    <div className={`pb-1 ${styles.card_content}`}>
+                        <div className={`${styles.card_body}`}>
+                            {/* <p className={`card-text mb-0 pb-2`}>hello</p> */}
+                            <p className="card-title text-secondary">{data?.title}</p>
+                            <p className="card-title text-secondary">{data?.sub_title}</p>
+                            <h6 className='mb-0'>Type: {data?.type}</h6>
+                            <p>
+                                <span dangerouslySetInnerHTML={{
+                                    /* @ts-ignore */
+                                    __html: data?.short_description?.length > 150 ? `${data?.short_description.slice(0, 150)}...` : data?.short_description
+                                }}>
+                                </span>
+                            </p>
                         </div>
-                    </div> 
-      )
+                        <div className="d-flex align-items-start gap-3 pb-2 pe-0" style={{ marginTop: '-10px', fontSize: '13px' }}>
+                            <p className={`card-text text-secondary mb-0 ${styles.vertical_bar}`}>{moment(data?.from_date, "YYYY-MM-DD").format('D MMMM YYYY')}</p>
+                            {/* <p className={`card-text text-secondary mb-0 ${styles.vertical_bar}`}>{moment(data?.to_date, "YYYY-MM-DD").format('D MMMM YYYY')}</p> */}
+                            <p className={`card-text text-secondary mb-0`}>{data?.state}</p>
+                        </div>
+
+                        <div className='text-center'><RegistrationModal /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
 }
 
 export default JoinOurEventCards
