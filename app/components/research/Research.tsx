@@ -130,9 +130,9 @@ function Research() {
               )}
             </div>
           </div>
-          <figure>
+          {/* <figure>
             <Image width={1400} height={1400} src={whiteBanner} alt="bg" />
-          </figure>
+          </figure> */}
         </div>
       </div>
     </>
