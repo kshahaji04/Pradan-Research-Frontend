@@ -77,7 +77,7 @@ const UpcomingEvents = () => {
       state:'Chatisgarh',
       type:'In-person',
       slug:'feature-event',
-      backgroungImage:true,
+      backgroungImage:false,
       fearturedImg:img
     }
   ]
