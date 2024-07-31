@@ -27,7 +27,7 @@ const EventDetails = () => {
                         <div>
                             {
                                 featuredEventDetailData?.banner_image &&
-                                <div className="">
+                                <div className="container">
                                     <div style={{ zIndex: '2', }}>
 
                                         <Image
