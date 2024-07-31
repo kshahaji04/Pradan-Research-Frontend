@@ -46,6 +46,7 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
 
 
   let handleSubmit = async (values: any, { resetForm }: any) => {
+    console.log("values", values)
     try {
       const response = await RegistrationApi(values);
       console.log("response regit", response)
@@ -92,7 +93,9 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
               last_name: '',
               email: '',
               contact_no: '',
-              password: "",
+              organization: '',
+              venue: '',
+              gender: ''
             }}
             validate={validate}
             onSubmit={(values, { resetForm }) => {
@@ -205,16 +208,15 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
                               className="login_inputs w-100"
                               onKeyDown={onKeydown}
                               placeholder='Enter Your Mobile Number'
-                              required
                               autoComplete="off"
                             />
-                            <div className="row">
+                            {/* <div className="row">
                               <div className="col-12">
                                 <div className={styles.error_msg}>
                                   <ErrorMessage name="contact_no" />
                                 </div>
                               </div>
-                            </div>
+                            </div> */}
                           </div>
                         </div>
                       </Form.Group>
@@ -232,7 +234,6 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
                               className="login_inputs w-100"
                               onKeyDown={onKeydown}
                               placeholder='Enter Your Organization'
-                              required
                               autoComplete="off"
                             />
                             <div className="row">
@@ -249,8 +250,9 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
                             <label className="mb-1 grey">
                               Select Venue
                             </label>
-                            <select className="form-select" aria-label="Default select example" style={{boxShadow:'none'}}>
-                              <option selected> Select</option>
+                            <select className="form-select" aria-label="Default select example" onChange={handleChange}
+                              onBlur={handleBlur} name="venue" style={{ boxShadow: 'none' }}>
+                              <option selected value=""> Select</option>
                               <option value="1">Mumbai 24 july 2024</option>
                               <option value="2">Pune 24 july 2024</option>
                               <option value="3">Delhi 24 july 2024</option>
@@ -258,7 +260,7 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
                             <div className="row">
                               <div className="col-12">
                                 <div className={styles.error_msg}>
-                                  <ErrorMessage name="contact_no" />
+                                  <ErrorMessage name="venue" />
                                 </div>
                               </div>
                             </div>
@@ -299,13 +301,11 @@ const RegistrationForm = ({ setIsModalOpen, setIsModalLoginOpen, closeCanvas }: 
                               />
                               <label className="form-check-label text-secondary">Male</label>
                             </div>
-
-
-                            <div className="row">
-                              <div className="col-12">
-                                <div className={styles.error_msg}>
-                                  <ErrorMessage name="gender" />
-                                </div>
+                          </div>
+                          <div className="row">
+                            <div className="col-12">
+                              <div className={styles.error_msg}>
+                                <ErrorMessage name="gender" />
                               </div>
                             </div>
                           </div>
