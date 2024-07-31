@@ -19,7 +19,9 @@ import JoinOurEventCardsSkeleton from "@/app/skeletons/cards/joinOurEvent/JoinOu
 import dateFormat from "@/app/utils/dateFormat";
 import { imageLoader } from '@/app/utils/image_loader_utils';
 import FeaturedEventSkeleton from "@/app/skeletons/JoinOurEvent/FeaturedEventSkeleton";
-import img from '@/public/assets/images/Screenshot 2024-07-30 180704.png'
+import img from '@/public/assets/images/Screenshot 2024-07-30 180704.png';
+
+
 const UpcomingEvents = () => {
   const { data, isLoading, error } = useRegularEvenetHook()
   console.log(data, 'inside upcomg events')
@@ -75,7 +77,7 @@ const UpcomingEvents = () => {
       state:'Chatisgarh',
       type:'In-person',
       slug:'feature-event',
-      backgroungImage:false,
+      backgroungImage:true,
       fearturedImg:img
     }
   ]
@@ -136,7 +138,7 @@ const UpcomingEvents = () => {
                                       <div>
                                         <h4 className="text-center">{data?.type}</h4>
                                       </div>
-                                      <div className="text-center mt-3">
+                                      <div className="text-center mt-3 my-0 mx-auto">
                                         <Link href={`/join-our-event/featured-event/${data?.slug}`} className="btn btn-outline-success">Register</Link>
                                       </div>
                                     </div>
