@@ -159,7 +159,7 @@ const UpcomingEvents = () => {
                                             </div>
                                             {/* venue cards */}
                                             <div className="text-center"><h4>Venue</h4></div>
-                                            <div className="d-flex gap-4 justify-content-center">
+                                            <div className="d-flex gap-2 flex-wrap justify-content-center">
                                               {venueData.length > 0 && venueData.map((data: any, index: number) =>
                                                 <div className="card mb-3" style={{ "width": '11rem' }}>
                                                   <div className="card-body">
