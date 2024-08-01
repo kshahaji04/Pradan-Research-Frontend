@@ -26,38 +26,18 @@ const VenueCard = ({ venueData }: any) => {
             {
               venueData && venueData.map((data: any, index: number) => (
                 <>
-                  <div className="col-4" key={index}>
+                  <div className="col-md-4" key={index}>
                     <div className="card shadow d-flex flex-row align-items-center py-4">
                       <div className="card-body text-center">
-                        <h1 className="card-title text-success">{formatDate(data?.date)}</h1>
-                        <h1 className="card-title text-success">{data?.state}</h1>
-                        <h4 className="card-title ">Timing: {data?.from_time} to {data?.to_time}</h4>
-                        <p className="card-text text-secondary">Venue: {data?.address}</p>
+                        <h1 className="card-title text-success">{data?.name}</h1>
+                        <h4 className="card-title text-secondary">{data?.state}</h4>
+                        <h4 className="card-title mb-2">{dateFormat(data?.from_date)} {data?.to_date ? `to  ${dateFormat(data?.to_date)}` : ''}</h4>
+                        <h5 className="card-title ">Timing: {data?.from_time} to {data?.to_time}</h5>
+                         {data?.address && <p className="card-text text-secondary">Venue: {data?.address}</p>}
                       </div>
-                      {/* <div className="col-6">
-                        <div className="card-body d-flex align-items-center justify-content-center h-100 w-100">
-                          <Link href={data?.broucher_pdf && data?.broucher_pdf.includes('/files/') ? ` ${CONSTANTS.API_BASE_URL}/${data?.broucher_pdf}` : data?.broucher_pdf } target='_blank' className='btn btn-outline-success'>Download Event Broucher</Link>
-                        </div>
-                      </div> */}
-                    </div>
-                  </div>
-                  <div className="col-4" key={index}>
-                    <div className="card shadow d-flex flex-row align-items-center py-4">
-                      <div className="card-body text-center">
-                        <h1 className="card-title text-success">{formatDate(data?.date)}</h1>
-                        <h1 className="card-title text-success">{data?.state}</h1>
-                        <h4 className="card-title ">Timing: {data?.from_time} to {data?.to_time}</h4>
-                        <p className="card-text text-secondary">Venue: {data?.address}</p>
-                      </div>
-                      {/* <div className="col-6">
-                      <div className="card-body d-flex align-items-center justify-content-center h-100 w-100">
-                        <Link href={data?.broucher_pdf && data?.broucher_pdf.includes('/files/') ? ` ${CONSTANTS.API_BASE_URL}/${data?.broucher_pdf}` : data?.broucher_pdf } target='_blank' className='btn btn-outline-success'>Download Event Broucher</Link>
-                      </div>
-                    </div> */}
                     </div>
                   </div>
                 </>
-
               ))
             }
           </div>

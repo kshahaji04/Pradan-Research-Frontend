@@ -20,6 +20,7 @@ import dateFormat from "@/app/utils/dateFormat";
 import { imageLoader } from '@/app/utils/image_loader_utils';
 import FeaturedEventSkeleton from "@/app/skeletons/JoinOurEvent/FeaturedEventSkeleton";
 import img from '@/public/assets/images/Screenshot 2024-07-30 180704.png';
+import { CONSTANTS } from "@/app/services/config/app-config";
 
 
 const UpcomingEvents = () => {
@@ -125,19 +126,33 @@ const UpcomingEvents = () => {
                         <div className="col-lg-10">
                           <div className="my-4 teamSlider">
                             {
-                              dataForFeaturedEvent.length > 0 ? dataForFeaturedEvent?.map((data: any, index: number) => {
+                              featuredEventData.length > 0 ? featuredEventData?.map((data: any, index: number) => {
                                 return (
                                   <div className="container" key={index}>
                                     {
-                                      !data?.backgroungImage ?
+                                      Boolean(data?.full_banner_image) ?
+                                        <div className={`${styles.mainRow}`}>
+                                          <Image
+                                            src={data?.full_image}
+                                            width={100}
+                                            height={100}
+                                            alt="image"
+                                            className={`${styles.bannerImage}`}
+                                            loader={imageLoader}
+                                          />
+                                          <div className={styles.registerbtn}>
+                                            <Link href={`/join-our-event/featured-event/${data?.slug}`} className={`btn btn-outline-success`}>Register</Link>
+                                          </div>
+                                        </div>
+                                        :
                                         <div className={`row pointer  justify-content-center ${styles.mainRow}`}
                                           style={{
-                                            backgroundImage: `url('${data.backGround}')`,
+                                            backgroundImage: `url('${CONSTANTS.API_BASE_URL}${data.background_image}')`,
                                           }}>
-                                          <div className={`col-xl-4 col-sm-6 p-4 ${styles.imageContainer}`}>
+                                          <div className={`col-lg-4 col-sm-6 p-4 ${styles.imageContainer}`}>
                                             <Image className={styles.mainImage} src={`${data?.image}`} height={350} width={200} alt="Image" loader={imageLoader} />
                                           </div>
-                                          <div className="col-xl-8 col-sm-6 p-4 d-flex flex-column justify-content-center">
+                                          <div className="col-lg-8 col-sm-6 p-4 d-flex flex-column justify-content-center">
                                             <div className="">
                                               <h1 className={styles.second}>
                                                 {data?.title}
@@ -158,19 +173,24 @@ const UpcomingEvents = () => {
                                               </h4> */}
                                             </div>
                                             {/* venue cards */}
-                                            <div className="text-center"><h4>Venue</h4></div>
-                                            <div className="d-flex gap-2 flex-wrap justify-content-center">
-                                              {venueData.length > 0 && venueData.map((data: any, index: number) =>
-                                                <div className="card mb-3" style={{ "width": '11rem' }}>
-                                                  <div className="card-body">
-                                                    <h6 className="card-subtitle mb-2">{data?.venue_name}</h6>
-                                                    <h6 className="card-subtitle mb-2 text-body-secondary" style={{ "fontSize": '12px' }}>{dateFormat(data?.from_date)} to  {dateFormat(data?.to_date)}</h6>
-                                                    <h6 className="card-subtitle text-body-secondary" style={{ "fontSize": '12px' }}>{data?.time}</h6>
-                                                  </div>
-                                                </div>
-                                              )}
+                                            {
+                                              data?.type === 'In-Person' ? <>
+                                                <div className="text-center"><h4>Venue</h4></div>
+                                                <div className="d-flex gap-2 flex-wrap justify-content-center text-center">
+                                                  {data?.venue?.length > 0 && data?.venue?.map((data: any, index: number) =>
+                                                    <div className="card mb-3" style={{ "width": '11rem' }}>
+                                                      <div className="card-body">
+                                                        <h6 className="card-subtitle mb-2">{data?.name}</h6>
+                                                        <h6 className="card-subtitle mb-2">{data?.state}</h6>
+                                                        <h6 className="card-subtitle mb-2 text-body-secondary" style={{ "fontSize": '12px' }}>{dateFormat(data?.from_date)} {data?.to_date ? `to  ${dateFormat(data?.to_date)}` : ''}</h6>
+                                                        <h6 className="card-subtitle text-body-secondary" style={{ "fontSize": '12px' }}>{data?.from_time} to {data?.to_time}</h6>
+                                                      </div>
+                                                    </div>
+                                                  )}
 
-                                            </div>
+                                                </div>
+                                              </> : ''
+                                            }
 
                                             <div>
                                               <h4 className="text-center">{data?.type}</h4>
@@ -179,18 +199,6 @@ const UpcomingEvents = () => {
                                               <Link href={`/join-our-event/featured-event/${data?.slug}`} className="btn btn-outline-success">Register</Link>
                                             </div>
                                           </div>
-                                        </div>
-                                        :
-                                        <div className={`position-relative ${styles.mainRow}`}>
-                                          <Image
-                                            unoptimized
-                                            src={data?.fearturedImg}
-                                            width={300}
-                                            height={300}
-                                            alt="image"
-                                            className={`${styles.bannerImage}`}
-                                          />
-                                          <Link href={`/join-our-event/featured-event/${data?.slug}`} className={`btn btn-outline-success ${styles.mainBannerImg}`}>Register</Link>
                                         </div>
                                     }
                                   </div>

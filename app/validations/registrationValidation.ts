@@ -19,18 +19,16 @@ export const validate = (values: any) => {
         errors.email = "Email address is invalid";
     }
 
-    // if (!values.contact_no) {
-    //     errors.contact_no = "Contact number is required";
-    // } else if (!/^\d{10}$/.test(values.contact_no)) {
-    //     errors.contact_no = "Contact number must be 10 digits";
-    // }
+    if (!/^\d{10}$/.test(values.mobile_no)) {
+        errors.mobile_no = "Contact number must be 10 digits";
+    }
 
     if (!values.gender) {
         errors.gender = "Gender is required";
     }
-    if (!values.venue) {
-        errors.venue = "Venue is required";
-    }
+    // if (!values.vanue) {
+    //     errors.vanue = "Venue is required";
+    // }
 
     return errors;
 };

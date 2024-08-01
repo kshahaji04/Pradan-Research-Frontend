@@ -13,6 +13,8 @@ import { API_CONFIG } from '@/app/services/config/api-config';
 import { showToast } from '../ToastNotification';
 import FooterSkeleton from '@/app/skeletons/Footer/FooterSkeleton';
 import { FooterDataInterface } from '@/app/interfaces/general_interface';
+import { imageLoader } from '@/app/utils/image_loader_utils'
+import Image from 'next/image';
 // import AOS from "aos";
 // import "aos/dist/aos.css";
 const quickLinks = [
@@ -120,6 +122,10 @@ function Footer({ footerData }: FooterInterface) {
             </ul>
           </div>
           <div className='col-md-3'>
+            <div className='mb-2'>
+              {pradan_contact_us?.logo_image && <Image src={pradan_contact_us?.logo_image} alt="pradan logo" height={40} width={80} loader={imageLoader} />}
+
+            </div>
             <h2 className={`${styles.footer_heading}`}>Stay in touch</h2>
             <div className="Footer__Content Rte">
               <p className={`${styles.footer_text}`}>{subscription_text?.short_description}</p>

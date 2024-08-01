@@ -269,26 +269,17 @@
 }
 
 .bannerImage{
+  max-width: 1000px;
   width: 100% !important;
-  height: 100% !important;
+  height: 500px !important;
 }
 
-.mainBannerImg{
+.registerbtn{
   position: absolute;
   bottom: 50px;
-  right: 50%;
+  right: 10%;
 }
 
-@media(max-width:1200px){
-  .mainBannerImg{
-    position: static;
-    bottom: auto;
-    right: auto;
-    align-self: center;
-    margin-left: 40%;
-    margin-top: 20px;
-  }
-}
 
 @media(max-width:1024px){
 
@@ -316,10 +307,7 @@
 
 .mainRow{
   cursor: pointer;
-  /* background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  position: relative;
 }
 
 /* Event details css start*/

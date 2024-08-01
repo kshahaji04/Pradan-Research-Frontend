@@ -10,7 +10,7 @@ import { showToast } from '@/app/components/ToastNotification';
 import { validate } from '@/app/validations/registrationValidation';
 
 
-const RegistrationModal = () => {
+const RegistrationModal = ({ data }: any) => {
 
     const [message, setMessage] = useState("");
     const [newValue, setNewValue] = useState<any>("");
@@ -68,7 +68,7 @@ const RegistrationModal = () => {
 
     return (
         <>
-            <button type="button" className={`btn btn-outline-success w-50  ps-0 text-center ${styles.register_btn}`} onClick={toggleModal}>Register</button>
+            <button type="button" className={`btn btn-outline-success ps-0 w-100 text-center`} onClick={toggleModal} >Register</button>
 
             <Modal show={isModalOpen} onHide={toggleModal} centered className='registration_modal_wrapper'>
 
@@ -84,10 +84,10 @@ const RegistrationModal = () => {
                                         first_name: '',
                                         last_name: '',
                                         email: '',
-                                        contact_no: '',
+                                        gender: '',
+                                        mobile_no: '',
                                         organization: '',
-                                        venue: '',
-                                        gender: ''
+                                        vanue: '',
                                     }}
                                     validate={validate}
                                     onSubmit={(values, { resetForm }) => {
@@ -166,7 +166,7 @@ const RegistrationModal = () => {
                                                             <div className="col-md-6">
                                                                 <label className="mb-1 grey">Mobile Number</label>
                                                                 <Field
-                                                                    name="contact_no"
+                                                                    name="mobile_no"
                                                                     type="text"
                                                                     className="form-control"
                                                                     placeholder="Enter Your Mobile Number"
@@ -175,7 +175,7 @@ const RegistrationModal = () => {
                                                                 <div className="row">
                                                                     <div className="col-12">
                                                                         <div className={styles.error_msg}>
-                                                                            <ErrorMessage name="contact_no" />
+                                                                            <ErrorMessage name="mobile_no" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -203,22 +203,33 @@ const RegistrationModal = () => {
                                                             </div>
 
                                                             {/* Venue */}
-                                                            <div className="col-md-6">
-                                                                <label className="mb-1 grey">Select Venue</label>
-                                                                <Field as="select" name="venue" className="form-select" aria-label="Default select example">
-                                                                    <option value="">Select</option>
-                                                                    <option value="Mumbai 24 July 2024">Mumbai 24 July 2024</option>
-                                                                    <option value="Pune 24 July 2024">Pune 24 July 2024</option>
-                                                                    <option value="Delhi 24 July 2024">Delhi 24 July 2024</option>
-                                                                </Field>
-                                                                <div className="row">
-                                                                    <div className="col-12">
-                                                                        <div className={styles.error_msg}>
-                                                                            <ErrorMessage name="venue" />
+                                                            {
+                                                                data?.type === 'In-Person' ?
+                                                                    <div className="col-md-6">
+                                                                        <label className="mb-1 grey">Select Venue</label>
+                                                                        <Field as="select" name="vanue" className="form-select" aria-label="Default select example">
+                                                                            <option value="">Select</option>
+                                                                            {
+                                                                                data?.vanue?.map((data: any, index: number) => {
+                                                                                    return (
+                                                                                        <>
+                                                                                            <option key={index} value={data?.name}>{data?.name}</option>
+
+                                                                                        </>
+                                                                                    )
+                                                                                })
+                                                                            }
+
+                                                                        </Field>
+                                                                        <div className="row">
+                                                                            <div className="col-12">
+                                                                                <div className={styles.error_msg}>
+                                                                                    <ErrorMessage name="vanue" />
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                                    </div> : ''
+                                                            }
                                                         </div>
 
                                                         {/* Gender */}
@@ -229,7 +240,7 @@ const RegistrationModal = () => {
                                                                     <Field
                                                                         type="radio"
                                                                         name="gender"
-                                                                        value="Others"
+                                                                        value="Non Binary"
                                                                         className="form-check-input"
                                                                     />
                                                                     <label className="form-check-label text-secondary">Non Binary</label>

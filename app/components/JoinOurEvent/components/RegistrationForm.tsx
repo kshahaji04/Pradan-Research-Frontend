@@ -6,7 +6,8 @@ import { showToast } from '@/app/components/ToastNotification';
 import { validate } from '@/app/validations/registrationValidation';
 
 
-const RegistrationForm = () => {
+const RegistrationForm = ({data}:any) => {
+  console.log('venue',data)
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const handleSubmit = async (values: any, actions: any) => {
     try {
@@ -14,8 +15,10 @@ const RegistrationForm = () => {
       if (response?.status === 'success') {
         showToast('Registration successful!!', 'success');
         actions.resetForm();
+      } else if (response?.status === 'error') {
+        showToast(response.error, 'warning');
       } else {
-        showToast('Registration failed!!', 'warning');
+        showToast('Try After Sometime', 'warning');
       }
     } catch (error) {
       showToast('An unexpected error occurred!!', 'error');
@@ -31,10 +34,10 @@ const RegistrationForm = () => {
               first_name: '',
               last_name: '',
               email: '',
-              contact_no: '',
+              gender: '',
+              mobile_no: '',
               organization: '',
-              venue: '',
-              gender: ''
+              vanue: '',
             }}
             validate={validate}
             onSubmit={(values, { resetForm }) => {
@@ -113,7 +116,7 @@ const RegistrationForm = () => {
                         <div className="col-md-6">
                           <label className="mb-1 grey">Mobile Number</label>
                           <Field
-                            name="contact_no"
+                            name="mobile_no"
                             type="text"
                             className="form-control"
                             placeholder="Enter Your Mobile Number"
@@ -122,7 +125,7 @@ const RegistrationForm = () => {
                           <div className="row">
                             <div className="col-12">
                               <div className={styles.error_msg}>
-                                <ErrorMessage name="contact_no" />
+                                <ErrorMessage name="mobile_no" />
                               </div>
                             </div>
                           </div>
@@ -150,22 +153,33 @@ const RegistrationForm = () => {
                         </div>
 
                         {/* Venue */}
+                        {
+                          data?.type === 'In-Person' ? 
                         <div className="col-md-6">
                           <label className="mb-1 grey">Select Venue</label>
-                          <Field as="select" name="venue" className="form-select" aria-label="Default select example">
+                          <Field as="select" name="vanue" className="form-select" aria-label="Default select example">
                             <option value="">Select</option>
-                            <option value="Mumbai 24 July 2024">Mumbai 24 July 2024</option>
-                            <option value="Pune 24 July 2024">Pune 24 July 2024</option>
-                            <option value="Delhi 24 July 2024">Delhi 24 July 2024</option>
+                            {
+                              data?.vanue?.map((data:any , index:number)=>{
+                                return(
+                                  <>
+                                  <option key={index} value={data?.name}>{data?.name}</option>
+
+                                  </>
+                                )
+                              }) 
+                            }
+                           
                           </Field>
                           <div className="row">
                             <div className="col-12">
                               <div className={styles.error_msg}>
-                                <ErrorMessage name="venue" />
+                                <ErrorMessage name="vanue" />
                               </div>
                             </div>
                           </div>
-                        </div>
+                        </div>:''
+                        }
                       </div>
 
                       {/* Gender */}
@@ -176,7 +190,7 @@ const RegistrationForm = () => {
                             <Field
                               type="radio"
                               name="gender"
-                              value="Others"
+                              value="Non Binary"
                               className="form-check-input"
                             />
                             <label className="form-check-label text-secondary">Non Binary</label>

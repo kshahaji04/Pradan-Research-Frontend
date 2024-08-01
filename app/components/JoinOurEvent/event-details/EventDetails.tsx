@@ -83,7 +83,11 @@ const EventDetails = () => {
                                         </div>
                                     </div>
                                     <SectionDivider />
-                                    <VenueCard venueData={featuredEventDetailData?.vanue} />
+                                    {
+                                        featuredEventDetailData?.type === 'In-Person'  ? 
+                                        <VenueCard venueData={featuredEventDetailData?.vanue} />
+                                        :''
+                                    }
                                     <div className='text-center'>
 
                                         <Link href='/' target='_blank' className='btn btn-outline-success w-25'>Download Event Broucher</Link>
@@ -94,7 +98,7 @@ const EventDetails = () => {
                                     <div className="col-12">
                                         <div>
                                             <h4 className='text-success text-center'>Here you can Register</h4>
-                                            <RegistrationForm />
+                                            <RegistrationForm data={featuredEventDetailData} />
                                         </div>
                                     </div>
                                 </div>

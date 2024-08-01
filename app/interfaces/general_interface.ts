@@ -16,7 +16,7 @@ export interface LogoDataInterface {
 }
 
 interface ContactUsInterface {
-  logo?: string | null;
+  logo_image?: string | null;
   email_id?: string | null;
   facebook_url?: string | null;
   instagram_url?: string | null;

@@ -6,6 +6,8 @@ import whiteBanner from "@/public/assets/images/bg/whiteBannerDots.jpg";
 import whitebg from "@/public/assets/images/bg/whitebg.jpg";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import useResearchInfo from "@/app/hooks/research_hooks/research-info-hooks";
+import ErrorComponent from "../ErrorComponent";
 
 function Research() {
   let searchParams = new URLSearchParams(window.location.search);
@@ -19,9 +21,14 @@ function Research() {
     setTab(e);
     setCurrentPage(1);
   };
+
+  const { researchInfoData, loadingResearch, researchError } = useResearchInfo();
+  console.log('research infor', researchInfoData);
   return (
     <>
       <div className="row p-0">
+        {
+          researchError ? <ErrorComponent/>  : 
         <div className="bgImageWrapper">
           <div
             className={`row align-items-center justify-content-center mainHeader`}
@@ -34,45 +41,44 @@ function Research() {
             style={{
               zIndex: "2",
               position: "relative",
-              padding: "100px 0 200px",
+              padding: "65px 0 200px",
             }}
           >
-            <h2
-              // className={`d-flex align-items-center justify-content-center`}
-              style={{
-                maxWidth: "600px",
-                textAlign: "center",
-                width: "100%",
-                margin: "0 auto 18px",
-              }}
-            >
-              Some of Our Best
-              <span
+            <div className="">
+              <h2
+                // className={`d-flex align-items-center justify-content-center`}
                 style={{
-                  fontFamily: "Caveat, cursive",
-                  fontOpticalSizing: "auto",
-                  fontWeight: 400,
-                  fontStyle: "normal",
-                  fontSize: "48px",
-                  color: "var(--primary)",
+                  maxWidth: "600px",
+                  textAlign: "center",
+                  width: "100%",
+                  margin: "0 auto 18px",
                 }}
               >
-                {" "} Squarespace {" "}
-              </span>{" "}
-              Website Examples
-            </h2>
-            <p
-              style={{
-                maxWidth: "600px",
-                textAlign: "center",
-                width: "100%",
-                margin: "0 auto",
-              }}
-            >
-              Browse a few of the 500+ websites we’ve built on Squarespace.
-              These sites were built using our collaborative, live-design
-              process, some in as little as one day!
-            </p>
+                <span
+                  style={{
+                    fontFamily: "Caveat, cursive",
+                    fontOpticalSizing: "auto",
+                    fontWeight: 400,
+                    fontStyle: "normal",
+                    fontSize: "48px",
+                    color: "var(--primary)",
+                  }}
+                >
+                  {researchInfoData?.title}
+                </span>{" "}
+
+              </h2>
+              <p
+                style={{
+                  maxWidth: "600px",
+                  textAlign: "center",
+                  width: "100%",
+                  margin: "0 auto",
+                }}
+              >
+                {researchInfoData?.short_description}
+              </p>
+            </div>
           </div>
           <figure>
             <Image
@@ -91,6 +97,7 @@ function Research() {
             />
           </figure>
         </div>
+        }
         <div className="bgImageWrapper">
           <div
             className="container"
@@ -114,9 +121,8 @@ function Research() {
                 </li>
                 <li className="nav-item">
                   <button
-                    className={`nav-link ${
-                      tab === "concluded" ? "active" : ""
-                    }`}
+                    className={`nav-link ${tab === "concluded" ? "active" : ""
+                      }`}
                     onClick={() => handleTabChange("concluded")}
                   >
                     Concluded

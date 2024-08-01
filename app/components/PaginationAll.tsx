@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactPaginate from 'react-paginate';
-
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 interface PaginationProps {
   currentPage: number;
   totalPages: number;
@@ -14,8 +15,8 @@ function PaginationAll({ currentPage, totalPages, onPageChange }:PaginationProps
 
   return (
     <ReactPaginate
-      previousLabel={'previous'}
-      nextLabel={'next'}
+      previousLabel={<ArrowBackIosIcon/>}
+      nextLabel={<ArrowForwardIosIcon/>}
       breakLabel={'...'}
       breakClassName={'break-me'}
       pageCount={totalPages}

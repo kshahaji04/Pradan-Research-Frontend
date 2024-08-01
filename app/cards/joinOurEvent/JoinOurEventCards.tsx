@@ -40,11 +40,11 @@ const JoinOurEventCards = ({ data, loading }: any) => {
                             {/* <p className={`card-text mb-0 pb-2`}>hello</p> */}
                             <p className="card-title text-secondary">{data?.title}</p>
                             <p className="card-title text-secondary">{data?.sub_title}</p>
-                            <h6 className='mb-0'>Type: {data?.type}</h6>
+                            <h6 className='mb-0'>{data?.type}</h6>
                             <p>
                                 <span dangerouslySetInnerHTML={{
                                     /* @ts-ignore */
-                                    __html: data?.short_description?.length > 150 ? `${data?.short_description.slice(0, 150)}...` : data?.short_description
+                                    __html: data?.short_description?.length > 100 ? `${data?.short_description.slice(0, 100)}...` : data?.short_description
                                 }}>
                                 </span>
                             </p>
@@ -55,7 +55,8 @@ const JoinOurEventCards = ({ data, loading }: any) => {
                             <p className={`card-text text-secondary mb-0`}>{data?.state}</p>
                         </div>
 
-                        <div className='text-center'><RegistrationModal /></div>
+                        {data?.slug ? <Link href={`/join-our-event/featured-event/${data?.slug}`} className="btn btn-outline-success">Register</Link> :
+                            <RegistrationModal data={data} />}
                     </div>
                 </div>
             </div>
