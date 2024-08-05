@@ -54,30 +54,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-
-// webpack(config, { buildId, dev, isServer, defaultLoaders, webpack }) {
-//   if (!dev) {
-//     config.module.rules.push({
-//       test: /\.(ts|tsx)$/,
-//       exclude: /node_modules/,
-//       use: {
-//         loader: "babel-loader",
-//         options: {
-//           presets: ["@babel/preset-env", "@babel/preset-typescript"],
-//         },
-//       },
-//     });
-//   } else {
-//     const polyfillPath = path.resolve("./polyfills.js");
-
-//     if (
-//       config.entry["main.app"] &&
-//       !config.entry["main.app"].includes(polyfillPath)
-//     ) {
-//       config.entry["main.app"].unshift(polyfillPath);
-//     }
-//   }
-
-//   return config;
-// },

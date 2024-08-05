@@ -6,9 +6,9 @@ import Skeleton from 'react-loading-skeleton'
 const SearchPageListCardSkeleton = () => {
   return (
     <div className="row ms-4 mt-4">
-      {Array.from({length:6}).map((item: any, index: any) => (
-        <div className="col-12 m-4">
-          <div className={`card p-4  m-2 cursor d-flex  flex-row ${styles.listCard}`} key={index}>
+      {Array.from({length:6}).map((_, index: any) => (
+        <div className="col-12 m-4" key={index}>
+          <div className={`card p-4  m-2 cursor d-flex  flex-row ${styles.listCard}`} >
             <Skeleton width={400} height={300}  className={`${styles.listImg}`} />
             <div className="card-body p-4 d-flex  flex-column justify-content-between">
               <div>

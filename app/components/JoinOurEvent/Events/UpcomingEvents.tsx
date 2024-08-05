@@ -178,7 +178,7 @@ const UpcomingEvents = () => {
                                                 <div className="text-center"><h4>Venue</h4></div>
                                                 <div className="d-flex gap-2 flex-wrap justify-content-center text-center">
                                                   {data?.venue?.length > 0 && data?.venue?.map((data: any, index: number) =>
-                                                    <div className="card mb-3" style={{ "width": '11rem' }}>
+                                                    <div className="card mb-3" style={{ "width": '11rem' }} key={index}>
                                                       <div className="card-body">
                                                         <h6 className="card-subtitle mb-2">{data?.name}</h6>
                                                         <h6 className="card-subtitle mb-2">{data?.state}</h6>

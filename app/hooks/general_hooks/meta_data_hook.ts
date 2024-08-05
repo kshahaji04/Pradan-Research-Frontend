@@ -20,7 +20,7 @@ export async function fetchMetaData(url: string) {
   return [];
 }
 
-async function useMetaData(url:string) {
+async function UseMetaData(url:string) {
   const fetchedDataFromServer = await fetchMetaData(url);
   // console.log("@@@ data in generateMeta", fetchedDataFromServer);
 
@@ -49,4 +49,4 @@ async function useMetaData(url:string) {
   };
 }
 
-export default useMetaData;
+export default UseMetaData;

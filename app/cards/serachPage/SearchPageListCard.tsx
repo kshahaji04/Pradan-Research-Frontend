@@ -17,8 +17,8 @@ const SearchPageListCard: React.FC<SearchPageGridCardProps> = ({ data, loading }
         loading ? <SearchPageListCardSkeleton /> :
           data?.length > 0 ?
             data.map((item: any, index: any) => (
-              <div className="col-11 m-4">
-                <div className={`card p-4  m-2 cursor d-flex  flex-row ${styles.listCard}`} key={index}>
+              <div className="col-11 m-4" key={index}>
+                <div className={`card p-4  m-2 cursor d-flex  flex-row ${styles.listCard}`} >
                   <Image width={400} height={300} src={item?.image ? item?.image : img.src} className={`${styles.listImg}`}
                     loader={imageLoader}
                     alt='image' />

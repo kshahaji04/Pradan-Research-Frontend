@@ -3,9 +3,9 @@ import ConcludeResearchMaster from '@/app/components/research/concluded-research
 import AboutResearchSkeleton from '@/app/skeletons/Research/AboutResearchSkeleton'
 import React from 'react'
 import { Metadata } from "next";
-import useMetaData from "@/app/hooks/general_hooks/meta_data_hook";
+import UseMetaData from "@/app/hooks/general_hooks/meta_data_hook";
 export async function generateMetadata(): Promise<Metadata> {
- return useMetaData('research-details')
+ return UseMetaData('research-details')
 }
 
 function page() {

@@ -5,11 +5,8 @@ import Link from 'next/link'
 import GridViewIcon from '@mui/icons-material/GridView';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import Image from 'next/image';
-import SearchPageGridCard from '@/app/card/serachPage/SearchPageGridCard';
-import SearchPageListCard from '@/app/card/serachPage/SearchPageListCard';
-import { Button, ButtonGroup, Dropdown } from 'react-bootstrap';
 
-import PaginationAll from '@/app/PaginationAll';
+import { Button, ButtonGroup, Dropdown } from 'react-bootstrap';
 import Skeleton from 'react-loading-skeleton';
 
 const SearchPageSkeleton = () => {
